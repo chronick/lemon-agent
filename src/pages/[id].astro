@@ -1,0 +1,24 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const lists = await getCollection('lists');
+  return lists.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+---
+<Base title={d.title} description={d.description}>
+  <p class="kicker">
+    Lemon Agent № {d.number} · the {d.arm} arm · {d.entries} entries
+    <span class={`badge ${d.status}`}>{d.status}</span>
+  </p>
+  <h1>{d.title}</h1>
+  <article class="list-body">
+    <Content />
+  </article>
+  <p class="backlink"><a href="/">← Lemon Agent</a> · <a href={`/lists/${entry.id}.md`}>raw markdown</a></p>
+</Base>

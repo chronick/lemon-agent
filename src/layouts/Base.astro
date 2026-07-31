@@ -1,0 +1,160 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const isHome = Astro.url.pathname === '/';
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{isHome ? title : `${title} · Lemon Agent`}</title>
+  </head>
+  <body>
+    <main>
+      {!isHome && (
+        <nav class="crumb">
+          <a href="/"><img src="/favicon.svg" alt="" class="mark" /> Lemon Agent</a>
+        </nav>
+      )}
+      <slot />
+      <footer>
+        <p>
+          <strong>Lemon Agent</strong> — free tools, honest measurements,
+          agentic services. Static, zero-JS.
+        </p>
+        <p class="agents">
+          For agents: <a href="/catalog.json">catalog.json</a> ·
+          <a href="/llms.txt">llms.txt</a> · raw markdown under
+          <code>/lists/</code>
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --bg: #fffdf5;
+    --ink: #23221b;
+    --muted: #6f6d5e;
+    --accent: #9c7c08;
+    --lemon: #e8c51c;
+    --card: #faf6e8;
+    --border: #e6dfc6;
+    --code-bg: #f1ecd9;
+    --draft-ink: #8a5e00;
+    --draft-bg: #fbf0cd;
+    --live-ink: #2e6b2e;
+    --live-bg: #e2efe2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #171610;
+      --ink: #eae7d8;
+      --muted: #a3a08d;
+      --accent: #e8c51c;
+      --lemon: #e8c51c;
+      --card: #201f16;
+      --border: #363320;
+      --code-bg: #2a2817;
+      --draft-ink: #e5bd52;
+      --draft-bg: #2d2510;
+      --live-ink: #93c893;
+      --live-bg: #1b2a1b;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--ink);
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 44rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover { text-decoration-thickness: 2px; }
+
+  h1 { font-size: 1.9rem; line-height: 1.2; letter-spacing: -0.01em; margin: 0.4rem 0 0.8rem; }
+  h2 { font-size: 1.25rem; margin: 2.2rem 0 0.6rem; }
+  code {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.88em;
+    background: var(--code-bg);
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+  }
+
+  .crumb { margin-bottom: 1.5rem; font-size: 0.95rem; }
+  .crumb a {
+    color: var(--muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    font-weight: 550;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+  }
+  .crumb a:hover { color: var(--accent); }
+  .mark { width: 1.05em; height: 1.05em; }
+
+  .kicker {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.55em;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.1em 0.55em;
+    border-radius: 99px;
+  }
+  .badge.draft { color: var(--draft-ink); background: var(--draft-bg); }
+  .badge.live, .badge.published { color: var(--live-ink); background: var(--live-bg); }
+
+  /* Rendered list body */
+  .list-body blockquote {
+    margin: 1.4rem 0;
+    padding: 0.7rem 1.1rem;
+    border-left: 3px solid var(--lemon);
+    background: var(--draft-bg);
+    color: var(--draft-ink);
+    border-radius: 0 8px 8px 0;
+    font-size: 0.95rem;
+  }
+  .list-body blockquote p { margin: 0.4rem 0; }
+  .list-body ol { padding-left: 1.4rem; }
+  .list-body ol li { margin: 0.85rem 0; }
+  .list-body hr { border: 0; border-top: 1px solid var(--border); margin: 2.5rem 0 1.5rem; }
+  .list-body > p:last-of-type, .list-body hr ~ p { color: var(--muted); font-size: 0.9rem; }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+  footer p { margin: 0.35rem 0; }
+
+  .backlink { margin-top: 2.5rem; }
+</style>

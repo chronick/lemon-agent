@@ -1,0 +1,111 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const lists = (await getCollection('lists')).sort(
+  (a, b) => a.data.number - b.data.number,
+);
+
+const services = [
+  {
+    name: 'pathgrip',
+    status: 'live',
+    url: 'https://pathgrip.net',
+    blurb:
+      'A bookmark store that keeps a copy of what you saved — and can tell ' +
+      'you who saved it. Content-addressed snapshots, drift detection, ' +
+      'per-agent tokens, an MCP surface. Provenance for humans and their agents.',
+  },
+];
+---
+<Base
+  title="Lemon Agent — free tools, honest measurements, agentic services"
+  description="A small house for working with agents: numbered failure lists you run as subtraction passes, and services agents can call."
+>
+  <header class="hero">
+    <img src="/favicon.svg" alt="" class="hero-mark" />
+    <h1 class="wordmark">LEMON AGENT</h1>
+    <p class="tagline">Free tools · honest measurements · agentic services</p>
+    <p class="intro">
+      A small house for working with agents. Lists that cut rather than add,
+      measurements published with their failure cases, and services agents can
+      call directly. Nothing here earns its place by being impressive —
+      only by being used.
+    </p>
+  </header>
+
+  <h2>The lists</h2>
+  <p class="section-note">
+    Numbered failure lists, run as subtraction passes. Every match is a cut,
+    a rewrite, or a stop-and-fix — never an addition.
+  </p>
+  <div class="cards">
+    {lists.map((list) => (
+      <a class="card" href={`/${list.id}/`}>
+        <p class="card-kicker">
+          № {list.data.number} · {list.data.prefix}-01…{list.data.prefix}-{String(list.data.entries).padStart(2, '0')}
+          <span class={`badge ${list.data.status}`}>{list.data.status}</span>
+        </p>
+        <p class="card-title">{list.data.title}</p>
+        <p class="card-blurb">{list.data.description}</p>
+      </a>
+    ))}
+  </div>
+
+  <h2>The services</h2>
+  <div class="cards">
+    {services.map((svc) => (
+      <a class="card" href={svc.url}>
+        <p class="card-kicker">
+          {new URL(svc.url).hostname}
+          <span class={`badge ${svc.status}`}>{svc.status}</span>
+        </p>
+        <p class="card-title">{svc.name}</p>
+        <p class="card-blurb">{svc.blurb}</p>
+      </a>
+    ))}
+  </div>
+</Base>
+
+<style>
+  .hero { margin-bottom: 2.5rem; }
+  .hero-mark { width: 3.2rem; height: 3.2rem; margin-bottom: 0.6rem; }
+  .wordmark {
+    font-size: 1.6rem;
+    letter-spacing: 0.28em;
+    font-weight: 750;
+    margin: 0;
+  }
+  .tagline {
+    color: var(--muted);
+    margin: 0.3rem 0 1.2rem;
+    font-size: 0.98rem;
+  }
+  .intro { max-width: 38rem; }
+
+  .section-note { color: var(--muted); font-size: 0.95rem; margin-top: -0.2rem; }
+
+  .cards { display: grid; gap: 0.9rem; margin: 1.1rem 0 0.5rem; }
+  .card {
+    display: block;
+    padding: 1rem 1.2rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 120ms ease;
+  }
+  .card:hover { border-color: var(--lemon); }
+  .card-kicker {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.55em;
+    font-variant-numeric: tabular-nums;
+  }
+  .card-title { margin: 0.25rem 0 0.2rem; font-weight: 650; font-size: 1.08rem; }
+  .card-blurb { margin: 0; font-size: 0.93rem; color: var(--muted); }
+</style>

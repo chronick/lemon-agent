@@ -1,0 +1,46 @@
+{
+  "name": "Lemon Agent",
+  "tagline": "Free tools, honest measurements, agentic services.",
+  "operator": "chronick",
+  "updated": "2026-07-31",
+  "members": [
+    {
+      "id": "prose-failure-list",
+      "name": "The Prose Failure List",
+      "number": 1,
+      "tier": "free-artifact",
+      "kind": "failure-list",
+      "surface": "prose",
+      "arm": "taste",
+      "status": "draft",
+      "entries": 24,
+      "id_prefix": "PF",
+      "html": "/prose-failure-list/",
+      "raw": "/lists/prose-failure-list.md"
+    },
+    {
+      "id": "agent-workflow-failure-list",
+      "name": "The Agent Workflow Failure List",
+      "number": 2,
+      "tier": "free-artifact",
+      "kind": "failure-list",
+      "surface": "agent-assisted engineering",
+      "arm": "verification",
+      "status": "draft",
+      "entries": 18,
+      "id_prefix": "AF",
+      "html": "/agent-workflow-failure-list/",
+      "raw": "/lists/agent-workflow-failure-list.md"
+    },
+    {
+      "id": "pathgrip",
+      "name": "pathgrip",
+      "tier": "agentic-service",
+      "kind": "provenance-store",
+      "status": "live",
+      "url": "https://pathgrip.net",
+      "auth": "bearer",
+      "mcp": true
+    }
+  ]
+}
