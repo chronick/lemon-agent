@@ -5,27 +5,15 @@ import Base from '../layouts/Base.astro';
 const lists = (await getCollection('lists')).sort(
   (a, b) => a.data.number - b.data.number,
 );
-
-const services = [
-  {
-    name: 'pathgrip',
-    status: 'live',
-    url: 'https://pathgrip.net',
-    blurb:
-      'A bookmark store that keeps a copy of what you saved — and can tell ' +
-      'you who saved it. Content-addressed snapshots, drift detection, ' +
-      'per-agent tokens, an MCP surface. Provenance for humans and their agents.',
-  },
-];
 ---
 <Base
   title="Lemon Agent — free tools, honest measurements, agentic services"
-  description="A small house for working with agents: numbered failure lists you run as subtraction passes, and services agents can call."
+  description="A small house for working with agents: numbered failure lists you run as subtraction passes, installable as skills, and services agents can call."
 >
   <header class="hero">
     <img src="/favicon.svg" alt="" class="hero-mark" />
-    <h1 class="wordmark">LEMON AGENT</h1>
-    <p class="tagline">Free tools · honest measurements · agentic services</p>
+    <h1 class="wordmark"><span class="chip">LEMON AGENT</span></h1>
+    <p class="tagline">free tools · honest measurements · agentic services</p>
     <p class="intro">
       A small house for working with agents. Lists that cut rather than add,
       measurements published with their failure cases, and services agents can
@@ -52,38 +40,80 @@ const services = [
     ))}
   </div>
 
+  <h2>Use it</h2>
+  <div class="use-grid">
+    <div class="use-block">
+      <p class="use-head">In any chat assistant</p>
+      <p>
+        Each list page carries a ready-to-paste prompt. Paste it, paste the
+        list, paste your draft or PR — works in anything that reads text.
+        Start at <a href={`/${lists[0]?.id}/#how-to-use-it`}>the prose list</a>
+        or <a href={`/${lists[1]?.id}/#how-to-use-it`}>the workflow list</a>.
+      </p>
+    </div>
+    <div class="use-block">
+      <p class="use-head">As a Claude Code skill</p>
+      <p>Install either list as a slash-invocable pass:</p>
+      <pre><code>git clone https://github.com/chronick/lemon-agent
+cp -r lemon-agent/skills/prose-failure-list ~/.claude/skills/</code></pre>
+      <p>
+        Then ask: <em>"run the prose failure list on drafts/my-post.md"</em>.
+        Same shape for <code>skills/agent-workflow-failure-list</code>.
+      </p>
+    </div>
+    <div class="use-block">
+      <p class="use-head">In an agent or pipeline</p>
+      <p>
+        Raw markdown at <code>/lists/*.md</code> with stable ids
+        (PF-NN / AF-NN), machine catalog at
+        <a href="/catalog.json">/catalog.json</a>, index at
+        <a href="/llms.txt">/llms.txt</a>. Run the lists as advisory
+        passes — they report, they never gate.
+      </p>
+    </div>
+  </div>
+
   <h2>The services</h2>
   <div class="cards">
-    {services.map((svc) => (
-      <a class="card" href={svc.url}>
-        <p class="card-kicker">
-          {new URL(svc.url).hostname}
-          <span class={`badge ${svc.status}`}>{svc.status}</span>
-        </p>
-        <p class="card-title">{svc.name}</p>
-        <p class="card-blurb">{svc.blurb}</p>
-      </a>
-    ))}
+    <a class="card" href="https://pathgrip.net">
+      <p class="card-kicker">
+        pathgrip.net
+        <span class="badge live">live</span>
+      </p>
+      <p class="card-title">pathgrip</p>
+      <p class="card-blurb">
+        A bookmark store that keeps a copy of what you saved — and can tell
+        you who saved it. Content-addressed snapshots, drift detection,
+        per-agent tokens, an MCP surface.
+      </p>
+      <p class="card-note">
+        Honest status: runs as the operator's instance today. Public docs and
+        self-serve keys are the next member to ship — until then there's
+        nothing here for you to sign up for, and this card says so rather
+        than pretending otherwise.
+      </p>
+    </a>
   </div>
 </Base>
 
 <style>
-  .hero { margin-bottom: 2.5rem; }
-  .hero-mark { width: 3.2rem; height: 3.2rem; margin-bottom: 0.6rem; }
+  .hero { margin-bottom: 2.2rem; }
+  .hero-mark { width: 3rem; height: 3rem; margin-bottom: 0.7rem; }
   .wordmark {
-    font-size: 1.6rem;
-    letter-spacing: 0.28em;
-    font-weight: 750;
+    font-size: 1.5rem;
+    letter-spacing: 0.14em;
     margin: 0;
   }
+  .wordmark .chip { padding: 0.08em 0.5em; }
   .tagline {
     color: var(--muted);
-    margin: 0.3rem 0 1.2rem;
-    font-size: 0.98rem;
+    margin: 0.55rem 0 1.3rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
   }
-  .intro { max-width: 38rem; }
+  .intro { max-width: 40rem; }
 
-  .section-note { color: var(--muted); font-size: 0.95rem; margin-top: -0.2rem; }
+  .section-note { color: var(--muted); font-size: 0.85rem; margin-top: 0; }
 
   .cards { display: grid; gap: 0.9rem; margin: 1.1rem 0 0.5rem; }
   .card {
@@ -91,21 +121,41 @@ const services = [
     padding: 1rem 1.2rem;
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 12px;
     text-decoration: none;
     color: inherit;
-    transition: border-color 120ms ease;
+    transition: border-color 120ms ease, background 120ms ease, box-shadow 120ms ease;
   }
-  .card:hover { border-color: var(--lemon); }
+  .card:hover {
+    border-color: var(--border-hover);
+    background: var(--card-hover);
+    box-shadow: var(--glow);
+  }
   .card-kicker {
     margin: 0;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--muted);
+    letter-spacing: 0.05em;
     display: flex;
     align-items: center;
-    gap: 0.55em;
-    font-variant-numeric: tabular-nums;
+    gap: 0.6em;
   }
-  .card-title { margin: 0.25rem 0 0.2rem; font-weight: 650; font-size: 1.08rem; }
-  .card-blurb { margin: 0; font-size: 0.93rem; color: var(--muted); }
+  .card-title { margin: 0.3rem 0 0.25rem; font-weight: 700; font-size: 1.05rem; color: var(--accent-ink); }
+  .card-blurb { margin: 0; font-size: 0.85rem; color: var(--muted); }
+  .card-note {
+    margin: 0.6rem 0 0;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px dashed var(--border);
+    padding-top: 0.6rem;
+  }
+
+  .use-grid { display: grid; gap: 1.1rem; margin: 1.1rem 0 0.5rem; }
+  .use-block {
+    border-left: 2px solid var(--chartreuse);
+    padding-left: 1rem;
+    font-size: 0.9rem;
+  }
+  .use-block p { margin: 0.4rem 0; }
+  .use-head { font-weight: 700; letter-spacing: 0.03em; }
+  .use-block pre { margin: 0.6rem 0; }
 </style>

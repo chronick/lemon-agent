@@ -3,6 +3,7 @@
   "tagline": "Free tools, honest measurements, agentic services.",
   "operator": "chronick",
   "updated": "2026-07-31",
+  "house_rule": "Nothing ships without a working answer to: how would a user actually use this, today?",
   "members": [
     {
       "id": "prose-failure-list",
@@ -16,7 +17,13 @@
       "entries": 24,
       "id_prefix": "PF",
       "html": "/prose-failure-list/",
-      "raw": "/lists/prose-failure-list.md"
+      "raw": "/lists/prose-failure-list.md",
+      "how_to_use": "/prose-failure-list/#how-to-use-it",
+      "install": {
+        "kind": "claude-code-skill",
+        "path": "skills/prose-failure-list",
+        "copy_to": "~/.claude/skills/"
+      }
     },
     {
       "id": "agent-workflow-failure-list",
@@ -30,7 +37,13 @@
       "entries": 18,
       "id_prefix": "AF",
       "html": "/agent-workflow-failure-list/",
-      "raw": "/lists/agent-workflow-failure-list.md"
+      "raw": "/lists/agent-workflow-failure-list.md",
+      "how_to_use": "/agent-workflow-failure-list/#how-to-use-it",
+      "install": {
+        "kind": "claude-code-skill",
+        "path": "skills/agent-workflow-failure-list",
+        "copy_to": "~/.claude/skills/"
+      }
     },
     {
       "id": "pathgrip",
@@ -40,7 +53,10 @@
       "status": "live",
       "url": "https://pathgrip.net",
       "auth": "bearer",
-      "mcp": true
+      "mcp": true,
+      "self_serve": false,
+      "docs": "pending",
+      "note": "Operator instance today; public docs and self-serve keys are the next ship."
     }
   ]
 }

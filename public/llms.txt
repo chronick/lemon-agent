@@ -2,28 +2,44 @@
 
 > Free tools, honest measurements, agentic services. A small portfolio
 > house for working with agents: numbered failure lists you run as
-> subtraction passes, and services agents can call directly.
+> subtraction passes, installable as agent skills, and services agents
+> can call directly.
 
-Both lists are v0 drafts pending author curation. Entry ids (PF-NN /
-AF-NN) are stable and citable.
+House rule: nothing ships without a working answer to "how would a user
+actually use this, today?" Both lists are v0 — entry ids (PF-NN / AF-NN)
+are stable and citable; entries may be cut before 1.0.
 
 ## Lists
 
 - [The Prose Failure List](/lists/prose-failure-list.md): 24 numbered
-  failures of AI-assisted prose (PF-01…PF-24). Advisory subtraction
-  pass — every match is a cut or a rewrite, never an addition.
+  failures of AI-assisted prose (PF-01…PF-24). Run as a subtraction
+  pass — every match is a cut or a rewrite, never an addition. The
+  page's "How to use it" section carries a ready-to-paste prompt.
 - [The Agent Workflow Failure List](/lists/agent-workflow-failure-list.md):
   18 numbered failures of agent-assisted engineering (AF-01…AF-18), each
-  grounded in a measured incident from the author's own usage data.
-  Entries marked with a gear are executable-advisory candidates.
+  grounded in a measured incident. Entries marked ⚙ are
+  executable-advisory candidates. Same deal: paste-ready prompt on the
+  page.
+
+## Install as skills (Claude Code)
+
+Clone https://github.com/chronick/lemon-agent and copy either directory
+into `~/.claude/skills/`:
+
+- `skills/prose-failure-list` — subtraction pass over a draft
+- `skills/agent-workflow-failure-list` — verification pass over a
+  session, PR, or report
+
+Run the lists as advisory passes: they report, they never gate.
 
 ## Services
 
 - [pathgrip](https://pathgrip.net): a bookmark + provenance store —
   content-addressed snapshots, drift detection, per-agent bearer tokens,
-  an MCP surface.
+  an MCP surface. Operator instance today; public docs and self-serve
+  keys are the next ship.
 
 ## Machine catalog
 
 - [catalog.json](/catalog.json): every member with tier, kind, status,
-  and URLs.
+  install path, and URLs.
