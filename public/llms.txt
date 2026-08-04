@@ -1,25 +1,39 @@
 # Lemon Agent
 
 > Free tools, honest measurements, agentic services. A small portfolio
-> house for working with agents: numbered failure lists you run as
-> subtraction passes, installable as agent skills, and services agents
-> can call directly.
+> house for working with agents: a field guide of concrete patterns, two
+> numbered failure lists (installable as agent skills), and services
+> agents can call directly.
 
 House rule: nothing ships without a working answer to "how would a user
-actually use this, today?" Both lists are v0 — entry ids (PF-NN / AF-NN)
-are stable and citable; entries may be cut before 1.0.
+actually use this, today?" Everything is v0 — guide step slugs and list
+entry ids (PF-NN / AF-NN) are stable and citable.
 
-## Lists
+## The guide
+
+Working with Coding Agents — a field guide. Human-first: adopt one step
+at a time; every chapter ends with an optional paste-into-Claude setup
+block. Step 0 is the full baseline in one paste. Raw chapters:
+
+- [Step 0 — The one-paste baseline](/guide/full-setup.md)
+- [Step 1 — Write down what bit you](/guide/working-agreements.md)
+- [Step 2 — Prove it before and after](/guide/verification-loop.md)
+- [Step 3 — Make the agent interview you](/guide/design-before-code.md)
+- [Step 4 — Reviews that try to kill the work](/guide/adversarial-review.md)
+- [Step 5 — Fan out, then funnel](/guide/fan-out.md)
+- [Step 6 — Turn repetition into tools](/guide/build-tools.md)
+- [Step 7 — Views on demand, not apps](/guide/jit-ui.md)
+- [Step 8 — Graduate protocol to hooks](/guide/graduate-to-hooks.md)
+
+## Lists (the guide's watch-out reference)
 
 - [The Prose Failure List](/lists/prose-failure-list.md): 24 numbered
-  failures of AI-assisted prose (PF-01…PF-24). Run as a subtraction
-  pass — every match is a cut or a rewrite, never an addition. The
-  page's "How to use it" section carries a ready-to-paste prompt.
+  failures of AI-assisted prose (PF-01…PF-24), run as a subtraction
+  pass. Paste-ready prompt in the page's "How to use it" section.
 - [The Agent Workflow Failure List](/lists/agent-workflow-failure-list.md):
   18 numbered failures of agent-assisted engineering (AF-01…AF-18), each
   grounded in a measured incident. Entries marked ⚙ are
-  executable-advisory candidates. Same deal: paste-ready prompt on the
-  page.
+  executable-advisory candidates.
 
 ## Install as skills (Claude Code)
 
@@ -42,4 +56,4 @@ Run the lists as advisory passes: they report, they never gate.
 ## Machine catalog
 
 - [catalog.json](/catalog.json): every member with tier, kind, status,
-  install path, and URLs.
+  chapters, install path, and URLs.

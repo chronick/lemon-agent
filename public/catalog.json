@@ -6,6 +6,28 @@
   "house_rule": "Nothing ships without a working answer to: how would a user actually use this, today?",
   "members": [
     {
+      "id": "coding-agent-field-guide",
+      "name": "Working with Coding Agents — a field guide",
+      "number": 3,
+      "tier": "free-artifact",
+      "kind": "guide",
+      "status": "draft",
+      "html": "/guide/",
+      "raw_dir": "/guide/",
+      "how_to_use": "Adopt one step at a time; each chapter ends with an optional paste-into-Claude setup. Step 0 is the full baseline in one paste.",
+      "chapters": [
+        { "step": 0, "id": "full-setup", "title": "The one-paste baseline", "raw": "/guide/full-setup.md" },
+        { "step": 1, "id": "working-agreements", "title": "Write down what bit you", "raw": "/guide/working-agreements.md" },
+        { "step": 2, "id": "verification-loop", "title": "Prove it before and after", "raw": "/guide/verification-loop.md" },
+        { "step": 3, "id": "design-before-code", "title": "Make the agent interview you", "raw": "/guide/design-before-code.md" },
+        { "step": 4, "id": "adversarial-review", "title": "Reviews that try to kill the work", "raw": "/guide/adversarial-review.md" },
+        { "step": 5, "id": "fan-out", "title": "Fan out, then funnel", "raw": "/guide/fan-out.md" },
+        { "step": 6, "id": "build-tools", "title": "Turn repetition into tools", "raw": "/guide/build-tools.md" },
+        { "step": 7, "id": "jit-ui", "title": "Views on demand, not apps", "raw": "/guide/jit-ui.md" },
+        { "step": 8, "id": "graduate-to-hooks", "title": "Graduate protocol to hooks", "raw": "/guide/graduate-to-hooks.md" }
+      ]
+    },
+    {
       "id": "prose-failure-list",
       "name": "The Prose Failure List",
       "number": 1,

@@ -1,0 +1,99 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const chapters = (await getCollection('guide')).sort(
+  (a, b) => a.data.step - b.data.step,
+);
+---
+<Base
+  title="Working with Coding Agents — a field guide"
+  description="Concrete patterns for working with coding agents, one step at a time — each with an optional paste-into-Claude setup. Distilled from measured usage."
+>
+  <p class="kicker">
+    Lemon Agent № 3 · {chapters.length} steps
+    <span class="badge draft">draft</span>
+  </p>
+  <h1>Working with Coding Agents<br />— a field guide</h1>
+
+  <p>
+    Concrete patterns that survive real use: what to watch out for, and
+    the habits worth building — verification loops, design interviews,
+    adversarial reviews, orchestration, tools, generated UIs. Written for
+    humans to adopt <strong>one step at a time</strong>; every step ends
+    with an optional <em>paste-into-Claude</em> block that sets it up for
+    you.
+  </p>
+
+  <blockquote class="prov">
+    Distilled from one practitioner's measured usage — dozens of logged
+    sessions, the incidents that recurred, and the patterns that stopped
+    them. <strong>v0</strong> — step slugs are stable; chapters may be
+    cut or reordered before 1.0.
+  </blockquote>
+
+  <h2>The steps</h2>
+  <p class="section-note">
+    Ordered by leverage-per-effort, but every step stands alone — start
+    where it hurts. In a hurry, step 0 is the whole baseline in one
+    paste.
+  </p>
+  <ol class="toc">
+    {chapters.map((ch) => (
+      <li>
+        <a href={`/guide/${ch.id}/`}>
+          <span class="toc-step">{String(ch.data.step).padStart(2, '0')}</span>
+          <span class="toc-title">{ch.data.title.replace(/^Step \d+ — /, '')}</span>
+        </a>
+        <p class="toc-blurb">{ch.data.description}</p>
+      </li>
+    ))}
+  </ol>
+
+  <h2>Check your work against</h2>
+  <p>
+    The guide's watch-out half lives in two numbered failure lists —
+    every "watch out" above cites them by id:
+  </p>
+  <p>
+    <a href="/prose-failure-list/">The Prose Failure List</a> (PF-01…24,
+    taste) · <a href="/agent-workflow-failure-list/">The Agent Workflow
+    Failure List</a> (AF-01…18, verification).
+  </p>
+
+  <p class="backlink">
+    <a href="/">← Lemon Agent</a> · for agents: raw chapters at
+    <code>/guide/*.md</code>, catalog at
+    <a href="/catalog.json">/catalog.json</a>
+  </p>
+</Base>
+
+<style>
+  .prov {
+    margin: 1.4rem 0;
+    padding: 0.75rem 1.1rem;
+    border-left: 2px solid var(--chartreuse);
+    background: var(--note-bg);
+    font-size: 0.9rem;
+  }
+  .section-note { color: var(--muted); font-size: 0.85rem; margin-top: 0; }
+
+  .toc { list-style: none; padding: 0; margin: 1.1rem 0 0.5rem; display: grid; gap: 0.85rem; }
+  .toc a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7em;
+    text-decoration: none;
+  }
+  .toc a:hover .toc-title { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  .toc-step {
+    color: var(--chip-ink);
+    background: var(--chartreuse);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.05em 0.4em;
+    letter-spacing: 0.06em;
+  }
+  .toc-title { font-weight: 700; color: var(--accent-ink); }
+  .toc-blurb { margin: 0.15rem 0 0 2.6em; font-size: 0.83rem; color: var(--muted); }
+</style>

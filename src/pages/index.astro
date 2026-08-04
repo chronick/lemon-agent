@@ -5,27 +5,52 @@ import Base from '../layouts/Base.astro';
 const lists = (await getCollection('lists')).sort(
   (a, b) => a.data.number - b.data.number,
 );
+const chapters = (await getCollection('guide')).sort(
+  (a, b) => a.data.step - b.data.step,
+);
+const short = (t: string) => t.replace(/^Step \d+ — /, '');
 ---
 <Base
   title="Lemon Agent — free tools, honest measurements, agentic services"
-  description="A small house for working with agents: numbered failure lists you run as subtraction passes, installable as skills, and services agents can call."
+  description="A field guide for working with coding agents — concrete patterns from measured use, failure lists to check work against, and services agents can call."
 >
   <header class="hero">
     <img src="/favicon.svg" alt="" class="hero-mark" />
     <h1 class="wordmark"><span class="chip">LEMON AGENT</span></h1>
     <p class="tagline">free tools · honest measurements · agentic services</p>
     <p class="intro">
-      A small house for working with agents. Lists that cut rather than add,
-      measurements published with their failure cases, and services agents can
-      call directly. Nothing here earns its place by being impressive —
-      only by being used.
+      A small house for working with agents. A field guide of patterns
+      that survived real use, failure lists to check work against, and
+      services agents can call directly. Nothing here earns its place by
+      being impressive — only by being used.
     </p>
   </header>
 
+  <h2>The guide</h2>
+  <p class="section-note">
+    <a href="/guide/">Working with Coding Agents — a field guide</a>:
+    what to watch out for and the habits worth building, adopted one
+    step at a time. Every step ends with an optional paste-into-Claude
+    setup; <a href={`/guide/${chapters[0]?.id}/`}>step 0</a> is the full
+    baseline in one paste.
+  </p>
+  <ol class="toc">
+    {chapters.map((ch) => (
+      <li>
+        <a href={`/guide/${ch.id}/`}>
+          <span class="toc-step">{String(ch.data.step).padStart(2, '0')}</span>
+          <span class="toc-title">{short(ch.data.title)}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+
   <h2>The lists</h2>
   <p class="section-note">
-    Numbered failure lists, run as subtraction passes. Every match is a cut,
-    a rewrite, or a stop-and-fix — never an addition.
+    The guide's watch-out reference: numbered failure lists, run as
+    subtraction passes. Every match is a cut, a rewrite, or a
+    stop-and-fix — never an addition. Each carries a paste-ready prompt
+    and installs as a Claude Code skill.
   </p>
   <div class="cards">
     {lists.map((list) => (
@@ -38,39 +63,6 @@ const lists = (await getCollection('lists')).sort(
         <p class="card-blurb">{list.data.description}</p>
       </a>
     ))}
-  </div>
-
-  <h2>Use it</h2>
-  <div class="use-grid">
-    <div class="use-block">
-      <p class="use-head">In any chat assistant</p>
-      <p>
-        Each list page carries a ready-to-paste prompt. Paste it, paste the
-        list, paste your draft or PR — works in anything that reads text.
-        Start at <a href={`/${lists[0]?.id}/#how-to-use-it`}>the prose list</a>
-        or <a href={`/${lists[1]?.id}/#how-to-use-it`}>the workflow list</a>.
-      </p>
-    </div>
-    <div class="use-block">
-      <p class="use-head">As a Claude Code skill</p>
-      <p>Install either list as a slash-invocable pass:</p>
-      <pre><code>git clone https://github.com/chronick/lemon-agent
-cp -r lemon-agent/skills/prose-failure-list ~/.claude/skills/</code></pre>
-      <p>
-        Then ask: <em>"run the prose failure list on drafts/my-post.md"</em>.
-        Same shape for <code>skills/agent-workflow-failure-list</code>.
-      </p>
-    </div>
-    <div class="use-block">
-      <p class="use-head">In an agent or pipeline</p>
-      <p>
-        Raw markdown at <code>/lists/*.md</code> with stable ids
-        (PF-NN / AF-NN), machine catalog at
-        <a href="/catalog.json">/catalog.json</a>, index at
-        <a href="/llms.txt">/llms.txt</a>. Run the lists as advisory
-        passes — they report, they never gate.
-      </p>
-    </div>
   </div>
 
   <h2>The services</h2>
@@ -115,6 +107,24 @@ cp -r lemon-agent/skills/prose-failure-list ~/.claude/skills/</code></pre>
 
   .section-note { color: var(--muted); font-size: 0.85rem; margin-top: 0; }
 
+  .toc { list-style: none; padding: 0; margin: 1rem 0 0.5rem; display: grid; gap: 0.55rem; }
+  .toc a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7em;
+    text-decoration: none;
+  }
+  .toc a:hover .toc-title { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  .toc-step {
+    color: var(--chip-ink);
+    background: var(--chartreuse);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.05em 0.4em;
+    letter-spacing: 0.06em;
+  }
+  .toc-title { font-weight: 700; color: var(--accent-ink); }
+
   .cards { display: grid; gap: 0.9rem; margin: 1.1rem 0 0.5rem; }
   .card {
     display: block;
@@ -148,14 +158,4 @@ cp -r lemon-agent/skills/prose-failure-list ~/.claude/skills/</code></pre>
     border-top: 1px dashed var(--border);
     padding-top: 0.6rem;
   }
-
-  .use-grid { display: grid; gap: 1.1rem; margin: 1.1rem 0 0.5rem; }
-  .use-block {
-    border-left: 2px solid var(--chartreuse);
-    padding-left: 1rem;
-    font-size: 0.9rem;
-  }
-  .use-block p { margin: 0.4rem 0; }
-  .use-head { font-weight: 700; letter-spacing: 0.03em; }
-  .use-block pre { margin: 0.6rem 0; }
 </style>
