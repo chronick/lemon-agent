@@ -12,6 +12,11 @@ names the genuine forks, and gets a plan approved. Skipping it doesn't
 skip the decisions — it just moves them into the diff, where they're
 expensive to find.
 
+**You've met this before.** RFCs and design reviews: decisions on
+paper, argued before they're implemented, because a paragraph is
+cheaper to change than a system. The agent twist is that the document
+becomes a conversation — and the reviewer being interviewed is you.
+
 > Where this comes from: reviewing months of session logs, the pattern
 > in the human's interventions was consistent — they were surgical
 > corrections *at forks* the agent had driven through without asking.

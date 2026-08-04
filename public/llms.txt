@@ -7,7 +7,8 @@
 
 House rule: nothing ships without a working answer to "how would a user
 actually use this, today?" Everything is v0 — guide step slugs and list
-entry ids (PF-NN / AF-NN) are stable and citable.
+entry ids (PF-NN / AF-NN) are stable and citable. Provenance: mostly
+AI-generated, human-guided and reviewed.
 
 ## The guide
 
@@ -21,7 +22,7 @@ block. Step 0 is the full baseline in one paste. Raw chapters:
 - [Step 3 — Make the agent interview you](/guide/design-before-code.md)
 - [Step 4 — Reviews that try to kill the work](/guide/adversarial-review.md)
 - [Step 5 — Fan out, then funnel](/guide/fan-out.md)
-- [Step 6 — Turn repetition into tools](/guide/build-tools.md)
+- [Step 6 — Build lots of small tools](/guide/build-tools.md)
 - [Step 7 — Views on demand, not apps](/guide/jit-ui.md)
 - [Step 8 — Graduate protocol to hooks](/guide/graduate-to-hooks.md)
 

@@ -13,6 +13,11 @@ part that changes outcomes is a short section of **working
 agreements**: one-line gates distilled from failures that have actually
 cost you.
 
+**You've met this before.** This is the blameless postmortem's
+action-item list, made ambient — incident → written rule → the whole
+team reads it. The team here is you plus the agent, and "reads it"
+means literally every session.
+
 > Where this comes from: the [Agent Workflow Failure
 > List](/agent-workflow-failure-list/) was distilled from 25 measured
 > sessions containing 16 buggy-code incidents. The repeats didn't stop

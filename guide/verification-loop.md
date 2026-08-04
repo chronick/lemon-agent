@@ -11,6 +11,14 @@ plausible *account* of the work instead of evidence. The counter is a
 loop with three gates, each cheap, each catching a failure class that
 actually occurs.
 
+**You've met this before.** Gate 1 is Red–Green testing in work
+clothes: the test must fail (red) before its pass (green) means
+anything, and "write the regression test before the fix" is
+decades-old TDD discipline. Gate 2 is the smoke test; gate 3 is
+"working software over comprehensive documentation." What's new is
+only who forgets them — an agent under "fix it" pressure skips red
+and goes straight to a green story.
+
 ## The three gates
 
 **1. Baseline before fix.** Before any code changes to fix a bug, the

@@ -22,7 +22,7 @@
         { "step": 3, "id": "design-before-code", "title": "Make the agent interview you", "raw": "/guide/design-before-code.md" },
         { "step": 4, "id": "adversarial-review", "title": "Reviews that try to kill the work", "raw": "/guide/adversarial-review.md" },
         { "step": 5, "id": "fan-out", "title": "Fan out, then funnel", "raw": "/guide/fan-out.md" },
-        { "step": 6, "id": "build-tools", "title": "Turn repetition into tools", "raw": "/guide/build-tools.md" },
+        { "step": 6, "id": "build-tools", "title": "Build lots of small tools", "raw": "/guide/build-tools.md" },
         { "step": 7, "id": "jit-ui", "title": "Views on demand, not apps", "raw": "/guide/jit-ui.md" },
         { "step": 8, "id": "graduate-to-hooks", "title": "Graduate protocol to hooks", "raw": "/guide/graduate-to-hooks.md" }
       ]

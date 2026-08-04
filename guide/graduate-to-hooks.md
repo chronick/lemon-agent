@@ -12,6 +12,11 @@ boundaries, metered clients in test files. Those **graduate**: from a
 line of prose the agent might honor, to a hook that flags the problem
 at edit time, every time, for free.
 
+**You've met this before.** Linters, pre-commit hooks, CI checks —
+shift-left, poka-yoke. The agent twist is only the audience: the
+hook's report lands mid-session where the agent reads it and fixes
+the finding before you ever see it.
+
 > Where this comes from: a shell word-splitting incident (the classic
 > unquoted `$var` in a rename loop,
 > [AF-12](/agent-workflow-failure-list/)) became an edit-time hook

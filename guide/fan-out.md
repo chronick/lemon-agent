@@ -11,6 +11,11 @@ generative and skeptical. Orchestration fixes both — but only the
 shapes with a **funnel**: fan-out that converges on written-down,
 verified results. Fan-out without a funnel is how work evaporates.
 
+**You've met this before.** Map-reduce, and the pull-request queue:
+fan the map out, reduce through verification, and the labeled queue +
+harvest below is a sprint board whose worker never sleeps — while the
+reviewer, deliberately, is still you.
+
 > The measured failure: fan-out findings held only in agents' context
 > windows — one filtered or failed agent, and its share of the work
 > silently vanished. The rule that came out of it: every worker writes

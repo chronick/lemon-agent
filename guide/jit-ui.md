@@ -11,6 +11,11 @@ They need to be **views**: a page generated the moment you want to
 look, from data that lives in plain structured files. The agent is the
 interface; the HTML is a byproduct; the renderer script is the asset.
 
+**You've met this before.** Separation of data and presentation, plus
+the old `make report` habit and static-site generation: canonical data,
+generated output, nothing running in between. The agent just removes
+the last excuse — the renderer now writes itself.
+
 > Where this comes from: "can we render this status better as a web
 > page? make it reusable" produced a ~small render script that reads
 > the project's structured files and writes one static HTML dashboard.

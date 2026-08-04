@@ -12,6 +12,12 @@ reviewers whose explicit job is to *refute* the work, followed by a
 verify pass that tries to kill each finding before you act on any of
 them.
 
+**You've met this before.** Code review crossed with a red team, plus
+mutation testing's founding instinct — a test that can't fail proves
+nothing, and neither does a reviewer that can't refute. Independent
+passes are the old two-reviewer rule; agents just make N reviewers
+cost what one used to.
+
 > Where this comes from: on a multi-phase foundational build, a
 > per-phase multi-agent correctness review caught real data-loss,
 > panic, and cache-invalidation bugs — in code a green test suite had
