@@ -70,6 +70,6 @@ to call it. Show me every file before writing it.
 - **Default severities**: the founding incident of your hook may be
   below the tool's default threshold — verify the hook flags the exact
   incident that motivated it ([step
-  2](/guide/verification-loop/): baseline before trusting the probe).
+  2](/guides/coding-agents/verification-loop/): baseline before trusting the probe).
 - **Hard gates on advisory checks**: blocked edits teach the agent to
   route around the check, not to honor it.

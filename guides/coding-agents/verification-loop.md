@@ -62,7 +62,7 @@ You don't need setup — you need two habits at the moment of asking:
   render played.
 
 Then persist them: both gates become one-liners in your working
-agreements ([step 1](/guide/working-agreements/)).
+agreements ([step 1](/guides/coding-agents/working-agreements/)).
 
 ## Or paste this into Claude
 

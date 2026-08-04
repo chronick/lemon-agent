@@ -16,8 +16,8 @@ const lists = defineCollection({
   }),
 });
 
-const guide = defineCollection({
-  loader: glob({ pattern: '*.md', base: './guide' }),
+const guides = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './guides' }),
   schema: z.object({
     title: z.string(),
     step: z.number(),
@@ -27,4 +27,4 @@ const guide = defineCollection({
   }),
 });
 
-export const collections = { lists, guide };
+export const collections = { lists, guides };

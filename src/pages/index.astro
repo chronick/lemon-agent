@@ -1,14 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import { GUIDES } from '../lib/guides.mjs';
 
 const lists = (await getCollection('lists')).sort(
   (a, b) => a.data.number - b.data.number,
 );
-const chapters = (await getCollection('guide')).sort(
-  (a, b) => a.data.step - b.data.step,
-);
-const short = (t: string) => t.replace(/^Step \d+ — /, '');
+const chapters = await getCollection('guides');
+const count = (slug: string) =>
+  chapters.filter((c) => c.id.startsWith(`${slug}/`)).length;
 ---
 <Base
   title="Lemon Agent — free tools, honest measurements, agentic services"
@@ -26,24 +26,22 @@ const short = (t: string) => t.replace(/^Step \d+ — /, '');
     </p>
   </header>
 
-  <h2>The guide</h2>
+  <h2>The guides</h2>
   <p class="section-note">
-    <a href="/guide/">Working with Coding Agents — a field guide</a>:
-    what to watch out for and the habits worth building, adopted one
-    step at a time. Every step ends with an optional paste-into-Claude
-    setup; <a href={`/guide/${chapters[0]?.id}/`}>step 0</a> is the full
-    baseline in one paste.
+    Field guides adopted one step at a time — every step names its
+    traditional-engineering ancestor and ends with an optional
+    paste-into-Claude setup; each guide's step 0 is its baseline in
+    one paste. <a href="/guides/">All guides →</a>
   </p>
-  <ol class="toc">
-    {chapters.map((ch) => (
-      <li>
-        <a href={`/guide/${ch.id}/`}>
-          <span class="toc-step">{String(ch.data.step).padStart(2, '0')}</span>
-          <span class="toc-title">{short(ch.data.title)}</span>
-        </a>
-      </li>
+  <div class="cards">
+    {GUIDES.map((g) => (
+      <a class="card" href={`/guides/${g.slug}/`}>
+        <p class="card-kicker">№ {g.number} · {count(g.slug)} steps</p>
+        <p class="card-title">{g.title}</p>
+        <p class="card-blurb">{g.blurb}</p>
+      </a>
     ))}
-  </ol>
+  </div>
 
   <h2>The lists</h2>
   <p class="section-note">
@@ -106,24 +104,6 @@ const short = (t: string) => t.replace(/^Step \d+ — /, '');
   .intro { max-width: 40rem; }
 
   .section-note { color: var(--muted); font-size: 0.85rem; margin-top: 0; }
-
-  .toc { list-style: none; padding: 0; margin: 1rem 0 0.5rem; display: grid; gap: 0.55rem; }
-  .toc a {
-    display: flex;
-    align-items: baseline;
-    gap: 0.7em;
-    text-decoration: none;
-  }
-  .toc a:hover .toc-title { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
-  .toc-step {
-    color: var(--chip-ink);
-    background: var(--chartreuse);
-    font-size: 0.72rem;
-    font-weight: 700;
-    padding: 0.05em 0.4em;
-    letter-spacing: 0.06em;
-  }
-  .toc-title { font-weight: 700; color: var(--accent-ink); }
 
   .cards { display: grid; gap: 0.9rem; margin: 1.1rem 0 0.5rem; }
   .card {

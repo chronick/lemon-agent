@@ -32,7 +32,7 @@ immediately useful on any repo too big to hold in one context.
 **2. Find → verify pipelines.** Generation and skepticism as separate
 stages: finders propose (bugs, candidates, edits), verifiers try to
 refute each finding independently ([step
-4](/guide/adversarial-review/) industrialized). The verify stage is
+4](/guides/coding-agents/adversarial-review/) industrialized). The verify stage is
 what makes volume tolerable.
 
 **3. The labeled queue + harvest.** The autonomous tier: tasks carry
@@ -74,5 +74,5 @@ which and what's missing; don't paper over gaps.
   with a vague task invents its own definition of done, and you find
   out at review time.
 - **Merging background work unreviewed**: the harvest pass IS a
-  review ([step 4](/guide/adversarial-review/)); autonomy moves the
+  review ([step 4](/guides/coding-agents/adversarial-review/)); autonomy moves the
   work, never the judgment.

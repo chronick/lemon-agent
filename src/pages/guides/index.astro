@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { GUIDES } from '../../lib/guides.mjs';
+
+const chapters = await getCollection('guides');
+const count = (slug) => chapters.filter((c) => c.id.startsWith(`${slug}/`)).length;
+---
+<Base
+  title="The guides"
+  description="Field guides for working with agents: coding-agent patterns, git + Claude Code, and keeping a vault — one step at a time, each step with a paste-into-Claude setup."
+>
+  <p class="kicker">Lemon Agent · {GUIDES.length} guides <span class="badge draft">draft</span></p>
+  <h1>The guides</h1>
+  <p>
+    Field guides, adopted <strong>one step at a time</strong>. Every step
+    explains the pattern, names its traditional-engineering ancestor,
+    gives a do-it-by-hand path, and ends with an optional
+    <em>paste-into-Claude</em> block. Little in them is new, and that's
+    the point.
+  </p>
+  <div class="cards">
+    {GUIDES.map((g) => (
+      <a class="card" href={`/guides/${g.slug}/`}>
+        <p class="card-kicker">№ {g.number} · {count(g.slug)} steps</p>
+        <p class="card-title">{g.title}</p>
+        <p class="card-blurb">{g.blurb}</p>
+      </a>
+    ))}
+  </div>
+  <p class="backlink">
+    <a href="/">← Lemon Agent</a> · for agents: raw chapters at
+    <code>/guides/&lt;guide&gt;/*.md</code>, catalog at
+    <a href="/catalog.json">/catalog.json</a>
+  </p>
+</Base>
+
+<style>
+  .cards { display: grid; gap: 0.9rem; margin: 1.4rem 0 0.5rem; }
+  .card {
+    display: block;
+    padding: 1rem 1.2rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 120ms ease, background 120ms ease, box-shadow 120ms ease;
+  }
+  .card:hover { border-color: var(--border-hover); background: var(--card-hover); box-shadow: var(--glow); }
+  .card-kicker { margin: 0; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
+  .card-title { margin: 0.3rem 0 0.25rem; font-weight: 700; font-size: 1.05rem; color: var(--accent-ink); }
+  .card-blurb { margin: 0; font-size: 0.85rem; color: var(--muted); }
+</style>

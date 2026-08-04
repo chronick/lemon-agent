@@ -15,12 +15,12 @@ const html = hastToHtml(exampleToHast(ex, { heading: false }));
   description={`Interactive example: ${ex.title}. Pick the agent's next move and see where it leads.`}
 >
   <p class="kicker">
-    Interactive example · from <a class="kicker-link" href={`/guide/${ex.guide}/`}>the field guide</a>
+    Interactive example · from <a class="kicker-link" href={`/guides/${ex.guide}/`}>the field guide</a>
   </p>
   <h1>{ex.title}</h1>
   <Fragment set:html={html} />
   <p class="backlink">
-    <a href={`/guide/${ex.guide}/`}>← Back to the chapter</a> ·
+    <a href={`/guides/${ex.guide}/`}>← Back to the chapter</a> ·
     <a href={`/examples/${id}.json`}>raw data</a>
   </p>
 </Base>

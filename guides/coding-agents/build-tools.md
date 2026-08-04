@@ -41,6 +41,34 @@ full of small tools is a vocabulary the agent already speaks.
   app's UI is the expensive, brittle path. Every tool you keep extends
   the agent's vocabulary.
 
+## Pick a stack — any stack
+
+The agent dissolves the old reason to standardize on one language:
+familiarity. You're no longer the one who has to remember the stdlib.
+Pick per tool, by what the tool needs:
+
+- **Python + stdlib** — the default for file and data work. `argparse`,
+  `pathlib`, `json`, `sqlite3` cover most small tools with zero
+  installs.
+- **Bash** — glue under ~50 lines: piping tools together, wrapping a
+  repetitive invocation. Quote your expansions and shellcheck it
+  ([AF-12](/agent-workflow-failure-list/)); at the first nontrivial
+  data structure, promote it to python.
+- **Node** — when the tool lives near the web: a dev server, a JSON
+  API, something npm already solved. One file, no build step.
+- **Go or Rust** — when the tool wants to be a single static binary
+  (runs anywhere without a runtime) or genuinely needs the speed.
+
+The rule that holds across all of them: **stdlib-first,
+dependency-light.** Every dependency is a maintenance surface, and a
+tool that needs an install ritual is half an app already.
+
+And variety is a feature, not tech debt. Tools compose through files
+and stdio, so a python analyzer feeding a rust renderer through JSON
+isn't exotic — it's the architecture. The constraint that used to make
+polyglot expensive was *human* context-switching, and it doesn't apply
+to the agent writing the code.
+
 ## The two design rules
 
 **1. Tools stay flexible primitives; policy lives above them.**
@@ -64,7 +92,7 @@ At the end of any session that repeated something:
 2. Pick the one with the best repetition-to-effort ratio.
 3. Have the agent write it small, then **run it once immediately** — a
    tool that's never been run is a hypothesis
-   ([step 2](/guide/verification-loop/)'s rules apply to tools too).
+   ([step 2](/guides/coding-agents/verification-loop/)'s rules apply to tools too).
 
 ## Or paste this into Claude
 

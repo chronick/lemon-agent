@@ -1,0 +1,54 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { guideBySlug, shortTitle } from '../../../lib/guides.mjs';
+
+export async function getStaticPaths() {
+  const chapters = await getCollection('guides');
+  return chapters.map((entry) => {
+    const [guide, chapter] = entry.id.split('/');
+    return { params: { guide, chapter }, props: { entry } };
+  });
+}
+
+const { entry } = Astro.props;
+const { guide } = Astro.params;
+const meta = guideBySlug(guide);
+const { Content } = await render(entry);
+const d = entry.data;
+
+const siblings = (await getCollection('guides'))
+  .filter((c) => c.id.startsWith(`${guide}/`))
+  .sort((a, b) => a.data.step - b.data.step);
+const idx = siblings.findIndex((e) => e.id === entry.id);
+const prev = idx > 0 ? siblings[idx - 1] : null;
+const next = idx < siblings.length - 1 ? siblings[idx + 1] : null;
+---
+<Base title={d.title} description={d.description}>
+  <p class="kicker">
+    <a class="kicker-link" href={`/guides/${guide}/`}>{meta.title}</a> · step {d.step} of {siblings.length - 1}
+    <span class={`badge ${d.status}`}>{d.status}</span>
+  </p>
+  <h1>{shortTitle(d.title)}</h1>
+  <article class="list-body">
+    <Content />
+  </article>
+  <nav class="pager">
+    {prev ? <a href={`/guides/${prev.id}/`}>← {String(prev.data.step).padStart(2, '0')} {shortTitle(prev.data.title)}</a> : <span />}
+    {next ? <a href={`/guides/${next.id}/`}>{String(next.data.step).padStart(2, '0')} {shortTitle(next.data.title)} →</a> : <span />}
+  </nav>
+  <p class="backlink"><a href={`/guides/${guide}/`}>← All steps</a> · <a href={`/guides/${entry.id}.md`}>raw markdown</a></p>
+</Base>
+
+<style>
+  .kicker-link { color: inherit; }
+  .pager {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+  }
+</style>

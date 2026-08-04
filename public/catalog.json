@@ -2,29 +2,69 @@
   "name": "Lemon Agent",
   "tagline": "Free tools, honest measurements, agentic services.",
   "operator": "chronick",
-  "updated": "2026-07-31",
+  "updated": "2026-08-04",
   "house_rule": "Nothing ships without a working answer to: how would a user actually use this, today?",
+  "provenance": "Mostly AI-generated, human-guided and reviewed.",
   "members": [
     {
-      "id": "coding-agent-field-guide",
+      "id": "coding-agents-guide",
       "name": "Working with Coding Agents — a field guide",
       "number": 3,
       "tier": "free-artifact",
       "kind": "guide",
       "status": "draft",
-      "html": "/guide/",
-      "raw_dir": "/guide/",
+      "html": "/guides/coding-agents/",
+      "raw_dir": "/guides/coding-agents/",
       "how_to_use": "Adopt one step at a time; each chapter ends with an optional paste-into-Claude setup. Step 0 is the full baseline in one paste.",
       "chapters": [
-        { "step": 0, "id": "full-setup", "title": "The one-paste baseline", "raw": "/guide/full-setup.md" },
-        { "step": 1, "id": "working-agreements", "title": "Write down what bit you", "raw": "/guide/working-agreements.md" },
-        { "step": 2, "id": "verification-loop", "title": "Prove it before and after", "raw": "/guide/verification-loop.md" },
-        { "step": 3, "id": "design-before-code", "title": "Make the agent interview you", "raw": "/guide/design-before-code.md" },
-        { "step": 4, "id": "adversarial-review", "title": "Reviews that try to kill the work", "raw": "/guide/adversarial-review.md" },
-        { "step": 5, "id": "fan-out", "title": "Fan out, then funnel", "raw": "/guide/fan-out.md" },
-        { "step": 6, "id": "build-tools", "title": "Build lots of small tools", "raw": "/guide/build-tools.md" },
-        { "step": 7, "id": "jit-ui", "title": "Views on demand, not apps", "raw": "/guide/jit-ui.md" },
-        { "step": 8, "id": "graduate-to-hooks", "title": "Graduate protocol to hooks", "raw": "/guide/graduate-to-hooks.md" }
+        { "step": 0, "id": "full-setup", "title": "The one-paste baseline", "raw": "/guides/coding-agents/full-setup.md" },
+        { "step": 1, "id": "working-agreements", "title": "Write down what bit you", "raw": "/guides/coding-agents/working-agreements.md" },
+        { "step": 2, "id": "verification-loop", "title": "Prove it before and after", "raw": "/guides/coding-agents/verification-loop.md" },
+        { "step": 3, "id": "design-before-code", "title": "Make the agent interview you", "raw": "/guides/coding-agents/design-before-code.md" },
+        { "step": 4, "id": "adversarial-review", "title": "Reviews that try to kill the work", "raw": "/guides/coding-agents/adversarial-review.md" },
+        { "step": 5, "id": "fan-out", "title": "Fan out, then funnel", "raw": "/guides/coding-agents/fan-out.md" },
+        { "step": 6, "id": "build-tools", "title": "Build lots of small tools", "raw": "/guides/coding-agents/build-tools.md" },
+        { "step": 7, "id": "jit-ui", "title": "Views on demand, not apps", "raw": "/guides/coding-agents/jit-ui.md" },
+        { "step": 8, "id": "graduate-to-hooks", "title": "Graduate protocol to hooks", "raw": "/guides/coding-agents/graduate-to-hooks.md" }
+      ]
+    },
+    {
+      "id": "git-claude-code-guide",
+      "name": "Shipping Software with Git + Claude Code",
+      "number": 4,
+      "tier": "free-artifact",
+      "kind": "guide",
+      "status": "draft",
+      "html": "/guides/git/",
+      "raw_dir": "/guides/git/",
+      "how_to_use": "Git habits that make agent speed safe, one at a time; step 0 is the repo baseline in one paste.",
+      "chapters": [
+        { "step": 0, "id": "full-setup", "title": "The one-paste repo baseline", "raw": "/guides/git/full-setup.md" },
+        { "step": 1, "id": "commit-small", "title": "Checkpoint commits", "raw": "/guides/git/commit-small.md" },
+        { "step": 2, "id": "branch-blast-radius", "title": "Branches bound the blast radius", "raw": "/guides/git/branch-blast-radius.md" },
+        { "step": 3, "id": "history-for-the-next-reader", "title": "Write history for the next reader", "raw": "/guides/git/history-for-the-next-reader.md" },
+        { "step": 4, "id": "review-the-diff", "title": "Review the diff, not the summary", "raw": "/guides/git/review-the-diff.md" },
+        { "step": 5, "id": "cheap-recovery", "title": "Recovery is cheap. Use it.", "raw": "/guides/git/cheap-recovery.md" }
+      ]
+    },
+    {
+      "id": "vault-guide",
+      "name": "Keeping a Vault",
+      "number": 5,
+      "tier": "free-artifact",
+      "kind": "guide",
+      "status": "draft",
+      "html": "/guides/vault/",
+      "raw_dir": "/guides/vault/",
+      "how_to_use": "Build a plain-file knowledge base an agent can work, one habit at a time; step 0 is the whole vault in one paste.",
+      "chapters": [
+        { "step": 0, "id": "full-setup", "title": "The one-paste vault", "raw": "/guides/vault/full-setup.md" },
+        { "step": 1, "id": "plain-files", "title": "Plain files in a repo", "raw": "/guides/vault/plain-files.md" },
+        { "step": 2, "id": "location-is-state", "title": "Location is state", "raw": "/guides/vault/location-is-state.md" },
+        { "step": 3, "id": "capture-now", "title": "Capture now, sort later", "raw": "/guides/vault/capture-now.md" },
+        { "step": 4, "id": "daily-log", "title": "The daily log", "raw": "/guides/vault/daily-log.md" },
+        { "step": 5, "id": "teach-the-shape", "title": "Teach the agent the shape", "raw": "/guides/vault/teach-the-shape.md" },
+        { "step": 6, "id": "run-a-doctor", "title": "Run a doctor", "raw": "/guides/vault/run-a-doctor.md" }
       ]
     },
     {

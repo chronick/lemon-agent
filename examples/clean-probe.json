@@ -1,7 +1,7 @@
 {
   "id": "clean-probe",
   "title": "The clean probe",
-  "guide": "verification-loop",
+  "guide": "coding-agents/verification-loop",
   "prompt": "The agent's next move — pick one, then see where it leads:",
   "setup": [
     {

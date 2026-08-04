@@ -34,7 +34,7 @@ the last excuse — the renderer now writes itself.
    no external requests, works from `file://`. Light and dark.
 3. **The script survives the session.** That's the difference between
    "the agent made me a page once" and having a tool
-   ([step 6](/guide/build-tools/)). Next look costs one command — or
+   ([step 6](/guides/coding-agents/build-tools/)). Next look costs one command — or
    nothing, if you tell the agent to rerun it whenever the data
    changes.
 4. **Stamp the generated-at time into the page.** A view that could be

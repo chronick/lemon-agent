@@ -1,0 +1,91 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { GUIDES, guideBySlug, shortTitle } from '../../../lib/guides.mjs';
+
+export async function getStaticPaths() {
+  return GUIDES.map((g) => ({ params: { guide: g.slug } }));
+}
+
+const { guide } = Astro.params;
+const meta = guideBySlug(guide);
+const chapters = (await getCollection('guides'))
+  .filter((c) => c.id.startsWith(`${guide}/`))
+  .sort((a, b) => a.data.step - b.data.step);
+---
+<Base title={meta.title} description={meta.blurb}>
+  <p class="kicker">
+    <a class="kicker-link" href="/guides/">The guides</a> · № {meta.number} · {chapters.length} steps
+    <span class="badge draft">draft</span>
+  </p>
+  <h1>{meta.title}</h1>
+  <p>{meta.intro}</p>
+
+  <blockquote class="prov">
+    Distilled from one practitioner's measured usage — logged sessions,
+    the incidents that recurred, and the patterns that stopped them.
+    <strong>v0</strong> — step slugs are stable; chapters may be cut or
+    reordered before 1.0.
+  </blockquote>
+
+  <h2>The steps</h2>
+  <p class="section-note">
+    Ordered by leverage-per-effort, but every step stands alone — start
+    where it hurts. In a hurry, step 0 is the baseline in one paste.
+  </p>
+  <ol class="toc">
+    {chapters.map((ch) => (
+      <li>
+        <a href={`/guides/${ch.id}/`}>
+          <span class="toc-step">{String(ch.data.step).padStart(2, '0')}</span>
+          <span class="toc-title">{shortTitle(ch.data.title)}</span>
+        </a>
+        <p class="toc-blurb">{ch.data.description}</p>
+      </li>
+    ))}
+  </ol>
+
+  {guide === 'coding-agents' && (
+    <>
+      <h2>Check your work against</h2>
+      <p>
+        The guide's watch-out half lives in two numbered failure lists —
+        every "watch out" above cites them by id:
+        <a href="/prose-failure-list/">The Prose Failure List</a>
+        (PF-01…24, taste) ·
+        <a href="/agent-workflow-failure-list/">The Agent Workflow
+        Failure List</a> (AF-01…18, verification).
+      </p>
+    </>
+  )}
+
+  <p class="backlink">
+    <a href="/guides/">← All guides</a> · for agents: raw chapters at
+    <code>/guides/{guide}/*.md</code>
+  </p>
+</Base>
+
+<style>
+  .kicker-link { color: inherit; }
+  .prov {
+    margin: 1.4rem 0;
+    padding: 0.75rem 1.1rem;
+    border-left: 2px solid var(--chartreuse);
+    background: var(--note-bg);
+    font-size: 0.9rem;
+  }
+  .section-note { color: var(--muted); font-size: 0.85rem; margin-top: 0; }
+  .toc { list-style: none; padding: 0; margin: 1.1rem 0 0.5rem; display: grid; gap: 0.85rem; }
+  .toc a { display: flex; align-items: baseline; gap: 0.7em; text-decoration: none; }
+  .toc a:hover .toc-title { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  .toc-step {
+    color: var(--chip-ink);
+    background: var(--chartreuse);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.05em 0.4em;
+    letter-spacing: 0.06em;
+  }
+  .toc-title { font-weight: 700; color: var(--accent-ink); }
+  .toc-blurb { margin: 0.15rem 0 0 2.6em; font-size: 0.83rem; color: var(--muted); }
+</style>

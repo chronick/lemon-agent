@@ -14,9 +14,9 @@ kit, confirming each file with you before it's written.
 What it sets up — each explained properly in its own step:
 
 - A **working agreements** section in your `CLAUDE.md` — one-line gates
-  distilled from failures that actually happen ([step 1](/guide/working-agreements/)).
+  distilled from failures that actually happen ([step 1](/guides/coding-agents/working-agreements/)).
 - The two core **verification gates** — baseline before fix, small proof
-  before long cycle ([step 2](/guide/verification-loop/)).
+  before long cycle ([step 2](/guides/coding-agents/verification-loop/)).
 - The two **failure lists** installed as review passes you can invoke by
   name ([the prose list](/prose-failure-list/), [the workflow
   list](/agent-workflow-failure-list/)).
@@ -54,6 +54,6 @@ file before writing it, and wait for my ok between steps.
 
 ## If you'd rather go manual
 
-Read [step 1](/guide/working-agreements/) and [step
-2](/guide/verification-loop/) and make the two edits yourself — about
+Read [step 1](/guides/coding-agents/working-agreements/) and [step
+2](/guides/coding-agents/verification-loop/) and make the two edits yourself — about
 ten minutes, and you'll know exactly what your agent is now promising.

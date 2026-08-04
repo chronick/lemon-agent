@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Lemon Agent — free tools, honest measurements, agentic services. Static site + canonical failure lists.",
   "scripts": {
-    "sync": "mkdir -p public/lists public/guide public/examples && cp lists/*.md public/lists/ && cp guide/*.md public/guide/ && cp examples/*.json public/examples/ && cp lists/prose-failure-list.md skills/prose-failure-list/list.md && cp lists/agent-workflow-failure-list.md skills/agent-workflow-failure-list/list.md",
+    "sync": "mkdir -p public/lists public/guides public/examples && cp lists/*.md public/lists/ && cp -R guides/. public/guides/ && cp examples/*.json public/examples/ && cp lists/prose-failure-list.md skills/prose-failure-list/list.md && cp lists/agent-workflow-failure-list.md skills/agent-workflow-failure-list/list.md",
     "predev": "npm run sync",
     "prebuild": "npm run sync",
     "dev": "astro dev",

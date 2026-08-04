@@ -1,7 +1,7 @@
 {
   "id": "unnamed-fork",
   "title": "The unnamed fork",
-  "guide": "design-before-code",
+  "guide": "coding-agents/design-before-code",
   "prompt": "The agent's next move — pick one, then see where it leads:",
   "setup": [
     {

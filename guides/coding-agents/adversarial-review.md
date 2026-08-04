@@ -48,7 +48,7 @@ cost what one used to.
   standing rule above.
 - Before merging anything an agent built **while you weren't
   watching** (overnight runs, background tasks — see
-  [step 5](/guide/fan-out/)).
+  [step 5](/guides/coding-agents/fan-out/)).
 - Any time green tests are the only evidence you have. Tests prove
   what they test; the review hunts what they don't.
 
