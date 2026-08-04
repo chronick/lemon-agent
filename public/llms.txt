@@ -52,13 +52,21 @@ one paste. Guide index: /guides/
 
 Branching mini-conversations: pick the agent's next move, see where it
 leads (baseline vs correct vs plausible-but-wrong, each with its
-downstream outcome and AF/PF citations). Embedded in chapters, also
-standalone; raw data as JSON:
+downstream outcome and AF/PF citations). Every pattern chapter embeds
+one; each is also standalone at /examples/<id>/ with raw JSON at
+/examples/<id>.json:
 
-- [The clean probe](/examples/clean-probe.json) — verification
-  (pairs with /guides/coding-agents/verification-loop.md)
-- [The unnamed fork](/examples/unnamed-fork.json) — design forks
-  (pairs with /guides/coding-agents/design-before-code.md)
+- coding-agents: clean-probe (verification) · unnamed-fork (design
+  forks) · borrowed-rules (working agreements) · review-that-refutes
+  (adversarial review) · vanishing-findings (fan-out) ·
+  third-time-tool (small tools) · dashboard-that-rots (JIT views) ·
+  promise-vs-hook (hooks)
+- git: wall-of-diff (checkpoint commits) · experiment-on-main
+  (branches) · weird-retry-loop (history) · merge-on-summary (diff
+  review) · broken-main (recovery)
+- vault: app-or-files (plain files) · status-field-rot (location is
+  state) · idea-mid-work (capture) · log-it (daily log) ·
+  twice-corrected (teach the shape) · doctor-first-run (doctor)
 
 ## Lists (the guides' watch-out reference)
 

@@ -48,6 +48,10 @@ reports — anything you *look at* more than you *click on*. The moment
 you need writes, auth, or realtime, you've left this pattern; reach for
 a real app then, not before. Most things never leave it.
 
+## Try it
+
+<div data-example="dashboard-that-rots"><a href="/examples/dashboard-that-rots/">Interactive example: The dashboard that rots →</a></div>
+
 ## Or paste this into Claude
 
 ```text

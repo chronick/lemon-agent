@@ -1,0 +1,69 @@
+{
+  "id": "log-it",
+  "title": "\"Log it\"",
+  "guide": "vault/daily-log",
+  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "setup": [
+    {
+      "role": "user",
+      "text": "Good session. Log it before we wrap."
+    },
+    {
+      "role": "agent",
+      "text": "Three hours of migration work, two decisions, one dead end. The log entry I write now is what future-you gets instead of remembering any of it."
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "label": "[appends] \"### 16:40 — migr sesh: idx rebuild via B-plan (post-bikeshed), perf ✓ after JSONB pivot, punted on the FK cascade q, see thread. TODO: vac-full before cutover.\"",
+      "kind": "baseline",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "Three weeks later: what was \"B-plan\"? What bikeshed? Which thread?"
+        },
+        {
+          "role": "agent",
+          "text": "No idea — that session's context is gone, and the entry was written in its private shorthand. \"See thread\" points at a conversation that no longer exists. The log recorded that things happened without recording what they were."
+        }
+      ],
+      "verdict": "Logged in the working register: session jargon, dangling references, compression that only decompressed inside a context that's now gone. The reader is future-you, cold — and future-you just got nothing.",
+      "cites": ["AF-16"]
+    },
+    {
+      "key": "B",
+      "label": "[appends] \"### 16:40 — Migration session. Rebuilt the search index with the JSONB approach — chose it over the join-table because query time dropped 40ms in the probe. Deferred the foreign-key cascade question; open because delete semantics aren't decided. Next: run vacuum before cutover.\"",
+      "kind": "correct",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "Three weeks later, new session: \"where did we leave the migration?\""
+        },
+        {
+          "role": "agent",
+          "text": "Reading the log: JSONB approach chosen for the 40ms probe win, cascade question still open pending delete semantics, vacuum still owed before cutover. I'm oriented — picking up from the cascade decision. Total catch-up cost: one file read."
+        }
+      ],
+      "verdict": "Plain sentences, decisions with their why, open threads named: the entry paid out exactly when designed to — a cold session (agent or human) orients in seconds from what would otherwise be archaeology.",
+      "cites": []
+    },
+    {
+      "key": "C",
+      "label": "The log's been getting messy — I'll take this chance to rewrite today's whole file as one polished narrative, folding the morning's rough entries into a clean summary of the day.",
+      "kind": "plausible",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "The morning entry said the JSONB idea came from the perf probe — I wanted to check the number. Where'd it go?"
+        },
+        {
+          "role": "agent",
+          "text": "Smoothed away in the rewrite. The polished narrative reads better and remembers less — I edited a record as if it were a draft, and the rough details that made it a record were exactly what got polished out."
+        }
+      ],
+      "verdict": "The log is append-only because it's a record, not a document: rewriting for polish destroyed the raw detail that gave it evidentiary value. Yesterday's entry is evidence — never a draft.",
+      "cites": []
+    }
+  ]
+}

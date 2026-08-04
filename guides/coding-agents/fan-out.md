@@ -45,6 +45,10 @@ failure is cheap — the worst case is a closeable PR, never a shipped
 regression. Feeding the queue is its own discipline: refining a task
 until it's autonomy-safe is real work, done in advance, once.
 
+## Try it
+
+<div data-example="vanishing-findings"><a href="/examples/vanishing-findings/">Interactive example: The vanishing findings →</a></div>
+
 ## Do it by hand
 
 Start at shape 1 on a real question ("how does auth work across these

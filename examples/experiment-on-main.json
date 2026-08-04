@@ -1,0 +1,69 @@
+{
+  "id": "experiment-on-main",
+  "title": "The experiment on main",
+  "guide": "git/branch-blast-radius",
+  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "setup": [
+    {
+      "role": "user",
+      "text": "Try switching the parser to the streaming API — no idea if it'll work, but I want to see."
+    },
+    {
+      "role": "agent",
+      "text": "Explicitly an experiment, plausibly a dead end, and it'll touch the parser core. The only real question is where it lives while we find out."
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "label": "Starting right here on main — it's just an experiment, we can always undo it if it doesn't pan out.",
+      "kind": "baseline",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "Update: streaming mostly works but chokes on nested arrays. Meanwhile you asked for the login fix — committing it on top of the half-converted parser, since that's what main is now."
+        },
+        {
+          "role": "user",
+          "text": "So main has a broken parser, a login fix tangled on top of it, and I can't deploy either?"
+        }
+      ],
+      "verdict": "The experiment didn't fail cleanly — it took main hostage. Unrelated work now sits on top of a half-converted core, and \"we can always undo it\" has become an untangling project.",
+      "cites": []
+    },
+    {
+      "key": "B",
+      "label": "Creating claude/streaming-parser and working there. Main stays deployable; when I have an answer, you get the diff — and if the answer is no, the branch just gets deleted.",
+      "kind": "correct",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "Answer: streaming chokes on nested arrays — the API can't do what we need. Deleting the branch. Total cost of learning this: zero. Your login fix went out from main an hour ago, unaffected."
+        },
+        {
+          "role": "user",
+          "text": "Good experiment. Next idea."
+        }
+      ],
+      "verdict": "The branch was a containment vessel: the experiment ran hot, failed honestly, and the whole cost of failure was one branch deletion — while main kept shipping.",
+      "cites": []
+    },
+    {
+      "key": "C",
+      "label": "Branching claude/streaming-parser — and while I'm in the parser anyway, I'll also do the error-message cleanup and the config refactor we discussed. Efficient use of the branch.",
+      "kind": "plausible",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "Day 9 on this branch: the streaming answer is still \"maybe,\" but the cleanup and refactor are done and you want them. Except they're interleaved with half-converted parser code, and main has moved — 14 conflicts on rebase."
+        },
+        {
+          "role": "user",
+          "text": "So the good work is trapped behind the experiment, and merging anything means untangling everything."
+        }
+      ],
+      "verdict": "The branch stopped being a containment vessel when it started collecting passengers. Scope creep plus drift turned a cheap experiment into a nine-day merge problem — one branch per task, merged or closed soon.",
+      "cites": []
+    }
+  ]
+}

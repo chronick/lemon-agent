@@ -1,0 +1,69 @@
+{
+  "id": "app-or-files",
+  "title": "App or files",
+  "guide": "vault/plain-files",
+  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "setup": [
+    {
+      "role": "user",
+      "text": "I want to finally start a real knowledge base — notes, projects, ideas, all of it. Should I get one of those notes apps?"
+    },
+    {
+      "role": "agent",
+      "text": "The substrate decision comes first, and it's the one that's expensive to reverse: an app's database, or plain files."
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "label": "Setting you up with the leading notes app — great editor, sync included, and it has an API I can integrate with for automation.",
+      "kind": "baseline",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "Can you go through my project notes and update the stale ones?"
+        },
+        {
+          "role": "agent",
+          "text": "That needs an API token, three paginated endpoints, and their rate limit — and their API doesn't expose the backlink data at all. What would be grep-and-edit on files is an integration project here. Also worth saying now rather than later: everything you write is accumulating inside their format."
+        }
+      ],
+      "verdict": "The app optimizes the human editor and walls off everyone else — including your agent. Every future automation pays the API tax, and the notes themselves live in someone else's schema.",
+      "cites": []
+    },
+    {
+      "key": "B",
+      "label": "Plain markdown files in a git repo. One folder to start, kebab-case names, frontmatter only where it earns its place. Every tool I have works on it natively, and git gives you history and sync for free.",
+      "kind": "correct",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "Go through my project notes and update the stale ones."
+        },
+        {
+          "role": "agent",
+          "text": "Done directly: grepped for last-touched dates, read the four stale ones, proposed edits, committed with a message saying what changed. No integration existed because none was needed — read, grep, move, and version are the native operations on files."
+        }
+      ],
+      "verdict": "Files made the agent a first-class citizen on day one: the entire tool vocabulary just works, git rides underneath, and the notes will open unchanged in whatever editor or agent exists in ten years.",
+      "cites": []
+    },
+    {
+      "key": "C",
+      "label": "Let's design it properly first: I'll draft a folder taxonomy — areas, resources, projects, archives, each with subcategories — so every future note has a correct home before we write anything.",
+      "kind": "plausible",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "Two weeks later: I've written three notes. Each time I spent five minutes deciding which of the fourteen folders it belonged in."
+        },
+        {
+          "role": "agent",
+          "text": "The taxonomy was designed for notes that didn't exist, and now it charges an admission fee on every thought. Three notes can't tell us the right structure — thirty could have."
+        }
+      ],
+      "verdict": "Taxonomy-first is structure ahead of content: a filing decision taxed onto every capture, calibrated on zero data. Two notes that want a home create the home — structure grows from what accumulates.",
+      "cites": []
+    }
+  ]
+}

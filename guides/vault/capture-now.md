@@ -33,6 +33,10 @@ proposes where), make it a project in `active/`, park it in `later/`,
 or delete it. You make calls; it does the moves
 ([step 2](/guides/vault/location-is-state/)'s proposal rule applies).
 
+## Try it
+
+<div data-example="idea-mid-work"><a href="/examples/idea-mid-work/">Interactive example: The idea mid-work →</a></div>
+
 ## Do it by hand
 
 Today: put three loose thoughts into `inbox/` as one-liners. This

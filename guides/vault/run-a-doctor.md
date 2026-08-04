@@ -37,6 +37,10 @@ for a while. It's a small tool: one job, boring interface, no policy
 baked in — the thresholds live in how you call it
 ([the small-tools rules](/guides/coding-agents/build-tools/), applied).
 
+## Try it
+
+<div data-example="doctor-first-run"><a href="/examples/doctor-first-run/">Interactive example: The doctor's first run →</a></div>
+
 ## The cadence
 
 - **After any session that moved things**: scope the check to what

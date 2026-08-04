@@ -36,6 +36,10 @@ trying to refute the work — see the coding-agents guide's
 [step 4](/guides/coding-agents/adversarial-review/); it composes with
 this one at exactly this gate.
 
+## Try it
+
+<div data-example="merge-on-summary"><a href="/examples/merge-on-summary/">Interactive example: The merge on a summary →</a></div>
+
 ## Do it by hand
 
 End every agent task with: *"show me the full diff, what you verified

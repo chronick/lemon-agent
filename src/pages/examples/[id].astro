@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { listExampleIds, loadExample, exampleToHast, hastToHtml } from '../../lib/example-widget.mjs';
+import { guideBySlug } from '../../lib/guides.mjs';
 
 export async function getStaticPaths() {
   return listExampleIds().map((id) => ({ params: { id } }));
@@ -8,6 +9,7 @@ export async function getStaticPaths() {
 
 const { id } = Astro.params;
 const ex = loadExample(id);
+const guideMeta = guideBySlug(ex.guide.split('/')[0]);
 const html = hastToHtml(exampleToHast(ex, { heading: false }));
 ---
 <Base
@@ -15,7 +17,7 @@ const html = hastToHtml(exampleToHast(ex, { heading: false }));
   description={`Interactive example: ${ex.title}. Pick the agent's next move and see where it leads.`}
 >
   <p class="kicker">
-    Interactive example · from <a class="kicker-link" href={`/guides/${ex.guide}/`}>the field guide</a>
+    Interactive example · from <a class="kicker-link" href={`/guides/${ex.guide}/`}>{guideMeta.title}</a>
   </p>
   <h1>{ex.title}</h1>
   <Fragment set:html={html} />

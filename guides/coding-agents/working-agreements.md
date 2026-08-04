@@ -35,6 +35,10 @@ Use [the workflow list](/agent-workflow-failure-list/) as a **menu, not
 a manifest**: skim the 18 entries, mark the ones that have actually
 happened in your projects, and encode only those.
 
+## Try it
+
+<div data-example="borrowed-rules"><a href="/examples/borrowed-rules/">Interactive example: Borrowed rules →</a></div>
+
 ## Do it by hand
 
 1. Skim the [workflow list](/agent-workflow-failure-list/). Note which

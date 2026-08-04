@@ -36,6 +36,10 @@ make state visible without a database.
   (Domains that outgrow this earn a real home; that's a deliberate
   graduation, not drift.)
 
+## Try it
+
+<div data-example="status-field-rot"><a href="/examples/status-field-rot/">Interactive example: Status field rot →</a></div>
+
 ## Do it by hand
 
 Make the four directories, move what you have into them, and notice

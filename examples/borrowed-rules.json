@@ -1,0 +1,69 @@
+{
+  "id": "borrowed-rules",
+  "title": "Borrowed rules",
+  "guide": "coding-agents/working-agreements",
+  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "setup": [
+    {
+      "role": "user",
+      "text": "Add a working agreements section to CLAUDE.md — I want you to stop repeating the mistakes that keep biting us."
+    },
+    {
+      "role": "agent",
+      "text": "There are two ways to fill that section: with the genre's best practices, or with this project's actual history."
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "label": "I've written 22 agreements covering verification, testing, security, code style, error handling, documentation, and communication — the full best-practices canon. Comprehensive coverage from day one.",
+      "kind": "baseline",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "Three sessions later: you shipped a fix validated by a probe that never failed. Isn't that... agreement #4?"
+        },
+        {
+          "role": "agent",
+          "text": "It is. But #4 says \"verify thoroughly before claiming success\" — at the moment I ran the probe, that read as satisfied. Nothing in the sentence told me a clean first run was the failure case."
+        }
+      ],
+      "verdict": "Twenty-two borrowed generalities and none of them fired, because none was concrete enough to trigger at the moment it applied. A list the agent can't check is documentation, not a checklist.",
+      "cites": []
+    },
+    {
+      "key": "B",
+      "label": "First, which failures have actually happened here? Tell me the last three times agent work bit you, and I'll encode exactly those — as behavior, one line each.",
+      "kind": "correct",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "The fake-green fix last month. The test suite that called the paid embeddings API. And you keep restructuring files nobody asked about."
+        },
+        {
+          "role": "agent",
+          "text": "Four gates, then: (1) show the failing probe before any fix; (2) grep for metered clients before the first test run; (3) touch only files the task names — list any others and ask; (4) a probe that's clean on first run is broken until proven otherwise. Each one names its trigger moment. Diff ready."
+        }
+      ],
+      "verdict": "Four gates, each purchased by a real incident and each stating the exact moment it applies — which is what makes them checkable by the agent and enforceable by you.",
+      "cites": []
+    },
+    {
+      "key": "C",
+      "label": "The most-starred agent ruleset on GitHub covers this well — I'll copy its 40 rules in verbatim. Battle-tested by thousands of users.",
+      "kind": "plausible",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "Done. Note: rule 12 mandates a src/ layout, so I've queued a restructuring of your flat layout; rule 31 requires conventional commits, so I'll be rewriting commit style too."
+        },
+        {
+          "role": "user",
+          "text": "Nobody asked for any of that. Half these rules are for a different kind of project."
+        }
+      ],
+      "verdict": "Battle-tested by someone else's battles. A famous ruleset encodes its author's incidents and stack — imported wholesale, it starts fights with your project's reality instead of preventing your failures.",
+      "cites": []
+    }
+  ]
+}

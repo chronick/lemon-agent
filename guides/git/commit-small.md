@@ -34,6 +34,10 @@ turn can destroy.
   bug will sometimes also "improve" three other files. Unstage what
   wasn't asked for, or make it its own commit and decide separately.
 
+## Try it
+
+<div data-example="wall-of-diff"><a href="/examples/wall-of-diff/">Interactive example: The wall of diff →</a></div>
+
 ## Do it by hand
 
 Next session, open with: *"after each change that builds and passes

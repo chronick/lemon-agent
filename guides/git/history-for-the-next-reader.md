@@ -35,6 +35,10 @@ fresh session starts with.
   history breaks every clone and confuses every future session's
   reading of the past ([step 5](/guides/git/cheap-recovery/)).
 
+## Try it
+
+<div data-example="weird-retry-loop"><a href="/examples/weird-retry-loop/">Interactive example: The weird retry loop →</a></div>
+
 ## Do it by hand
 
 Two prompts to start using today: *"before you touch that module, read

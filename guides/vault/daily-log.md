@@ -36,6 +36,10 @@ when you have something to say.
   answer to sessions not sharing memory — same move as
   [writing git history for the next reader](/guides/git/history-for-the-next-reader/).
 
+## Try it
+
+<div data-example="log-it"><a href="/examples/log-it/">Interactive example: "Log it" →</a></div>
+
 ## Do it by hand
 
 Create today's file, write two sentences about what today was

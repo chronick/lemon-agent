@@ -41,6 +41,10 @@ app's database needs an export, an API, or a prayer.
   `some-idea/index.md`) when it accumulates assets. Structure grows
   from content, not ahead of it.
 
+## Try it
+
+<div data-example="app-or-files"><a href="/examples/app-or-files/">Interactive example: App or files →</a></div>
+
 ## Do it by hand
 
 Make the folder, `git init`, write one note about something you're

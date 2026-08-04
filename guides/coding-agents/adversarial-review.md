@@ -42,6 +42,10 @@ cost what one used to.
    finding ([AF-17](/agent-workflow-failure-list/),
    [AF-02](/agent-workflow-failure-list/)).
 
+## Try it
+
+<div data-example="review-that-refutes"><a href="/examples/review-that-refutes/">Interactive example: The review that refutes →</a></div>
+
 ## When to run it
 
 - After each **phase** of foundational or multi-phase work — the

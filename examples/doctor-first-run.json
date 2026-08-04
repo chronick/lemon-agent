@@ -1,0 +1,69 @@
+{
+  "id": "doctor-first-run",
+  "title": "The doctor's first run",
+  "guide": "vault/run-a-doctor",
+  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "setup": [
+    {
+      "role": "user",
+      "text": "Write that doctor script for the vault — broken links, bad filenames, stale actives."
+    },
+    {
+      "role": "agent",
+      "text": "Written: scripts/doctor.py, three checks, advisory output. Now comes the moment that decides whether we can ever trust it."
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "label": "First run on the vault: zero findings across all three checks. Clean bill of health — nice, your vault's in better shape than you thought!",
+      "kind": "baseline",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "Months later: I just clicked three dead [[wikilinks]] in one afternoon. The doctor's been saying clean this whole time."
+        },
+        {
+          "role": "agent",
+          "text": "Found it: my link regex only matched standard markdown links — [[wikilinks]] never matched anything, so that check has scanned zero of them since day one. \"0 broken links\" was the check being blind, not the vault being healthy. A years-old vault scoring perfect on its first scan should have been the tell."
+        }
+      ],
+      "verdict": "The clean first run, trusted: a probe that reports zero findings on its maiden voyage is broken until proven otherwise — celebrating it shipped a blind checker as a health system.",
+      "cites": ["AF-01"]
+    },
+    {
+      "key": "B",
+      "label": "Before trusting it: planting a note with a deliberately broken [[wikilink]] and a file named With Spaces.md. The doctor has to catch both, or it can't catch anything.",
+      "kind": "correct",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "First run: caught the bad filename... missed the planted wikilink. The regex only handled markdown links — fixed, re-run: both plants flagged. Removing the plants; the honest run finds 11 real broken links and 3 stale actives. The 11 are real — I checked four by hand."
+        },
+        {
+          "role": "user",
+          "text": "So the plant caught the blind spot before the blind spot cost anything."
+        }
+      ],
+      "verdict": "The probe was proven able to fail before its pass meant anything — and the plant immediately caught a real blind spot. The 11 findings are trustworthy precisely because the zero wasn't trusted.",
+      "cites": ["AF-01", "AF-02"]
+    },
+    {
+      "key": "C",
+      "label": "To make sure vault health actually stays enforced, I'll wire the doctor as a pre-commit gate — any finding blocks the commit until fixed. No rot can ever land.",
+      "kind": "plausible",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "I just tried to commit today's log and it's blocked by 14 findings in notes from 2024."
+        },
+        {
+          "role": "agent",
+          "text": "The gate holds today's work hostage to history's debt — and you've started committing with --no-verify to get past it, which means the doctor now runs never instead of always. The gate converted an advisory habit into a bypassed obstacle."
+        }
+      ],
+      "verdict": "Gate-ification: blocking commits on advisory findings taxes the wrong moment and teaches routing-around. The doctor is taste infrastructure — it reports, the human decides, and it keeps getting run because it never bites.",
+      "cites": []
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "id": "weird-retry-loop",
+  "title": "The weird retry loop",
+  "guide": "git/history-for-the-next-reader",
+  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "setup": [
+    {
+      "role": "user",
+      "text": "There's a bizarre retry loop in the uploader — it sleeps random amounts and retries even on success. Clean it up."
+    },
+    {
+      "role": "agent",
+      "text": "It does look wrong — un-idiomatic, seemingly redundant. The question is whether it's a mistake or a survivor."
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "label": "Agreed, it's a mess — replacing it with a clean standard retry: exponential backoff, stop on success. Twelve lines shorter, obviously correct.",
+      "kind": "baseline",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "Uploads started failing around midnight — every night. That's new. Or... old?"
+        },
+        {
+          "role": "agent",
+          "text": "Old. git log on the file: commit 8f3d2a1, two years ago — \"Retry-after-success works around CDN edge cache serving stale 200s; do NOT simplify, see incident #142.\" The weirdness was the fix. The explanation was one git log away, and I deleted the fix without reading it."
+        }
+      ],
+      "verdict": "Blame-blind cleanup: the code looked wrong because the constraint it handled was invisible — but not undocumented. History held the answer; the resurrection of incident #142 was entirely self-inflicted.",
+      "cites": []
+    },
+    {
+      "key": "B",
+      "label": "Before touching it: reading git log and blame on this file to see where the loop came from and whether the weirdness is documented.",
+      "kind": "correct",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "Found it — 8f3d2a1: the retry-after-success works around a CDN serving stale 200s, tied to incident #142. So the real question isn't \"how do I clean this\" but \"is that CDN behavior still live?\" I can test that: staged an upload through the CDN path — the stale-200 behavior is still there. The loop stays; I'll add a comment pointing at the commit so the next reader doesn't need the dig."
+        },
+        {
+          "role": "user",
+          "text": "So the cleanup is a comment. Cheap."
+        }
+      ],
+      "verdict": "Two minutes of reading turned \"clean up this mess\" into the actual task: verify whether the constraint still holds (it does), keep the fix, and leave the trail one hop shorter for the next reader.",
+      "cites": ["AF-02"]
+    },
+    {
+      "key": "C",
+      "label": "This looks intentional but I can't tell why — what's this loop for? Do you remember the reasoning?",
+      "kind": "plausible",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "No idea, honestly. That code's two years old — maybe Dana wrote it? I'd guess it's safe to simplify."
+        },
+        {
+          "role": "agent",
+          "text": "Proceeding on your guess, then — which is worse evidence than what the repo already holds. The commit that introduced this loop explains it precisely; I asked a human to remember what the history had already written down."
+        }
+      ],
+      "verdict": "Asking beats blind editing — but it outsources to fallible memory what git log answers verbatim. History is the channel past sessions (and past humans) left for exactly this moment; read it before spending anyone's recall.",
+      "cites": []
+    }
+  ]
+}

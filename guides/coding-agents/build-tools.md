@@ -83,6 +83,10 @@ config, no hardcoded absolute paths, exit codes that mean something.
 The consumer is half you, half the next agent session — both need the
 interface to be guessable.
 
+## Try it
+
+<div data-example="third-time-tool"><a href="/examples/third-time-tool/">Interactive example: The third time →</a></div>
+
 ## Do it by hand
 
 At the end of any session that repeated something:

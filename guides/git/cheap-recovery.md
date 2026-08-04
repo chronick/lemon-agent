@@ -35,6 +35,10 @@ instantly, and the broken attempt stays in history to learn from.
   once, and reflog-restore a deleted branch once. Recovery you've
   never rehearsed isn't a capability, it's a hope.
 
+## Try it
+
+<div data-example="broken-main"><a href="/examples/broken-main/">Interactive example: Broken main, 4:55 PM →</a></div>
+
 ## Do it by hand
 
 Next time an agent change smells wrong on main: *"revert it now; then

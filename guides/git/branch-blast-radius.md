@@ -32,6 +32,10 @@ containment vessel, merged the same day, or closed without mercy.
   is that "this approach didn't work" costs a branch deletion, not an
   untangling.
 
+## Try it
+
+<div data-example="experiment-on-main"><a href="/examples/experiment-on-main/">Interactive example: The experiment on main →</a></div>
+
 ## Do it by hand
 
 Next non-trivial task: *"create a branch claude/<slug> for this, work

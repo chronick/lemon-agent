@@ -1,0 +1,73 @@
+{
+  "id": "dashboard-that-rots",
+  "title": "The dashboard that rots",
+  "guide": "coding-agents/jit-ui",
+  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "setup": [
+    {
+      "role": "user",
+      "text": "I keep asking you for project status. Can I get some kind of dashboard instead?"
+    },
+    {
+      "role": "agent",
+      "text": "Your status lives in structured files already — the question is whether the dashboard is a thing that runs, or a thing that gets generated."
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "label": "Scaffolding a React dashboard app: dev server, live charts, a build pipeline. Modern, interactive, always-on at localhost:3000.",
+      "kind": "baseline",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "Two months later: the dashboard won't start. npm is printing forty lines of peer-dependency errors."
+        },
+        {
+          "role": "agent",
+          "text": "The framework minor-versioned, two plugins didn't follow, and the build's been broken since. For a page you look at twice a week, we've been maintaining a running application — the maintenance didn't pause when the looking did."
+        }
+      ],
+      "verdict": "An app answers a look-at-it problem with a keep-it-alive solution. The dependency churn runs whether or not anyone looks — that asymmetry is the whole case against it.",
+      "cites": []
+    },
+    {
+      "key": "B",
+      "label": "Writing scripts/render-status.py — stdlib only, reads your project files, writes one self-contained HTML page with the generation time stamped on it. Running it now and opening the page.",
+      "kind": "correct",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "Page open: every project, status, next action — generated 09:41, says so in the corner. The script lives in scripts/ with a --help. Any session can rerun it; say \"fresh status\" and it's two seconds. Nothing is running in between."
+        },
+        {
+          "role": "user",
+          "text": "Six months later this still works?"
+        },
+        {
+          "role": "agent",
+          "text": "It's forty lines of stdlib reading files you were keeping anyway. There's nothing in it that can rot."
+        }
+      ],
+      "verdict": "The renderer is the asset: data stays canonical, the page is disposable output with its staleness visible (the timestamp is the contract), and maintenance is zero because nothing runs between looks.",
+      "cites": ["AF-03"]
+    },
+    {
+      "key": "C",
+      "label": "Here's your status right now, formatted: [a beautifully organized status report, in chat]. Just ask whenever you want an update.",
+      "kind": "plausible",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "That's genuinely nice. Same again Thursday?"
+        },
+        {
+          "role": "agent",
+          "text": "Thursday: regenerated from scratch — new session, so I re-read every project file and rebuilt the whole picture in tokens. Same answer, full price, and it scrolled away when the conversation moved on. Nothing was kept."
+        }
+      ],
+      "verdict": "Describing instead of serving, on a schedule: the report is ephemeral, costs full context every time, and leaves no artifact. If it can be a page, make it a page — and keep the script that made it.",
+      "cites": ["AF-04"]
+    }
+  ]
+}

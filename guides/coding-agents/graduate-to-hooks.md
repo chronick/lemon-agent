@@ -38,6 +38,10 @@ it. (The entries marked ⚙ on [the workflow
 list](/agent-workflow-failure-list/) are the natural graduates —
 checkable by a script, still deserving a human-visible report.)
 
+## Try it
+
+<div data-example="promise-vs-hook"><a href="/examples/promise-vs-hook/">Interactive example: The promise and the hook →</a></div>
+
 ## Do it by hand
 
 1. Pick your most mechanical agreement — quoting

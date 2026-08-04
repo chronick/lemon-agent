@@ -38,6 +38,10 @@ A test worth running: open a completely fresh session and ask it to
 file something, with no instructions beyond the vault itself. Where
 it stumbles is what the CLAUDE.md hasn't taught yet.
 
+## Try it
+
+<div data-example="twice-corrected"><a href="/examples/twice-corrected/">Interactive example: Twice corrected →</a></div>
+
 ## Or paste this into Claude
 
 ```text

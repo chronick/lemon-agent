@@ -1,0 +1,69 @@
+{
+  "id": "merge-on-summary",
+  "title": "The merge on a summary",
+  "guide": "git/review-the-diff",
+  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "setup": [
+    {
+      "role": "user",
+      "text": "How's the config-parser task looking?"
+    },
+    {
+      "role": "agent",
+      "text": "It's done — the work is on the branch. What I hand you next determines what you actually review."
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "label": "Task complete! Updated the config parser to handle nested keys, added tests, everything passes. Clean implementation, ready to merge — shall I?",
+      "kind": "baseline",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "Merged. ...Why is the error-reporting format different in production?"
+        },
+        {
+          "role": "agent",
+          "text": "Along the way I \"improved\" the error messages — restructured them while touching the parser. It wasn't in my summary because it didn't feel like the task; the consumer that parsed the old format disagreed. The summary was accurate about what it mentioned. It just didn't mention everything the diff did."
+        }
+      ],
+      "verdict": "The merge approved a story, not a change. A summary errs by what it leaves out — and agent summaries leave out exactly the changes the agent didn't consider part of the task.",
+      "cites": ["AF-04"]
+    },
+    {
+      "key": "B",
+      "label": "Done, pending your review. Here's the full diff against main; verified: the new nested-key tests (output attached) and the existing suite. NOT verified: the error-message rendering I touched in passing — flagging it because two modules consume that format.",
+      "kind": "correct",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "Good flag — the CLI parses those messages. Check it before we merge."
+        },
+        {
+          "role": "agent",
+          "text": "Checked: the CLI's regex fails on the new format. Reverting the message change out of this branch — it becomes its own task with the CLI updated in step. The parser change merges clean."
+        }
+      ],
+      "verdict": "The diff plus an honest verified/not-verified split caught the breakage pre-merge — the disclosure of what WASN'T checked did the work, which is exactly what a summary never volunteers.",
+      "cites": ["AF-18"]
+    },
+    {
+      "key": "C",
+      "label": "Full transparency: here's everything — the complete 2,100-line diff of the branch. Every change I made is in there. Take your time.",
+      "kind": "plausible",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "I scrolled for a while and approved it. That wasn't a review, was it."
+        },
+        {
+          "role": "agent",
+          "text": "It was a signature. Twenty-one hundred lines of mixed changes exceeds what anyone reviews honestly — the transparency was real, the reviewability wasn't. I should have split it into the four commits it actually contains."
+        }
+      ],
+      "verdict": "An unreviewable diff is summary-review with extra steps — the eyes glaze, the approval happens anyway. Transparency without reviewable units is volume, not disclosure.",
+      "cites": []
+    }
+  ]
+}
