@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import { listExampleIds, loadExample, exampleToHast, hastToHtml } from '../../lib/example-widget.mjs';
+
+export async function getStaticPaths() {
+  return listExampleIds().map((id) => ({ params: { id } }));
+}
+
+const { id } = Astro.params;
+const ex = loadExample(id);
+const html = hastToHtml(exampleToHast(ex, { heading: false }));
+---
+<Base
+  title={`${ex.title} — interactive example`}
+  description={`Interactive example: ${ex.title}. Pick the agent's next move and see where it leads.`}
+>
+  <p class="kicker">
+    Interactive example · from <a class="kicker-link" href={`/guide/${ex.guide}/`}>the field guide</a>
+  </p>
+  <h1>{ex.title}</h1>
+  <Fragment set:html={html} />
+  <p class="backlink">
+    <a href={`/guide/${ex.guide}/`}>← Back to the chapter</a> ·
+    <a href={`/examples/${id}.json`}>raw data</a>
+  </p>
+</Base>
+
+<style>
+  .kicker-link { color: inherit; }
+</style>

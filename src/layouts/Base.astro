@@ -193,6 +193,88 @@ const isHome = Astro.url.pathname === '/';
   .list-body hr { border: 0; border-top: 1px solid var(--border); margin: 2.5rem 0 1.5rem; }
   .list-body hr ~ p { color: var(--muted); font-size: 0.85rem; }
 
+  /* Interactive examples — CSS-only (radio + sibling selectors) */
+  .xmpl {
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 1rem 1.1rem;
+    margin: 1.6rem 0;
+    font-size: 0.88rem;
+  }
+  .xmpl-head { margin: 0 0 0.9rem; font-weight: 700; letter-spacing: 0.03em; }
+  .xmpl-head .chip { font-size: 0.68rem; margin-right: 0.3em; }
+  .xmpl-turn { display: flex; gap: 0.7em; margin: 0.55rem 0; }
+  .xmpl-role {
+    flex: 0 0 3.2em;
+    text-align: right;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 0.35em;
+  }
+  .xmpl-turn-agent .xmpl-role { color: var(--accent-ink); }
+  .xmpl-text {
+    flex: 1;
+    border: 1px solid var(--border);
+    padding: 0.45rem 0.7rem;
+    background: var(--bg);
+  }
+  .xmpl-turn-agent .xmpl-text { border-left: 2px solid var(--chartreuse); }
+  .xmpl-text p { margin: 0.3rem 0; }
+  .xmpl-q { margin: 1.1rem 0 0.6rem; font-weight: 700; }
+  .xmpl-q::before { content: '// '; color: var(--accent-ink); }
+  .xmpl-radio { position: absolute; opacity: 0; pointer-events: none; }
+  .xmpl-opt {
+    display: flex;
+    gap: 0.7em;
+    align-items: baseline;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    padding: 0.55rem 0.75rem;
+    margin: 0.45rem 0;
+    cursor: pointer;
+  }
+  .xmpl-opt:hover { border-color: var(--border-hover); }
+  .xmpl-radio:focus-visible + .xmpl-opt { outline: 2px solid var(--chartreuse); }
+  .xmpl-radio:checked + .xmpl-opt {
+    border-color: var(--border-hover);
+    background: var(--card-hover);
+  }
+  .xmpl-key {
+    flex: 0 0 auto;
+    color: var(--chip-ink);
+    background: var(--chartreuse);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.05em 0.45em;
+  }
+  .xmpl-outcome { display: none; margin: 0.3rem 0 1rem 1.5rem; }
+  .xmpl-radio:checked + .xmpl-opt + .xmpl-outcome { display: block; }
+  .xmpl-verdict {
+    border: 1px solid var(--border);
+    border-left-width: 2px;
+    padding: 0.5rem 0.75rem;
+    margin-top: 0.7rem;
+  }
+  .xmpl-verdict p { margin: 0.35rem 0 0; }
+  .xmpl-verdict-chip {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.08em 0.5em;
+  }
+  .xmpl-verdict-correct { border-left-color: var(--chartreuse); }
+  .xmpl-verdict-correct .xmpl-verdict-chip { background: var(--chartreuse); color: var(--chip-ink); }
+  .xmpl-verdict-baseline { border-left-color: var(--muted); }
+  .xmpl-verdict-baseline .xmpl-verdict-chip { background: var(--muted); color: var(--bg); }
+  .xmpl-verdict-plausible { border-left-color: var(--live-ink); }
+  .xmpl-verdict-plausible .xmpl-verdict-chip { background: var(--live-bg); color: var(--live-ink); }
+  .xmpl-cites a { color: var(--muted); font-size: 0.8rem; }
+
   footer {
     margin-top: 4rem;
     padding-top: 1.3rem;

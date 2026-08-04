@@ -35,6 +35,10 @@ expensive to find.
 - **The plan is the approval unit.** You approve a plan, not a vibe.
   Scope it to one feature; a plan covering everything approves nothing.
 
+## Try it
+
+<div data-example="unnamed-fork"><a href="/examples/unnamed-fork/">Interactive example: the unnamed fork →</a></div>
+
 ## Do it by hand
 
 Next non-trivial task, open with:

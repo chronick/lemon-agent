@@ -37,6 +37,10 @@ page, a render, a URL, or a passing test you can execute yourself, the
 agent delivers *that*. "It works" prose where an artifact could exist is
 a claim, not a result ([AF-04](/agent-workflow-failure-list/)).
 
+## Try it
+
+<div data-example="clean-probe"><a href="/examples/clean-probe/">Interactive example: the clean probe →</a></div>
+
 ## Do it by hand
 
 You don't need setup — you need two habits at the moment of asking:

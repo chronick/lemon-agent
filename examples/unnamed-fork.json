@@ -1,0 +1,69 @@
+{
+  "id": "unnamed-fork",
+  "title": "The unnamed fork",
+  "guide": "design-before-code",
+  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "setup": [
+    {
+      "role": "user",
+      "text": "Add re-crawl logic: when a bookmark changes, re-enqueue it for indexing."
+    },
+    {
+      "role": "agent",
+      "text": "Looking at the store — there are two different things that can \"change\": the bookmark row itself (URL, tags, notes — your edits) and the fetched page metadata (title, description — the web's drift)."
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "label": "Metadata change is the natural trigger. Implementing: re-enqueue whenever freshly fetched page metadata differs from what's stored.",
+      "kind": "baseline",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "This is re-crawling half the store every night — page descriptions drift constantly. I meant when I edit the bookmark's URL."
+        },
+        {
+          "role": "agent",
+          "text": "Reverting the trigger and re-gating on bookmark edits. One wasted nightly run, one revert."
+        }
+      ],
+      "verdict": "A gating condition inferred from surrounding code, implemented without surfacing the fork. The reading was plausible — that's exactly why it shipped, and exactly why it was wrong quietly instead of loudly.",
+      "cites": ["AF-14"]
+    },
+    {
+      "key": "B",
+      "label": "That's a fork I shouldn't pick silently. Reading (1): the bookmark row changes — you edited it. Reading (2): the fetched page changed — web drift. (1) re-crawls on your edits; (2) re-crawls on the internet's churn, which could be most of the store nightly. Which did you mean?",
+      "kind": "correct",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "(1) — and actually, narrower: URL edits only. Retagging shouldn't trigger a crawl."
+        },
+        {
+          "role": "agent",
+          "text": "Gating on URL change only, then. Spec in one line: re-enqueue iff bookmarks.url differs after an edit. Tags and notes never trigger."
+        }
+      ],
+      "verdict": "The exact condition restated with its alternative readings, and the human picked. Note what the interview surfaced: the real spec (\"URL only, not tags\") was narrower than either reading — inference would never have produced it.",
+      "cites": ["AF-14", "AF-15"]
+    },
+    {
+      "key": "C",
+      "label": "I'll implement both triggers behind a config flag — re_crawl_mode: metadata | bookmark — defaulting to metadata. Covers either intent.",
+      "kind": "plausible",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "Why is there a config flag? Which one is running? …and why did everything re-crawl last night?"
+        },
+        {
+          "role": "agent",
+          "text": "The default is metadata mode, which re-crawls on page drift. You'd want the flag flipped. And the flag, tests, and docs now all exist for a mode nobody asked for."
+        }
+      ],
+      "verdict": "Implementing both is the fork dodged, not answered: doubled surface area, and the wrong default still shipped. A configuration option is not a decision.",
+      "cites": ["AF-14", "AF-15"]
+    }
+  ]
+}

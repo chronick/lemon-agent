@@ -3,4 +3,5 @@ dist/
 .astro/
 public/lists/
 public/guide/
+public/examples/
 .DS_Store
