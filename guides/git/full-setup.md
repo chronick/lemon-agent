@@ -1,16 +1,16 @@
 ---
-title: "Step 0 — The one-paste repo baseline"
+title: "Step 0: The one-paste repo baseline"
 step: 0
 status: draft
 updated: 2026-08-04
-description: "Optional full-package setup: a clean repo, a working CLAUDE.md, checkpoint-commit and review habits — in one confirmation-gated paste."
+description: "Optional full-package setup: a clean repo, a working CLAUDE.md, checkpoint-commit and review habits, in one confirmation-gated paste."
 ---
 
 Everything in this guide works on any repo, adopted one habit at a
 time. This step is the shortcut: one paste that sets a project up with
 the baseline, confirming each change before it's made.
 
-What it sets up — each explained in its own step:
+What it sets up (each explained in its own step):
 
 - A clean **repo** with a stack-appropriate `.gitignore`
 - **Checkpoint commits** as standing behavior ([step 1](/guides/git/commit-small/))
@@ -30,7 +30,7 @@ every file and command before running it, and wait for my ok.
 
 2. Add (or extend) CLAUDE.md with a "## Git agreements" section:
    - Checkpoint commits: after each change that builds and passes
-     tests, propose a commit — small, single-purpose, message says why.
+     tests, propose a commit (small, single-purpose, message says why).
    - Branch per task: non-trivial work happens on a branch named
      claude/<task-slug>; main stays deployable.
    - Review the diff: when work is done, present the full diff plus
@@ -48,5 +48,5 @@ every file and command before running it, and wait for my ok.
 ## If you'd rather go manual
 
 Read [step 1](/guides/git/commit-small/) and [step
-4](/guides/git/review-the-diff/) — checkpoints and diff review are the
+4](/guides/git/review-the-diff/). Checkpoints and diff review are the
 two habits carrying most of the value.

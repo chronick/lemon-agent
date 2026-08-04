@@ -2,11 +2,11 @@
   "id": "wall-of-diff",
   "title": "The wall of diff",
   "guide": "git/commit-small",
-  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "prompt": "Pick the agent's next move, then see where it leads:",
   "setup": [
     {
       "role": "user",
-      "text": "Good session — the retry logic, the config rename, and the new export flag all work. Commit it."
+      "text": "Good session: the retry logic, the config rename, and the new export flag all work. Commit it."
     },
     {
       "role": "agent",
@@ -16,7 +16,7 @@
   "options": [
     {
       "key": "A",
-      "label": "Committing everything now: \"Add retry logic, rename config keys, add export flag\" — one commit, all 23 files, session captured.",
+      "label": "Committing everything now: \"Add retry logic, rename config keys, add export flag\". One commit, all 23 files, session captured.",
       "kind": "baseline",
       "outcome": [
         {
@@ -25,7 +25,7 @@
         },
         {
           "role": "agent",
-          "text": "The revert takes the config rename and the export flag with it — they're welded into the same commit. I'll have to revert all three, then re-apply two of them by hand from the old diff. Twenty minutes of surgery for what should have been one command."
+          "text": "The revert takes the config rename and the export flag with it: they're welded into the same commit. I'll have to revert all three, then re-apply two of them by hand from the old diff. Twenty minutes of surgery for what should have been one command."
         }
       ],
       "verdict": "One commit, three purposes: revert stops being surgical, bisect stops being useful, and the 23-file diff was never really reviewable in the first place.",
@@ -33,7 +33,7 @@
     },
     {
       "key": "B",
-      "label": "Splitting into three single-purpose commits: staging the retry files first — \"Add retry with backoff to the sync client\" — then the rename, then the flag. Showing you each diff stat as I go.",
+      "label": "Splitting into three single-purpose commits: staging the retry files first (\"Add retry with backoff to the sync client\"), then the rename, then the flag. Showing you each diff stat as I go.",
       "kind": "correct",
       "outcome": [
         {
@@ -42,7 +42,7 @@
         },
         {
           "role": "agent",
-          "text": "git revert a1b2c3d — done, retry gone, rename and flag untouched. And for next time: the redo branch starts from a clean history where the retry change is one readable diff."
+          "text": "git revert a1b2c3d: done, retry gone, rename and flag untouched. And for next time: the redo branch starts from a clean history where the retry change is one readable diff."
         }
       ],
       "verdict": "Three purposes, three commits: the bad one reverts in one command, the good ones stand, and each diff was small enough to actually read at review time.",
@@ -50,19 +50,19 @@
     },
     {
       "key": "C",
-      "label": "I'll commit per file for maximum granularity — 23 files, 23 commits, each one atomic.",
+      "label": "I'll commit per file for maximum granularity: 23 files, 23 commits, each one atomic.",
       "kind": "plausible",
       "outcome": [
         {
           "role": "agent",
-          "text": "Done: 23 commits. Caveat I should flag — the retry change spans 6 of them, so commits 4 through 9 each leave the build broken until the next lands."
+          "text": "Done: 23 commits. Caveat I should flag: the retry change spans 6 of them, so commits 4 through 9 each leave the build broken until the next lands."
         },
         {
           "role": "user",
           "text": "So bisect lands on a broken-by-construction commit, and reverting the retry means finding six needles."
         }
       ],
-      "verdict": "Granularity by file, not by purpose: every commit is small and none is coherent. The unit of a commit is the change that stands together — builds green, reverts whole.",
+      "verdict": "Granularity by file, not by purpose: every commit is small and none is coherent. The unit of a commit is the change that stands together: builds green, reverts whole.",
       "cites": []
     }
   ]

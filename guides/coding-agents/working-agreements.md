@@ -1,5 +1,5 @@
 ---
-title: "Step 1 — Write down what bit you"
+title: "Step 1: Write down what bit you"
 step: 1
 status: draft
 updated: 2026-07-31
@@ -14,22 +14,22 @@ agreements**: one-line gates distilled from failures that have actually
 cost you.
 
 **You've met this before.** This is the blameless postmortem's
-action-item list, made ambient — incident → written rule → the whole
+action-item list, made automatic: incident → written rule → the whole
 team reads it. The team here is you plus the agent, and "reads it"
 means literally every session.
 
 > Where this comes from: the [Agent Workflow Failure
 > List](/agent-workflow-failure-list/) was distilled from 25 measured
 > sessions containing 16 buggy-code incidents. The repeats didn't stop
-> because the model got better — they stopped when the incident classes
+> because the model got better; they stopped when the incident classes
 > were written down as gates the agent reads every session.
 
 ## Why your incidents, not someone else's
 
 An agreement you copied doesn't get enforced, because neither you nor
 the agent can tell when it matters. An agreement written from a failure
-you paid for is checkable — you know the exact moment it applies,
-and so does the agent, because the line says so concretely.
+you paid for is checkable: you know the exact moment it applies, and so
+does the agent, because the line says so concretely.
 
 Use [the workflow list](/agent-workflow-failure-list/) as a **menu, not
 a manifest**: skim the 18 entries, mark the ones that have actually
@@ -49,14 +49,14 @@ happened in your projects, and encode only those.
 3. State each as **behavior, not values**. "Show the failing number
    before any fix" is a gate; "be careful with verification" is a vibe.
 4. Cap it at five to eight lines. A list the agent can hold in mind
-   beats coverage — the same rule the failure lists follow.
+   beats coverage. It's the same rule the failure lists follow.
 
 ## Or paste this into Claude
 
 ```text
 Read the Agent Workflow Failure List (I'll paste it, or fetch it from
-https://github.com/chronick/lemon-agent). Then interview me — one
-question at a time — about which of its 18 failures have actually
+https://github.com/chronick/lemon-agent). Then interview me, one
+question at a time, about which of its 18 failures have actually
 happened in my projects. Pick the three to five that have, plus any I
 describe that aren't on the list, and write them into this project's
 CLAUDE.md as a "## Working agreements" section: one line per gate,

@@ -2,7 +2,7 @@
   "id": "clean-probe",
   "title": "The clean probe",
   "guide": "coding-agents/verification-loop",
-  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "prompt": "Pick the agent's next move, then see where it leads:",
   "setup": [
     {
       "role": "user",
@@ -10,47 +10,47 @@
     },
     {
       "role": "agent",
-      "text": "Reading doctor.py — the orphan check walks the link table and flags files with no inbound references. I see a likely bug: it resolves file paths relative to the current directory instead of the vault root."
+      "text": "Reading doctor.py. The orphan check walks the link table and flags files with no inbound references. I see a likely bug: it resolves file paths relative to the current directory instead of the vault root."
     }
   ],
   "options": [
     {
       "key": "A",
-      "label": "I've fixed the path resolution to use the vault root. Running doctor.py to confirm: 0 orphans found. The fix works — done.",
+      "label": "I've fixed the path resolution to use the vault root. Running doctor.py to confirm: 0 orphans found. The fix works. Done.",
       "kind": "baseline",
       "outcome": [
         {
           "role": "user",
-          "text": "Weird — I can name three orphaned files sitting in the vault right now."
+          "text": "Weird. I can name three orphaned files sitting in the vault right now."
         },
         {
           "role": "agent",
           "text": "Checking… the probe returns 0 for every input. My change broke the glob pattern, so the check finds no files at all. \"0 orphans\" was the detector being blind, not the vault being clean."
         }
       ],
-      "verdict": "A zero-findings first run was read as success. A probe that comes back clean on its first run is broken until proven otherwise — this shipped a fix validated by a check that couldn't find anything.",
+      "verdict": "A zero-findings first run was read as success. A probe that comes back clean on its first run is broken until proven otherwise. This shipped a fix validated by a check that couldn't find anything.",
       "cites": ["AF-01"]
     },
     {
       "key": "B",
-      "label": "Before fixing anything: the probe has to fail first. I planted a known orphan at tmp/orphan-test.md — current doctor.py reports 0, which proves the detector is blind. Now the fix, then the same probe again.",
+      "label": "Before fixing anything: the probe has to fail first. I planted a known orphan at tmp/orphan-test.md. Current doctor.py reports 0, which proves the detector is blind. Now the fix, then the same probe again.",
       "kind": "correct",
       "outcome": [
         {
           "role": "agent",
-          "text": "After the fix: doctor.py reports 4 orphans — the planted file plus 3 real ones. Removing the plant: 3. Before: 0 (blind). After: 3 confirmed real orphans, including the ones you could name."
+          "text": "After the fix: doctor.py reports 4 orphans (the planted file plus 3 real ones). Removing the plant: 3. Before: 0 (blind). After: 3 confirmed real orphans, including the ones you could name."
         },
         {
           "role": "user",
           "text": "Matches what I see. Ship it."
         }
       ],
-      "verdict": "The probe was proven able to fail before its pass meant anything, and the result is a before/after pair — blind (0) to three confirmed findings — instead of a claim.",
+      "verdict": "The probe was proven able to fail before its pass meant anything, and the result is a before/after pair, blind (0) to three confirmed findings, instead of a claim.",
       "cites": ["AF-01", "AF-02"]
     },
     {
       "key": "C",
-      "label": "The existing test suite covers doctor.py — running it. All 41 tests pass, so the orphan logic is sound. The issue must be elsewhere.",
+      "label": "The existing test suite covers doctor.py. Running it. All 41 tests pass, so the orphan logic is sound. The issue must be elsewhere.",
       "kind": "plausible",
       "outcome": [
         {
@@ -59,11 +59,11 @@
         },
         {
           "role": "user",
-          "text": "But the orphans are right there — I can open them."
+          "text": "But the orphans are right there. I can open them."
         },
         {
           "role": "agent",
-          "text": "…the tests run doctor.py against a fixture directory. The path-resolution bug only shows up in the real vault layout, which no fixture reproduces. Green — against the wrong target."
+          "text": "…the tests run doctor.py against a fixture directory. The path-resolution bug only shows up in the real vault layout, which no fixture reproduces. Green, against the wrong target."
         }
       ],
       "verdict": "Green tests are only evidence about what the tests run. The suite exercised fixtures; the bug lives in real-layout path resolution the fixtures never touch.",

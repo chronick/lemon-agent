@@ -7,7 +7,7 @@ entries: 18
 prefix: "AF"
 status: draft
 updated: 2026-07-31
-description: "18 numbered failures of agent-assisted engineering, each grounded in a measured incident — run against a session, a PR, or an agent's report."
+description: "18 numbered failures of agent-assisted engineering, each grounded in a measured incident. Run it against a session, a PR, or an agent's report."
 ---
 
 Run it against a working session, a PR, or an agent's report. Every

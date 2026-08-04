@@ -1,4 +1,4 @@
-// Guide registry — order, titles, and per-guide intro copy.
+// Guide registry: order, titles, and per-guide intro copy.
 // A chapter's collection id is "<guide-slug>/<chapter-slug>".
 
 export const GUIDES = [
@@ -9,8 +9,8 @@ export const GUIDES = [
     short: 'Coding agents',
     blurb:
       'The core field guide: verification loops, design interviews, ' +
-      'adversarial reviews, orchestration, small tools, generated UIs — ' +
-      'one step at a time, each with a paste-into-Claude setup.',
+      'adversarial reviews, orchestration, small tools, generated UIs. ' +
+      'One step at a time, each with a paste-into-Claude setup.',
     intro:
       'Concrete patterns that survive real use: what to watch out for, ' +
       'and the habits worth building. Written for humans to adopt one ' +
@@ -28,8 +28,8 @@ export const GUIDES = [
       'review, and recovery cheap enough to lean on.',
     intro:
       'Git was already the safety net under fast-moving software; an ' +
-      'agent makes it load-bearing. These steps are the git habits that ' +
-      'turn agent speed from a risk into an asset — adoptable one at a ' +
+      'agent makes it essential. These steps are the git habits that ' +
+      'turn agent speed from a risk into an asset, adoptable one at a ' +
       'time, each with a paste-into-Claude setup.',
   },
   {
@@ -43,11 +43,11 @@ export const GUIDES = [
       'a doctor script keeping it honest.',
     intro:
       'A vault is a personal knowledge base built from plain markdown in ' +
-      'a git repo — structured so an agent can file, find, triage, and ' +
+      'a git repo, structured so an agent can file, find, triage, and ' +
       'maintain it with you. These steps build one from scratch, one ' +
       'habit at a time.',
   },
 ];
 
 export const guideBySlug = (slug) => GUIDES.find((g) => g.slug === slug);
-export const shortTitle = (t) => t.replace(/^Step \d+ — /, '');
+export const shortTitle = (t) => t.replace(/^Step \d+: /, '');

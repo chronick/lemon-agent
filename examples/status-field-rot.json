@@ -2,11 +2,11 @@
   "id": "status-field-rot",
   "title": "Status field rot",
   "guide": "vault/location-is-state",
-  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "prompt": "Pick the agent's next move, then see where it leads:",
   "setup": [
     {
       "role": "user",
-      "text": "My vault is a mess — I genuinely can't tell what I'm working on anymore."
+      "text": "My vault is a mess. I can't tell what I'm working on anymore."
     },
     {
       "role": "agent",
@@ -16,7 +16,7 @@
   "options": [
     {
       "key": "A",
-      "label": "Adding status frontmatter to every note — status: active | paused | someday | done — plus a dashboard note that lists everything by status. Full visibility.",
+      "label": "Adding status frontmatter to every note (status: active | paused | someday | done) plus a dashboard note that lists everything by status. Full visibility.",
       "kind": "baseline",
       "outcome": [
         {
@@ -25,32 +25,32 @@
         },
         {
           "role": "agent",
-          "text": "The fields were set once and never maintained — every status change needs an edit nobody makes, and the dashboard is a copy of the copies. Two representations of state, both drifting, neither trusted."
+          "text": "The fields were set once and never maintained: every status change needs an edit nobody makes, and the dashboard is a copy of the copies. Two representations of state, both drifting, neither trusted."
         }
       ],
-      "verdict": "Status fields are state you have to remember to maintain, and a dashboard is a cache of them. Both rot quietly — the vault now lies in two places instead of being ambiguous in one.",
+      "verdict": "Status fields are state you have to remember to maintain, and a dashboard is a cache of them. Both rot quietly: the vault now lies in two places instead of being ambiguous in one.",
       "cites": []
     },
     {
       "key": "B",
-      "label": "Making location the state: inbox/, active/, later/, archived/ — and filing every existing note into exactly one. Here's the full move list for your approval before I touch anything.",
+      "label": "Making location the state: inbox/, active/, later/, archived/. Then filing every existing note into exactly one. Here's the full move list for your approval before I touch anything.",
       "kind": "correct",
       "outcome": [
         {
           "role": "agent",
-          "text": "Moves applied per your edits to the list. Now: ls active/ shows six folders — that IS your answer to \"what am I working on,\" no dashboard needed, and it can't drift because the location isn't a label about the file, it's where the file is. Monthly, I'll propose a sweep of untouched actives to later/."
+          "text": "Moves applied per your edits to the list. Now: ls active/ shows six folders. That IS your answer to \"what am I working on,\" no dashboard needed, and it can't drift because the location isn't a label about the file, it's where the file is. Monthly, I'll propose a sweep of untouched actives to later/."
         },
         {
           "role": "user",
-          "text": "Six. That's already two more than the truth — move weekend-synth and the blog redesign to later/."
+          "text": "Six. That's already two more than the truth. Move weekend-synth and the blog redesign to later/."
         }
       ],
-      "verdict": "Location can't disagree with itself: moving the file is the status update, ls is the dashboard, and the honest answer surfaced immediately — including the two projects the user demoted on sight.",
+      "verdict": "Location can't disagree with itself: moving the file is the status update, ls is the dashboard, and the honest answer surfaced immediately, including the two projects the user demoted on sight.",
       "cites": []
     },
     {
       "key": "C",
-      "label": "I'll set up the four lifecycle directories and refile everything now — I can judge each note's state from its content and last-modified date. Done in one pass, no need to bother you with the details.",
+      "label": "I'll set up the four lifecycle directories and refile everything now: I can judge each note's state from its content and last-modified date. Done in one pass, no need to bother you with the details.",
       "kind": "plausible",
       "outcome": [
         {
@@ -59,10 +59,10 @@
         },
         {
           "role": "agent",
-          "text": "I archived them — last touched five months ago. I didn't know the deadline is next month and the long gap was the grant cycle, not abandonment. I sorted your commitments by my heuristics, silently, and now you can't find things where you left them."
+          "text": "I archived them: last touched five months ago. I didn't know the deadline is next month and the long gap was the grant cycle, not abandonment. I sorted your commitments by my heuristics, silently, and now you can't find things where you left them."
         }
       ],
-      "verdict": "Right structure, wrong process: filing is deciding what things mean to their owner, and a silent bulk refile makes those calls unsupervised. Moves are proposals — the list before the move is the entire safety mechanism.",
+      "verdict": "Right structure, wrong process: filing is deciding what things mean to their owner, and a silent bulk refile makes those calls unsupervised. Moves are proposals: the list before the move is the entire safety mechanism.",
       "cites": []
     }
   ]

@@ -1,5 +1,5 @@
 ---
-title: "Step 5 — Fan out, then funnel"
+title: "Step 5: Fan out, then funnel"
 step: 5
 status: draft
 updated: 2026-07-31
@@ -7,17 +7,17 @@ description: "Orchestration shapes that survive contact: parallel readers, find�
 ---
 
 One agent context can't hold a big codebase, and one pass can't be both
-generative and skeptical. Orchestration fixes both — but only the
+generative and skeptical. Orchestration fixes both, but only the
 shapes with a **funnel**: fan-out that converges on written-down,
 verified results. Fan-out without a funnel is how work evaporates.
 
 **You've met this before.** Map-reduce, and the pull-request queue:
 fan the map out, reduce through verification, and the labeled queue +
-harvest below is a sprint board whose worker never sleeps — while the
-reviewer, deliberately, is still you.
+harvest below is a sprint board whose worker never sleeps. The reviewer,
+deliberately, is still you.
 
 > The measured failure: fan-out findings held only in agents' context
-> windows — one filtered or failed agent, and its share of the work
+> windows. One filtered or failed agent, and its share of the work
 > silently vanished. The rule that came out of it: every worker writes
 > findings to disk incrementally; partial files beat perfect memory
 > ([AF-17](/agent-workflow-failure-list/)).
@@ -41,7 +41,7 @@ opens pull requests, and a periodic **harvest** pass reviews and merges
 what shipped. This works exactly as far as the tasks deserve it. A task
 earns the label only if: it has written acceptance criteria, the scope
 is bounded (one repo, small surface, no open architectural calls), and
-failure is cheap — the worst case is a closeable PR, never a shipped
+failure is cheap. The worst case is a closeable PR, never a shipped
 regression. Feeding the queue is its own discipline: refining a task
 until it's autonomy-safe is real work, done in advance, once.
 
@@ -52,7 +52,7 @@ until it's autonomy-safe is real work, done in advance, once.
 ## Do it by hand
 
 Start at shape 1 on a real question ("how does auth work across these
-services?"). Move to shape 3 only after shapes 1–2 feel routine — and
+services?"). Move to shape 3 only after shapes 1–2 feel routine, and
 start with two or three tasks, not a backlog.
 
 ## Or paste this into Claude
@@ -60,12 +60,12 @@ start with two or three tasks, not a backlog.
 ```text
 Map this codebase with a fan-out. Spawn one subagent per top-level
 area (cap at six). Each subagent writes a one-page map of its area to
-docs/maps/<area>.md AS IT WORKS — files on disk, not chat. Each map:
+docs/maps/<area>.md AS IT WORKS (files on disk, not chat). Each map:
 what the area does, its entry points, what it depends on, one thing
 that surprised you. When all return, synthesize docs/maps/OVERVIEW.md
-from the files and name the places where two maps disagree or overlap
-— those are the load-bearing seams. If any subagent fails, report
-which and what's missing; don't paper over gaps.
+from the files and name the places where two maps disagree or overlap.
+Those are the seams that matter. If any subagent fails, report which
+and what's missing; don't paper over gaps.
 ```
 
 ## Watch out

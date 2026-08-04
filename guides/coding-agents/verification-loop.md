@@ -1,5 +1,5 @@
 ---
-title: "Step 2 — Prove it before and after"
+title: "Step 2: Prove it before and after"
 step: 2
 status: draft
 updated: 2026-07-31
@@ -16,7 +16,7 @@ clothes: the test must fail (red) before its pass (green) means
 anything, and "write the regression test before the fix" is
 decades-old TDD discipline. Gate 2 is the smoke test; gate 3 is
 "working software over comprehensive documentation." What's new is
-only who forgets them — an agent under "fix it" pressure skips red
+only who forgets them: an agent under "fix it" pressure skips red
 and goes straight to a green story.
 
 ## The three gates
@@ -27,13 +27,13 @@ number. A probe that comes back clean on its first run is treated as
 broken until proven otherwise.
 
 > The incident behind this: a health-check probe with a broken relative
-> path reported "0 orphans" — zero findings, first run — and a fix
+> path reported "0 orphans" (zero findings, first run) and a fix
 > shipped against that reassuring nothing. Clean-on-first-run is a
 > smell, not a pass ([AF-01](/agent-workflow-failure-list/)).
 
 **2. Small proof before long cycle.** Before committing a full render,
 build, or deploy cycle to a change, run the smallest probe that could
-falsify it — seconds, not minutes.
+falsify it: seconds, not minutes.
 
 > The incident: a swapped parameter pair (the kind that compiles and
 > runs) was discovered only *after* a full audio render. A ten-second
@@ -51,15 +51,15 @@ a claim, not a result ([AF-04](/agent-workflow-failure-list/)).
 
 ## Do it by hand
 
-You don't need setup — you need two habits at the moment of asking:
+You don't need setup. You need two habits at the moment of asking:
 
 - Next bug: *"write the probe that reproduces this first, show me the
   failing output, then fix it, then show the same probe passing."* The
   before/after pair is the verification ([AF-02](/agent-workflow-failure-list/)).
 - Next long cycle: *"what's the smallest dry run that could falsify
   this change? Run that first."*
-- Next "it works": *"serve it"* — the page loaded, the test run, the
-  render played.
+- Next "it works": *"serve it"* (the page loaded, the test run, the
+  render played).
 
 Then persist them: both gates become one-liners in your working
 agreements ([step 1](/guides/coding-agents/working-agreements/)).
@@ -76,8 +76,8 @@ any full build, render, or deploy, run the smallest dry run that could
 falsify the change, and tell me what it proved. (3) Serve, don't
 describe: when the deliverable can be a running page, render, or test I
 can execute, deliver that instead of prose. Then add all three as
-one-liners to this project's CLAUDE.md under "## Working agreements" —
-show me the diff first.
+one-liners to this project's CLAUDE.md under "## Working agreements".
+Show me the diff first.
 ```
 
 ## Watch out

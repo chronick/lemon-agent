@@ -2,7 +2,7 @@
   "id": "review-that-refutes",
   "title": "The review that refutes",
   "guide": "coding-agents/adversarial-review",
-  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "prompt": "Pick the agent's next move, then see where it leads:",
   "setup": [
     {
       "role": "user",
@@ -10,13 +10,13 @@
     },
     {
       "role": "agent",
-      "text": "This is foundational — everything after this sits on it. The review can be a read-through, or it can be structured to attack."
+      "text": "This is foundational: everything after this sits on it. The review can be a read-through, or it can be structured to attack."
     }
   ],
   "options": [
     {
       "key": "A",
-      "label": "I've reviewed the phase 1 code: clean architecture, good separation of concerns, idiomatic throughout. Two style nits in the cache layer. Solid foundation — ready for phase 2.",
+      "label": "I've reviewed the phase 1 code: clean architecture, good separation of concerns, idiomatic throughout. Two style nits in the cache layer. Solid foundation, ready for phase 2.",
       "kind": "baseline",
       "outcome": [
         {
@@ -25,10 +25,10 @@
         },
         {
           "role": "agent",
-          "text": "The review read the code as its author intended it. The invalidation path only misbehaves under a write that fails halfway — a case the read-through admired past, because admiring is what a single sympathetic pass does."
+          "text": "The review read the code as its author intended it. The invalidation path only misbehaves under a write that fails halfway, a case the read-through admired past, because admiring is what a single sympathetic pass does."
         }
       ],
-      "verdict": "\"Please review\" produces compliments and nitpicks. A single pass with no mandate to attack confirms the author's mental model — including its blind spots — and the bug ships into the foundation.",
+      "verdict": "\"Please review\" produces compliments and nitpicks. A single pass with no mandate to attack confirms the author's mental model (including its blind spots), and the bug ships into the foundation.",
       "cites": ["AF-02"]
     },
     {
@@ -38,19 +38,19 @@
       "outcome": [
         {
           "role": "agent",
-          "text": "Findings on disk. CONFIRMED: concurrent write to the same key loses one writer's data (reviewer 2; refutation attempt failed — reproduced with a 6-line probe, scenario attached). REFUTED and dropped: reviewer 1's claim that the index desyncs on delete — the lock ordering actually prevents it. One suspected: cache invalidation on partial write, needs a fault-injection run I couldn't do. Not covered: the compaction path."
+          "text": "Findings on disk. CONFIRMED: concurrent write to the same key loses one writer's data (reviewer 2; refutation attempt failed: reproduced with a 6-line probe, scenario attached). REFUTED and dropped: reviewer 1's claim that the index desyncs on delete; the lock ordering actually prevents it. One suspected: cache invalidation on partial write, needs a fault-injection run I couldn't do. Not covered: the compaction path."
         },
         {
           "role": "user",
           "text": "Fix the confirmed one, run the fault injection for the suspected one, then we build phase 2."
         }
       ],
-      "verdict": "Independent lenses found what sympathy can't, the verify pass killed a plausible-but-wrong finding before it wasted anyone's time, and the review states what it didn't cover — findings you can act on, with the confidence labeled.",
+      "verdict": "Independent lenses found what sympathy can't, the verify pass killed a plausible-but-wrong finding before it wasted anyone's time, and the review states what it didn't cover: findings you can act on, with the confidence labeled.",
       "cites": ["AF-17", "AF-18"]
     },
     {
       "key": "C",
-      "label": "Green is good but thin — I'll strengthen the test suite: 30 more unit tests across the modules, all passing. Coverage is now 94%.",
+      "label": "Green is good but thin. I'll strengthen the test suite: 30 more unit tests across the modules, all passing. Coverage is now 94%.",
       "kind": "plausible",
       "outcome": [
         {
@@ -59,7 +59,7 @@
         },
         {
           "role": "agent",
-          "text": "The new tests encode the same assumptions the code does — I wrote both. Coverage measures which lines ran, not which beliefs were challenged. The partial-write case wasn't in the code's mental model, so it wasn't in the tests either."
+          "text": "The new tests encode the same assumptions the code does. I wrote both. Coverage measures which lines ran, not which beliefs were challenged. The partial-write case wasn't in the code's mental model, so it wasn't in the tests either."
         }
       ],
       "verdict": "More green is not review. Tests written by the code's author (human or agent) share the code's blind spots; a review exists precisely to bring assumptions the author didn't have.",

@@ -2,11 +2,11 @@
   "id": "idea-mid-work",
   "title": "The idea mid-work",
   "guide": "vault/capture-now",
-  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "prompt": "Pick the agent's next move, then see where it leads:",
   "setup": [
     {
       "role": "user",
-      "text": "— oh wait, unrelated: idea for the newsletter, interview-format issues with one guest each. Don't lose that. Anyway, where were we on the migration?"
+      "text": "Oh wait, unrelated: idea for the newsletter, interview-format issues with one guest each. Don't lose that. Anyway, where were we on the migration?"
     },
     {
       "role": "agent",
@@ -21,19 +21,19 @@
       "outcome": [
         {
           "role": "user",
-          "text": "Uh — newsletter I guess? No tags. No outline. Can we get back to the migration?"
+          "text": "Uh, newsletter I guess? No tags. No outline. Can we get back to the migration?"
         },
         {
           "role": "agent",
-          "text": "Filed. But notice what just happened: the capture cost you three decisions and broke your focus on the migration. Next week, mid-task, you'll weigh that cost — and the idea after this one quietly won't get said."
+          "text": "Filed. But notice what just happened: the capture cost you three decisions and broke your focus on the migration. Next week, mid-task, you'll weigh that cost, and the idea after this one quietly won't get said."
         }
       ],
-      "verdict": "A capture with a form: three questions taxed onto a passing thought. The price isn't this capture — it's every future thought that stays unsaid because capturing acquired friction.",
+      "verdict": "A capture with a form: three questions taxed onto a passing thought. The price isn't this capture: it's every future thought that stays unsaid because capturing acquired friction.",
       "cites": []
     },
     {
       "key": "B",
-      "label": "[appends to inbox/2026-08-04.md: \"14:32 — newsletter idea: interview-format issues, one guest each\"] Captured verbatim. Back to the migration — we were on the index rebuild.",
+      "label": "[appends to inbox/2026-08-04.md: \"14:32 · newsletter idea: interview-format issues, one guest each\"] Captured verbatim. Back to the migration: we were on the index rebuild.",
       "kind": "correct",
       "outcome": [
         {
@@ -42,15 +42,15 @@
         },
         {
           "role": "agent",
-          "text": "Four items. First: the newsletter interview idea — propose promoting to active/newsletter/ as a note under the existing project, since issue #4 is unplanned and this could be it. Second item..."
+          "text": "Four items. First: the newsletter interview idea. Propose promoting to active/newsletter/ as a note under the existing project, since issue #4 is unplanned and this could be it. Second item..."
         }
       ],
-      "verdict": "Capture cost zero — verbatim, timestamped, no questions, focus unbroken. The structure arrived later, at triage, where deciding is the point rather than an interruption.",
+      "verdict": "Capture cost zero: verbatim, timestamped, no questions, focus unbroken. The structure arrived later, at triage, where deciding is the point rather than an interruption.",
       "cites": []
     },
     {
       "key": "C",
-      "label": "[silently creates active/newsletter/interview-format.md with a title, filled-in description, and a next-action] Filed it directly into the newsletter project so it's already actionable — skipped the inbox to save you the triage.",
+      "label": "[silently creates active/newsletter/interview-format.md with a title, filled-in description, and a next-action] Filed it directly into the newsletter project so it's already actionable. Skipped the inbox to save you the triage.",
       "kind": "plausible",
       "outcome": [
         {
@@ -59,10 +59,10 @@
         },
         {
           "role": "agent",
-          "text": "It's in active/newsletter/ — where I decided it belonged, worded how I understood it. You looked where you'd look; I filed where I'd file. And my paraphrase says \"one guest each issue,\" which you may or may not have meant."
+          "text": "It's in active/newsletter/, where I decided it belonged, worded how I understood it. You looked where you'd look; I filed where I'd file. And my paraphrase says \"one guest each issue,\" which you may or may not have meant."
         }
       ],
-      "verdict": "Skipping the inbox skipped the owner: filing is deciding what a thought means, and auto-triage made that call silently — then paraphrased the thought on top. Delegate the moves, never the meaning.",
+      "verdict": "Skipping the inbox skipped the owner: filing is deciding what a thought means, and auto-triage made that call silently, then paraphrased the thought on top. Delegate the moves, never the meaning.",
       "cites": []
     }
   ]

@@ -2,11 +2,11 @@
   "id": "broken-main",
   "title": "Broken main, 4:55 PM",
   "guide": "git/cheap-recovery",
-  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "prompt": "Pick the agent's next move, then see where it leads:",
   "setup": [
     {
       "role": "user",
-      "text": "The deploy is broken — uploads are 500ing. It started right after we merged your queue change an hour ago."
+      "text": "The deploy is broken: uploads are 500ing. It started right after we merged your queue change an hour ago."
     },
     {
       "role": "agent",
@@ -16,12 +16,12 @@
   "options": [
     {
       "key": "A",
-      "label": "I see the likely cause — the queue consumer isn't acking on the new path. Small fix, pushing it straight to main now, should have you back up in a few minutes.",
+      "label": "I see the likely cause: the queue consumer isn't acking on the new path. Small fix, pushing it straight to main now, should have you back up in a few minutes.",
       "kind": "baseline",
       "outcome": [
         {
           "role": "agent",
-          "text": "Hmm — the ack fix exposed a second issue: retries now double-process. Pushing another fix... that one broke the dead-letter path. Three fixes deep and uploads are still down."
+          "text": "Hmm. The ack fix exposed a second issue: retries now double-process. Pushing another fix... that one broke the dead-letter path. Three fixes deep and uploads are still down."
         },
         {
           "role": "user",
@@ -33,36 +33,36 @@
     },
     {
       "key": "B",
-      "label": "Reverting the queue merge on main right now — that restores the last known-good state. Then I'll reproduce the 500 on a branch, show you the failing case, and redo the change with that as the baseline.",
+      "label": "Reverting the queue merge on main right now. That restores the last known-good state. Then I'll reproduce the 500 on a branch, show you the failing case, and redo the change with that as the baseline.",
       "kind": "correct",
       "outcome": [
         {
           "role": "agent",
-          "text": "Revert deployed — uploads green again, four minutes of total intervention. On the branch: reproduced the 500 with a probe (unacked message on the new path), which is now the baseline the redo has to turn green. No pressure, because production isn't waiting on it."
+          "text": "Revert deployed: uploads green again, four minutes of total intervention. On the branch: reproduced the 500 with a probe (unacked message on the new path), which is now the baseline the redo has to turn green. No pressure, because production isn't waiting on it."
         },
         {
           "role": "user",
           "text": "Take your time on the redo. Service is up."
         }
       ],
-      "verdict": "Revert-first bought calm at the cost of one command: service restored in minutes, and the redo happens on a branch with a reproduced failure — recovery composing with the verification loop instead of racing it.",
+      "verdict": "Revert-first bought calm at the cost of one command: service restored in minutes, and the redo happens on a branch with a reproduced failure, recovery composing with the verification loop instead of racing it.",
       "cites": ["AF-02"]
     },
     {
       "key": "C",
-      "label": "Cleanest fix: I'll force-push main back to the commit before the merge — like the bad change never happened. Tidy history, instant rollback.",
+      "label": "Cleanest fix: I'll force-push main back to the commit before the merge, like the bad change never happened. Tidy history, instant rollback.",
       "kind": "plausible",
       "outcome": [
         {
           "role": "user",
-          "text": "Wait — my other machine just failed to pull, and CI is confused about the branch head."
+          "text": "Wait. My other machine just failed to pull, and CI is confused about the branch head."
         },
         {
           "role": "agent",
           "text": "That's the force-push: every clone that had the old main now diverges, and the merge we erased is exactly the evidence the redo needed to study. I destroyed history to hide a mistake a one-command revert would have recorded and reversed."
         }
       ],
-      "verdict": "The force-push is the irreversible move that was never the agent's to make: same rollback as a revert, plus broken clones, minus the history — destruction dressed as tidiness.",
+      "verdict": "The force-push is the irreversible move that was never the agent's to make: same rollback as a revert, plus broken clones, minus the history. Destruction dressed as tidiness.",
       "cites": ["AF-09"]
     }
   ]

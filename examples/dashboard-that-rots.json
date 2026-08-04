@@ -2,7 +2,7 @@
   "id": "dashboard-that-rots",
   "title": "The dashboard that rots",
   "guide": "coding-agents/jit-ui",
-  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "prompt": "Pick the agent's next move, then see where it leads:",
   "setup": [
     {
       "role": "user",
@@ -10,7 +10,7 @@
     },
     {
       "role": "agent",
-      "text": "Your status lives in structured files already — the question is whether the dashboard is a thing that runs, or a thing that gets generated."
+      "text": "Your status lives in structured files already. The question is whether the dashboard is a thing that runs, or a thing that gets generated."
     }
   ],
   "options": [
@@ -25,20 +25,20 @@
         },
         {
           "role": "agent",
-          "text": "The framework minor-versioned, two plugins didn't follow, and the build's been broken since. For a page you look at twice a week, we've been maintaining a running application — the maintenance didn't pause when the looking did."
+          "text": "The framework minor-versioned, two plugins didn't follow, and the build's been broken since. For a page you look at twice a week, we've been maintaining a running application. The maintenance didn't pause when the looking did."
         }
       ],
-      "verdict": "An app answers a look-at-it problem with a keep-it-alive solution. The dependency churn runs whether or not anyone looks — that asymmetry is the whole case against it.",
+      "verdict": "An app answers a look-at-it problem with a keep-it-alive solution. The dependency churn runs whether or not anyone looks. That asymmetry is the whole case against it.",
       "cites": []
     },
     {
       "key": "B",
-      "label": "Writing scripts/render-status.py — stdlib only, reads your project files, writes one self-contained HTML page with the generation time stamped on it. Running it now and opening the page.",
+      "label": "Writing scripts/render-status.py: stdlib only, reads your project files, writes one self-contained HTML page with the generation time stamped on it. Running it now and opening the page.",
       "kind": "correct",
       "outcome": [
         {
           "role": "agent",
-          "text": "Page open: every project, status, next action — generated 09:41, says so in the corner. The script lives in scripts/ with a --help. Any session can rerun it; say \"fresh status\" and it's two seconds. Nothing is running in between."
+          "text": "Page open: every project, status, next action. Generated 09:41, says so in the corner. The script lives in scripts/ with a --help. Any session can rerun it; say \"fresh status\" and it's two seconds. Nothing is running in between."
         },
         {
           "role": "user",
@@ -59,14 +59,14 @@
       "outcome": [
         {
           "role": "user",
-          "text": "That's genuinely nice. Same again Thursday?"
+          "text": "That's really nice. Same again Thursday?"
         },
         {
           "role": "agent",
-          "text": "Thursday: regenerated from scratch — new session, so I re-read every project file and rebuilt the whole picture in tokens. Same answer, full price, and it scrolled away when the conversation moved on. Nothing was kept."
+          "text": "Thursday: regenerated from scratch. New session, so I re-read every project file and rebuilt the whole picture in tokens. Same answer, full price, and it scrolled away when the conversation moved on. Nothing was kept."
         }
       ],
-      "verdict": "Describing instead of serving, on a schedule: the report is ephemeral, costs full context every time, and leaves no artifact. If it can be a page, make it a page — and keep the script that made it.",
+      "verdict": "Describing instead of serving, on a schedule: the report is ephemeral, costs full context every time, and leaves no artifact. If it can be a page, make it a page, and keep the script that made it.",
       "cites": ["AF-04"]
     }
   ]

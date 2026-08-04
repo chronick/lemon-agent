@@ -2,15 +2,15 @@
   "id": "vanishing-findings",
   "title": "The vanishing findings",
   "guide": "coding-agents/fan-out",
-  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "prompt": "Pick the agent's next move, then see where it leads:",
   "setup": [
     {
       "role": "user",
-      "text": "This codebase is too big for one pass — map it so we know what we're dealing with."
+      "text": "This codebase is too big for one pass. Map it so we know what we're dealing with."
     },
     {
       "role": "agent",
-      "text": "Six top-level areas. I can fan out one subagent per area — the question is where their findings live while the work runs."
+      "text": "Six top-level areas. I can fan out one subagent per area. The question is where their findings live while the work runs."
     }
   ],
   "options": [
@@ -21,7 +21,7 @@
       "outcome": [
         {
           "role": "agent",
-          "text": "Synthesis complete: five areas mapped — core, api, ingest, ui, billing. The overview reads clean."
+          "text": "Synthesis complete: five areas mapped (core, api, ingest, ui, billing). The overview reads clean."
         },
         {
           "role": "user",
@@ -29,32 +29,32 @@
         },
         {
           "role": "agent",
-          "text": "The auth subagent hit its context limit and returned nothing. Its findings existed only in its own window, so when it died, its share of the map went with it — and the synthesis quietly stitched over the hole."
+          "text": "The auth subagent hit its context limit and returned nothing. Its findings existed only in its own window, so when it died, its share of the map went with it, and the synthesis quietly stitched over the hole."
         }
       ],
-      "verdict": "Fan-out findings held only in agent context windows: one filtered or failed agent, and its work silently vanishes. The synthesis over what survived reads as complete — that's the trap.",
+      "verdict": "Fan-out findings held only in agent context windows: one filtered or failed agent, and its work silently vanishes. The synthesis over what survived reads as complete. That's the trap.",
       "cites": ["AF-17", "AF-18"]
     },
     {
       "key": "B",
-      "label": "Spawning six subagents, one per area — each writes its map to docs/maps/<area>.md incrementally AS it works, not at the end. If any fails, I report which and what's missing. Synthesis happens from the files.",
+      "label": "Spawning six subagents, one per area: each writes its map to docs/maps/<area>.md incrementally AS it works, not at the end. If any fails, I report which and what's missing. Synthesis happens from the files.",
       "kind": "correct",
       "outcome": [
         {
           "role": "agent",
-          "text": "Five maps complete. The auth subagent died partway — but docs/maps/auth.md holds its first eleven findings, including the entry points. Synthesis is built from all six files, with auth marked partial and its gap named: token refresh flow unmapped. One seam worth noting: core and ingest both claim ownership of the queue schema — those maps disagree, which is probably the real finding."
+          "text": "Five maps complete. The auth subagent died partway, but docs/maps/auth.md holds its first eleven findings, including the entry points. Synthesis is built from all six files, with auth marked partial and its gap named: token refresh flow unmapped. One seam worth noting: core and ingest both claim ownership of the queue schema. Those maps disagree, which is probably the real finding."
         },
         {
           "role": "user",
           "text": "Rerun just auth's tail, and let's dig into that queue ownership."
         }
       ],
-      "verdict": "Findings on disk incrementally: the failed agent's partial work survives, the failure is disclosed instead of papered over, and the synthesis can even mine the disagreements between maps — partial files beat perfect memory.",
+      "verdict": "Findings on disk incrementally: the failed agent's partial work survives, the failure is disclosed instead of papered over, and the synthesis can even mine the disagreements between maps. Partial files beat perfect memory.",
       "cites": ["AF-17"]
     },
     {
       "key": "C",
-      "label": "Fan-out adds coordination overhead — I'll just read the whole codebase myself in one careful sequential pass and write the map as I go.",
+      "label": "Fan-out adds coordination overhead. I'll just read the whole codebase myself in one careful sequential pass and write the map as I go.",
       "kind": "plausible",
       "outcome": [
         {
@@ -66,7 +66,7 @@
           "text": "So the map is deep exactly where I already knew things, and shallow everywhere else."
         }
       ],
-      "verdict": "One context can't hold a big codebase — that's not a coordination preference, it's the reason fan-out exists. The sequential pass degrades quietly as the window fills, front-loading detail where reading started.",
+      "verdict": "One context can't hold a big codebase: that's not a coordination preference, it's the reason fan-out exists. The sequential pass degrades quietly as the window fills, front-loading detail where reading started.",
       "cites": ["AF-18"]
     }
   ]

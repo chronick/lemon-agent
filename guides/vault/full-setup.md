@@ -1,5 +1,5 @@
 ---
-title: "Step 0 — The one-paste vault"
+title: "Step 0: The one-paste vault"
 step: 0
 status: draft
 updated: 2026-08-04
@@ -12,10 +12,10 @@ triage are things you can delegate. Every habit gets its own step;
 this paste bootstraps the whole shape at once, confirming each file
 before it's written.
 
-What it sets up — each explained in its own step:
+What it sets up (each explained in its own step):
 
 - **Plain files in a repo** ([step 1](/guides/vault/plain-files/))
-- **Lifecycle directories** — location is state ([step 2](/guides/vault/location-is-state/))
+- **Lifecycle directories**: location is state ([step 2](/guides/vault/location-is-state/))
 - **An inbox** for frictionless capture ([step 3](/guides/vault/capture-now/))
 - **A daily log** ([step 4](/guides/vault/daily-log/))
 - **A CLAUDE.md** that teaches the agent the shape ([step 5](/guides/vault/teach-the-shape/))
@@ -41,7 +41,7 @@ file before writing it, and wait for my ok between steps.
 
 3. Write CLAUDE.md at the vault root teaching an agent the shape:
    what each directory means, the conventions above, and three
-   working agreements — file into the structure (never invent new
+   working agreements: file into the structure (never invent new
    top-level dirs without asking), moves are proposals (show the list
    before moving anything), archived/ is read-only.
 
@@ -56,5 +56,5 @@ file before writing it, and wait for my ok between steps.
 ## If you'd rather go manual
 
 Read [step 1](/guides/vault/plain-files/) and [step
-3](/guides/vault/capture-now/) — a folder of markdown plus a capture
+3](/guides/vault/capture-now/). A folder of markdown plus a capture
 habit is already a working vault; the rest layers on.

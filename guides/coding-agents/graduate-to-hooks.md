@@ -1,19 +1,19 @@
 ---
-title: "Step 8 — Graduate protocol to hooks"
+title: "Step 8: Graduate protocol to hooks"
 step: 8
 status: draft
 updated: 2026-07-31
-description: "Rules a script can check shouldn't stay prose: edit-time advisory hooks that flag findings mechanically — advisory, never a judgment-replacing gate."
+description: "Rules a script can check shouldn't stay prose: edit-time advisory hooks that flag findings mechanically. Advisory, never a judgment-replacing gate."
 ---
 
 Some working agreements are judgment calls forever. Others are
-mechanically checkable — quoting bugs, type leaks at serialization
+mechanically checkable: quoting bugs, type leaks at serialization
 boundaries, metered clients in test files. Those **graduate**: from a
 line of prose the agent might honor, to a hook that flags the problem
 at edit time, every time, for free.
 
-**You've met this before.** Linters, pre-commit hooks, CI checks —
-shift-left, poka-yoke. The agent twist is only the audience: the
+**You've met this before.** Linters, pre-commit hooks, CI checks.
+Shift-left, poka-yoke. The agent twist is only the audience: the
 hook's report lands mid-session where the agent reads it and fixes
 the finding before you ever see it.
 
@@ -22,7 +22,7 @@ the finding before you ever see it.
 > [AF-12](/agent-workflow-failure-list/)) became an edit-time hook
 > running `ruff` on python and `shellcheck` on shell for every file the
 > agent touches. The detail that matters: **shellcheck's default
-> severity misses SC2086** — the exact class that motivated the hook —
+> severity misses SC2086** (the exact class that motivated the hook),
 > so it must run at `--severity=info` or it silently fails its own
 > founding incident. That's the difference between installing a linter
 > and encoding *your* incident.
@@ -35,7 +35,7 @@ asked. A hard-failing gate on taste- or judgment-adjacent checks
 recreates the failure the workflow list warns about: the problem being
 named is skipping judgment, and a gate that replaces judgment repeats
 it. (The entries marked ⚙ on [the workflow
-list](/agent-workflow-failure-list/) are the natural graduates —
+list](/agent-workflow-failure-list/) are the natural graduates:
 checkable by a script, still deserving a human-visible report.)
 
 ## Try it
@@ -44,7 +44,7 @@ checkable by a script, still deserving a human-visible report.)
 
 ## Do it by hand
 
-1. Pick your most mechanical agreement — quoting
+1. Pick your most mechanical agreement: quoting
    ([AF-12](/agent-workflow-failure-list/)), numeric type leaks
    ([AF-13](/agent-workflow-failure-list/)), billed clients in tests
    ([AF-06](/agent-workflow-failure-list/)).
@@ -72,7 +72,7 @@ to call it. Show me every file before writing it.
 ## Watch out
 
 - **Default severities**: the founding incident of your hook may be
-  below the tool's default threshold — verify the hook flags the exact
+  below the tool's default threshold. Verify the hook flags the exact
   incident that motivated it ([step
   2](/guides/coding-agents/verification-loop/): baseline before trusting the probe).
 - **Hard gates on advisory checks**: blocked edits teach the agent to

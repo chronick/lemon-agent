@@ -2,7 +2,7 @@
   "id": "third-time-tool",
   "title": "The third time",
   "guide": "coding-agents/build-tools",
-  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "prompt": "Pick the agent's next move, then see where it leads:",
   "setup": [
     {
       "role": "user",
@@ -10,13 +10,13 @@
     },
     {
       "role": "agent",
-      "text": "That's the third time we've run this exact sequence by hand — loudness scan, rename, file. I can just do it again, or this is the signal to build something."
+      "text": "That's the third time we've run this exact sequence by hand: loudness scan, rename, file. I can just do it again, or this is the signal to build something."
     }
   ],
   "options": [
     {
       "key": "A",
-      "label": "It's only a few commands — faster to just run it than to build anything. Doing it now: scanning, renaming, filing. Done in two minutes.",
+      "label": "It's only a few commands, faster to just run it than to build anything. Doing it now: scanning, renaming, filing. Done in two minutes.",
       "kind": "baseline",
       "outcome": [
         {
@@ -25,20 +25,20 @@
         },
         {
           "role": "agent",
-          "text": "In that run I passed -24 instead of -14 to the normalizer — a typo in a hand-typed command, and nothing checked it. Each manual repetition re-rolls the dice on every flag; this time one came up wrong, silently."
+          "text": "In that run I passed -24 instead of -14 to the normalizer, a typo in a hand-typed command, and nothing checked it. Each manual repetition re-rolls the dice on every flag; this time one came up wrong, silently."
         }
       ],
-      "verdict": "Manual repetition has variance, and variance compounds silently. \"Faster to just do it\" is true exactly once — by the third repeat, the two minutes are an illusion priced in future mistakes.",
+      "verdict": "Manual repetition has variance, and variance compounds silently. \"Faster to just do it\" is true exactly once. By the third repeat, the two minutes are an illusion priced in future mistakes.",
       "cites": []
     },
     {
       "key": "B",
-      "label": "Third time is the signal. I'll write sample-intake: one small CLI — scan, rename, file — with --lufs as a flag (default from your config, not baked in), an accurate --help, and I'll run it on this batch right now to prove it works.",
+      "label": "Third time is the signal. I'll write sample-intake: one small CLI (scan, rename, file) with --lufs as a flag (default from your config, not baked in), an accurate --help, and I'll run it on this batch right now to prove it works.",
       "kind": "correct",
       "outcome": [
         {
           "role": "agent",
-          "text": "Written and run on the real batch: 14 samples normalized, renamed, filed — output attached. The target level is a flag, so the day you want -16 for a client, nothing gets rewritten. Next week this is one command — for you or for me."
+          "text": "Written and run on the real batch: 14 samples normalized, renamed, filed. Output attached. The target level is a flag, so the day you want -16 for a client, nothing gets rewritten. Next week this is one command, for you or for me."
         },
         {
           "role": "user",
@@ -46,7 +46,7 @@
         },
         {
           "role": "agent",
-          "text": "Separate small tool, piped after this one. They compose through files — that's the point of keeping each one small."
+          "text": "Separate small tool, piped after this one. They compose through files: that's the point of keeping each one small."
         }
       ],
       "verdict": "The repetition became a tool: small, policy-free (the threshold stays with the caller), proven on real input the same session. Every future run costs one command and zero variance.",
@@ -63,10 +63,10 @@
         },
         {
           "role": "agent",
-          "text": "The one-folder case needs profile overrides in the config, and the watcher bug is an interaction between two flags... honestly, the menu system is now the thing we maintain instead of the thing that works."
+          "text": "The one-folder case needs profile overrides in the config, and the watcher bug is an interaction between two flags... the menu system is now the thing we maintain instead of the thing that works."
         }
       ],
-      "verdict": "The app in disguise: interacting options, a config file, state — a maintenance surface nobody asked for, wrapped around what wanted to be three small composable tools.",
+      "verdict": "The app in disguise: interacting options, a config file, state. A maintenance surface nobody asked for, wrapped around what wanted to be three small composable tools.",
       "cites": []
     }
   ]

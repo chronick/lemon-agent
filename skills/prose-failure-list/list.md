@@ -7,7 +7,7 @@ entries: 24
 prefix: "PF"
 status: draft
 updated: 2026-07-31
-description: "24 numbered failures of AI-assisted prose, run as a subtraction pass — every match is a cut or a rewrite, never an addition."
+description: "24 numbered failures of AI-assisted prose, run as a subtraction pass: every match is a cut or a rewrite, never an addition."
 ---
 
 Run it against a draft — yours, or your assistant's. Every match is a

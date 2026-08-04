@@ -3,7 +3,7 @@ name: prose-failure-list
 description: Run the Lemon Agent Prose Failure List (PF-01…PF-24) against a draft as a subtraction pass. Use when the user asks to run the prose failure list, tighten a draft, de-slop writing, review prose for AI tells, or do a subtraction pass on any piece of writing.
 ---
 
-# Prose Failure List — subtraction pass
+# Prose Failure List: the subtraction pass
 
 Read `list.md` in this skill's directory: the canonical PF-01…PF-24
 entries. Apply them to the target draft.
@@ -13,7 +13,7 @@ entries. Apply them to the target draft.
    the exact cut or rewrite. Group findings by where they sit in the
    draft, not by PF id.
 3. **Never add content.** Every proposal removes or tightens. If a
-   passage needs something it doesn't have, say so as a question — don't
+   passage needs something it doesn't have, say so as a question. Don't
    write it.
 4. A match is a signal, not a sentence. If something reads deliberate,
    flag it as "kept on purpose?" instead of proposing an edit.
@@ -22,4 +22,4 @@ entries. Apply them to the target draft.
 
 Output the pass as a table (id · quote · proposed edit), then the three
 highest-value edits in prose. If the user asks you to apply the edits,
-apply only the ones they pick — this pass advises, it never gates.
+apply only the ones they pick. This pass advises, it never gates.

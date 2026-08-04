@@ -1,5 +1,5 @@
 ---
-title: "Step 4 — Reviews that try to kill the work"
+title: "Step 4: Reviews that try to kill the work"
 step: 4
 status: draft
 updated: 2026-07-31
@@ -13,14 +13,14 @@ verify pass that tries to kill each finding before you act on any of
 them.
 
 **You've met this before.** Code review crossed with a red team, plus
-mutation testing's founding instinct — a test that can't fail proves
+mutation testing's founding instinct: a test that can't fail proves
 nothing, and neither does a reviewer that can't refute. Independent
 passes are the old two-reviewer rule; agents just make N reviewers
 cost what one used to.
 
 > Where this comes from: on a multi-phase foundational build, a
 > per-phase multi-agent correctness review caught real data-loss,
-> panic, and cache-invalidation bugs — in code a green test suite had
+> panic, and cache-invalidation bugs in code a green test suite had
 > already passed. It earned a standing rule: after each phase of
 > foundational work, review-then-refactor before building the next
 > floor on top.
@@ -48,10 +48,10 @@ cost what one used to.
 
 ## When to run it
 
-- After each **phase** of foundational or multi-phase work — the
+- After each **phase** of foundational or multi-phase work: the
   standing rule above.
 - Before merging anything an agent built **while you weren't
-  watching** (overnight runs, background tasks — see
+  watching** (overnight runs, background tasks; see
   [step 5](/guides/coding-agents/fan-out/)).
 - Any time green tests are the only evidence you have. Tests prove
   what they test; the review hunts what they don't.
@@ -69,7 +69,7 @@ findings with file:line and the failing scenario. Then run a verify
 pass: for each finding, try to refute it against the actual code, and
 drop anything you can't confirm. Report only confirmed findings, most
 severe first. State what the review did NOT cover. Don't fix anything
-yet — findings first, fixes on my pick.
+yet: findings first, fixes on my pick.
 ```
 
 ## Watch out
@@ -79,4 +79,4 @@ yet — findings first, fixes on my pick.
 - **Coverage theater** ([AF-18](/agent-workflow-failure-list/)): a
   review that sampled three files reads identically to one that read
   the codebase, unless disclosure is demanded. "State what you did not
-  cover" is load-bearing.
+  cover" is the part that matters.

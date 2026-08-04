@@ -3,7 +3,7 @@
 // astro.config.mjs embeds it into guide chapters at
 // <div data-example="<id>"> placeholders, and the standalone
 // /examples/<id>/ pages serialize it with hastToHtml below.
-// Interaction is CSS-only (radio + sibling selectors) — no client JS.
+// Interaction is CSS-only (radio + sibling selectors); no client JS.
 
 import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -33,7 +33,7 @@ const text = (value) => ({ type: 'text', value });
 const VERDICT_CHIP = {
   baseline: 'the baseline',
   correct: 'correct',
-  plausible: 'plausible — wrong',
+  plausible: 'plausible but wrong',
 };
 
 function turnNodes(turns) {

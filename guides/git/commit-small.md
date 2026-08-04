@@ -1,21 +1,21 @@
 ---
-title: "Step 1 — Checkpoint commits"
+title: "Step 1: Checkpoint commits"
 step: 1
 status: draft
 updated: 2026-08-04
-description: "Small, frequent, single-purpose commits — the save points that make agent speed safe."
+description: "Small, frequent, single-purpose commits: the save points that make agent speed safe."
 ---
 
 An agent edits at machine speed, which means it also breaks things at
 machine speed. The commit is your save point: **small, frequent,
 single-purpose**. With checkpoints every few minutes of agent work,
-any mistake costs a `git diff` and a decision — not an afternoon of
-archaeology.
+any mistake costs a `git diff` and a decision, not an afternoon of
+digging through history.
 
 **You've met this before.** "Commit early, commit often" is as old as
 version control. The agent twist is volume and asymmetry: the agent
 produces changes faster than you review them, so the checkpoint
-cadence — not the review cadence — is what bounds how much work a bad
+cadence (not the review cadence) is what bounds how much work a bad
 turn can destroy.
 
 ## The habit
@@ -41,27 +41,27 @@ turn can destroy.
 ## Do it by hand
 
 Next session, open with: *"after each change that builds and passes
-tests, propose a commit — show me the diff summary and a one-line
-why."* You approve each one; after a day it's ambient.
+tests, propose a commit: show me the diff summary and a one-line
+why."* You approve each one; after a day it's habit.
 
 ## Or paste this into Claude
 
 ```text
 For the rest of this session: after each coherent change that builds
 and passes tests, stage exactly the files that change belongs to and
-propose a commit — show me the short diff stat and a message whose
+propose a commit: show me the short diff stat and a message whose
 first line says what and whose body says why. Never batch unrelated
 changes into one commit; if you notice unrelated edits you made along
 the way, list them separately and ask. If more than ~30 minutes of
 work has gone uncommitted, say so and propose a checkpoint. Then add
-this as a "checkpoint commits" line to CLAUDE.md so it sticks — show
+this as a "checkpoint commits" line to CLAUDE.md so it sticks. Show
 me the diff first.
 ```
 
 ## Watch out
 
 - **The wall-of-diff session**: hours of agent work, no commits, one
-  giant "did everything" diff at the end. That's not reviewable — and
+  giant "did everything" diff at the end. That's not reviewable, and
   un-reviewable diffs get skimmed ([step
   4](/guides/git/review-the-diff/)).
 - **Commit spam**: checkpoints at green, not after every keystroke.

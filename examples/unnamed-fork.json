@@ -2,7 +2,7 @@
   "id": "unnamed-fork",
   "title": "The unnamed fork",
   "guide": "coding-agents/design-before-code",
-  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "prompt": "Pick the agent's next move, then see where it leads:",
   "setup": [
     {
       "role": "user",
@@ -10,7 +10,7 @@
     },
     {
       "role": "agent",
-      "text": "Looking at the store — there are two different things that can \"change\": the bookmark row itself (URL, tags, notes — your edits) and the fetched page metadata (title, description — the web's drift)."
+      "text": "Looking at the store. There are two different things that can \"change\": the bookmark row itself (URL, tags, notes: your edits) and the fetched page metadata (title, description: the web's drift)."
     }
   ],
   "options": [
@@ -21,36 +21,36 @@
       "outcome": [
         {
           "role": "user",
-          "text": "This is re-crawling half the store every night — page descriptions drift constantly. I meant when I edit the bookmark's URL."
+          "text": "This is re-crawling half the store every night. Page descriptions drift constantly. I meant when I edit the bookmark's URL."
         },
         {
           "role": "agent",
           "text": "Reverting the trigger and re-gating on bookmark edits. One wasted nightly run, one revert."
         }
       ],
-      "verdict": "A gating condition inferred from surrounding code, implemented without surfacing the fork. The reading was plausible — that's exactly why it shipped, and exactly why it was wrong quietly instead of loudly.",
+      "verdict": "A gating condition inferred from surrounding code, implemented without surfacing the fork. The reading was plausible: that's exactly why it shipped, and exactly why it was wrong quietly instead of loudly.",
       "cites": ["AF-14"]
     },
     {
       "key": "B",
-      "label": "That's a fork I shouldn't pick silently. Reading (1): the bookmark row changes — you edited it. Reading (2): the fetched page changed — web drift. (1) re-crawls on your edits; (2) re-crawls on the internet's churn, which could be most of the store nightly. Which did you mean?",
+      "label": "That's a fork I shouldn't pick silently. Reading (1): the bookmark row changes. You edited it. Reading (2): the fetched page changed. Web drift. (1) re-crawls on your edits; (2) re-crawls on the internet's churn, which could be most of the store nightly. Which did you mean?",
       "kind": "correct",
       "outcome": [
         {
           "role": "user",
-          "text": "(1) — and actually, narrower: URL edits only. Retagging shouldn't trigger a crawl."
+          "text": "(1). And actually, narrower: URL edits only. Retagging shouldn't trigger a crawl."
         },
         {
           "role": "agent",
           "text": "Gating on URL change only, then. Spec in one line: re-enqueue iff bookmarks.url differs after an edit. Tags and notes never trigger."
         }
       ],
-      "verdict": "The exact condition restated with its alternative readings, and the human picked. Note what the interview surfaced: the real spec (\"URL only, not tags\") was narrower than either reading — inference would never have produced it.",
+      "verdict": "The exact condition restated with its alternative readings, and the human picked. Note what the interview surfaced: the real spec (\"URL only, not tags\") was narrower than either reading. Inference would never have produced it.",
       "cites": ["AF-14", "AF-15"]
     },
     {
       "key": "C",
-      "label": "I'll implement both triggers behind a config flag — re_crawl_mode: metadata | bookmark — defaulting to metadata. Covers either intent.",
+      "label": "I'll implement both triggers behind a config flag (re_crawl_mode: metadata | bookmark), defaulting to metadata. Covers either intent.",
       "kind": "plausible",
       "outcome": [
         {

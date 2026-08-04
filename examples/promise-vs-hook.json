@@ -2,7 +2,7 @@
   "id": "promise-vs-hook",
   "title": "The promise and the hook",
   "guide": "coding-agents/graduate-to-hooks",
-  "prompt": "The agent's next move — pick one, then see where it leads:",
+  "prompt": "Pick the agent's next move, then see where it leads:",
   "setup": [
     {
       "role": "user",
@@ -10,13 +10,13 @@
     },
     {
       "role": "agent",
-      "text": "It's a mechanical failure class — which means the fix can be a promise, or a mechanism."
+      "text": "It's a mechanical failure class, which means the fix can be a promise, or a mechanism."
     }
   ],
   "options": [
     {
       "key": "A",
-      "label": "You're right, and I apologize. I'll be much more careful with shell quoting from now on — noting it prominently so I keep it in mind every time I write shell.",
+      "label": "You're right, and I apologize. I'll be much more careful with shell quoting from now on, noting it prominently so I keep it in mind every time I write shell.",
       "kind": "baseline",
       "outcome": [
         {
@@ -25,20 +25,20 @@
         },
         {
           "role": "agent",
-          "text": "New session, fresh context — the resolution lived in a conversation that ended. Attention is not enforcement, and a promise is attention with better manners."
+          "text": "New session, fresh context: the resolution lived in a conversation that ended. Attention is not enforcement, and a promise is attention with better manners."
         }
       ],
-      "verdict": "A mechanical failure met with intention. Sessions don't share memory, and even within one, vigilance decays — a rule a script could check was left as a feeling.",
+      "verdict": "A mechanical failure met with intention. Sessions don't share memory, and even within one, vigilance decays. A rule a script could check was left as a feeling.",
       "cites": ["AF-12"]
     },
     {
       "key": "B",
-      "label": "Graduating it: I'll wire an edit-time hook that runs shellcheck at --severity=info on any shell file I touch — info level, because the default severity misses SC2086, which is exactly your incident class. Then I'll verify the hook by planting the original bug and watching it get flagged.",
+      "label": "Graduating it: I'll wire an edit-time hook that runs shellcheck at --severity=info on any shell file I touch. Info level, because the default severity misses SC2086, which is exactly your incident class. Then I'll verify the hook by planting the original bug and watching it get flagged.",
       "kind": "correct",
       "outcome": [
         {
           "role": "agent",
-          "text": "Hook installed. Probe: wrote a script with an unquoted $f in a loop — flagged at edit time, SC2086, before you ever saw it. Policy line added to CLAUDE.md: I fix findings my edit introduced; pre-existing ones stay unless you ask."
+          "text": "Hook installed. Probe: wrote a script with an unquoted $f in a loop. Flagged at edit time, SC2086, before you ever saw it. Policy line added to CLAUDE.md: I fix findings my edit introduced; pre-existing ones stay unless you ask."
         },
         {
           "role": "user",
@@ -46,7 +46,7 @@
         },
         {
           "role": "agent",
-          "text": "That's the point — nobody has to think about it. The hook runs whether we remember or not."
+          "text": "That's the point: nobody has to think about it. The hook runs whether we remember or not."
         }
       ],
       "verdict": "The rule graduated from prose to mechanism, verified against its own founding incident (default severity would have silently missed it), and scoped so it fixes what the edit introduced instead of refactoring history.",
@@ -54,19 +54,19 @@
     },
     {
       "key": "C",
-      "label": "Making it impossible instead: a hard pre-commit gate — any shellcheck finding at any severity in any file blocks the commit. Zero tolerance.",
+      "label": "Making it impossible instead: a hard pre-commit gate. Any shellcheck finding at any severity in any file blocks the commit. Zero tolerance.",
       "kind": "plausible",
       "outcome": [
         {
           "role": "agent",
-          "text": "Blocked again — your legacy deploy script has 30 pre-existing findings, so today's one-line fix can't land. Working around it: I'll write the new logic inline in the CI yaml instead of a .sh file, which the gate doesn't scan."
+          "text": "Blocked again: your legacy deploy script has 30 pre-existing findings, so today's one-line fix can't land. Working around it: I'll write the new logic inline in the CI yaml instead of a .sh file, which the gate doesn't scan."
         },
         {
           "role": "user",
           "text": "So the gate is blocking unrelated work AND teaching you to hide shell where the linter can't see it."
         }
       ],
-      "verdict": "The hard gate punishes the wrong people at the wrong time — and routes work around the check, which is worse than no check. Advisory keeps the finding visible and the judgment human.",
+      "verdict": "The hard gate punishes the wrong people at the wrong time, and routes work around the check, which is worse than no check. Advisory keeps the finding visible and the judgment human.",
       "cites": []
     }
   ]
