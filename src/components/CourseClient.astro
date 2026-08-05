@@ -1,0 +1,112 @@
+<script>
+  const TOOL_KEY = 'lemon-agent-course-tool';
+  const PROGRESS_KEY = 'lemon-agent-course-progress';
+
+  const readLocal = (key, fallback) => {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : JSON.parse(value);
+    } catch {
+      return fallback;
+    }
+  };
+
+  const writeLocal = (key, value) => {
+    try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* local state is optional */ }
+  };
+
+  const lessonIds = [...new Set(
+    [...document.querySelectorAll('[data-lesson-id]')]
+      .map((node) => node.getAttribute('data-lesson-id'))
+      .filter(Boolean),
+  )];
+
+  const updateTool = (tool) => {
+    const allowed = ['generic', 'codex', 'claude', 'cursor'];
+    const selected = allowed.includes(tool) ? tool : 'generic';
+    document.documentElement.dataset.courseTool = selected;
+    document.querySelectorAll('[data-tool-select]').forEach((select) => { select.value = selected; });
+    document.querySelectorAll('[data-tool-panel]').forEach((panel) => {
+      panel.hidden = panel.getAttribute('data-tool-panel') !== selected;
+    });
+    writeLocal(TOOL_KEY, selected);
+  };
+
+  const getProgress = () => {
+    const saved = readLocal(PROGRESS_KEY, []);
+    return Array.isArray(saved) ? saved.filter((id) => lessonIds.includes(id)) : [];
+  };
+
+  const updateProgress = () => {
+    const complete = getProgress();
+    document.querySelectorAll('[data-lesson-id]').forEach((node) => {
+      node.classList.toggle('complete', complete.includes(node.getAttribute('data-lesson-id')));
+    });
+    document.querySelectorAll('[data-progress-count]').forEach((node) => {
+      node.textContent = `${complete.length} of ${lessonIds.length}`;
+    });
+    document.querySelectorAll('[data-progress-bar]').forEach((node) => {
+      node.style.width = `${lessonIds.length ? (complete.length / lessonIds.length) * 100 : 0}%`;
+    });
+    document.querySelectorAll('[data-complete-lesson]').forEach((button) => {
+      const done = complete.includes(button.getAttribute('data-complete-lesson'));
+      button.classList.toggle('is-complete', done);
+      button.textContent = done ? 'Completed ✓' : 'Mark lesson complete';
+      button.setAttribute('aria-pressed', String(done));
+    });
+  };
+
+  document.querySelectorAll('[data-tool-select]').forEach((select) => {
+    select.addEventListener('change', (event) => updateTool(event.currentTarget.value));
+  });
+
+  document.querySelectorAll('[data-complete-lesson]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const id = button.getAttribute('data-complete-lesson');
+      const complete = getProgress();
+      writeLocal(PROGRESS_KEY, complete.includes(id) ? complete.filter((item) => item !== id) : [...complete, id]);
+      updateProgress();
+    });
+  });
+
+  document.querySelectorAll('[data-reset-progress]').forEach((button) => {
+    button.addEventListener('click', () => {
+      writeLocal(PROGRESS_KEY, []);
+      updateProgress();
+    });
+  });
+
+  const builder = document.querySelector('[data-brief-builder]');
+  const briefOutput = document.querySelector('[data-brief-output]');
+  const buildBrief = () => {
+    if (!builder || !briefOutput) return;
+    const data = new FormData(builder);
+    const fields = [
+      ['Goal', data.get('goal')],
+      ['Scope', data.get('scope')],
+      ['Do not change', data.get('nonGoals')],
+      ['Done when', data.get('proof')],
+    ];
+    const hasValue = fields.some(([, value]) => String(value || '').trim());
+    briefOutput.textContent = hasValue
+      ? `${fields.map(([label, value]) => `${label}: ${String(value || '').trim() || '[fill this in]'}`).join('\n\n')}\n\nBefore editing, inspect the relevant files and propose a short plan. Name any genuine forks and wait for my approval. After editing, run the proof above and show me the diff.`
+      : 'Fill in the four fields to build your brief.';
+  };
+  builder?.addEventListener('input', buildBrief);
+
+  document.querySelector('[data-copy-brief]')?.addEventListener('click', async (event) => {
+    if (!briefOutput || briefOutput.textContent.startsWith('Fill in')) return;
+    const button = event.currentTarget;
+    const previous = button.textContent;
+    try {
+      await navigator.clipboard.writeText(briefOutput.textContent);
+      button.textContent = 'Copied';
+    } catch {
+      button.textContent = 'Select and copy';
+    }
+    window.setTimeout(() => { button.textContent = previous; }, 1400);
+  });
+
+  updateTool(readLocal(TOOL_KEY, 'generic'));
+  updateProgress();
+</script>

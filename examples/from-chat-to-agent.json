@@ -1,0 +1,62 @@
+{
+  "id": "from-chat-to-agent",
+  "title": "The first request",
+  "guide": "start/from-chat-to-agent",
+  "prompt": "Which request makes good use of an agent without giving away the important decisions?",
+  "setup": [
+    {
+      "role": "agent",
+      "text": "Connected to your project. I can read the files, edit them, and run commands like the build. What would you like to do?"
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "label": "“Build me a polished app. Make whatever decisions you need.”",
+      "kind": "baseline",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "Done. I scaffolded a new app with a landing page, a pricing page, and a blog, picked a color scheme, and rewrote your homepage copy to match."
+        },
+        {
+          "role": "user",
+          "text": "Wait. This doesn’t look like my site anymore. Which of these decisions were mine to make?"
+        }
+      ],
+      "verdict": "This delegates the product decisions as well as the typing. There is no shared picture of done, so a confident result can still be the wrong product."
+    },
+    {
+      "key": "B",
+      "label": "“Inspect this small site, explain how the homepage is built, then wait.”",
+      "kind": "correct",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "It’s a template site with three pages. The homepage text lives in one file, the styles in another, and `npm run build` checks that everything still compiles. Two things stood out: one image is oversized, and a link on the About page is broken. I haven’t changed anything."
+        },
+        {
+          "role": "user",
+          "text": "Now I can see two small, safe tasks worth trying, and I know how to check them."
+        }
+      ],
+      "verdict": "This uses the agent’s access to the project while keeping the first move read-only. You get orientation before authorizing change."
+    },
+    {
+      "key": "C",
+      "label": "“Tell me how websites work.”",
+      "kind": "plausible",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "In general: HTML holds the content, CSS controls the appearance, and JavaScript adds behavior. Want me to look at how your project does these things specifically?"
+        },
+        {
+          "role": "user",
+          "text": "Good explanation, and I could have gotten it from any chat. I still haven’t learned anything about my own site."
+        }
+      ],
+      "verdict": "That is a useful chat question, but it does not use the agent’s ability to inspect your actual project."
+    }
+  ]
+}

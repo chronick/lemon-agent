@@ -1,0 +1,55 @@
+---
+// Course exercises use the same data format and renderer as the field
+// manual's chapter examples (examples/<id>.json), with the course chip
+// vocabulary and a softer frame. One system, two voices.
+import { loadExample, exampleToHast, hastToHtml } from '../lib/example-widget.mjs';
+
+interface Props {
+  lessonId: string;
+}
+
+const { lessonId } = Astro.props;
+const example = loadExample(lessonId);
+const html = hastToHtml(exampleToHast(example, { heading: false, voice: 'course' }));
+---
+
+<section id="make-the-call" class="lesson-exercise" aria-labelledby={`exercise-${lessonId}`}>
+  <p class="exercise-kicker">Try it</p>
+  <h2 id={`exercise-${lessonId}`}>Make the call</h2>
+  <p class="exercise-lead">Pick an option to see how the rest of the session plays out.</p>
+  <Fragment set:html={html} />
+</section>
+
+<style>
+  .lesson-exercise {
+    margin: 3rem 0;
+    padding: clamp(1.2rem, 4vw, 2rem);
+    border: 1px solid var(--border);
+    border-radius: 0.8rem;
+    background: var(--card);
+  }
+  .exercise-kicker {
+    display: inline-block;
+    margin: 0 0 0.5rem;
+    padding: 0.12rem 0.48rem;
+    background: var(--chartreuse);
+    color: var(--chip-ink);
+    font-family: ui-monospace, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  h2 { margin-top: 0; font-size: 1.45rem; letter-spacing: -0.02em; text-transform: none; color: var(--ink); }
+  h2::before { content: none; }
+  .exercise-lead { margin: 0 0 0.4rem; color: var(--muted); font-size: 0.92rem; }
+
+  /* Soften the shared widget inside the course frame. */
+  .lesson-exercise :global(.xmpl) { border: 0; padding: 0; margin: 0.6rem 0 0; background: transparent; font-size: 0.95rem; }
+  .lesson-exercise :global(.xmpl-text) { border-radius: 0.55rem; }
+  .lesson-exercise :global(.xmpl-opt) { border-radius: 0.55rem; padding: 0.75rem 0.9rem; align-items: flex-start; }
+  .lesson-exercise :global(.xmpl-key) { border-radius: 0.3rem; min-width: 1.4rem; text-align: center; }
+  .lesson-exercise :global(.xmpl-q) { font-weight: 650; }
+  .lesson-exercise :global(.xmpl-q::before) { content: none; }
+  .lesson-exercise :global(.xmpl-verdict) { border-radius: 0 0.55rem 0.55rem 0; background: var(--note-bg); }
+</style>

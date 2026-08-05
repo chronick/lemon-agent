@@ -1,0 +1,105 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import CourseSidebar from '../../components/CourseSidebar.astro';
+import CourseClient from '../../components/CourseClient.astro';
+import LessonExercise from '../../components/LessonExercise.astro';
+import PromptBuilder from '../../components/PromptBuilder.astro';
+import { START_LESSONS, TOOL_OPTIONS, startLessonById } from '../../lib/start.mjs';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('start');
+  return entries.map((entry) => ({ params: { lesson: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const meta = startLessonById(entry.id);
+const index = START_LESSONS.findIndex((lesson) => lesson.id === entry.id);
+const previous = index > 0 ? START_LESSONS[index - 1] : null;
+const next = index < START_LESSONS.length - 1 ? START_LESSONS[index + 1] : null;
+---
+
+<Base wide title={meta.title} description={meta.description}>
+  <div class="course-layout">
+    <CourseSidebar current={entry.id} />
+    <div class="lesson-column">
+      <header class="lesson-header">
+        <p class="lesson-kicker">Lesson {meta.step} of {START_LESSONS.length} · {meta.minutes} minutes</p>
+        <h1>{meta.title}</h1>
+        <p>{meta.description}</p>
+      </header>
+
+      <article class="course-copy">
+        <Content />
+      </article>
+
+      {entry.id === 'write-the-brief' && <PromptBuilder />}
+
+      <LessonExercise lessonId={entry.id} />
+
+      <section class="try-agent" aria-labelledby="try-agent-title">
+        <p class="try-kicker">Take it to your tool</p>
+        <h2 id="try-agent-title">Try this in your agent</h2>
+        {TOOL_OPTIONS.map((tool) => (
+          <p data-tool-panel={tool.id} hidden={tool.id !== 'generic'}>{tool.lead}</p>
+        ))}
+        <pre><code>{meta.tryThis}</code></pre>
+      </section>
+
+      <div class="lesson-complete">
+        <div>
+          <strong>Got the idea?</strong>
+          <p>Mark it complete on this device. You can return or reset the course at any time.</p>
+        </div>
+        <button type="button" data-complete-lesson={entry.id} aria-pressed="false">Mark lesson complete</button>
+      </div>
+
+      <nav class="lesson-pager" aria-label="Course lessons">
+        {previous ? <a href={`/start/${previous.id}/`}><span>Previous</span>← {previous.title}</a> : <a href="/start/"><span>Course home</span>← Start here</a>}
+        {next ? <a class="next" href={`/start/${next.id}/`}><span>Next lesson</span>{next.title} →</a> : <a class="next" href="/guides/coding-agents/working-agreements/"><span>Your first upgrade</span>Working agreements →</a>}
+      </nav>
+    </div>
+  </div>
+  <CourseClient />
+</Base>
+
+<style>
+  .course-layout { display: grid; grid-template-columns: 14rem minmax(0, 44rem); gap: clamp(2rem, 7vw, 5rem); justify-content: center; }
+  .lesson-column { min-width: 0; }
+  .lesson-header { margin-bottom: 2.5rem; padding-bottom: 1.8rem; border-bottom: 1px solid var(--border); }
+  .lesson-kicker, .try-kicker { margin: 0 0 0.6rem; color: var(--accent-ink); font-family: ui-monospace, Menlo, Monaco, Consolas, monospace; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+  .lesson-header h1 { max-width: 13ch; font-size: clamp(2.3rem, 7vw, 4rem); }
+  .lesson-header > p:last-child { max-width: 38rem; margin-bottom: 0; color: var(--muted); font-size: 1.08rem; }
+  .course-copy :global(h2) { margin-top: 2.7rem; color: var(--ink); font-size: 1.55rem; letter-spacing: -0.025em; text-transform: none; }
+  .course-copy :global(h2::before) { content: none; }
+  .course-copy :global(p), .course-copy :global(li) { max-width: 42rem; }
+  .course-copy :global(blockquote) { margin: 1.6rem 0; padding: 0.85rem 1rem; border-left: 3px solid var(--chartreuse); background: var(--note-bg); }
+  .course-copy :global(blockquote p) { margin: 0; }
+  .course-copy :global(table) { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+  .course-copy :global(th), .course-copy :global(td) { padding: 0.7rem; border: 1px solid var(--border); text-align: left; vertical-align: top; }
+  .course-copy :global(th) { background: var(--note-bg); }
+  .try-agent { margin: 3rem 0; padding: clamp(1.2rem, 4vw, 2rem); border-radius: 0.75rem; background: var(--term-bg); color: var(--term-ink); }
+  .try-agent h2 { margin: 0; color: var(--term-ink); font-size: 1.5rem; letter-spacing: -0.025em; text-transform: none; }
+  .try-agent h2::before { content: none; }
+  .try-agent > p:not(.try-kicker) { color: var(--term-muted); }
+  .try-agent pre { margin: 1rem 0 0; padding: 1rem; border-color: rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); white-space: pre-wrap; }
+  .lesson-complete { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin: 3rem 0; padding: 1rem 1.2rem; border: 1px solid var(--border); border-radius: 0.65rem; background: var(--card); }
+  .lesson-complete p { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.82rem; }
+  .lesson-complete button { flex: 0 0 auto; border: 1px solid var(--border-hover); border-radius: 0.42rem; background: var(--chartreuse); color: var(--chip-ink); padding: 0.65rem 0.8rem; font: inherit; font-size: 0.82rem; font-weight: 750; cursor: pointer; }
+  .lesson-complete button.is-complete { background: var(--live-bg); color: var(--live-ink); }
+  .lesson-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3rem; padding-top: 1.3rem; border-top: 1px solid var(--border); }
+  .lesson-pager a { color: var(--ink); font-weight: 700; text-decoration: none; }
+  .lesson-pager a:hover { color: var(--accent-ink); }
+  .lesson-pager span { display: block; margin-bottom: 0.2rem; color: var(--muted); font-family: ui-monospace, Menlo, Monaco, Consolas, monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .lesson-pager .next { text-align: right; }
+  @media (max-width: 52rem) {
+    .course-layout { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 38rem) {
+    .course-copy { overflow-x: auto; }
+    .lesson-complete { align-items: stretch; flex-direction: column; }
+    .lesson-pager { grid-template-columns: 1fr; }
+    .lesson-pager .next { text-align: left; }
+  }
+</style>

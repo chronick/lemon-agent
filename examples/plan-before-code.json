@@ -1,0 +1,67 @@
+{
+  "id": "plan-before-code",
+  "title": "The fork in the plan",
+  "guide": "start/plan-before-code",
+  "prompt": "The agent finds two reasonable approaches. What should happen next?",
+  "setup": [
+    {
+      "role": "user",
+      "text": "Add a “last updated” date to each page of my site."
+    },
+    {
+      "role": "agent",
+      "text": "I’ve read the templates. There are two reasonable ways to get that date, and they behave differently over time."
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "label": "It picks the faster one silently so the session keeps moving.",
+      "kind": "baseline",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "Done. Each page now shows the date its file last changed."
+        },
+        {
+          "role": "user",
+          "text": "I cleaned up formatting across the site this weekend, and now every page claims it was updated yesterday. When was this decided?"
+        }
+      ],
+      "verdict": "Speed here only hides the decision inside the diff, where it becomes harder to notice and more expensive to reverse.",
+      "cites": ["AF-14", "AF-15"]
+    },
+    {
+      "key": "B",
+      "label": "It names both approaches, explains the tradeoff, recommends one, and waits.",
+      "kind": "correct",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "Option one: use the file’s last-changed time. Automatic, but any cleanup touches every date. Option two: a date you set by hand when the content really changes. A little more work, always honest. I’d pick option two. Which do you want?"
+        },
+        {
+          "role": "user",
+          "text": "Two. Good thing we caught that before it was buried in the code."
+        }
+      ],
+      "verdict": "The agent does the research and you retain the product decision. This is the useful division of labor."
+    },
+    {
+      "key": "C",
+      "label": "It asks you to design the entire solution from scratch.",
+      "kind": "plausible",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "How would you like the dates to be sourced, stored, and displayed? I’ll wait for your design."
+        },
+        {
+          "role": "user",
+          "text": "I don’t know this codebase. I was hoping you’d investigate and hand me a decision I can make in one minute."
+        }
+      ],
+      "verdict": "That avoids a silent choice, but throws away the agent’s ability to investigate and recommend. Ask for a decision, not a blank page."
+    }
+  ]
+}

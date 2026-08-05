@@ -1,0 +1,63 @@
+{
+  "id": "choose-a-safe-task",
+  "title": "The first task",
+  "guide": "start/choose-a-safe-task",
+  "prompt": "Which is the best first task for a new agent user?",
+  "setup": [
+    {
+      "role": "user",
+      "text": "First real session. I have an hour, a project I care about, and I want to come out of this trusting the agent more, not less."
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "label": "Change one homepage headline, leave styling alone, run the existing build, and show the diff.",
+      "kind": "correct",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "Done. One file changed, the build passes, and here is the diff: the old headline out, your new one in. Nothing else touched."
+        },
+        {
+          "role": "user",
+          "text": "I can read the whole change in ten seconds, and undoing it would be one step. Next time I’ll hand over something bigger."
+        }
+      ],
+      "verdict": "The scope is narrow, the change is reversible, and both the build and the diff give you something concrete to inspect."
+    },
+    {
+      "key": "B",
+      "label": "Modernize the whole application and clean up anything else you notice.",
+      "kind": "baseline",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "I updated 43 files: newer syntax, two library upgrades, some renamed components, and formatting cleanup along the way."
+        },
+        {
+          "role": "user",
+          "text": "The site looks different and I can’t tell which of the 43 files mattered. If something broke, I wouldn’t know where to start looking."
+        }
+      ],
+      "verdict": "The agent must invent the scope and the taste standard. “Anything else” also gives a small task permission to spread everywhere."
+    },
+    {
+      "key": "C",
+      "label": "Rotate the production credentials and deploy them everywhere.",
+      "kind": "plausible",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "That touches your live accounts. If a step goes wrong, real users are locked out immediately, and there is no simple undo. I’d save this until we have a recovery plan."
+        },
+        {
+          "role": "user",
+          "text": "Right. That one stays with me until I know how we’d recover."
+        }
+      ],
+      "verdict": "It is concrete, but the cost of a mistake is too high for a first session. Start where recovery is cheap.",
+      "cites": ["AF-09"]
+    }
+  ]
+}

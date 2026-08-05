@@ -30,10 +30,19 @@ const el = (tagName, properties = {}, children = []) => ({
 });
 const text = (value) => ({ type: 'text', value });
 
-const VERDICT_CHIP = {
-  baseline: 'the baseline',
-  correct: 'correct',
-  plausible: 'plausible but wrong',
+// Two chip vocabularies over one widget: the field manual names the
+// option's role; the course speaks to the reader.
+const VERDICT_CHIPS = {
+  manual: {
+    baseline: 'the baseline',
+    correct: 'correct',
+    plausible: 'plausible but wrong',
+  },
+  course: {
+    baseline: 'not yet',
+    correct: 'good call',
+    plausible: 'close, but',
+  },
 };
 
 function turnNodes(turns) {
@@ -59,7 +68,8 @@ function citeNodes(cites = []) {
   return [el('span', { className: ['xmpl-cites'] }, links)];
 }
 
-export function exampleToHast(ex, { heading = true } = {}) {
+export function exampleToHast(ex, { heading = true, voice = 'manual' } = {}) {
+  const chips = VERDICT_CHIPS[voice] ?? VERDICT_CHIPS.manual;
   const group = `xmpl-${ex.id}`;
   const optionNodes = ex.options.flatMap((opt, i) => {
     const inputId = `${group}-${opt.key.toLowerCase()}`;
@@ -78,7 +88,7 @@ export function exampleToHast(ex, { heading = true } = {}) {
         ...turnNodes(opt.outcome),
         el('div', { className: ['xmpl-verdict', `xmpl-verdict-${opt.kind}`] }, [
           el('span', { className: ['xmpl-verdict-chip'] }, [
-            text(VERDICT_CHIP[opt.kind] ?? opt.kind),
+            text(chips[opt.kind] ?? opt.kind),
           ]),
           el('p', {}, [text(opt.verdict), text(' '), ...citeNodes(opt.cites)]),
         ]),

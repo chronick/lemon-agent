@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import { listExampleIds, loadExample, exampleToHast, hastToHtml } from '../../lib/example-widget.mjs';
 import { guideBySlug } from '../../lib/guides.mjs';
+import { startLessonById } from '../../lib/start.mjs';
 
 export async function getStaticPaths() {
   return listExampleIds().map((id) => ({ params: { id } }));
@@ -9,20 +10,30 @@ export async function getStaticPaths() {
 
 const { id } = Astro.params;
 const ex = loadExample(id);
-const guideMeta = guideBySlug(ex.guide.split('/')[0]);
-const html = hastToHtml(exampleToHast(ex, { heading: false }));
+
+// An example belongs either to a field-manual chapter (guide "<slug>/<chapter>")
+// or to a course lesson (guide "start/<lesson>"). Course exercises render with
+// the course chip vocabulary and link back to their lesson.
+const [home, sub] = ex.guide.split('/');
+const isCourse = home === 'start';
+const lessonMeta = isCourse ? startLessonById(sub) : null;
+const guideMeta = isCourse ? null : guideBySlug(home);
+const backHref = isCourse ? `/start/${sub}/` : `/guides/${ex.guide}/`;
+const backLabel = isCourse ? 'Back to the lesson' : 'Back to the chapter';
+const homeTitle = isCourse ? `Start here: ${lessonMeta.title}` : guideMeta.title;
+const html = hastToHtml(exampleToHast(ex, { heading: false, voice: isCourse ? 'course' : 'manual' }));
 ---
 <Base
   title={`${ex.title} · interactive example`}
   description={`Interactive example: ${ex.title}. Pick the agent's next move and see where it leads.`}
 >
   <p class="kicker">
-    Interactive example · from <a class="kicker-link" href={`/guides/${ex.guide}/`}>{guideMeta.title}</a>
+    Interactive example · from <a class="kicker-link" href={backHref}>{homeTitle}</a>
   </p>
   <h1>{ex.title}</h1>
   <Fragment set:html={html} />
   <p class="backlink">
-    <a href={`/guides/${ex.guide}/`}>← Back to the chapter</a> ·
+    <a href={backHref}>← {backLabel}</a> ·
     <a href={`/examples/${id}.json`}>raw data</a>
   </p>
 </Base>

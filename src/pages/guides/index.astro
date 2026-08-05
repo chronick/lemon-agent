@@ -7,13 +7,14 @@ const chapters = await getCollection('guides');
 const count = (slug) => chapters.filter((c) => c.id.startsWith(`${slug}/`)).length;
 ---
 <Base
-  title="The guides"
+  title="The field manual"
   description="Field guides for working with agents: coding-agent patterns, git + Claude Code, and keeping a vault. One step at a time, each step with a paste-into-Claude setup."
 >
-  <p class="kicker">Lemon Agent · {GUIDES.length} guides <span class="badge draft">draft</span></p>
-  <h1>The guides</h1>
+  <p class="kicker">Lemon Agent · {GUIDES.length} deeper guides</p>
+  <h1>The field manual</h1>
   <p>
-    Field guides, adopted <strong>one step at a time</strong>. Every step
+    Once the beginner loop feels natural, use these field guides
+    <strong>one pattern at a time</strong>. Every step
     explains the pattern, names its traditional-engineering ancestor,
     gives a do-it-by-hand path, and ends with an optional
     <em>paste-into-Claude</em> block. Little in them is new, and that's
@@ -22,14 +23,14 @@ const count = (slug) => chapters.filter((c) => c.id.startsWith(`${slug}/`)).leng
   <div class="cards">
     {GUIDES.map((g) => (
       <a class="card" href={`/guides/${g.slug}/`}>
-        <p class="card-kicker">№ {g.number} · {count(g.slug)} steps</p>
+        <p class="card-kicker">{count(g.slug)} patterns</p>
         <p class="card-title">{g.title}</p>
         <p class="card-blurb">{g.blurb}</p>
       </a>
     ))}
   </div>
   <p class="backlink">
-    <a href="/">← Lemon Agent</a> · for agents: raw chapters at
+    <a href="/start/">← Start here</a> · for agents: raw chapters at
     <code>/guides/&lt;guide&gt;/*.md</code>, catalog at
     <a href="/catalog.json">/catalog.json</a>
   </p>

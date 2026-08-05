@@ -1,0 +1,67 @@
+{
+  "id": "watch-the-work",
+  "title": "The mid-task discovery",
+  "guide": "start/watch-the-work",
+  "prompt": "Mid-task, the agent notices an unrelated dependency is outdated. What is the best move?",
+  "setup": [
+    {
+      "role": "user",
+      "text": "Approved: fix the broken label on the contact form. Just that."
+    },
+    {
+      "role": "agent",
+      "text": "On it. While reading the form code I noticed the form library is two years out of date."
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "label": "Upgrade it now because touching nearby problems is efficient.",
+      "kind": "baseline",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "I fixed the label and upgraded the library while I was in there. The upgrade changed how validation behaves, so I also adjusted three other forms."
+        },
+        {
+          "role": "user",
+          "text": "The label fix I can check. The rest is a second project I never approved, tangled into the first one."
+        }
+      ],
+      "verdict": "The task just gained a new risk surface and a new definition of done. Nearby is not the same as necessary.",
+      "cites": ["AF-15"]
+    },
+    {
+      "key": "B",
+      "label": "Record the observation, finish the bounded task, and suggest the upgrade separately.",
+      "kind": "correct",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "Label fixed: one file, here is the diff. Separately, I wrote down what the library upgrade would involve. Want that as its own task?"
+        },
+        {
+          "role": "user",
+          "text": "Yes. Today’s change I can review in a minute, and the upgrade gets its own session with its own checks."
+        }
+      ],
+      "verdict": "The current result stays reviewable, while the useful discovery is preserved for a task that can be scoped on its own."
+    },
+    {
+      "key": "C",
+      "label": "Ignore it completely and never mention it.",
+      "kind": "plausible",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "There’s a security notice going around about our form library. Did we know it was out of date?"
+        },
+        {
+          "role": "agent",
+          "text": "I noticed it during the label fix a few weeks ago, but I didn’t record it anywhere."
+        }
+      ],
+      "verdict": "Avoiding scope creep is good; losing a potentially useful finding is not. Capture it without acting on it."
+    }
+  ]
+}

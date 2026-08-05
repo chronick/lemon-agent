@@ -1,0 +1,62 @@
+{
+  "id": "write-the-brief",
+  "title": "The finish line",
+  "guide": "start/write-the-brief",
+  "prompt": "Which brief gives the agent the clearest finish line?",
+  "setup": [
+    {
+      "role": "user",
+      "text": "The menu on my site breaks on phones. I want the agent to fix it without wrecking the design."
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "label": "“Improve the navigation. Use your judgment.”",
+      "kind": "baseline",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "I redesigned the navigation: a slide-out menu, new icons, and I renamed two links for clarity."
+        },
+        {
+          "role": "user",
+          "text": "It doesn’t break anymore, but it also doesn’t look like my site. I wanted a repair, not a redesign."
+        }
+      ],
+      "verdict": "The goal sounds clear until the agent has to decide what “improve” means, which pages count, and how anyone will judge the result."
+    },
+    {
+      "key": "B",
+      "label": "“On mobile, keep the three existing navigation links on one or two readable lines. Change only the shared header styles. Done when the build passes and the links remain keyboard accessible.”",
+      "kind": "correct",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "Done. I changed only the shared header styles. On small screens the three links wrap onto two readable lines, the build passes, and keyboard focus still reaches every link. The diff is one file."
+        },
+        {
+          "role": "user",
+          "text": "Every part of “done” was something I could check myself. Nothing else moved."
+        }
+      ],
+      "verdict": "Goal, scope, constraint, and proof are all visible. The agent can still solve the problem without silently redefining it."
+    },
+    {
+      "key": "C",
+      "label": "“Make the nav responsive and follow best practices.”",
+      "kind": "plausible",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "I made the nav responsive and, following common practice, also normalized the spacing across the site."
+        },
+        {
+          "role": "user",
+          "text": "The menu is fixed, but other pages shifted too. Is this done? I never said what done means, so neither of us knows."
+        }
+      ],
+      "verdict": "It points in the right direction, but “best practices” is not an observable finish line. Name what must be true when the work is done."
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+---
+import { TOOL_OPTIONS } from '../lib/start.mjs';
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<label class:list={['tool-chooser', { compact }]}>
+  <span>I'm using</span>
+  <select data-tool-select aria-label="Choose your coding agent">
+    {TOOL_OPTIONS.map((tool) => <option value={tool.id}>{tool.label}</option>)}
+  </select>
+</label>
+
+<style>
+  .tool-chooser {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .tool-chooser span {
+    font-family: ui-monospace, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  select {
+    appearance: none;
+    min-width: 10rem;
+    border: 1px solid var(--border);
+    border-radius: 0.45rem;
+    background: var(--card);
+    color: var(--ink);
+    padding: 0.55rem 2rem 0.55rem 0.7rem;
+    font: inherit;
+    font-size: 0.9rem;
+    background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+    background-position: calc(100% - 14px) 52%, calc(100% - 9px) 52%;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+  }
+  select:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 2px; }
+  .compact { align-items: flex-start; flex-direction: column; gap: 0.35rem; }
+  .compact select { width: 100%; min-width: 0; }
+</style>

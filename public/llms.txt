@@ -1,14 +1,29 @@
 # Lemon Agent
 
-> Free tools, honest measurements, agentic services. A small portfolio
-> house for working with agents: three field guides, two numbered
-> failure lists (installable as agent skills), and services agents can
-> call directly.
+> A practical guide to working with coding agents: a beginner course,
+> three deeper field guides, two numbered failure lists (installable as
+> agent skills), and services agents can call directly.
 
 House rule: nothing ships without a working answer to "how would a user
 actually use this, today?" Everything is v0; guide step slugs and list
 entry ids (PF-NN / AF-NN) are stable and citable. Provenance: mostly
 AI-generated, human-guided and reviewed.
+
+## Start here
+
+The human-first onboarding course is at /start/: seven short lessons on
+scoping, planning, guiding, verifying, and reviewing a first coding-agent
+task. Each lesson includes a decision exercise (same data format as the
+interactive examples below, raw JSON at /examples/<lesson-id>.json) and
+a copyable action.
+
+- [Lesson 1: From answers to actions](/start/from-chat-to-agent.md)
+- [Lesson 2: Choose a safe first task](/start/choose-a-safe-task.md)
+- [Lesson 3: Write the brief](/start/write-the-brief.md)
+- [Lesson 4: Plan before code](/start/plan-before-code.md)
+- [Lesson 5: Watch the work](/start/watch-the-work.md)
+- [Lesson 6: Verify the result](/start/verify-the-result.md)
+- [Lesson 7: Review and save](/start/review-and-save.md)
 
 ## The guides
 
@@ -67,6 +82,10 @@ one; each is also standalone at /examples/<id>/ with raw JSON at
 - vault: app-or-files (plain files) · status-field-rot (location is
   state) · idea-mid-work (capture) · log-it (daily log) ·
   twice-corrected (teach the shape) · doctor-first-run (doctor)
+- start (the course's lesson exercises, one per lesson):
+  from-chat-to-agent · choose-a-safe-task · write-the-brief ·
+  plan-before-code · watch-the-work · verify-the-result ·
+  review-and-save
 
 ## Lists (the guides' watch-out reference)
 

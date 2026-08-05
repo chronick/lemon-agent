@@ -1,0 +1,76 @@
+{
+  "id": "verify-the-result",
+  "title": "The completion report",
+  "guide": "start/verify-the-result",
+  "prompt": "Which completion report gives you evidence rather than confidence?",
+  "setup": [
+    {
+      "role": "user",
+      "text": "You said the mobile menu fix is done. Before I look: how do we know?"
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "label": "“Done. The implementation is robust and production-ready.”",
+      "kind": "baseline",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "Which check did you actually run?"
+        },
+        {
+          "role": "agent",
+          "text": "I reviewed the code carefully. It follows solid patterns."
+        },
+        {
+          "role": "user",
+          "text": "So nothing ran. On my phone the menu still overlaps the logo."
+        }
+      ],
+      "verdict": "Confidence adjectives are not checks. Nothing here tells you what ran or what you can inspect.",
+      "cites": ["AF-04"]
+    },
+    {
+      "key": "B",
+      "label": "“The focused navigation check passes, the full build passes, and the diff contains two files. I could not test VoiceOver.”",
+      "kind": "correct",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "Show me."
+        },
+        {
+          "role": "agent",
+          "text": "Here is the build output, the focused check that fails if the links overflow, and the two-file diff. The VoiceOver pass I couldn’t run in this environment, so that gap is yours to accept or to test."
+        },
+        {
+          "role": "user",
+          "text": "I can tap through each claim. The one thing not checked is labeled, not hidden."
+        }
+      ],
+      "verdict": "You get named checks, a bounded change surface, and an explicit limitation. Each claim can be inspected."
+    },
+    {
+      "key": "C",
+      "label": "“All tests pass, so the requested behavior is correct.”",
+      "kind": "plausible",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "Which of those tests fails if the menu overflows?"
+        },
+        {
+          "role": "agent",
+          "text": "None. No existing test covers the menu."
+        },
+        {
+          "role": "user",
+          "text": "So the suite was green before the bug and green after. It never saw the thing we changed."
+        }
+      ],
+      "verdict": "Passing tests matter only if they cover the requested behavior. Ask which test was capable of failing for this change.",
+      "cites": ["AF-05"]
+    }
+  ]
+}

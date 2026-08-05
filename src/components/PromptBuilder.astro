@@ -1,0 +1,107 @@
+<section class="prompt-builder" aria-labelledby="brief-builder-title">
+  <div class="builder-heading">
+    <div>
+      <p class="builder-kicker">Your turn</p>
+      <h2 id="brief-builder-title">Build your first brief</h2>
+    </div>
+    <p>Nothing is sent anywhere. This stays in your browser.</p>
+  </div>
+
+  <form data-brief-builder>
+    <label>
+      <span>Goal</span>
+      <small>What should be different?</small>
+      <textarea name="goal" rows="2" placeholder="Change the homepage headline to…"></textarea>
+    </label>
+    <label>
+      <span>Scope</span>
+      <small>Where may the agent work?</small>
+      <textarea name="scope" rows="2" placeholder="The homepage component and its existing test"></textarea>
+    </label>
+    <label>
+      <span>Do not change</span>
+      <small>What should remain stable?</small>
+      <textarea name="nonGoals" rows="2" placeholder="Layout, colors, and other page copy"></textarea>
+    </label>
+    <label>
+      <span>Done when</span>
+      <small>What would prove completion?</small>
+      <textarea name="proof" rows="2" placeholder="The build passes and the diff contains only…"></textarea>
+    </label>
+  </form>
+
+  <div class="brief-output">
+    <div class="output-heading">
+      <span>Your copyable brief</span>
+      <button type="button" data-copy-brief>Copy brief</button>
+    </div>
+    <pre data-brief-output aria-live="polite">Fill in the four fields to build your brief.</pre>
+  </div>
+</section>
+
+<style>
+  .prompt-builder {
+    margin: 3rem 0;
+    padding: clamp(1.2rem, 4vw, 2rem);
+    border: 1px solid var(--border);
+    border-radius: 0.8rem;
+    background: var(--card);
+  }
+  .builder-heading { display: flex; justify-content: space-between; gap: 1.5rem; align-items: flex-start; }
+  .builder-heading > p { max-width: 15rem; margin: 0; color: var(--muted); font-size: 0.82rem; }
+  .builder-kicker {
+    margin: 0 0 0.4rem;
+    color: var(--accent-ink);
+    font-family: ui-monospace, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  h2 { margin: 0; color: var(--ink); font-size: 1.5rem; letter-spacing: -0.025em; text-transform: none; }
+  h2::before { content: none; }
+  form { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+  label { display: grid; gap: 0.25rem; }
+  label span { font-weight: 750; }
+  label small { color: var(--muted); }
+  textarea {
+    width: 100%;
+    resize: vertical;
+    border: 1px solid var(--border);
+    border-radius: 0.45rem;
+    background: var(--bg);
+    color: var(--ink);
+    padding: 0.7rem;
+    font: inherit;
+    line-height: 1.45;
+  }
+  textarea:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 2px; }
+  .brief-output { margin-top: 1.5rem; }
+  .output-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.5rem; }
+  .output-heading span {
+    color: var(--muted);
+    font-family: ui-monospace, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.72rem;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  button {
+    border: 1px solid var(--border-hover);
+    border-radius: 0.35rem;
+    background: transparent;
+    color: var(--accent-ink);
+    padding: 0.42rem 0.65rem;
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  button:hover { background: var(--card-hover); }
+  pre { margin: 0; white-space: pre-wrap; min-height: 10rem; }
+  @media (max-width: 40rem) {
+    .builder-heading { display: block; }
+    .builder-heading > p { margin-top: 0.7rem; }
+    form { grid-template-columns: 1fr; }
+  }
+</style>

@@ -15,8 +15,7 @@ const chapters = (await getCollection('guides'))
 ---
 <Base title={meta.title} description={meta.blurb}>
   <p class="kicker">
-    <a class="kicker-link" href="/guides/">The guides</a> · № {meta.number} · {chapters.length} steps
-    <span class="badge draft">draft</span>
+    <a class="kicker-link" href="/guides/">The field manual</a> · {chapters.length} patterns
   </p>
   <h1>{meta.title}</h1>
   <p>{meta.intro}</p>
@@ -60,7 +59,7 @@ const chapters = (await getCollection('guides'))
   )}
 
   <p class="backlink">
-    <a href="/guides/">← All guides</a> · for agents: raw chapters at
+    <a href="/guides/">← The field manual</a> · for agents: raw chapters at
     <code>/guides/{guide}/*.md</code>
   </p>
 </Base>

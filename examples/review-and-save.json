@@ -1,0 +1,62 @@
+{
+  "id": "review-and-save",
+  "title": "The tangled diff",
+  "guide": "start/review-and-save",
+  "prompt": "The checks pass, but the diff contains an unrelated formatting rewrite. What should you do?",
+  "setup": [
+    {
+      "role": "agent",
+      "text": "The date bug is fixed and all checks pass. The diff touches 14 files: one logic change, plus formatting cleanup my editor applied across the rest."
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "label": "Keep it; passing checks prove the extra changes are safe.",
+      "kind": "baseline",
+      "outcome": [
+        {
+          "role": "user",
+          "text": "The date fix turned out to break a different page. Undo it."
+        },
+        {
+          "role": "agent",
+          "text": "The undo takes the formatting changes in 13 other files with it. Everything was saved as one change."
+        }
+      ],
+      "verdict": "Tests do not make unrelated edits relevant. Extra change makes review harder and recovery less precise."
+    },
+    {
+      "key": "B",
+      "label": "Remove the unrelated rewrite, rerun the relevant check, then save the focused change.",
+      "kind": "correct",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "Removed the formatting churn and reran the date check: still passing. The saved change is one file, described as “fix release date rollover”."
+        },
+        {
+          "role": "user",
+          "text": "That I can read, and if we ever undo it, we undo exactly one thing."
+        }
+      ],
+      "verdict": "The checkpoint now tells one coherent story and can be understood or reverted without dragging unrelated work along."
+    },
+    {
+      "key": "C",
+      "label": "Ask the agent whether it feels confident about the formatting.",
+      "kind": "plausible",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "Yes, I’m confident. The formatting matches the current style guide."
+        },
+        {
+          "role": "user",
+          "text": "Confidence wasn’t the question. Fourteen files is still fourteen files to review, and thirteen have nothing to do with the fix."
+        }
+      ],
+      "verdict": "The issue is scope, not confidence. Judge the diff against the brief you approved."
+    }
+  ]
+}
