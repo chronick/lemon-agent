@@ -45,44 +45,47 @@ const isHome = Astro.url.pathname === '/';
 </html>
 
 <style is:global>
-  /* LEMON AUDIO visual language, light rendition.
-     Dark mode is the native LEMON AUDIO look (deep space + chartreuse glow). */
+  /* LEMON AUDIO visual language, softened for long-form reading. */
   :root {
-    --chartreuse: #ccff00;
-    --bg: #fafaf4;
-    --ink: #16170f;
-    --muted: #6b6e5a;
-    --accent-ink: #5b6e00;
-    --border: rgba(22, 23, 15, 0.16);
-    --border-hover: #a9c400;
-    --card: #ffffff;
-    --card-hover: rgba(204, 255, 0, 0.07);
-    --note-bg: rgba(204, 255, 0, 0.09);
-    --code-ink: #3d4030;
-    --code-bg: rgba(22, 23, 15, 0.06);
-    --term-bg: #0a0a0f;
-    --term-ink: #e0e0e0;
-    --chip-ink: #0a0a0f;
-    --live-ink: #1d6b1d;
-    --live-bg: rgba(57, 255, 20, 0.16);
+    color-scheme: light dark;
+    --chartreuse: #c7d86f;
+    --bg: #f5f3e9;
+    --ink: #24271f;
+    --muted: #666c5d;
+    --accent-ink: #5e7024;
+    --border: rgba(36, 39, 31, 0.15);
+    --border-hover: #8b9d43;
+    --card: #fbfaf4;
+    --card-hover: rgba(199, 216, 111, 0.13);
+    --note-bg: rgba(199, 216, 111, 0.15);
+    --code-ink: #454a3e;
+    --code-bg: rgba(36, 39, 31, 0.07);
+    --term-bg: #151710;
+    --term-ink: #dfe3d4;
+    --chip-ink: #202319;
+    --live-ink: #3e7046;
+    --live-bg: rgba(62, 112, 70, 0.12);
     --glow: none;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #0a0a0f;
-      --ink: #e0e0e0;
-      --muted: #7d8195;
-      --accent-ink: #ccff00;
-      --border: rgba(204, 255, 0, 0.15);
-      --border-hover: #ccff00;
-      --card: rgba(204, 255, 0, 0.02);
-      --card-hover: rgba(204, 255, 0, 0.06);
-      --note-bg: rgba(204, 255, 0, 0.05);
-      --code-ink: #cdd0b8;
-      --code-bg: rgba(204, 255, 0, 0.08);
-      --live-ink: #39ff14;
-      --live-bg: rgba(57, 255, 20, 0.1);
-      --glow: 0 0 8px rgba(204, 255, 0, 0.4), 0 0 24px rgba(204, 255, 0, 0.15);
+      --chartreuse: #b8c970;
+      --bg: #12140f;
+      --ink: #dde1d4;
+      --muted: #969d8c;
+      --accent-ink: #bdcf78;
+      --border: rgba(189, 207, 120, 0.16);
+      --border-hover: #87964f;
+      --card: #171a14;
+      --card-hover: #1c2117;
+      --note-bg: #1b2117;
+      --code-ink: #c8cfbb;
+      --code-bg: rgba(189, 207, 120, 0.09);
+      --term-bg: #0b0d09;
+      --term-ink: #d9ddcf;
+      --live-ink: #86b88a;
+      --live-bg: rgba(82, 124, 87, 0.18);
+      --glow: 0 4px 18px rgba(0, 0, 0, 0.16);
     }
   }
 
@@ -96,7 +99,7 @@ const isHome = Astro.url.pathname === '/';
     color: var(--ink);
     -webkit-text-size-adjust: 100%;
   }
-  ::selection { background: var(--chartreuse); color: #0a0a0f; }
+  ::selection { background: var(--chartreuse); color: var(--chip-ink); }
   main { max-width: 46rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
 
   a { color: var(--accent-ink); text-decoration-thickness: 1px; text-underline-offset: 3px; }
