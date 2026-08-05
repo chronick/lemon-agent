@@ -10,7 +10,8 @@ watch-out reference, and services agents can call ride alongside.
 
 > **Status: private, pre-launch.** Guides and lists are v0; the author
 > curation pass hasn't happened yet. The repo goes public when the first
-> member does.
+> member does. Staging deploy (noindex, temp domain until the real one
+> is registered): <https://lemon-agent.pages.dev>
 
 ## House rules
 
@@ -119,6 +120,7 @@ file or restart `npm run dev`; content collections cache aggressively.
 npm install
 npm run dev      # local site at http://localhost:4321
 npm run build    # static build to dist/
+npm run deploy   # build + wrangler pages deploy (Cloudflare Pages)
 ```
 
 `npm run sync` (automatic before dev/build) copies `lists/*.md` and
@@ -132,9 +134,11 @@ canonical `guides/` and `lists/` files.
 2. Flip `status: draft` → `published` in frontmatter and catalog.json;
    `npm run sync`.
 3. Pick a license (owner call) and add `LICENSE`.
-4. Decide deploy target (Cloudflare Pages vs GitHub Pages project site)
-   and set `site`/`base` in `astro.config.mjs`; wire a privacy-respecting
-   analytics beacon at the same time.
+4. Deploy target is decided and live: Cloudflare Pages, direct upload
+   (`npm run deploy`), staging at lemon-agent.pages.dev. Remaining at
+   launch: register the real domain and swap `site` in
+   `astro.config.mjs`, delete `public/_headers` (the staging noindex),
+   and wire a privacy-respecting analytics beacon.
 5. `gh repo edit --visibility public`, deploy, cross-link from
    pathgrip.net, log the ship in tradewind (starts the probe clock).
 6. **pathgrip's user-use answer**: ship its public docs page + self-serve

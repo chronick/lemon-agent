@@ -1,0 +1,4 @@
+# Temp-domain staging: keep draft content out of search indexes.
+# REMOVE this file at launch (real domain + status: published).
+/*
+  X-Robots-Tag: noindex
