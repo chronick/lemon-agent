@@ -62,6 +62,61 @@ const ogImage = new URL('/og.jpg', Astro.url);
         </p>
       </footer>
     </main>
+    <script>
+      // Copy buttons on every code block. Each <pre> is wrapped so the
+      // button stays put while wide code scrolls underneath it. Blocks
+      // that bring their own copy button (the brief builder) opt out
+      // with data-no-copy.
+      const COPY_ICON =
+        '<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 3.5v-1a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h1"/></svg>';
+      const CHECK_ICON =
+        '<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7-8"/></svg>';
+
+      document.querySelectorAll('main pre').forEach((pre) => {
+        if (pre.matches('[data-no-copy]') || pre.closest('[data-no-copy]')) return;
+
+        const wrap = document.createElement('div');
+        wrap.className = 'code-wrap';
+        wrap.style.margin = getComputedStyle(pre).margin;
+        pre.parentNode?.insertBefore(wrap, pre);
+        wrap.appendChild(pre);
+        pre.style.margin = '0';
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'code-copy';
+        btn.setAttribute('aria-label', 'Copy code');
+        btn.title = 'Copy code';
+        btn.innerHTML = COPY_ICON;
+
+        let resetTimer;
+        btn.addEventListener('click', async () => {
+          const text = pre.innerText.replace(/\n$/, '');
+          try {
+            await navigator.clipboard.writeText(text);
+            btn.innerHTML = CHECK_ICON;
+            btn.classList.add('copied');
+            btn.setAttribute('aria-label', 'Copied');
+          } catch {
+            // No clipboard access: select the block so a manual copy works.
+            const range = document.createRange();
+            range.selectNodeContents(pre);
+            const selection = window.getSelection();
+            selection?.removeAllRanges();
+            selection?.addRange(range);
+            btn.setAttribute('aria-label', 'Press Ctrl+C or Cmd+C to copy');
+          }
+          window.clearTimeout(resetTimer);
+          resetTimer = window.setTimeout(() => {
+            btn.innerHTML = COPY_ICON;
+            btn.classList.remove('copied');
+            btn.setAttribute('aria-label', 'Copy code');
+          }, 1600);
+        });
+
+        wrap.appendChild(btn);
+      });
+    </script>
   </body>
 </html>
 
@@ -163,6 +218,32 @@ const ogImage = new URL('/og.jpg', Astro.url);
     line-height: 1.6;
   }
   pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+
+  /* Copy buttons (injected by the script in this layout). The wrapper is
+     the positioning context so the button holds still while code scrolls. */
+  .code-wrap { position: relative; }
+  .code-copy {
+    position: absolute;
+    top: 0.45rem;
+    right: 0.45rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.32rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 0.35rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--term-muted);
+    cursor: pointer;
+    opacity: 0.75;
+    transition: opacity 120ms ease, color 120ms ease, background 120ms ease;
+  }
+  .code-wrap:hover .code-copy,
+  .code-copy:focus-visible { opacity: 1; }
+  .code-copy:hover { background: rgba(255, 255, 255, 0.12); color: var(--term-ink); }
+  .code-copy:focus-visible { outline: 2px solid var(--chartreuse); outline-offset: 1px; }
+  .code-copy.copied { color: var(--chartreuse); opacity: 1; }
+  .code-copy svg { display: block; }
 
   .chip {
     display: inline-block;
