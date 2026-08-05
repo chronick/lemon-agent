@@ -9,19 +9,19 @@ export const GUIDES = [
     short: 'Coding agents',
     blurb:
       'The core field guide: verification loops, design interviews, ' +
-      'adversarial reviews, orchestration, small tools, generated UIs. ' +
-      'One step at a time, each with a paste-into-Claude setup.',
+      'adversarial reviews, tool surfaces, small tools, and generated UIs. ' +
+      'One pattern at a time, each with a prompt you can adapt.',
     intro:
       'Concrete patterns that survive real use: what to watch out for, ' +
       'and the habits worth building. Written for humans to adopt one ' +
-      'step at a time; every step ends with an optional paste-into-Claude ' +
-      'block that sets it up for you.',
+      'step at a time; every step ends with an optional prompt that helps ' +
+      'you apply it in your own environment.',
   },
   {
     slug: 'git',
     number: 4,
-    title: 'Shipping Software with Git + Claude Code',
-    short: 'Git + Claude Code',
+    title: 'Shipping Software with Git + Coding Agents',
+    short: 'Git + agents',
     blurb:
       'How git and an agent compose: checkpoint commits, branches as ' +
       'blast radius, history the next session can read, diff-not-summary ' +
@@ -30,7 +30,7 @@ export const GUIDES = [
       'Git was already the safety net under fast-moving software; an ' +
       'agent makes it essential. These steps are the git habits that ' +
       'turn agent speed from a risk into an asset, adoptable one at a ' +
-      'time, each with a paste-into-Claude setup.',
+      'time, each with a prompt you can adapt to your agent.',
   },
   {
     slug: 'vault',

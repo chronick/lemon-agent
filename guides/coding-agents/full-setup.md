@@ -2,8 +2,8 @@
 title: "Step 0: The one-paste baseline"
 step: 0
 status: draft
-updated: 2026-07-31
-description: "Optional full-package setup: working agreements, verification gates, and the failure lists installed as review passes, in one confirmation-gated paste."
+updated: 2026-08-05
+description: "Optional baseline: durable project instructions, verification gates, and reusable review skills, set up one confirmed change at a time."
 ---
 
 Every later step in this guide is independently adoptable, and the whole
@@ -13,7 +13,8 @@ kit, confirming each file with you before it's written.
 
 What it sets up (each explained properly in its own step):
 
-- A **working agreements** section in your `CLAUDE.md`: one-line gates
+- A **working agreements** section in the project instruction file your agent
+  supports, such as `AGENTS.md` or `CLAUDE.md`: one-line gates
   distilled from failures that actually happen ([step 1](/guides/coding-agents/working-agreements/)).
 - The two core **verification gates**: baseline before fix, small proof
   before long cycle ([step 2](/guides/coding-agents/verification-loop/)).
@@ -27,7 +28,9 @@ What it sets up (each explained properly in its own step):
 Set up my coding-agent baseline. Work one step at a time, show me every
 file before writing it, and wait for my ok between steps.
 
-1. Create (or extend) this project's CLAUDE.md with a section
+1. Find the project instruction file this agent actually supports (AGENTS.md
+   for Codex, CLAUDE.md for Claude Code, or its documented equivalent).
+   Create or extend it with a section
    "## Working agreements" holding five one-line gates:
    - Baseline before fix: reproduce the bug and show the failing number
      before changing code. A probe that comes back clean on its first
@@ -45,11 +48,13 @@ file before writing it, and wait for my ok between steps.
    actually bitten me beyond these, and add at most three more gates in
    the same one-line style. Skip anything that hasn't happened to me.
 
-3. If I'm running Claude Code and want the failure lists as invocable
-   review passes: clone https://github.com/chronick/lemon-agent and
-   copy skills/prose-failure-list and
-   skills/agent-workflow-failure-list into ~/.claude/skills/. If the
-   repo isn't reachable, skip this and say so plainly.
+3. Offer to install the two failure-list skills through npx skills as one
+   managed global install for the agents I use. Show me the exact command and
+   wait for approval before running it. For Codex and Claude Code, use:
+   npx skills add chronick/lemon-agent --global --agent codex claude-code --yes
+
+4. Look for one repeated mechanical workflow that should become a small CLI.
+   Propose its name, inputs, output, and verification, but do not build it yet.
 ```
 
 ## If you'd rather go manual

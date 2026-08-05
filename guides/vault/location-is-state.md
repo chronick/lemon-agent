@@ -46,17 +46,18 @@ Make the four directories, move what you have into them, and notice
 the side effect: `ls active/` is now an honest answer to "what am I
 actually working on?" Probably the first one you've had in a while.
 
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
 Set up lifecycle directories in my vault: inbox/, active/, later/,
 archived/. Then propose a filing for every existing note: show me
 the full move list (file → destination, one line of reasoning each)
-and wait for my approval before moving anything. Add to CLAUDE.md:
+and wait for my approval before moving anything. Add to the supported project
+instruction file (`AGENTS.md`, `CLAUDE.md`, or its documented equivalent):
 location is state (the four directories and what they mean), moves
 are always proposed as a list before execution, archived/ is
 read-only, and no new top-level directories without asking. Show me
-the CLAUDE.md diff first.
+the instruction-file diff first.
 ```
 
 ## Watch out

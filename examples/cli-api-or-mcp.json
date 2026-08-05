@@ -1,0 +1,65 @@
+{
+  "id": "cli-api-or-mcp",
+  "title": "CLI, API, or MCP?",
+  "guide": "coding-agents/tool-surfaces",
+  "prompt": "Pick the agent's next move, then see what the interface changes:",
+  "setup": [
+    {
+      "role": "user",
+      "text": "Find every open project issue assigned to me, group them by milestone, and save a Markdown summary in this repo."
+    },
+    {
+      "role": "agent",
+      "text": "The issue tracker has a CLI, an HTTP API, and an MCP connector. All three can reach the same source data."
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "label": "Use the existing CLI with JSON output, save the raw result, then render the Markdown summary locally.",
+      "kind": "correct",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "I ran the read-only issue command, saved 18 records as JSON, and generated the summary. You can inspect the exact query, source data, and output in the diff."
+        },
+        {
+          "role": "user",
+          "text": "Could this become a weekly report?"
+        },
+        {
+          "role": "agent",
+          "text": "Yes. The stable fetch-and-render sequence can become a small project command. The agent can still decide which changes deserve commentary each week."
+        }
+      ],
+      "verdict": "The existing CLI is the shortest reliable path: authenticated, read-only, scriptable, and inspectable. Structured output preserves the facts while the agent handles grouping and explanation.",
+      "cites": []
+    },
+    {
+      "key": "B",
+      "label": "Build raw API requests in the chat. We can work out pagination, authentication, and fields as we go.",
+      "kind": "baseline",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "The first page worked, but it omitted eight issues. The second request used a different field name, and the access token appeared in a pasted command."
+        }
+      ],
+      "verdict": "The API is valid, but the session rebuilt concerns the existing CLI already handles. If direct API access becomes necessary, put those details behind one small wrapper rather than improvising them repeatedly.",
+      "cites": ["AF-18"]
+    },
+    {
+      "key": "C",
+      "label": "Install the MCP connector because MCP is the agent-native option and therefore the most advanced choice.",
+      "kind": "plausible",
+      "outcome": [
+        {
+          "role": "agent",
+          "text": "The connector works, but it adds server configuration and broad write permissions for a task that only needed one read-only query. The generated report is no easier to reproduce outside this agent host."
+        }
+      ],
+      "verdict": "MCP is useful when shared discovery, live context, or reusable authenticated actions are the goal. It is not an automatic upgrade over a CLI that already fits the task.",
+      "cites": ["AF-09"]
+    }
+  ]
+}

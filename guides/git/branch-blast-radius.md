@@ -43,7 +43,7 @@ there, and when you're done show me the diff against main."* For
 parallel work: *"set up a worktree for each of these two tasks so they
 can't interfere."*
 
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
 From now on in this repo: before starting any non-trivial task, create
@@ -52,7 +52,8 @@ commit directly to main. When the task is done, present the full diff
 against main and wait for my review; after merge, delete the branch.
 If I ask for parallel tasks, put each in its own git worktree with its
 own branch so they can't interfere, and tell me the worktree paths.
-Add these as "branch discipline" lines to CLAUDE.md. Show me the diff
+Add these as "branch discipline" lines to the supported project instruction
+file (`AGENTS.md`, `CLAUDE.md`, or its documented equivalent). Show me the diff
 first.
 ```
 

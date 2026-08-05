@@ -2,21 +2,20 @@
 title: "Step 4: Reviews that try to kill the work"
 step: 4
 status: draft
-updated: 2026-07-31
-description: "Adversarial review: independent reviewers with distinct lenses try to refute the work, findings are verified before anything gets fixed."
+updated: 2026-08-05
+description: "Ask independent reviewers to find specific ways the work could fail, then verify each finding before changing the code."
 ---
 
-"Please review this" produces compliments and nitpicks. An
-**adversarial review** is a different instrument: independent
-reviewers whose explicit job is to *refute* the work, followed by a
-verify pass that tries to kill each finding before you act on any of
-them.
+“Please review this” often produces general approval and small style notes. An
+**adversarial review** asks a sharper question: *How could this work fail?*
+Several reviewers inspect the change independently from different angles.
+Then a separate pass checks whether each reported problem is real before
+anyone edits the code.
 
-**You've met this before.** Code review crossed with a red team, plus
-mutation testing's founding instinct: a test that can't fail proves
-nothing, and neither does a reviewer that can't refute. Independent
-passes are the old two-reviewer rule; agents just make N reviewers
-cost what one used to.
+This combines familiar practices: code review, red-team thinking, and the rule
+that a test must be capable of failing. Agents make it cheap to run several
+independent passes. Independence matters because two reviewers who share an
+answer are not two sources of evidence.
 
 > Where this comes from: on a multi-phase foundational build, a
 > per-phase multi-agent correctness review caught real data-loss,
@@ -25,21 +24,19 @@ cost what one used to.
 > foundational work, review-then-refactor before building the next
 > floor on top.
 
-## The shape
+## Four parts
 
-1. **Independent passes.** Two to four reviewers that cannot see each
-   other's output. Independence is what makes agreement between them
-   mean something.
-2. **Distinct lenses, not clones.** One traces correctness on real
-   inputs; one hunts data-loss and failure modes (crashes, partial
-   writes, rollback); one checks the change against what was actually
-   asked. Diverse lenses catch failure modes redundancy can't.
-3. **A verify stage.** For each finding, an explicit attempt to refute
-   it against the code. Plausible-but-wrong findings are the tax on
-   agent review; the refute pass is how you stop paying it.
-4. **Findings on disk, severity-ordered, scenario spelled out.** "This
-   breaks" is a claim; "these inputs produce this wrong output" is a
-   finding ([AF-17](/agent-workflow-failure-list/),
+1. **Independent passes.** Use two to four reviewers that cannot see one
+   another's output.
+2. **Different questions.** One traces realistic inputs, one looks for data
+   loss and failure recovery, and one checks whether the change matches the
+   request.
+3. **Verification after review.** Try to disprove every finding against the
+   actual code. Agent reviewers can sound certain about a problem that is not
+   there.
+4. **Concrete findings saved to disk.** “This breaks” is a claim. “These
+   inputs produce this wrong output at this line” is a finding
+   ([AF-17](/agent-workflow-failure-list/),
    [AF-02](/agent-workflow-failure-list/)).
 
 ## Try it
@@ -56,7 +53,7 @@ cost what one used to.
 - Any time green tests are the only evidence you have. Tests prove
   what they test; the review hunts what they don't.
 
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
 Run an adversarial review of the current diff (or the directory I
@@ -74,9 +71,9 @@ yet: findings first, fixes on my pick.
 
 ## Watch out
 
-- **Skipped verify stage**: raw reviewer output includes confident
-  fiction. Never batch-apply unverified findings.
-- **Coverage theater** ([AF-18](/agent-workflow-failure-list/)): a
+- **Unverified review output**: reviewers can be wrong. Never batch-apply
+  findings before checking them against the code.
+- **Hidden limits** ([AF-18](/agent-workflow-failure-list/)): a
   review that sampled three files reads identically to one that read
   the codebase, unless disclosure is demanded. "State what you did not
   cover" is the part that matters.

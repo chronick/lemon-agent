@@ -2,21 +2,19 @@
 title: "Step 1: Plain files in a repo"
 step: 1
 status: draft
-updated: 2026-08-04
-description: "Markdown in a git repo beats a notes app: agent-native, greppable, versioned, portable. Structure in filenames does the work of a database."
+updated: 2026-08-05
+description: "Markdown files in a Git repository give people and agents the same searchable, versioned, portable source of truth."
 ---
 
-The decision everything else rests on is the substrate: **plain
-markdown files in a git repo.** Not because apps are bad, but because
-every capability you'll want later (agent access, search, history,
-sync, tooling) falls out of files for free, and falls awkwardly out
-of apps forever.
+Start with **plain Markdown files in a Git repository.** This gives you and the
+agent the same material to read, search, move, edit, and version. A notes app
+can still be a useful editor, but the files remain the source of truth instead
+of depending on an export or a private database.
 
 **You've met this before.** Plain-text productivity is a decades-old
-lineage (todo.txt, org-mode, Zettelkasten), and "files over apps" is
-its modern slogan. The agent renews the argument decisively: an agent
-reads, greps, moves, and refactors files natively, while a notes
-app's database needs an export, an API, or a prayer.
+lineage (todo.txt, org-mode, Zettelkasten). Coding agents strengthen the case:
+they already know how to work with files and Git. A private app database needs
+an export or integration before the agent can do the same work.
 
 ## Why files win
 
@@ -53,7 +51,7 @@ actually working on. Resist the urge to design the taxonomy first.
 [Step 2](/guides/vault/location-is-state/) gives you the only four
 directories you need to start.
 
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
 I'm starting a plain-file vault. Create the folder (ask me where),

@@ -2,20 +2,19 @@
 title: "Step 3: Make the agent interview you"
 step: 3
 status: draft
-updated: 2026-07-31
-description: "Design back-and-forth before code: plan mode, open questions one at a time, forks named and picked by you, approval before edits."
+updated: 2026-08-05
+description: "Use a short design conversation to expose open decisions and approve the approach before the first edit."
 ---
 
-For anything non-trivial, the cheapest quality gate happens before the
-first edit: a design conversation where the **agent interviews you**,
-names the genuine forks, and gets a plan approved. Skipping it doesn't
-skip the decisions. It just moves them into the diff, where they're
-expensive to find.
+For work with meaningful choices, start with a design conversation. Ask the
+agent to inspect the project, interview you, name the decisions that would
+change the solution, and propose a plan. Approve the approach before the first
+edit.
 
-**You've met this before.** RFCs and design reviews: decisions on
-paper, argued before they're implemented, because a paragraph is
-cheaper to change than a system. The agent twist is that the document
-becomes a conversation, and the reviewer being interviewed is you.
+Skipping this conversation does not remove the decisions. It hides them in the
+implementation, where they are harder to see and more expensive to change.
+This is the same reason teams use design reviews and RFCs: changing a paragraph
+is cheaper than rebuilding a system.
 
 > Where this comes from: reviewing months of session logs, the pattern
 > in the human's interventions was consistent: they were surgical
@@ -26,9 +25,8 @@ becomes a conversation, and the reviewer being interviewed is you.
 
 ## What good looks like
 
-- **Plan mode first.** Claude Code has a literal plan mode (the agent
-  reads and asks but can't edit). Elsewhere: "don't touch files until I
-  approve a plan" does the same job.
+- **No edits during discovery.** Use your agent's plan mode if it has one, or
+  say “do not edit until I approve the plan.”
 - **Open questions, one at a time.** Interview-style beats a wall of
   multiple-choice the agent grades itself. You'll say things the agent
   wouldn't have offered as options.
@@ -37,8 +35,8 @@ becomes a conversation, and the reviewer being interviewed is you.
   waits. Especially for trigger conditions and state transitions, where
   an inferred condition is the classic silent wrong turn
   ([AF-14](/agent-workflow-failure-list/)).
-- **The plan is the approval unit.** You approve a plan, not a vibe.
-  Scope it to one feature; a plan covering everything approves nothing.
+- **Approve a bounded plan.** A plan for one feature gives the eventual diff a
+  clear authority. A roadmap for everything does not.
 
 ## Try it
 
@@ -55,7 +53,7 @@ Next non-trivial task, open with:
 And when an agent presents you options mid-work, notice it: that's the
 pattern working. Answer the fork; don't wave it through.
 
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
 Before writing any code for this task, enter plan mode (if you have no
@@ -73,6 +71,6 @@ the plan and wait for approval before touching anything.
 - **The interview that answers itself**: multiple-choice questions
   where the agent picks a default if you hesitate are forks driven
   through with extra steps. Insist on open questions.
-- **Plan-mode theater**: a plan restating the request isn't a plan.
+- **A plan that only restates the request**: it has not exposed a decision.
   The tell of a real one is that it contains a decision you had to
   make.

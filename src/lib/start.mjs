@@ -6,7 +6,7 @@ export const START_LESSONS = [
     title: 'From answers to actions',
     short: 'What changes',
     description: 'See what a coding agent can do inside a project, and what still belongs to you.',
-    tryThis: `Before doing anything, inspect this project and tell me: what it appears to be, how it is organized, and what commands seem to check that it works. Do not edit files yet.`,
+    tryThis: `Before doing anything, inspect this project and tell me: what it appears to be, how it is organized, which project instructions you read, and what CLI commands seem to check that it works. Do not edit files yet.`,
   },
   {
     id: 'choose-a-safe-task',
@@ -60,7 +60,7 @@ export const START_LESSONS = [
     title: 'Review and save',
     short: 'Inspect the change',
     description: 'Review the diff, remove surprises, and leave a checkpoint the next session can understand.',
-    tryThis: `Show me the diff and walk through it by file. Call out anything outside the original brief, any generated files, and any check that was skipped. Do not commit until I approve the diff.`,
+    tryThis: `Show me the diff and walk through it by file. Call out anything outside the original brief, any generated files, and any check that was skipped. Then list lessons from this session that belong in project instructions, a reusable skill, or a small deterministic tool. Do not write those or commit until I approve.`,
   },
 ];
 

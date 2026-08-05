@@ -25,15 +25,15 @@
         },
         {
           "role": "agent",
-          "text": "That session never saw this conversation: \"I'll remember\" lasted exactly as long as my context did. The vault's CLAUDE.md still doesn't mention recurring topics, so every fresh session re-derives the same wrong guess from the same ambiguous structure."
+          "text": "That session never saw this conversation: \"I'll remember\" lasted exactly as long as my context did. The vault's agent instructions still don't mention recurring topics, so every fresh session re-derives the same wrong guess from the same ambiguous structure."
         }
       ],
       "verdict": "The instance was fixed; the cause was left in place. A correction that lives in conversation memory dies with the session. The third correction is already scheduled.",
-      "cites": []
+      "cites": ["AF-19"]
     },
     {
       "key": "B",
-      "label": "Moving the file. And the real fix: this is the second correction for the same reason, which means it's a missing line in the vault's CLAUDE.md. Adding: \"Recurring topics (podcast, newsletter) live in topics/<name>/, not active/; active/ is for work with an endpoint.\" Diff ready.",
+      "label": "Moving the file. And the real fix: this is the second correction for the same reason, so the vault's agent instructions are missing a line. Adding: \"Recurring topics (podcast, newsletter) live in topics/<name>/, not active/; active/ is for work with an endpoint.\" Diff ready.",
       "kind": "correct",
       "outcome": [
         {
@@ -42,7 +42,7 @@
         },
         {
           "role": "agent",
-          "text": "Filed to topics/podcast/. The CLAUDE.md line made it unambiguous, so there was nothing to guess. The correction you made twice now works for every session that will ever open this vault."
+          "text": "Filed to topics/podcast/. The project instruction made it unambiguous, so there was nothing to guess. The correction you made twice now works for every future session that opens this vault."
         }
       ],
       "verdict": "Twice-corrected means the rule was missing, not the memory: one line in the file every session reads converted a recurring correction into a permanent behavior. Add it at the moment of the correction, not someday.",
@@ -50,7 +50,7 @@
     },
     {
       "key": "C",
-      "label": "This points to a bigger issue: the vault's conventions are underdocumented. I'll write a comprehensive CLAUDE.md now: the full ideal structure, naming standards, lifecycle rules, and filing conventions the vault should follow.",
+      "label": "This points to a bigger issue: the vault's conventions are underdocumented. I'll write a comprehensive instruction file now: the full ideal structure, naming standards, lifecycle rules, and filing conventions the vault should follow.",
       "kind": "plausible",
       "outcome": [
         {
@@ -62,7 +62,7 @@
           "text": "The doc describes the vault I'd design, not the one you have, so now every session inherits a conflict: follow the doc and refactor your files uninvited, or follow the files and ignore the doc. I documented an aspiration and called it a convention."
         }
       ],
-      "verdict": "The aspirational CLAUDE.md teaches a vault that doesn't exist: sessions obey the doc into fights with reality. Codify what's true, or change the files first, then write it down.",
+      "verdict": "The aspirational instructions teach a vault that doesn't exist, forcing every session to choose between the document and reality. Codify what's true, or change the files first, then write it down.",
       "cites": []
     }
   ]

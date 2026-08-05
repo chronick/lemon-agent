@@ -33,5 +33,24 @@ That division is the foundation of this course. You are not learning a magic
 prompt. You are learning a small working loop: **scope, plan, act, verify,
 review**.
 
+## How the agent acts
+
+Most coding agents work through the same interfaces programmers and scripts
+already use:
+
+- A **CLI** is a program the agent runs as a terminal command. It is often the
+  clearest route for files, Git, builds, tests, and local tools.
+- An **API** lets code send structured requests to a service. The agent can use
+  it directly or through a small command that handles details such as
+  authentication and pagination.
+- **MCP** gives an agent host a standard way to discover tools and live
+  context. It is useful for shared service connections, but it is not a
+  replacement for every CLI or API.
+
+You do not need to operate all of these yourself. The important habit is to
+prefer a clear, inspectable tool surface over repeated clicking or improvised
+steps. The field manual has a fuller decision guide in [Choose the right tool
+surface](/guides/coding-agents/tool-surfaces/).
+
 > The safest first move is often read-only: ask the agent to explain the
 > project before asking it to change the project.

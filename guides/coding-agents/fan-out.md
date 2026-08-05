@@ -2,19 +2,18 @@
 title: "Step 5: Fan out, then funnel"
 step: 5
 status: draft
-updated: 2026-07-31
-description: "Orchestration shapes that survive contact: parallel readers, find→verify pipelines, and a labeled task queue with a harvest pass for background agents."
+updated: 2026-08-05
+description: "Split large work across agents only when each part writes durable results and a final pass verifies and combines them."
 ---
 
-One agent context can't hold a big codebase, and one pass can't be both
-generative and skeptical. Orchestration fixes both, but only the
-shapes with a **funnel**: fan-out that converges on written-down,
-verified results. Fan-out without a funnel is how work evaporates.
+Large work can exceed one agent's useful context. It can also help to separate
+the person looking for problems from the person checking whether those
+problems are real. Both are reasons to split the work.
 
-**You've met this before.** Map-reduce, and the pull-request queue:
-fan the map out, reduce through verification, and the labeled queue +
-harvest below is a sprint board whose worker never sleeps. The reviewer,
-deliberately, is still you.
+The split only helps if the parts come back together. Each worker must save its
+findings, and a final pass must compare, verify, and combine them. That is the
+“funnel” in this chapter's title. Without it, parallel work produces several
+temporary conversations instead of one usable result.
 
 > The measured failure: fan-out findings held only in agents' context
 > windows. One filtered or failed agent, and its share of the work
@@ -22,28 +21,24 @@ deliberately, is still you.
 > findings to disk incrementally; partial files beat perfect memory
 > ([AF-17](/agent-workflow-failure-list/)).
 
-## Three shapes, in order of adoption
+## Three useful patterns
 
-**1. Parallel readers, one synthesizer.** The entry-level win: one
-subagent per area mapping a codebase, each writing its map to a file,
-then a synthesis pass over the files. Cheap, safe (read-only), and
-immediately useful on any repo too big to hold in one context.
+**1. Parallel readers, one summary.** Give each agent one area of the codebase.
+Each writes its map to a file. A final agent reads those files, identifies
+disagreements, and writes the combined view. This is a safe read-only use of
+parallel work.
 
-**2. Find → verify pipelines.** Generation and skepticism as separate
-stages: finders propose (bugs, candidates, edits), verifiers try to
-refute each finding independently ([step
-4](/guides/coding-agents/adversarial-review/) industrialized). The verify stage is
-what makes volume tolerable.
+**2. Find, then verify.** One group proposes bugs, candidates, or edits. A
+different group tries to disprove each finding. The second stage prevents a
+large volume of plausible suggestions from becoming a large volume of bad
+changes ([step 4](/guides/coding-agents/adversarial-review/)).
 
-**3. The labeled queue + harvest.** The autonomous tier: tasks carry
-an explicit opt-in label, a scheduled agent pulls from the queue and
-opens pull requests, and a periodic **harvest** pass reviews and merges
-what shipped. This works exactly as far as the tasks deserve it. A task
-earns the label only if: it has written acceptance criteria, the scope
-is bounded (one repo, small surface, no open architectural calls), and
-failure is cheap. The worst case is a closeable PR, never a shipped
-regression. Feeding the queue is its own discipline: refining a task
-until it's autonomy-safe is real work, done in advance, once.
+**3. A labeled background queue.** Only clearly bounded tasks receive the
+opt-in label. A scheduled agent takes one, works on a branch, and opens a pull
+request. A later review accepts or closes it. A task belongs in this queue only
+when it has written acceptance criteria, no unresolved architecture choice,
+and a cheap failure mode. The worst result should be a pull request you close,
+not a production change you must undo.
 
 ## Try it
 
@@ -55,7 +50,7 @@ Start at shape 1 on a real question ("how does auth work across these
 services?"). Move to shape 3 only after shapes 1–2 feel routine, and
 start with two or three tasks, not a backlog.
 
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
 Map this codebase with a fan-out. Spawn one subagent per top-level

@@ -6,7 +6,7 @@
   "setup": [
     {
       "role": "user",
-      "text": "Add a working agreements section to CLAUDE.md. I want you to stop repeating the mistakes that keep biting us."
+      "text": "Add a working agreements section to this project's agent instructions. I want the lessons from our work to survive future sessions."
     },
     {
       "role": "agent",

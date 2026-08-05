@@ -44,7 +44,7 @@ Next session, open with: *"after each change that builds and passes
 tests, propose a commit: show me the diff summary and a one-line
 why."* You approve each one; after a day it's habit.
 
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
 For the rest of this session: after each coherent change that builds
@@ -54,7 +54,8 @@ first line says what and whose body says why. Never batch unrelated
 changes into one commit; if you notice unrelated edits you made along
 the way, list them separately and ask. If more than ~30 minutes of
 work has gone uncommitted, say so and propose a checkpoint. Then add
-this as a "checkpoint commits" line to CLAUDE.md so it sticks. Show
+this as a "checkpoint commits" line in the supported project instruction file
+(`AGENTS.md`, `CLAUDE.md`, or its documented equivalent) so it sticks. Show
 me the diff first.
 ```
 

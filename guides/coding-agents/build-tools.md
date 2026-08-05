@@ -1,125 +1,113 @@
 ---
-title: "Step 6: Build lots of small tools"
-step: 6
+title: "Step 7: Build lots of small tools"
+step: 7
 status: draft
-updated: 2026-08-04
-description: "Many small, composable tools beat one maintained app: smaller blast radius, free composition across disciplines, and repetition tells you when to build one."
+updated: 2026-08-05
+description: "Turn repeated mechanical work into small deterministic tools, so the agent can spend its effort on decisions, orchestration, and glue."
 ---
 
-Sessions accumulate one-off work that rots in transcripts: the
-three-command analysis, the ad-hoc data munge, the checklist run by
-hand. The rule that compounds: **the second time the agent does a
-multi-step thing, it writes the tool.** And the unit is deliberately
-small: lots of little tools, not one growing app. If a step doesn't
-need reasoning, it shouldn't cost a model call.
+Agents are strongest at deciding what to do next, joining unlike systems, and
+adapting a plan when the evidence changes. They are less reliable when they
+must retype the same exact sequence every week.
 
-**You've met this before.** This is the Unix philosophy (small programs
-that do one thing, composed through pipes and files) plus X11's old
-rule of *mechanism, not policy*. Agents renew both: a shell full of
-small tools is a vocabulary the agent already speaks.
+Move that repeated work into a program. A good small tool turns a fuzzy series
+of actions into one named operation with known inputs, outputs, and errors.
+The agent still decides **when** to use it and **how** it fits the larger job;
+the tool performs the mechanical part the same way each time.
 
-## Why lots of small tools beat an app
+That division improves reliability, accuracy, and cost at once.
 
-- **Composability you didn't plan.** Single-purpose tools chain into
-  workflows their author never imagined: a status renderer, a task
-  lister, and a filter become a dashboard pipeline. An app's features
-  combine only where someone built a screen for the combination.
-- **Rewrite, not refactor.** A 100-line tool is cheaper to rewrite
-  than to refactor, so the blast radius of change stays tiny. Apps
-  demand migrations, regression sweeps, and care; small tools are
-  disposable on purpose.
-- **Disciplines mix freely.** An audio-analysis CLI, a plotter script,
-  and a stats tool share nothing but files and stdout, so a music
-  workflow can borrow from a data workflow with no shared framework.
-  An app would have forced all three into one stack before they could
-  touch.
-- **Maintenance asymmetry.** Apps rot with their platforms:
-  frameworks, build chains, dependency churn. A stdlib-only CLI runs
-  unchanged for years.
-- **Agents speak tool.** An agent composes CLIs fluently: it reads
-  `--help`, pipes outputs, retries with different flags. Driving an
-  app's UI is the expensive, brittle path. Every tool you keep extends
-  the agent's vocabulary.
+## Repetition is the design signal
 
-## Pick a stack (any stack)
+The second or third manual run is usually enough evidence to build the tool:
 
-The agent dissolves the old reason to standardize on one language:
-familiarity. You're no longer the one who has to remember the stdlib.
-Pick per tool, by what the tool needs:
+| Repeated work | Small tool worth keeping |
+|---|---|
+| Retype `ffmpeg` flags, rename files, then sort them | `sample-intake` validates flags and processes one folder |
+| Search a vault for broken links and invalid locations | `vault-doctor --json` reports exact files and reasons |
+| Gather Git activity for a weekly update | `activity-export --since DATE` emits structured data |
+| Rebuild the same API request in every script | `customer-lookup ID --json` owns auth, pagination, and errors |
 
-- **Python + stdlib.** The default for file and data work. `argparse`,
-  `pathlib`, `json`, `sqlite3` cover most small tools with zero
-  installs.
-- **Bash.** Glue under ~50 lines: piping tools together, wrapping a
-  repetitive invocation. Quote your expansions and shellcheck it
-  ([AF-12](/agent-workflow-failure-list/)); at the first nontrivial
-  data structure, promote it to python.
-- **Node.** When the tool lives near the web: a dev server, a JSON
-  API, something npm already solved. One file, no build step.
-- **Go or Rust.** When the tool wants to be a single static binary
-  (runs anywhere without a runtime) or needs the speed.
+The tool does not need to decide what the weekly update should say or which
+broken link matters most. Those are agent-and-human decisions. It should make
+the facts dependable and easy to compose.
 
-The rule that holds across all of them: **stdlib-first,
-dependency-light.** Every dependency is a maintenance surface, and a
-tool that needs an install ritual is half an app already.
+## Why many small tools beat one large app
 
-And variety is a feature, not tech debt. Tools compose through files
-and stdio, so a python analyzer feeding a rust renderer through JSON
-isn't exotic. It's the architecture. The constraint that used to make
-polyglot expensive was *human* context-switching, and it doesn't apply
-to the agent writing the code.
+Small tools can be joined in ways you did not plan. A task lister, a filter,
+and an HTML renderer can become a dashboard without sharing a framework. The
+same filter may later feed a report or a cleanup job.
 
-## The two design rules
+They are also cheap to replace. Rewriting a focused 100-line command is often
+safer than refactoring one corner of a large application. There is less state,
+fewer interactions, and a smaller regression surface. You spend your energy
+on the current problem instead of preserving an architecture built for an old
+one.
 
-**1. Tools stay flexible primitives; policy lives above them.**
-Thresholds, orderings, and opinions go in the instructions layer (your
-`CLAUDE.md`, a skill, a doc), never baked into the command. A tool
-with policy inside can't be reused by the next workflow that needs a
-different opinion; a primitive plus a written policy can. (That's
-*mechanism, not policy*, verbatim.)
+This is the Unix idea in an agentic workflow: each program does one job and
+communicates through ordinary interfaces such as files, standard input,
+standard output, JSON, and exit codes. Agents already know how to inspect and
+compose those interfaces.
 
-**2. Boring interfaces.** `--help` that's accurate, flags or env for
-config, no hardcoded absolute paths, exit codes that mean something.
-The consumer is half you, half the next agent session; both need the
-interface to be guessable.
+## What makes a useful agent-facing tool
+
+- **One clear job.** If two parts would be useful on their own, make two tools.
+- **A predictable interface.** Provide accurate `--help`, named flags,
+  meaningful exit codes, and structured output such as JSON when another
+  program will consume it.
+- **Policy stays with the caller.** The tool accepts a loudness target or date
+  range; the project instructions or skill says which value to use today.
+- **Safe defaults.** Add dry runs, timeouts, size limits, and confirmation for
+  expensive or destructive behavior.
+- **Few dependencies.** A small tool should be easy for a fresh machine and a
+  fresh agent session to run.
+
+Use the simplest language that fits the job. Python is excellent for files and
+data, shell for short glue, Node for web-shaped work, and Go or Rust for a
+portable binary or performance-sensitive path. The interface matters more
+than a uniform stack.
+
+## Build leverage one step at a time
+
+1. Notice a repeated mechanical sequence.
+2. Give it a name and a narrow input/output contract.
+3. Have the agent build the smallest useful command.
+4. Run it immediately on a small real case, including one failure case.
+5. Add its command and purpose to `AGENTS.md`, `CLAUDE.md`, or a relevant
+   skill so the next session knows it exists.
+6. Compose it with the next small tool instead of growing it into a platform.
+
+Each pass leaves the environment more capable than you found it. The agent has
+one more dependable verb, and future work needs fewer tokens and fewer chances
+to drift.
 
 ## Try it
 
 <div data-example="third-time-tool"><a href="/examples/third-time-tool/">Interactive example: The third time →</a></div>
 
-## Do it by hand
-
-At the end of any session that repeated something:
-
-1. Ask: *"list everything we did more than once this session, or will
-   obviously need again."*
-2. Pick the one with the best repetition-to-effort ratio.
-3. Have the agent write it small, then **run it once immediately**. A
-   tool that's never been run is a hypothesis
-   ([step 2](/guides/coding-agents/verification-loop/)'s rules apply to tools too).
-
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
-Review this session for tooling to harvest. List every multi-step
-thing we did more than once, or that we'll clearly need again: one
-line each on what a small tool would do and where it would live. Then
-write the single most valuable one, deliberately small: one job, a
-CLI with an accurate --help, config via flags or env (no hardcoded
-absolute paths), exit codes that distinguish "ran clean" from "found
-issues" from "failed", and no policy baked in. Thresholds and
-choices stay with the caller. Show me the file before saving, then
-run it once on real input and show the output.
+Review this session for work worth turning into a tool. List the mechanical
+sequences we repeated or will clearly need again. For each, propose one small
+command with a name, inputs, outputs, and failure behavior. Pick the most
+valuable one and build only that tool. Give it accurate --help, meaningful
+exit codes, a dry run if it changes data, and JSON output if another program
+will consume it. Run one success case and one failure case. Then add one short
+line to the project's supported instruction file or relevant skill so future
+sessions know when and how to use it. Show me the diff before saving.
 ```
 
 ## Watch out
 
-- **The app in disguise**: when a tool grows interacting flags, a
-  config file, and state, it's an app now. Split it back into
-  primitives, or own the decision to maintain an app.
-- **Metered clients in the tool path** ([AF-06](/agent-workflow-failure-list/)):
-  a harvested tool that quietly calls a billed API turns a free habit
-  into a bill. Stub or gate anything metered.
-- **Tool sprawl**: name tools within a namespace and let a namespace
-  earn existence at two members. One-off scripts that never got
-  reused should be deleted with the same ease they were made.
+- **The app in disguise:** interacting modes, persistent state, and a large
+  config surface mean the tool has become an application. Split it or make the
+  maintenance decision explicitly.
+- **Hidden paid work:** a command that silently calls a metered API can turn a
+  cheap habit into a recurring bill. Gate and report those calls
+  ([AF-06](/agent-workflow-failure-list/)).
+- **Untested convenience:** a tool that has never failed in a controlled case
+  is still a hypothesis. Prove its check can catch the mistake it claims to
+  prevent.
+- **Tool amnesia:** a useful command nobody documents will be rebuilt or
+  bypassed by the next session ([AF-19](/agent-workflow-failure-list/)).

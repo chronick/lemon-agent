@@ -3,7 +3,7 @@ title: "Step 0: The one-paste repo baseline"
 step: 0
 status: draft
 updated: 2026-08-04
-description: "Optional full-package setup: a clean repo, a working CLAUDE.md, checkpoint-commit and review habits, in one confirmation-gated paste."
+description: "Optional full-package setup: a clean repo, durable agent instructions, checkpoint commits, and review habits, in one confirmation-gated paste."
 ---
 
 Everything in this guide works on any repo, adopted one habit at a
@@ -28,7 +28,9 @@ every file and command before running it, and wait for my ok.
    commit of the current state so there's a checkpoint before any
    agent edits.
 
-2. Add (or extend) CLAUDE.md with a "## Git agreements" section:
+2. Find the project instruction file this agent supports (AGENTS.md for Codex,
+   CLAUDE.md for Claude Code, or its documented equivalent). Add or extend a
+   "## Git agreements" section:
    - Checkpoint commits: after each change that builds and passes
      tests, propose a commit (small, single-purpose, message says why).
    - Branch per task: non-trivial work happens on a branch named

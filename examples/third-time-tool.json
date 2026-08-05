@@ -28,8 +28,8 @@
           "text": "In that run I passed -24 instead of -14 to the normalizer, a typo in a hand-typed command, and nothing checked it. Each manual repetition re-rolls the dice on every flag; this time one came up wrong, silently."
         }
       ],
-      "verdict": "Manual repetition has variance, and variance compounds silently. \"Faster to just do it\" is true exactly once. By the third repeat, the two minutes are an illusion priced in future mistakes.",
-      "cites": []
+      "verdict": "Manual repetition creates a new chance to mistype or omit a step. By the third run, the two-minute shortcut has become recurring work with recurring risk.",
+      "cites": ["AF-20"]
     },
     {
       "key": "B",
@@ -49,7 +49,7 @@
           "text": "Separate small tool, piped after this one. They compose through files: that's the point of keeping each one small."
         }
       ],
-      "verdict": "The repetition became a tool: small, policy-free (the threshold stays with the caller), proven on real input the same session. Every future run costs one command and zero variance.",
+      "verdict": "The repetition became a tool: small, configurable, and proven on real input in the same session. Future runs use one checked command instead of reconstructing the sequence by hand.",
       "cites": []
     },
     {

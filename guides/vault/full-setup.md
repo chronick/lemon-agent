@@ -3,7 +3,7 @@ title: "Step 0: The one-paste vault"
 step: 0
 status: draft
 updated: 2026-08-04
-description: "Optional full-package setup: a plain-file vault with lifecycle directories, an inbox, a daily log, and a CLAUDE.md that teaches the agent the shape."
+description: "Optional full-package setup: a plain-file vault with lifecycle directories, an inbox, a daily log, and project instructions that teach the agent the shape."
 ---
 
 A vault is a personal knowledge base an agent can actually work:
@@ -18,7 +18,9 @@ What it sets up (each explained in its own step):
 - **Lifecycle directories**: location is state ([step 2](/guides/vault/location-is-state/))
 - **An inbox** for frictionless capture ([step 3](/guides/vault/capture-now/))
 - **A daily log** ([step 4](/guides/vault/daily-log/))
-- **A CLAUDE.md** that teaches the agent the shape ([step 5](/guides/vault/teach-the-shape/))
+- **An agent instruction file** that teaches the shape: `AGENTS.md`,
+  `CLAUDE.md`, or the equivalent your agent supports
+  ([step 5](/guides/vault/teach-the-shape/))
 
 ## The paste
 
@@ -39,7 +41,9 @@ file before writing it, and wait for my ok between steps.
    status). A project is a folder with an index.md once it outgrows a
    single file.
 
-3. Write CLAUDE.md at the vault root teaching an agent the shape:
+3. Write the supported agent instruction file at the vault root (AGENTS.md
+   for Codex, CLAUDE.md for Claude Code, or the documented equivalent),
+   teaching the agent the shape:
    what each directory means, the conventions above, and three
    working agreements: file into the structure (never invent new
    top-level dirs without asking), moves are proposals (show the list

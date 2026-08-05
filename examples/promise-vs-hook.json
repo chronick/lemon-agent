@@ -38,7 +38,7 @@
       "outcome": [
         {
           "role": "agent",
-          "text": "Hook installed. Probe: wrote a script with an unquoted $f in a loop. Flagged at edit time, SC2086, before you ever saw it. Policy line added to CLAUDE.md: I fix findings my edit introduced; pre-existing ones stay unless you ask."
+          "text": "Hook installed. Probe: wrote a script with an unquoted $f in a loop. Flagged at edit time, SC2086, before you ever saw it. Policy added to the project instructions: I fix findings my edit introduced; pre-existing ones stay unless you ask."
         },
         {
           "role": "user",

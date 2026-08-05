@@ -32,8 +32,25 @@ available.
 A good checkpoint gives the next session a clean place to start and makes
 recovery cheap if a later idea goes wrong.
 
+## Leave the next session more capable
+
+Do not save only the code. Save what the work taught you:
+
+- Put a project-specific correction or command in `AGENTS.md`, `CLAUDE.md`, or
+  the instruction file your agent supports.
+- Turn a workflow you use across projects into a skill. Tools such as
+  `npx skills` can install one managed skill for Codex, Claude Code, and other
+  supported agents.
+- Turn repeated mechanical steps into a small command with explicit inputs,
+  output, and failure behavior. Let the command handle exact execution while
+  the agent handles decisions and orchestration.
+
+This is the compounding part of agentic work. Each useful session should leave
+behind a better instruction, a reusable workflow, or a more dependable tool.
+
 > Merge or save what the artifact says, not what the agent says the artifact
 > contains.
 
-Continue with [Review the diff, not the summary](/guides/git/review-the-diff/)
-and [Checkpoint commits](/guides/git/commit-small/).
+Continue with [Make each correction stick](/guides/coding-agents/working-agreements/),
+[Build lots of small tools](/guides/coding-agents/build-tools/), and [Review the
+diff, not the summary](/guides/git/review-the-diff/).

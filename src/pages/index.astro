@@ -29,7 +29,7 @@ const totalMinutes = START_LESSONS.reduce((sum, lesson) => sum + lesson.minutes,
         <a class="button primary" href="/start/">Start your first session</a>
         <a class="button secondary" href={`/start/${START_LESSONS[0].id}/#make-the-call`}>See a two-minute example</a>
       </div>
-      <p class="audience-note">Built for people who have used ChatGPT before. Basic programming knowledge helps, but is not required.</p>
+      <p class="audience-note">Start with the course if you are moving beyond chat. Use the field manual at any skill level when you want a sharper working system.</p>
       <p class="audience-note">Already working with a coding agent? Skip ahead to <a href="/guides/">the field manual</a> and <a href="/agent-workflow-failure-list/">the watch-out lists</a>.</p>
     </div>
 
@@ -57,7 +57,19 @@ const totalMinutes = START_LESSONS.reduce((sum, lesson) => sum + lesson.minutes,
     <div class="outcome-grid">
       <article><span>01</span><h3>Give it a bounded task</h3><p>Turn “improve my site” into a job with a clear scope and finish line.</p></article>
       <article><span>02</span><h3>Stay involved without hovering</h3><p>Know when the agent should inspect, plan, act, ask, or stop.</p></article>
-      <article><span>03</span><h3>Trust evidence, not confidence</h3><p>Review changed files, run useful checks, and recover cheaply.</p></article>
+      <article><span>03</span><h3>Make the system improve</h3><p>Save corrections in project instructions, reusable skills, and small dependable tools.</p></article>
+    </div>
+  </section>
+
+  <section class="outcomes" aria-labelledby="leverage-title">
+    <div class="section-heading">
+      <p class="eyebrow">Build leverage</p>
+      <h2 id="leverage-title">Make every useful session improve the next one.</h2>
+    </div>
+    <div class="outcome-grid">
+      <article><span>01</span><h3>Let corrections survive the chat</h3><p>Put project facts in <code>AGENTS.md</code> or <code>CLAUDE.md</code>. Package workflows as skills, with <code>npx skills</code> managing shared installs.</p></article>
+      <article><span>02</span><h3>Prefer a clear tool surface</h3><p>Use a CLI for direct local work, an API for service access, and MCP when a standard agent connection adds value.</p></article>
+      <article><span>03</span><h3>Harvest small deterministic tools</h3><p>Let code perform exact repeated operations while the agent handles judgment, orchestration, and glue.</p></article>
     </div>
   </section>
 
@@ -87,7 +99,7 @@ const totalMinutes = START_LESSONS.reduce((sum, lesson) => sum + lesson.minutes,
         <p class="eyebrow">Go deeper</p>
         <h2 id="manual-title">The field manual</h2>
       </div>
-      <p>Patterns from measured use, ready when the beginner loop starts to feel natural.</p>
+      <p>Patterns from measured use, written for clarity without reducing the technical depth.</p>
     </div>
     <div class="guide-grid">
       {GUIDES.map((guide) => (

@@ -6,127 +6,125 @@ arm: taste
 entries: 24
 prefix: "PF"
 status: draft
-updated: 2026-07-31
-description: "24 numbered failures of AI-assisted prose, run as a subtraction pass: every match is a cut or a rewrite, never an addition."
+updated: 2026-08-05
+description: "24 recurring problems in AI-assisted prose. Use the list to cut, clarify, and recover a human voice without flattening the ideas."
 ---
 
-Run it against a draft — yours, or your assistant's. Every match is a
-cut or a rewrite, never an addition. The list names failures, not
-virtues: prose that survives subtraction is yours.
+Use this list on anything written with an assistant, including this site. It
+is a subtraction pass: remove empty language, repair unclear sentences, and
+keep the ideas that still matter.
 
-> Distilled from the recurring failure modes of AI-assisted prose and
-> the editing habits of one opinionated author. **v0** — ids are stable
-> (cite PF-07, PF-16), but entries may still be cut before 1.0: a
-> shorter list you can defend beats a long one you'd shrug at.
+The goal is not to make every piece casual or elementary. A technical reader
+also benefits from direct verbs, concrete evidence, and sentences that do not
+hide the point. Keep specialist terms when they are the most precise words;
+remove them when they merely signal expertise.
+
+> The IDs are stable, so an editor can cite `PF-07` or `PF-16` without
+> restating the whole rule. The list is deliberately opinionated. Override an
+> entry when the effect is intentional, not because the assistant produced it
+> by default.
 
 ## How to use it
 
-A match is a signal, not a sentence. Any entry can be overridden on
-purpose — the failure is doing these things *by default*, not doing them
-at all.
-
-**In any chat assistant.** Paste this prompt, then the list, then your
-draft — works anywhere that reads text:
+**Review a draft in any chat or coding agent:**
 
 ```text
-Apply the Prose Failure List (below) to my draft as a subtraction pass.
-For every match: cite the PF id, quote the offending text, and give the
-exact cut or rewrite. Never add content — only cut or tighten. Finish
-with the three edits that would improve the piece most.
+Apply the Prose Failure List to this draft. For every match, cite the PF id,
+quote the text, and give the exact cut or rewrite. Preserve technical depth
+and the author's stance. Do not add new claims. End with the three edits that
+would most improve clarity.
 ```
 
-**As a Claude Code skill.** Installs a subtraction pass you can run on
-any file in a project:
+**Install it as a reusable skill:**
 
 ```sh
-git clone https://github.com/chronick/lemon-agent
-cp -r lemon-agent/skills/prose-failure-list ~/.claude/skills/
+npx skills add chronick/lemon-agent --global \
+  --agent codex claude-code --skill prose-failure-list --yes
 ```
 
-Then ask: *"run the prose failure list on drafts/my-post.md"*.
+Then ask your agent to “run the prose failure list on `drafts/post.md`.” A
+managed `npx skills` install can serve more than one agent instead of creating
+separate hand-copied versions.
 
-**In an agent or pipeline.** Fetch the raw list at
-[/lists/prose-failure-list.md](/lists/prose-failure-list.md) and the
-machine catalog at [/catalog.json](/catalog.json). Position it as an
-advisory pass — it reports, it never gates: taste advises, it doesn't
-block.
+**Use it from a program.** The raw list is available at
+[/lists/prose-failure-list.md](/lists/prose-failure-list.md), with metadata in
+[/catalog.json](/catalog.json). Automated use should report suggestions, not
+block publication. Taste needs a person with a point of view.
 
-## A. Diction
+## A. Word choice
 
-1. **PF-01 — Inflated examination verbs.** "Delve into," "unpack," "dive
-   deep," "explore" — verbs that gesture at work instead of naming it.
-   Say what actually happened: read, measured, listed, compared.
-2. **PF-02 — Negation-elevation.** "It's not just X — it's Y." The first
-   clause is scaffolding; assert Y and let it stand.
-3. **PF-03 — Rule-of-three padding.** Triads where the third item exists
-   for rhythm, not content ("faster, cheaper, and more scalable"). Two
-   real items beat three where one is invented.
-4. **PF-04 — Em-dash chaining.** Dashes replacing sentence structure.
-   More than one pair in a paragraph means the sentences were never
-   finished.
-5. **PF-05 — Superlative gloss.** "Seamlessly," "effortlessly,"
-   "incredibly," "powerful" — adjectives claiming what the sentence
-   didn't demonstrate. Show the seam count or drop the seamless.
-6. **PF-06 — Throat-clearing opener.** Establishing context nobody
-   doubted ("In today's rapidly evolving landscape…"). Start where the
-   piece starts.
-7. **PF-07 — Fake-synthesis adverbs.** "Ultimately," "at the end of the
-   day" — gluing on a conclusion the argument never derived.
-8. **PF-08 — Anthropomorphized abstraction.** Technologies "empowering,"
-   trends "driving," ideas "demanding" — agency assigned to non-agents so
-   no one has to name who does what.
+1. **PF-01 — A vague verb stands in for the work.** “Delve into,” “unpack,”
+   and “explore” do not say what happened. Prefer the real action: read,
+   measured, listed, compared, tested.
+2. **PF-02 — The point is delayed by “not just.”** “It is not just X; it is Y”
+   often uses X as a runway. State Y directly unless the contrast matters.
+3. **PF-03 — A list has three items only for rhythm.** Two real claims beat a
+   polished trio with one invented or redundant member.
+4. **PF-04 — Dashes are doing the work of sentences.** More than one pair of
+   em dashes in a paragraph often means the relationships were never made
+   clear. Split or connect the thoughts properly.
+5. **PF-05 — Praise replaces evidence.** “Seamless,” “powerful,” and
+   “effortless” claim a result the sentence did not show. Name the time saved,
+   errors removed, or interface exposed.
+6. **PF-06 — The opening clears its throat.** “In today's rapidly evolving
+   landscape” delays the subject. Start with the specific situation.
+7. **PF-07 — A conclusion word pretends the argument is complete.**
+   “Ultimately” and “at the end of the day” cannot supply reasoning that the
+   preceding sentences lack.
+8. **PF-08 — An abstraction acts so nobody has to name the actor.** A
+   technology “empowers” or a trend “drives,” but the sentence never says who
+   changed what. Name the person, organization, or mechanism.
 
-## B. Structure
+## B. Shape and pacing
 
-9. **PF-09 — Bullet-itis.** Connected reasoning chopped into bullets to
-   look organized. If the items share a subject and verb shape, it was a
-   paragraph; restore it.
-10. **PF-10 — Uniform rhythm.** Every paragraph three to four sentences
-    of similar length. No short sentence ever lands a point. Vary it.
-11. **PF-11 — The restating conclusion.** A final section that re-says
-    the introduction, slower. End where the argument ends.
-12. **PF-12 — Signpost overload.** "Let's take a look at," "as we've
-    seen," "it's worth noting that" — narrating the essay instead of
-    writing it.
-13. **PF-13 — Colon-title reflex.** "X: Why Y Matters in 2026." One
-    clause, no subtitle, or earn the colon.
-14. **PF-14 — Symmetry over weight.** Sections sized equally regardless
-    of how much each matters. The interesting part deserves the
-    imbalance.
-15. **PF-15 — Preemptive contents-prose.** Telling the reader what
-    you're about to say, in a piece short enough to just say it.
+9. **PF-09 — Connected reasoning was chopped into bullets.** If every item
+   continues the same thought, a paragraph may make the relationship clearer.
+10. **PF-10 — Every paragraph has the same rhythm.** Uniform blocks make every
+    point feel equally important. Let a short sentence land when it should.
+11. **PF-11 — The ending repeats the opening.** A conclusion that only
+    summarizes a short piece makes the reader pay twice. End when the argument
+    reaches its result.
+12. **PF-12 — The prose narrates itself.** “Let's look at,” “as we have seen,”
+    and “it is worth noting” are instructions around the sentence. Say the
+    sentence.
+13. **PF-13 — The title uses a subtitle it did not earn.** “X: Why Y Matters”
+    is often two generic titles joined together. Prefer one specific promise.
+14. **PF-14 — Symmetry matters more than substance.** Sections receive equal
+    space even when one contains the actual insight. Give important material
+    more room.
+15. **PF-15 — The piece previews content it could already deliver.** In short
+    writing, “we will cover” is slower than covering it.
 
-## C. Rhetoric & stance
+## C. Judgment and stance
 
-16. **PF-16 — Verdict-free both-sides-ism.** "There are advantages and
-    disadvantages" with no ranking — a survey delivered where a stance
-    was owed. Rank them or own that you can't yet.
-17. **PF-17 — "Only time will tell."** And every other closer that hands
-    the question back unanswered.
-18. **PF-18 — Unearned "we."** "We all know," "as a community" —
-    consensus asserted rather than demonstrated. Say *I*, or name who.
-19. **PF-19 — Stakes-free enthusiasm.** Everything "exciting" and
-    "fascinating" while nothing is risked, spent, or lost. Excitement is
-    shown by what you did next.
-20. **PF-20 — Analogy stacking.** A second analogy for a thing the first
-    one — or the literal sentence — already carried.
-21. **PF-21 — Vague authority.** "Studies show," "experts agree," "many
-    argue" — the shape of a citation with no citation inside.
-22. **PF-22 — Moralizing coda.** The tacked-on lesson ("what this
-    teaches us about…") after the piece already made its point.
+16. **PF-16 — Both sides are listed but never ranked.** “There are advantages
+    and disadvantages” is a survey where the reader needed a judgment. Rank
+    the tradeoffs or say what evidence is still missing.
+17. **PF-17 — The closer returns the question unanswered.** “Only time will
+    tell” is not a conclusion. State the present uncertainty and what would
+    resolve it.
+18. **PF-18 — “We” claims agreement that was never established.** Use “I,”
+    name the actual group, or provide evidence of consensus.
+19. **PF-19 — Enthusiasm has no stakes.** Calling everything “exciting” says
+    less than showing what someone tried, spent, risked, or changed next.
+20. **PF-20 — A second analogy competes with the first.** Keep the clearest
+    analogy, or use the literal explanation when it already works.
+21. **PF-21 — Authority has no source.** “Studies show,” “experts agree,” and
+    “many argue” have the shape of evidence without a citation. Name the
+    source or remove the claim.
+22. **PF-22 — A lesson is attached after the point already landed.** A final
+    “what this teaches us” paragraph can weaken an ending that was complete.
 
-## D. Authenticity
+## D. Evidence and voice
 
-23. **PF-23 — Experience-free authority.** No "I tried it," no failure,
-    no cost anywhere — advice with no scar tissue. If you didn't run it,
-    say so; if you did, the failure is the interesting part.
-24. **PF-24 — Number-shaped fog.** "Several," "significantly," "a large
-    number" where the real count was one lookup away. Numbers carry
-    dates and sources or they're vibes — the house rule, applied to
-    prose.
+23. **PF-23 — Advice sounds tested but contains no experience.** There is no
+    attempt, failure, cost, or limit anywhere. If the advice was tested, show
+    the relevant evidence. If it was not, say so.
+24. **PF-24 — A quantity is vague when the number is available.** “Several,”
+    “significantly,” and “a large number” hide scale. Use the count, date, and
+    source when they matter; otherwise remove the quantitative pose.
 
 ---
 
-*Part of [Lemon Agent](/) — free tools, honest measurements, agentic
-services. Companion: [The Agent Workflow Failure
-List](/agent-workflow-failure-list/) (№ 2, the verification arm).*
+*Part of [Lemon Agent](/). Companion: [The Agent Workflow Failure
+List](/agent-workflow-failure-list/) reviews execution and verification.*

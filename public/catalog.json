@@ -76,7 +76,7 @@
       "status": "draft",
       "html": "/guides/coding-agents/",
       "raw_dir": "/guides/coding-agents/",
-      "how_to_use": "Adopt one step at a time; each chapter ends with an optional paste-into-Claude setup. Step 0 is the full baseline in one paste.",
+      "how_to_use": "Adopt one pattern at a time; each chapter ends with an optional prompt you can adapt to your agent. Step 0 is the full baseline in one paste.",
       "chapters": [
         {
           "step": 0,
@@ -87,7 +87,7 @@
         {
           "step": 1,
           "id": "working-agreements",
-          "title": "Write down what bit you",
+          "title": "Make each correction stick",
           "raw": "/guides/coding-agents/working-agreements.md"
         },
         {
@@ -116,27 +116,33 @@
         },
         {
           "step": 6,
+          "id": "tool-surfaces",
+          "title": "Choose the right tool surface",
+          "raw": "/guides/coding-agents/tool-surfaces.md"
+        },
+        {
+          "step": 7,
           "id": "build-tools",
           "title": "Build lots of small tools",
           "raw": "/guides/coding-agents/build-tools.md"
         },
         {
-          "step": 7,
+          "step": 8,
           "id": "jit-ui",
           "title": "Views on demand, not apps",
           "raw": "/guides/coding-agents/jit-ui.md"
         },
         {
-          "step": 8,
+          "step": 9,
           "id": "graduate-to-hooks",
-          "title": "Graduate protocol to hooks",
+          "title": "Turn checkable rules into checks",
           "raw": "/guides/coding-agents/graduate-to-hooks.md"
         }
       ]
     },
     {
       "id": "git-claude-code-guide",
-      "name": "Shipping Software with Git + Claude Code",
+      "name": "Shipping Software with Git + Coding Agents",
       "number": 4,
       "tier": "free-artifact",
       "kind": "guide",
@@ -253,9 +259,9 @@
       "raw": "/lists/prose-failure-list.md",
       "how_to_use": "/prose-failure-list/#how-to-use-it",
       "install": {
-        "kind": "claude-code-skill",
-        "path": "skills/prose-failure-list",
-        "copy_to": "~/.claude/skills/"
+        "kind": "skills-cli",
+        "command": "npx skills add chronick/lemon-agent --global --agent codex claude-code --skill prose-failure-list --yes",
+        "path": "skills/prose-failure-list"
       }
     },
     {
@@ -267,15 +273,15 @@
       "surface": "agent-assisted engineering",
       "arm": "verification",
       "status": "draft",
-      "entries": 18,
+      "entries": 20,
       "id_prefix": "AF",
       "html": "/agent-workflow-failure-list/",
       "raw": "/lists/agent-workflow-failure-list.md",
       "how_to_use": "/agent-workflow-failure-list/#how-to-use-it",
       "install": {
-        "kind": "claude-code-skill",
-        "path": "skills/agent-workflow-failure-list",
-        "copy_to": "~/.claude/skills/"
+        "kind": "skills-cli",
+        "command": "npx skills add chronick/lemon-agent --global --agent codex claude-code --skill agent-workflow-failure-list --yes",
+        "path": "skills/agent-workflow-failure-list"
       }
     },
     {

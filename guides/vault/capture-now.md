@@ -44,7 +44,7 @@ weekend: *"process my inbox with me, one item at a time: propose a
 disposition for each, I'll decide."* Twenty minutes, empty inbox,
 and everything landed somewhere findable.
 
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
 Two standing behaviors for my vault's inbox. (1) Capture: whenever I
@@ -56,7 +56,8 @@ propose exactly one disposition (file to a location, promote to
 active/<slug>/, park in later/, or delete) with one line of
 reasoning. I decide, you execute, and dispositions happen as a
 reviewed list, not silently. Add both behaviors to the vault's
-CLAUDE.md. Show me the diff first.
+the supported project instruction file (`AGENTS.md`, `CLAUDE.md`, or its
+documented equivalent). Show me the diff first.
 ```
 
 ## Watch out

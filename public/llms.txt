@@ -1,6 +1,6 @@
 # Lemon Agent
 
-> A practical guide to working with coding agents: a beginner course,
+> A practical guide to working with coding agents: a short starting course,
 > three deeper field guides, two numbered failure lists (installable as
 > agent skills), and services agents can call directly.
 
@@ -27,24 +27,24 @@ a copyable action.
 
 ## The guides
 
-Human-first: adopt one step at a time; every chapter names its
-traditional-engineering ancestor and ends with an optional
-paste-into-Claude setup block. Each guide's step 0 is its baseline in
-one paste. Guide index: /guides/
+Adopt one pattern at a time. Each chapter ends with an optional prompt
+you can adapt to the coding agent you use. Each guide's step 0 is its
+baseline in one paste. Guide index: /guides/
 
 ### Working with Coding Agents (№ 3), raw at /guides/coding-agents/*.md
 
 - [Step 0: The one-paste baseline](/guides/coding-agents/full-setup.md)
-- [Step 1: Write down what bit you](/guides/coding-agents/working-agreements.md)
+- [Step 1: Make each correction stick](/guides/coding-agents/working-agreements.md)
 - [Step 2: Prove it before and after](/guides/coding-agents/verification-loop.md)
 - [Step 3: Make the agent interview you](/guides/coding-agents/design-before-code.md)
 - [Step 4: Reviews that try to kill the work](/guides/coding-agents/adversarial-review.md)
 - [Step 5: Fan out, then funnel](/guides/coding-agents/fan-out.md)
-- [Step 6: Build lots of small tools](/guides/coding-agents/build-tools.md)
-- [Step 7: Views on demand, not apps](/guides/coding-agents/jit-ui.md)
-- [Step 8: Graduate protocol to hooks](/guides/coding-agents/graduate-to-hooks.md)
+- [Step 6: Choose the right tool surface](/guides/coding-agents/tool-surfaces.md)
+- [Step 7: Build lots of small tools](/guides/coding-agents/build-tools.md)
+- [Step 8: Views on demand, not apps](/guides/coding-agents/jit-ui.md)
+- [Step 9: Turn checkable rules into checks](/guides/coding-agents/graduate-to-hooks.md)
 
-### Shipping Software with Git + Claude Code (№ 4), raw at /guides/git/*.md
+### Shipping Software with Git + Coding Agents (№ 4), raw at /guides/git/*.md
 
 - [Step 0: The one-paste repo baseline](/guides/git/full-setup.md)
 - [Step 1: Checkpoint commits](/guides/git/commit-small.md)
@@ -74,7 +74,8 @@ one; each is also standalone at /examples/<id>/ with raw JSON at
 - coding-agents: clean-probe (verification) · unnamed-fork (design
   forks) · borrowed-rules (working agreements) · review-that-refutes
   (adversarial review) · vanishing-findings (fan-out) ·
-  third-time-tool (small tools) · dashboard-that-rots (JIT views) ·
+  cli-api-or-mcp (tool surfaces) · third-time-tool (small tools) ·
+  dashboard-that-rots (JIT views) ·
   promise-vs-hook (hooks)
 - git: wall-of-diff (checkpoint commits) · experiment-on-main
   (branches) · weird-retry-loop (history) · merge-on-summary (diff
@@ -93,14 +94,17 @@ one; each is also standalone at /examples/<id>/ with raw JSON at
   failures of AI-assisted prose (PF-01…PF-24), run as a subtraction
   pass. Paste-ready prompt in the page's "How to use it" section.
 - [The Agent Workflow Failure List](/lists/agent-workflow-failure-list.md):
-  18 numbered failures of agent-assisted engineering (AF-01…AF-18), each
-  grounded in a measured incident. Entries marked ⚙ are
-  executable-advisory candidates.
+  20 numbered failures of agent-assisted engineering (AF-01…AF-20), each
+  grounded in measured work. Entries marked ⚙ can be checked partly by a
+  script.
 
-## Install as skills (Claude Code)
+## Install as skills
 
-Clone https://github.com/chronick/lemon-agent and copy either directory
-into `~/.claude/skills/`:
+Use `npx skills` for a managed install shared by Codex and Claude Code:
+
+`npx skills add chronick/lemon-agent --global --agent codex claude-code --yes`
+
+The repository contains:
 
 - `skills/prose-failure-list`: subtraction pass over a draft
 - `skills/agent-workflow-failure-list`: verification pass over a

@@ -24,6 +24,12 @@ For a visual change, inspect the rendered page. For a data transformation,
 compare a small known input and output. For a build-system change, run the
 command that future users will run.
 
+When the same check matters repeatedly, save it as a small command instead of
+rebuilding the procedure in each prompt. The agent can decide when the check
+applies; the command can perform the exact measurement consistently. This is
+how verification becomes part of the working environment rather than a habit
+that depends on memory.
+
 ## Good reports include limitations
 
 “The build passes” is useful. “The build passes, the focused check covers the

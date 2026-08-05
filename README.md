@@ -3,8 +3,8 @@
 **Free tools · honest measurements · agentic services.**
 
 A small house for working with agents, the counterpart to LEMON AUDIO.
-The front door is a **seven-lesson beginner course** for moving from
-ChatGPT to a safe, bounded, and verifiable coding-agent workflow. Deeper
+The front door is a **seven-lesson course** for moving from chat to a safe,
+bounded, and verifiable coding-agent workflow. Deeper
 field guides collect concrete patterns from measured use; two numbered
 failure lists are their watch-out reference, and services agents can call
 ride alongside.
@@ -29,17 +29,17 @@ ride alongside.
 | № | Member | What it is | Use it today |
 |---|--------|-----------|--------------|
 | · | [Your First Coding-Agent Session](start/) | 7 short lessons: what changes, safe tasks, the four-part brief, planning, stop conditions, verification, and diff review | Read in order; every lesson has a decision exercise and a paste-ready action |
-| 3 | [Working with Coding Agents](guides/coding-agents/) | 9 steps: working agreements, verification loops, design interviews, adversarial reviews, fan-out orchestration, small tools, JIT HTML views, hooks | One step at a time; every chapter ends with a paste-into-Claude setup. Step 0 = full baseline in one paste |
-| 4 | [Shipping Software with Git + Claude Code](guides/git/) | 6 steps: checkpoint commits, branches as blast radius, history for the next reader, diff-not-summary review, cheap recovery | Same shape; step 0 = repo baseline in one paste |
-| 5 | [Keeping a Vault](guides/vault/) | 7 steps: plain files in a repo, location-is-state, inbox capture, daily log, teach-the-agent CLAUDE.md, doctor script | Same shape; step 0 = the whole vault in one paste |
-| 1 | [The Prose Failure List](lists/prose-failure-list.md) | 24 numbered failures of AI-assisted prose (PF-01…24), run as a subtraction pass | Paste-ready prompt on the page, or install `skills/prose-failure-list` |
-| 2 | [The Agent Workflow Failure List](lists/agent-workflow-failure-list.md) | 18 numbered failures of agent-assisted engineering (AF-01…18), each grounded in a measured incident | Paste-ready prompt on the page, or install `skills/agent-workflow-failure-list` |
+| 3 | [Working with Coding Agents](guides/coding-agents/) | 10 steps: durable instructions, verification loops, design interviews, reviews, orchestration, tool surfaces, small tools, generated views, hooks | One pattern at a time; every chapter ends with a prompt you can adapt. Step 0 = full baseline in one paste |
+| 4 | [Shipping Software with Git + Coding Agents](guides/git/) | 6 steps: checkpoint commits, branches as blast radius, history for the next reader, diff-not-summary review, cheap recovery | Same shape; step 0 = repo baseline in one paste |
+| 5 | [Keeping a Vault](guides/vault/) | 7 steps: plain files in a repo, location-is-state, inbox capture, daily log, teach-the-agent instructions, doctor script | Same shape; step 0 = the whole vault in one paste |
+| 1 | [The Prose Failure List](lists/prose-failure-list.md) | 24 numbered failures of AI-assisted prose (PF-01…24), run as a subtraction pass | Paste-ready prompt on the page, or install with `npx skills` |
+| 2 | [The Agent Workflow Failure List](lists/agent-workflow-failure-list.md) | 20 numbered failures of agent-assisted engineering (AF-01…20), each grounded in measured work | Paste-ready prompt on the page, or install with `npx skills` |
 | · | [pathgrip](https://pathgrip.net) | Bookmark + provenance store: content-addressed snapshots, drift detection, per-agent tokens, MCP surface | Not yet: operator instance; public docs + self-serve keys are the next ship |
 
 ## The guides, in one breath
 
-Human-first: read a step, adopt it by hand, or paste the step's setup
-block into Claude and confirm each file it writes. Steps are ordered by
+Human-first: read a step, adopt it by hand, or adapt the step's setup
+prompt to your agent and confirm each file it writes. Steps are ordered by
 leverage-per-effort but stand alone, and every chapter names its
 traditional-engineering ancestor ("you've met this before": TDD, RFCs,
 code review, map-reduce, the Unix philosophy, GTD, the lab notebook,
@@ -47,9 +47,8 @@ pre-commit hooks).
 
 - **coding-agents**: `00` one-paste baseline · `01` working agreements ·
   `02` verification loop · `03` design interviews · `04` adversarial
-  review · `05` fan-out & orchestration · `06` small tools (with stack
-  recommendations; any language works) · `07` JIT HTML views · `08`
-  protocol → hooks
+  review · `05` fan-out & orchestration · `06` CLI/API/MCP tool surfaces ·
+  `07` small tools · `08` JIT HTML views · `09` rules → checks
 - **git**: `00` repo baseline · `01` checkpoint commits · `02` branch
   blast radius · `03` history for the next reader · `04` review the
   diff · `05` cheap recovery
@@ -57,14 +56,28 @@ pre-commit hooks).
   state · `03` capture now · `04` daily log · `05` teach the shape ·
   `06` run a doctor
 
+## Install the review skills
+
+Use the open-source `skills` CLI so Codex and Claude Code can share one
+managed install:
+
+```sh
+npx skills add chronick/lemon-agent --global \
+  --agent codex claude-code --yes
+```
+
+The authored skills remain in this repository under `skills/`; `npx skills`
+manages the copies each agent loads. Use `npx skills list` to inspect installed
+skills and `npx skills update` to refresh them.
+
 ## Layout
 
 ```
 guides/       Canonical guide chapters, one dir per guide (guides/<slug>/<chapter>.md)
-start/        Canonical beginner-course lessons
+start/        Canonical course lessons
 lists/        Canonical failure lists; site + skills render from here
 examples/     Interactive-example data (JSON): pre-generated branching conversations
-skills/       Installable Claude Code skills (list.md copies generated by `npm run sync`)
+skills/       Installable agent skills (list.md copies generated by `npm run sync`)
 src/          Astro site (static), LEMON AUDIO visual language in light rendition
 public/       catalog.json · llms.txt · favicon: the agent-facing surfaces
 ```

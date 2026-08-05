@@ -1,79 +1,77 @@
 ---
-title: "Step 8: Graduate protocol to hooks"
-step: 8
+title: "Step 9: Turn checkable rules into checks"
+step: 9
 status: draft
-updated: 2026-07-31
-description: "Rules a script can check shouldn't stay prose: edit-time advisory hooks that flag findings mechanically. Advisory, never a judgment-replacing gate."
+updated: 2026-08-05
+description: "Keep judgment in prose, but turn mechanical rules into advisory hooks and scripts that run when they matter."
 ---
 
-Some working agreements are judgment calls forever. Others are
-mechanically checkable: quoting bugs, type leaks at serialization
-boundaries, metered clients in test files. Those **graduate**: from a
-line of prose the agent might honor, to a hook that flags the problem
-at edit time, every time, for free.
+Some working agreements require judgment: whether a design fork matters,
+whether a result is clear, or whether a change is in scope. Leave those as
+instructions for the agent and human.
 
-**You've met this before.** Linters, pre-commit hooks, CI checks.
-Shift-left, poka-yoke. The agent twist is only the audience: the
-hook's report lands mid-session where the agent reads it and fixes
-the finding before you ever see it.
+Other rules are mechanical. A script can find an unquoted shell variable,
+invalid JSON, a live paid client in a test, or a broken link more reliably and
+cheaply than a model can remember to inspect each time. Turn those rules into
+checks.
 
-> Where this comes from: a shell word-splitting incident (the classic
-> unquoted `$var` in a rename loop,
-> [AF-12](/agent-workflow-failure-list/)) became an edit-time hook
-> running `ruff` on python and `shellcheck` on shell for every file the
-> agent touches. The detail that matters: **shellcheck's default
-> severity misses SC2086** (the exact class that motivated the hook),
-> so it must run at `--severity=info` or it silently fails its own
-> founding incident. That's the difference between installing a linter
-> and encoding *your* incident.
+## Keep the rule and the check together
 
-## The graduation rule
+The written instruction explains why the check exists and how to respond. The
+script supplies consistent detection.
 
-**Advisory, never gate.** The hook reports findings; the agent fixes
-what its own edit introduced and leaves pre-existing findings unless
-asked. A hard-failing gate on taste- or judgment-adjacent checks
-recreates the failure the workflow list warns about: the problem being
-named is skipping judgment, and a gate that replaces judgment repeats
-it. (The entries marked ⚙ on [the workflow
-list](/agent-workflow-failure-list/) are the natural graduates:
-checkable by a script, still deserving a human-visible report.)
+One real shell incident came from an unquoted variable. The resulting hook ran
+ShellCheck on each edited shell file. Crucially, it used
+`--severity=info`; ShellCheck's default threshold did not report the exact
+`SC2086` issue the hook was built to catch. Installing a linter was not enough.
+The check had to reproduce the founding failure.
+
+## Advisory first
+
+A useful default is:
+
+> Report findings after an edit. Fix findings introduced by this task. Leave
+> existing findings alone unless the user expands the scope.
+
+This catches mistakes early without turning every old warning into an
+unrequested refactor. Reserve hard failures for rules that are
+binary and important enough to block the work.
+
+## Do it yourself
+
+1. Pick one instruction a program can evaluate without judgment.
+2. Write the smallest script that checks only the file or artifact just
+   changed.
+3. Feed it a known bad example and confirm that it reports the problem.
+4. Connect it to the hook mechanism your agent supports, or document the
+   command the agent must run after relevant edits.
+5. Add the response policy to `AGENTS.md`, `CLAUDE.md`, or the relevant skill.
+
+Different agent hosts expose different hooks. For example, Claude Code can run
+a `PostToolUse` hook after an edit. If your host has no edit hook, the check is
+still useful as a command, pre-commit check, or CI job.
 
 ## Try it
 
 <div data-example="promise-vs-hook"><a href="/examples/promise-vs-hook/">Interactive example: The promise and the hook →</a></div>
 
-## Do it by hand
-
-1. Pick your most mechanical agreement: quoting
-   ([AF-12](/agent-workflow-failure-list/)), numeric type leaks
-   ([AF-13](/agent-workflow-failure-list/)), billed clients in tests
-   ([AF-06](/agent-workflow-failure-list/)).
-2. Wire it to your harness's hook mechanism (Claude Code: a
-   `PostToolUse` hook on Edit/Write in settings) so it runs on every
-   edited file, scoped to the file just touched.
-3. Set the policy in writing: *fix findings your edit introduced;
-   leave pre-existing ones unless asked.* Without that line, the first
-   legacy file the agent touches becomes an unrequested refactor.
-
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
-Install an edit-time advisory lint. Whenever you edit a *.py or *.sh
-file, run ruff on python files and shellcheck at --severity=info on
-shell files (default severity misses SC2086-class quoting bugs, which
-are exactly what I care about), scoped to the file just edited.
-Findings are advisory: fix the ones the current edit introduced; leave
-pre-existing ones unless I ask. Wire it into this harness's hook
-mechanism (in Claude Code, a PostToolUse hook in settings); if there's
-no hook mechanism, write the script anyway and tell me exactly where
-to call it. Show me every file before writing it.
+Find one rule in this project's instructions that can be checked without
+human judgment. Propose the smallest advisory script for it and show where it
+should run: an agent edit hook if supported, otherwise a documented command,
+pre-commit check, or CI job. First prove the check catches the exact bad case
+that motivated the rule. Report findings introduced by the current task;
+leave existing findings alone unless I expand the scope. Show every changed
+file before saving.
 ```
 
 ## Watch out
 
-- **Default severities**: the founding incident of your hook may be
-  below the tool's default threshold. Verify the hook flags the exact
-  incident that motivated it ([step
-  2](/guides/coding-agents/verification-loop/): baseline before trusting the probe).
-- **Hard gates on advisory checks**: blocked edits teach the agent to
-  route around the check, not to honor it.
+- **A check that has never caught anything:** prove it fails on the exact
+  mistake it is meant to prevent before trusting a clean result.
+- **Default settings:** the relevant finding may sit below a linter's default
+  threshold.
+- **Hard gates on judgment:** a mechanical blocker cannot decide whether an
+  architectural tradeoff or prose choice is good.

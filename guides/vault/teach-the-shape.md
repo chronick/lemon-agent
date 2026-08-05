@@ -3,13 +3,13 @@ title: "Step 5: Teach the agent the shape"
 step: 5
 status: draft
 updated: 2026-08-04
-description: "A CLAUDE.md at the vault root (structure, conventions, and working agreements) turns every future session from a guest into staff."
+description: "A supported project-instructions file at the vault root teaches every future agent session the structure, conventions, and working agreements."
 ---
 
 Everything so far created structure; this step makes the structure
-**teachable**. A `CLAUDE.md` at the vault root (what each directory
-means, the conventions, the working agreements) is read by the agent
-at the start of every session. With it, a fresh session files
+**teachable**. Put the map and working agreements in the project file your
+agent reads at startup: `AGENTS.md` for Codex, `CLAUDE.md` for Claude Code,
+or the equivalent file your tool supports. With it, a fresh session files
 correctly, proposes instead of assuming, and respects archived/
 without being told. Without it, every session starts as a guest.
 
@@ -36,17 +36,18 @@ hire ever did. Which cuts both ways: write it precisely.
 
 A test worth running: open a completely fresh session and ask it to
 file something, with no instructions beyond the vault itself. Where
-it stumbles is what the CLAUDE.md hasn't taught yet.
+it stumbles is what the instructions have not taught yet.
 
 ## Try it
 
 <div data-example="twice-corrected"><a href="/examples/twice-corrected/">Interactive example: Twice corrected →</a></div>
 
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
 Read my entire vault (directory layout, existing notes, the log)
-and draft a CLAUDE.md at the root that teaches a future agent session
+and draft the supported project instruction file at the root (AGENTS.md,
+CLAUDE.md, or the documented equivalent) so it teaches a future agent session
 how to work here. Include: the directory map with what each location
 means, the naming and frontmatter conventions you observe, working
 agreements (moves proposed as lists before execution; archived/ is
@@ -60,13 +61,13 @@ enshrining it. Show me the draft before writing.
 
 ## Watch out
 
-- **The aspirational CLAUDE.md**: documenting conventions you wish
+- **Aspirational instructions**: documenting conventions you wish
   you had, that the vault's actual files contradict. The agent will
   follow the doc, fight the reality, and produce weirdness. Codify
   what's true, or fix the files first.
 - **Staleness**: the shape drifts, the doc doesn't. When you correct
   an agent's filing twice for the same reason, that correction is a
   missing line. Add it then, not "someday."
-- **Novel-length onboarding**: a CLAUDE.md the size of a chapter
+- **Novel-length onboarding**: an instruction file the size of a chapter
   buries its own agreements. The vault's map plus ~8 one-line rules
   covers a personal vault.

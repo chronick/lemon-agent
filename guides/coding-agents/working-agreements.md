@@ -1,73 +1,98 @@
 ---
-title: "Step 1: Write down what bit you"
+title: "Step 1: Make each correction stick"
 step: 1
 status: draft
-updated: 2026-07-31
-description: "A working-agreements section in the file your agent reads every session: one-line gates distilled from your own incidents, not a borrowed style guide."
+updated: 2026-08-05
+description: "Turn corrections from one conversation into short project instructions and reusable skills that future agent sessions can follow."
 ---
 
-The highest-leverage file in agent-assisted work is the one your agent
-reads at the start of every session (`CLAUDE.md` in Claude Code; a
-system prompt elsewhere). Most people fill it with project trivia. The
-part that changes outcomes is a short section of **working
-agreements**: one-line gates distilled from failures that have actually
-cost you.
+An agent can learn during a conversation and still repeat the same mistake in
+the next one. The correction lived in the chat, not in the project.
 
-**You've met this before.** This is the blameless postmortem's
-action-item list, made automatic: incident → written rule → the whole
-team reads it. The team here is you plus the agent, and "reads it"
-means literally every session.
+The remedy is simple: **make each useful correction outlive the session.** Put
+project-specific guidance in the file your coding agent reads when it starts:
+`AGENTS.md` for Codex, `CLAUDE.md` for Claude Code, or the equivalent file for
+your tool. Keep the filename your agent actually supports; the principle is
+the same.
 
-> Where this comes from: the [Agent Workflow Failure
-> List](/agent-workflow-failure-list/) was distilled from 25 measured
-> sessions containing 16 buggy-code incidents. The repeats didn't stop
-> because the model got better; they stopped when the incident classes
-> were written down as gates the agent reads every session.
+## Write down behavior, not wishes
 
-## Why your incidents, not someone else's
+A useful instruction tells the agent what to do at a recognizable moment:
 
-An agreement you copied doesn't get enforced, because neither you nor
-the agent can tell when it matters. An agreement written from a failure
-you paid for is checkable: you know the exact moment it applies, and so
-does the agent, because the line says so concretely.
+| Too vague | Useful next session |
+|---|---|
+| Be careful with verification. | Reproduce the bug and show the failure before changing code. |
+| Keep changes focused. | Record unrelated findings; do not add them to the current diff. |
+| Use the right vault folder. | Recurring topics go in `topics/`; `active/` is only for work with an endpoint. |
 
-Use [the workflow list](/agent-workflow-failure-list/) as a **menu, not
-a manifest**: skim the 18 entries, mark the ones that have actually
-happened in your projects, and encode only those.
+The right rule is usually small. It records a real convention, command, stop
+condition, or check. It does not try to describe an ideal project that does
+not exist.
+
+> The [Agent Workflow Failure List](/agent-workflow-failure-list/) came from
+> measured failures in real sessions. Use it as a menu: keep the entries you
+> have actually encountered and ignore the rest.
+
+## Put each lesson at the right level
+
+Not every lesson belongs in the project instruction file.
+
+- **A project instruction** records a fact or rule for this repository: how to
+  run tests, where files belong, what must not change, or when the agent must
+  stop.
+- **A skill** packages a repeatable workflow that should work across projects:
+  reviewing prose, preparing a release, or checking a pull request against a
+  failure list.
+- **A small tool or hook** handles the parts a program can check reliably:
+  validating JSON, finding broken links, or running a linter after an edit.
+
+This creates a useful path: a correction starts as a sentence, becomes a
+skill when the whole workflow repeats, and becomes code where judgment is no
+longer needed.
+
+Skills do not need to be copied separately into every agent. The open-source
+`skills` CLI can install one managed skill for the agents you use:
+
+```sh
+npx skills add chronick/lemon-agent --global \
+  --agent codex claude-code --skill agent-workflow-failure-list --yes
+```
+
+Use `npx skills` to discover, add, list, and update skills. Keep authored skill
+files in their source repository; let the installer manage the copies your
+agents load.
 
 ## Try it
 
 <div data-example="borrowed-rules"><a href="/examples/borrowed-rules/">Interactive example: Borrowed rules →</a></div>
 
-## Do it by hand
+## Do it yourself
 
-1. Skim the [workflow list](/agent-workflow-failure-list/). Note which
-   entries you've personally hit. (Most people recognize three to five
-   immediately.)
-2. Open your `CLAUDE.md` and add a `## Working agreements` section with
-   one line per gate.
-3. State each as **behavior, not values**. "Show the failing number
-   before any fix" is a gate; "be careful with verification" is a vibe.
-4. Cap it at five to eight lines. A list the agent can hold in mind
-   beats coverage. It's the same rule the failure lists follow.
+1. Think of the last correction you gave your agent twice.
+2. Find the instruction file the agent actually reads for this project.
+3. Add one plain sentence that would have prevented the second correction.
+4. Ask the agent to show the diff. Remove anything aspirational or unrelated.
 
-## Or paste this into Claude
+Five useful lines beat a page of generic advice. Add instructions when real
+work earns them, and prune rules that no longer describe the project.
+
+## Try it with your agent
 
 ```text
-Read the Agent Workflow Failure List (I'll paste it, or fetch it from
-https://github.com/chronick/lemon-agent). Then interview me, one
-question at a time, about which of its 18 failures have actually
-happened in my projects. Pick the three to five that have, plus any I
-describe that aren't on the list, and write them into this project's
-CLAUDE.md as a "## Working agreements" section: one line per gate,
-stated as behavior ("show the failing number before any fix"), never as
-advice ("be careful"). Show me the diff before writing anything.
+Review this session for corrections, project conventions, and repeated
+workflows that should survive the conversation. For each one, recommend one
+home: this project's instruction file (AGENTS.md, CLAUDE.md, or the supported
+equivalent), a reusable skill, or a deterministic tool or hook. Explain the
+choice in one sentence. Draft only the smallest useful change, show me the
+diff, and do not document conventions that the project does not yet follow.
 ```
 
 ## Watch out
 
-- **Dense shorthand** ([AF-16](/agent-workflow-failure-list/)): if the
-  next human to read your agreements can't parse them, neither can the
-  agent, reliably. Plain sentences.
-- **Twenty gates**: past ~8 lines the section becomes documentation and
-  stops being a checklist. Cut to what you'd defend.
+- **A policy dump:** long generic instructions become wallpaper. Prefer a few
+  rules tied to decisions this project actually makes.
+- **Documentation ahead of reality:** if the files and the instructions
+  disagree, either change the project first or document the project as it is.
+- **Chat-only learning:** “I will remember” is not persistence. Put the lesson
+  somewhere the next session will read or run it
+  ([AF-19](/agent-workflow-failure-list/)).

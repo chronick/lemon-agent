@@ -46,7 +46,7 @@ End every agent task with: *"show me the full diff, what you verified
 (commands and output), and what you did not verify."* Read the diff
 top to bottom once before responding. That's the whole practice.
 
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
 Standing rule for finishing any task in this repo: present (1) the
@@ -55,7 +55,8 @@ exact commands you ran and what they showed), (3) what you did NOT
 verify or deliberately skipped, stated plainly. Never merge, push, or
 mark a task done without my explicit ok. If the diff exceeds a couple
 hundred lines, propose how to split it into reviewable commits
-instead of asking me to review it whole. Add this to CLAUDE.md under
+instead of asking me to review it whole. Add this to the supported project
+instruction file under
 "git agreements". Show me the diff first.
 ```
 

@@ -1,20 +1,19 @@
 ---
-title: "Step 7: Views on demand, not apps"
-step: 7
+title: "Step 8: Views on demand, not apps"
+step: 8
 status: draft
-updated: 2026-07-31
-description: "JIT HTML UI: keep data structured, have the agent generate a self-contained HTML view when you want to look, and keep the renderer."
+updated: 2026-08-05
+description: "Keep the data in structured files and generate a self-contained HTML view when a person needs to inspect it."
 ---
 
-Most personal dashboards and internal tools don't need to be apps.
-They need to be **views**: a page generated the moment you want to
-look, from data that lives in plain structured files. The agent is the
-interface; the HTML is a byproduct; the renderer script is the asset.
+Many personal dashboards and internal reports do not need a running
+application. They need a **view**: a page generated from structured data when
+someone wants to inspect it. Keep the data as the source of truth, keep the
+small renderer script, and treat the HTML as replaceable output.
 
-**You've met this before.** Separation of data and presentation, plus
-the old `make report` habit and static-site generation: canonical data,
-generated output, nothing running in between. The agent just removes
-the last excuse: the renderer now writes itself.
+This is the familiar separation of data and presentation used by static-site
+generators and `make report` scripts. An agent makes the renderer cheap to
+create and adapt without turning the result into another service to maintain.
 
 > Where this comes from: "can we render this status better as a web
 > page? make it reusable" produced a ~small render script that reads
@@ -34,7 +33,7 @@ the last excuse: the renderer now writes itself.
    no external requests, works from `file://`. Light and dark.
 3. **The script survives the session.** That's the difference between
    "the agent made me a page once" and having a tool
-   ([step 6](/guides/coding-agents/build-tools/)). Next look costs one
+   ([step 7](/guides/coding-agents/build-tools/)). Next look costs one
    command, or nothing if you tell the agent to rerun it whenever the
    data changes.
 4. **Stamp the generated-at time into the page.** A view that could be
@@ -52,7 +51,7 @@ a real app then, not before. Most things never leave it.
 
 <div data-example="dashboard-that-rots"><a href="/examples/dashboard-that-rots/">Interactive example: The dashboard that rots →</a></div>
 
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
 I want a generated view, not an app. Take DATA (the file or directory

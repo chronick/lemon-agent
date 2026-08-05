@@ -46,7 +46,7 @@ its git log and blame the function you're changing; tell me what you
 learned"*, and *"rewrite that commit message: first line what, body
 why, plus what you verified."*
 
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
 Standing rules for this repo's history. (1) Before editing any file
@@ -55,7 +55,8 @@ and blame the region you're changing; if the history explains something
 surprising, say so before proceeding. (2) Every commit message: first
 line states the change in plain words; body states why, and what was
 verified (the actual command or probe, not "it works"). (3) Keep your
-co-author trailer on. Add these to CLAUDE.md under "git agreements".
+co-author trailer on. Add these to the supported project instruction file
+(`AGENTS.md`, `CLAUDE.md`, or its documented equivalent) under "git agreements".
 Show me the diff first.
 ```
 

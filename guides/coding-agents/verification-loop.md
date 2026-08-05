@@ -2,22 +2,18 @@
 title: "Step 2: Prove it before and after"
 step: 2
 status: draft
-updated: 2026-07-31
-description: "The three-part verification loop: baseline before fix, small proof before long cycle, serve don't describe."
+updated: 2026-08-05
+description: "Show the failure before the fix, run a cheap focused check before an expensive one, and deliver the artifact instead of a claim."
 ---
 
-Agents fail verification in one characteristic way: they produce a
-plausible *account* of the work instead of evidence. The counter is a
-loop with three gates, each cheap, each catching a failure class that
-actually occurs.
+An agent can give a convincing account of a change that it did not test well.
+Verification replaces that account with observable evidence. This chapter uses
+three checks, each aimed at a different failure.
 
-**You've met this before.** Gate 1 is Red–Green testing in work
-clothes: the test must fail (red) before its pass (green) means
-anything, and "write the regression test before the fix" is
-decades-old TDD discipline. Gate 2 is the smoke test; gate 3 is
-"working software over comprehensive documentation." What's new is
-only who forgets them: an agent under "fix it" pressure skips red
-and goes straight to a green story.
+The first is the red-then-green pattern from test-driven development: prove the
+test catches the problem before trusting it to confirm the fix. The second is
+a focused smoke test before a long run. The third is simple: when the result
+can be opened, run, or inspected, deliver it instead of describing it.
 
 ## The three gates
 
@@ -64,7 +60,7 @@ You don't need setup. You need two habits at the moment of asking:
 Then persist them: both gates become one-liners in your working
 agreements ([step 1](/guides/coding-agents/working-agreements/)).
 
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
 For the rest of this session, follow three gates. (1) Baseline before
@@ -76,7 +72,8 @@ any full build, render, or deploy, run the smallest dry run that could
 falsify the change, and tell me what it proved. (3) Serve, don't
 describe: when the deliverable can be a running page, render, or test I
 can execute, deliver that instead of prose. Then add all three as
-one-liners to this project's CLAUDE.md under "## Working agreements".
+one-liners to this project's supported instruction file (`AGENTS.md`,
+`CLAUDE.md`, or its documented equivalent) under "## Working agreements".
 Show me the diff first.
 ```
 

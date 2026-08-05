@@ -2,15 +2,14 @@
 title: "Step 4: The daily log"
 step: 4
 status: draft
-updated: 2026-08-04
+updated: 2026-08-05
 description: "Append-only day notes at log/YYYY/MM/. The agent writes session summaries, and months later the log answers 'what did I decide and why.'"
 ---
 
-The log is the vault's memory of *events*: one file per day at
-`log/YYYY/MM/YYYY-MM-DD.md`, append-only, holding what happened, what
-was decided, and what's left hanging. Its killer feature arrives
-months later, when "why did I set it up this way?" has a greppable
-answer with a date on it.
+The log records events: one append-only file per day at
+`log/YYYY/MM/YYYY-MM-DD.md`. It says what happened, what was decided, and what
+remains open. Months later, “why did I set it up this way?” has a searchable
+answer with a date.
 
 **You've met this before.** The lab notebook and the engineering
 daybook: the oldest knowledge tool in science. The agent removes the
@@ -47,7 +46,7 @@ actually about. Then end your next agent session with: *"append a
 session summary to today's log: what happened, decisions, open
 threads."* From then on it's automatic.
 
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
 Standing log behavior for my vault. At the end of any working
@@ -58,7 +57,8 @@ each), and open threads. Plain sentences, no jargon, three to six of
 them. Never rewrite or delete existing entries; the log is
 append-only. When starting a session in this vault, read the last
 three days of log first and say in one line where things stand. Add
-this to CLAUDE.md. Show me the diff first.
+this to the project's supported instruction file (`AGENTS.md`, `CLAUDE.md`,
+or its documented equivalent). Show me the diff first.
 ```
 
 ## Watch out

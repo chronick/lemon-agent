@@ -8,17 +8,15 @@ const count = (slug) => chapters.filter((c) => c.id.startsWith(`${slug}/`)).leng
 ---
 <Base
   title="The field manual"
-  description="Field guides for working with agents: coding-agent patterns, git + Claude Code, and keeping a vault. One step at a time, each step with a paste-into-Claude setup."
+  description="Field guides for working with agents: coding-agent patterns, Git workflows, and keeping a vault. One clear pattern at a time."
 >
   <p class="kicker">Lemon Agent · {GUIDES.length} deeper guides</p>
   <h1>The field manual</h1>
   <p>
-    Once the beginner loop feels natural, use these field guides
-    <strong>one pattern at a time</strong>. Every step
-    explains the pattern, names its traditional-engineering ancestor,
-    gives a do-it-by-hand path, and ends with an optional
-    <em>paste-into-Claude</em> block. Little in them is new, and that's
-    the point.
+    Use these field guides at any skill level, <strong>one pattern at a
+    time</strong>. The writing stays plain while the ideas remain technical.
+    Every step explains the pattern, gives you a way to try it, and ends with
+    an optional prompt you can adapt to your agent.
   </p>
   <div class="cards">
     {GUIDES.map((g) => (

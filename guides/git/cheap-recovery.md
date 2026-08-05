@@ -46,7 +46,7 @@ reproduce the problem on a branch and show me the failing case before
 attempting the redo."* Notice the redo now has a baseline: recovery
 composes with the verification loop.
 
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
 Standing recovery rules for this repo. (1) If a change on main turns
@@ -56,14 +56,15 @@ first. (2) You never run force-pushes, history rewrites on shared
 branches, or deletions of branches/files/stashes. For those, state
 the exact command, what it destroys, and wait for me to run it or
 approve it. (3) If work seems lost, check git reflog and report what
-you find before declaring anything gone. Add these to CLAUDE.md under
+you find before declaring anything gone. Add these to the supported project
+instruction file under
 "git agreements". Show me the diff first.
 ```
 
 ## Watch out
 
 - **Fix-forward under pressure**: the agent's default instinct. It
-  wants to solve, not retreat. The revert-first line in CLAUDE.md
+  wants to solve, not retreat. A written revert-first rule
   exists because you won't remember to say it during an incident.
 - **"I've force-pushed to fix the history"**: said cheerfully, after
   the fact. This is why the irreversible three are written down as

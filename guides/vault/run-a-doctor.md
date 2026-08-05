@@ -2,20 +2,18 @@
 title: "Step 6: Run a doctor"
 step: 6
 status: draft
-updated: 2026-08-04
-description: "A small script that checks vault health mechanically: broken links, naming drift, stale actives. Advisory findings the agent fixes in the same session that caused them."
+updated: 2026-08-05
+description: "Use a small advisory script to find broken links, naming drift, and stale active work, then verify the checker on known bad input."
 ---
 
-Knowledge rots the same way code does: links break when files move,
-names drift from the convention, `active/` silently fills with the
-abandoned. The fix is the same as in software, **a mechanical check
-you can run any time**: a small `doctor` script that walks the vault
-and reports findings. Advisory, not a gate; the agent fixes what its
-own session introduced, right then.
+Links break when files move, filenames drift, and `active/` slowly fills with
+abandoned work. A small `doctor` command can find those mechanical problems at
+any time. It reports what it sees; it does not block the work. The agent fixes
+problems introduced by the current session and brings judgment calls to you.
 
 **You've met this before.** This is linting, pointed at prose and
 structure, and it's the vault edition of the coding-agents guide's
-[graduate protocol to hooks](/guides/coding-agents/graduate-to-hooks/):
+[turn checkable rules into checks](/guides/coding-agents/graduate-to-hooks/):
 rules a script can check shouldn't stay prose. It's also where
 [the verification loop](/guides/coding-agents/verification-loop/)
 reaches the vault, founding incident included: the first version of
@@ -50,7 +48,7 @@ baked in. The thresholds live in how you call it
   mechanical findings, and brings you only the judgment calls
   (probable-stale actives, ambiguous link targets).
 
-## Or paste this into Claude
+## Try it with your agent
 
 ```text
 Write scripts/doctor.py for my vault: python, stdlib only. Checks:
@@ -62,7 +60,8 @@ always. Findings are advisory, not failures. Include --scope <dir>
 to limit a run to what a session touched. Before we trust it: plant
 a deliberately broken link and a badly named file, run the doctor,
 and show me it catches both; then remove the plants, run it clean,
-and fix anything real it found. Add to CLAUDE.md: after any session
+and fix anything real it found. Add to the supported project instruction file:
+after any session
 that moves or renames files, run the doctor scoped to what changed
 and fix findings that session introduced.
 ```
