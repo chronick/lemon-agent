@@ -10,7 +10,8 @@
     "prebuild": "npm run sync",
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name=lemon-agent --branch=main"
   },
   "dependencies": {
     "astro": "^5.12.0"

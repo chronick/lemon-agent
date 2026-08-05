@@ -1,5 +1,5 @@
-// Deploy target undecided (GitHub Pages project path vs Cloudflare Pages vs
-// custom domain) — set `site`/`base` here at deploy time, not before.
+// Deployed to Cloudflare Pages (direct upload: `npm run deploy`).
+// Temporary domain until the real one is registered — swap `site` then.
 import { defineConfig } from 'astro/config';
 import { exampleToHast, loadExample } from './src/lib/example-widget.mjs';
 
@@ -41,6 +41,7 @@ function rehypeExamples() {
 }
 
 export default defineConfig({
+  site: 'https://lemon-agent.pages.dev',
   markdown: {
     rehypePlugins: [rehypeExamples],
   },
