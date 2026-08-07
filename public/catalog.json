@@ -2,7 +2,7 @@
   "name": "Lemon Agent",
   "tagline": "Free tools, honest measurements, agentic services.",
   "operator": "chronick",
-  "updated": "2026-08-05",
+  "updated": "2026-08-07",
   "house_rule": "Nothing ships without a working answer to: how would a user actually use this, today?",
   "provenance": "Mostly AI-generated, human-guided and reviewed.",
   "members": [
@@ -283,6 +283,50 @@
         "command": "npx skills add chronick/lemon-agent --global --agent codex claude-code --skill agent-workflow-failure-list --yes",
         "path": "skills/agent-workflow-failure-list"
       }
+    },
+    {
+      "id": "writers-wing",
+      "name": "Lemon Agent for Writers",
+      "tier": "free-artifact",
+      "kind": "wing",
+      "citrus": "finger-lime",
+      "status": "v0",
+      "html": "/writers/",
+      "raw": "/wings/writers.md",
+      "how_to_use": "Paste-ready subtraction pass (runs the Prose Failure List as a review) and an interview-conductor prompt. The agent interrogates and cuts; the human writes."
+    },
+    {
+      "id": "office-wing",
+      "name": "Lemon Agent for Office Work",
+      "tier": "free-artifact",
+      "kind": "wing",
+      "citrus": "kumquat",
+      "status": "v0",
+      "html": "/office/",
+      "raw": "/wings/office.md",
+      "how_to_use": "Paste-ready research-brief and verify-info prompts for no-code agent work; Office Failure List draft (OF-01..OF-08)."
+    },
+    {
+      "id": "audio-wing",
+      "name": "Lemon Agent for Audio",
+      "tier": "free-artifact",
+      "kind": "wing",
+      "citrus": "yuzu",
+      "status": "v0",
+      "html": "/audio/",
+      "raw": "/wings/audio.md",
+      "how_to_use": "The verification-loop pattern applied to sound, adoptable with any tools today; Audio Failure List draft (AuF-01..AuF-08). The smpl toolkit itself is not yet installable and the page says so."
+    },
+    {
+      "id": "science-wing",
+      "name": "Lemon Agent for Science",
+      "tier": "free-artifact",
+      "kind": "wing",
+      "citrus": "bergamot",
+      "status": "scoping",
+      "html": "/science/",
+      "raw": "/wings/science.md",
+      "how_to_use": "The demonstration plan, published before the work: one public dataset end to end with provenance. Nothing runnable yet; the page is the plan."
     },
     {
       "id": "pathgrip",

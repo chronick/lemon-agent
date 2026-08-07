@@ -1,24 +1,56 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import { wingBySlug } from '../lib/wings.mjs';
 
 export async function getStaticPaths() {
   const lists = await getCollection('lists');
-  return lists.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+  const wings = await getCollection('wings');
+  return [
+    ...lists.map((entry) => ({ params: { id: entry.id }, props: { entry, kind: 'list' } })),
+    ...wings.map((entry) => ({ params: { id: entry.id }, props: { entry, kind: 'wing' } })),
+  ];
 }
 
-const { entry } = Astro.props;
+const { entry, kind } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
+const wing = kind === 'wing' ? wingBySlug(entry.id) : null;
+const citrusLabel = kind === 'wing' ? d.citrus.replace('-', ' ') : 'blood orange';
 ---
-<Base title={d.title} description={d.description} citrus="blood-orange">
-  <p class="kicker">
-    <span class="citrus-chip">blood orange</span>
-    Watch-out list · {d.arm} pass · {d.entries} entries
-  </p>
-  <h1>{d.title}</h1>
-  <article class="list-body">
-    <Content />
-  </article>
-  <p class="backlink"><a href="/">← Lemon Agent</a> · <a href={`/lists/${entry.id}.md`}>raw markdown</a></p>
-</Base>
+{kind === 'list' ? (
+  <Base title={d.title} description={d.description} citrus="blood-orange">
+    <p class="kicker">
+      <span class="citrus-chip">blood orange</span>
+      Watch-out list · {d.arm} pass · {d.entries} entries
+    </p>
+    <h1>{d.title}</h1>
+    <article class="list-body">
+      <Content />
+    </article>
+    <p class="backlink"><a href="/">← Lemon Agent</a> · <a href={`/lists/${entry.id}.md`}>raw markdown</a></p>
+  </Base>
+) : (
+  <Base title={d.title} description={d.description} citrus={d.citrus}>
+    <p class="kicker">
+      <span class="citrus-chip">{citrusLabel}</span>
+      <a class="kicker-link" href="/wings/">Wing</a> · {wing.short}
+      <span class={`badge ${d.status}`}>{d.status}</span>
+    </p>
+    <h1>{d.title}</h1>
+    <p class="wing-tagline">{wing.tagline}</p>
+    <article class="list-body">
+      <Content />
+    </article>
+    <p class="backlink"><a href="/wings/">← All wings</a> · <a href={`/wings/${entry.id}.md`}>raw markdown</a></p>
+  </Base>
+)}
+
+<style>
+  .kicker-link { color: inherit; }
+  .wing-tagline {
+    margin: -0.3rem 0 1.6rem;
+    color: var(--muted);
+    font-size: 1.12rem;
+  }
+</style>

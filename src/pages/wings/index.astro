@@ -1,0 +1,59 @@
+---
+import Base from '../../layouts/Base.astro';
+import { WINGS } from '../../lib/wings.mjs';
+---
+<Base
+  title="The wings"
+  description="Domain wings of Lemon Agent: the same method, flavored per field. Writers, office work, audio, and science, each honest about what's usable today."
+>
+  <p class="kicker">Lemon Agent · {WINGS.length} wings</p>
+  <h1>The wings</h1>
+  <p>
+    One method underneath, <strong>flavored per domain</strong>. The
+    coding guides are the base of the house; each wing applies the same
+    loop (scope, plan, watch, verify, review) to a different field,
+    wearing its own citrus over the lemon.
+  </p>
+  <p class="gate-note">
+    Wings ship honest: <span class="badge v0">v0</span> means something
+    on the page is usable today; <span class="badge scoping">scoping</span>
+    means the page is the plan, stated before the work so you can hold us
+    to it. A wing only counts as a shipped member of the house once its
+    instrument and its failure list are real and in use beyond the
+    operator.
+  </p>
+  <div class="cards">
+    {WINGS.map((w) => (
+      <a class={`card citrus-${w.citrus}`} href={`/${w.slug}/`}>
+        <p class="card-kicker"><span class="citrus-chip">{w.citrus.replace('-', ' ')}</span> · <span class={`badge ${w.status}`}>{w.status}</span></p>
+        <p class="card-title">{w.title}</p>
+        <p class="card-tagline">{w.tagline}</p>
+        <p class="card-blurb">{w.blurb}</p>
+      </a>
+    ))}
+  </div>
+  <p class="backlink">
+    <a href="/">← Lemon Agent</a> · for agents: raw wings at
+    <code>/wings/*.md</code>, catalog at <a href="/catalog.json">/catalog.json</a>
+  </p>
+</Base>
+
+<style>
+  .gate-note { color: var(--muted); font-size: 0.88rem; }
+  .cards { display: grid; gap: 0.9rem; margin: 1.6rem 0 0.5rem; }
+  .card {
+    display: block;
+    padding: 1rem 1.2rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 120ms ease, background 120ms ease, box-shadow 120ms ease;
+  }
+  .card:hover { border-color: var(--accent-hover); border-left-color: var(--accent); background: var(--accent-soft); box-shadow: var(--glow); }
+  .card-kicker { margin: 0; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.5em; }
+  .card-title { margin: 0.55rem 0 0.1rem; font-weight: 700; font-size: 1.05rem; color: var(--accent-ink); }
+  .card-tagline { margin: 0 0 0.3rem; font-size: 0.9rem; color: var(--ink); }
+  .card-blurb { margin: 0; font-size: 0.85rem; color: var(--muted); }
+</style>

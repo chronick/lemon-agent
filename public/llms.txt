@@ -98,6 +98,22 @@ one; each is also standalone at /examples/<id>/ with raw JSON at
   grounded in measured work. Entries marked ⚙ can be checked partly by a
   script.
 
+## The wings
+
+Domain applications of the same method, indexed at /wings/ (raw markdown
+at /wings/<slug>.md). Statuses are honest: v0 = something on the page is
+usable today; scoping = the published plan, stated before the work.
+
+- [Lemon Agent for Writers](/wings/writers.md): a subtraction pass built
+  on the Prose Failure List, plus an interview-conductor prompt. v0.
+- [Lemon Agent for Office Work](/wings/office.md): research-brief and
+  verify-info prompts; Office Failure List draft (OF-01…OF-08). v0.
+- [Lemon Agent for Audio](/wings/audio.md): verification loops for
+  sound; Audio Failure List draft (AuF-01…AuF-08); the toolkit is not
+  yet installable and the page says so. v0.
+- [Lemon Agent for Science](/wings/science.md): the demonstration plan,
+  published before the work. scoping.
+
 ## Install as skills
 
 Use `npx skills` for a managed install shared by Codex and Claude Code:
