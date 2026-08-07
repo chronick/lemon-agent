@@ -1,41 +1,44 @@
 // Wing registry: the domain verticals mounted at lemon-agent.dev/{slug}.
-// Each wing wears a citrus variety over the lemon base (see DESIGN.md).
-// A wing is `v0` when it ships something usable today, `scoping` when the
-// page is honestly just the plan. The nav gate for calling a wing a
-// shipped *member* (instrument + judgment artifact, used by someone
-// outside the house) is stricter than having a page.
+// Settled IA (owner decision, 2026-08-07): canonical routes are
+// /writing, /audio, /work, /science; the root route is the Devs wing.
+// Wings use the Lemon visual identity (citrus is editorial wordplay,
+// not a wing palette). A wing page may exist UNLISTED while incubating;
+// it earns primary navigation only after it provides a complete useful
+// path (installable instrument + applicable judgment artifact + worked
+// use path) and has been used by someone outside the house.
 
 export const WINGS = [
   {
-    slug: 'writers',
-    title: 'Lemon Agent for Writers',
-    short: 'Writers',
-    citrus: 'finger-lime',
+    slug: 'writing',
+    title: 'Lemon Agent for Writing',
+    short: 'Writing',
     status: 'v0',
+    listed: false,
     tagline: 'The agent interrogates, organizes, and cuts. You write.',
     blurb:
-      'A subtraction pass built on the Prose Failure List, an interview ' +
-      'conductor that pulls a draft out of you, and a hard rule about ' +
-      'whose voice survives.',
+      'The Interview Conductor (an installable skill that pulls a draft ' +
+      'out of you one question at a time), a subtraction pass built on ' +
+      'the Prose Failure List, and a hard rule about whose voice ' +
+      'survives.',
   },
   {
-    slug: 'office',
-    title: 'Lemon Agent for Office Work',
-    short: 'Office',
-    citrus: 'kumquat',
+    slug: 'work',
+    title: 'Lemon Agent for Knowledge Work',
+    short: 'Work',
     status: 'v0',
-    tagline: 'Research you can cite. Claims you can check.',
+    listed: false,
+    tagline: 'Claims you can check, with a ledger to prove it.',
     blurb:
-      'The scope-plan-watch-verify-review loop without any code: a ' +
-      'research brief, a verify-info pass, and the start of an office ' +
-      'failure list.',
+      'The scope-plan-watch-verify-review loop without any code. First ' +
+      'instrument: a verify-info pass that turns any document into a ' +
+      'claim ledger. Scoping toward an installable skill.',
   },
   {
     slug: 'audio',
     title: 'Lemon Agent for Audio',
     short: 'Audio',
-    citrus: 'yuzu',
     status: 'v0',
+    listed: false,
     tagline: 'Verification loops for sound: checks before ears.',
     blurb:
       'File-backed sessions, deterministic gates on every bounce, and ' +
@@ -45,12 +48,13 @@ export const WINGS = [
     slug: 'science',
     title: 'Lemon Agent for Science',
     short: 'Science',
-    citrus: 'bergamot',
     status: 'scoping',
+    listed: false,
     tagline: 'One dataset, end to end, with provenance.',
     blurb:
-      'A demonstration, not coverage: charts, basic ML, and research ' +
-      'notes that carry their sources, on one public dataset.',
+      'A demonstration, not coverage: one pinned public dataset taken ' +
+      'through a reproducible analysis, scoped in the open before the ' +
+      'work.',
   },
 ];
 

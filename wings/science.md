@@ -1,52 +1,64 @@
 ---
 title: "Lemon Agent for Science"
 wing: science
-citrus: bergamot
 status: scoping
 updated: 2026-08-07
-description: "A demonstration, not coverage: one public dataset taken end to end (charts, basic ML, research notes with provenance) using the site's principles. This page is the plan, stated before the work."
+description: "A demonstration, not coverage: one pinned public dataset taken through a reproducible agent-driven analysis. This page is the scoping note, published before the work."
 ---
 
-This wing is at the stage before instruments: the plan, published
-first, so the work can be checked against it later. Science calls that
-ordering pre-registration; this site's version is the measured before
-state ([AF-02](/agent-workflow-failure-list/)). Either name, same
-move, and this page says plainly what does not exist yet: everything
-below.
+This wing will demonstrate reproducible agent-driven analysis without
+pretending to cover every scientific domain. Its products will be
+static guides and installable skills that orchestrate deterministic
+tools in your own environment; nothing here hosts datasets, models, or
+session state. Science calls publishing the plan first
+pre-registration; this site's version is the measured before state
+([AF-02](/agent-workflow-failure-list/)). Either name, same move, and
+this page is that note: everything below is scope, not product.
 
-## The scope, honestly bounded
+## The scoping note
 
-Not "tools for scientists." One **demonstration**: a single public
-dataset taken end to end with an agent, showing the loop's moves in
-analysis work:
+- **The user.** Someone comfortable running notebooks or scripts who
+  wants an analysis their agent can re-run, extend, and defend:
+  a grad student, a data-inclined hobbyist, a researcher tired of
+  figures nobody can regenerate.
+- **The candidate question.** Can known transiting exoplanets be
+  recovered from public space-telescope light curves, with depth and
+  period reported reproducibly? A TESS light-curve workflow is the
+  candidate, not a foregone conclusion; the spike confirms or replaces
+  it.
+- **The pinned dataset.** One public astronomical dataset, pinned by
+  identifier and version (for the TESS candidate: named sectors of the
+  mission's published light curves, referenced by their archive DOI and
+  release, recorded in the repo). Pinning is the point: an analysis
+  against "the latest data" is not reproducible.
+- **The stages.** A small composable vocabulary, each stage with a
+  declared contract (inputs + parameters in, artifacts + receipt out):
+  fetch, clean, detrend, search, fit, report. The shape mirrors the
+  audio wing's pipe pattern, pointed at survey data.
+- **The reproducibility bundle.** Every run emits: the source receipt
+  (identifier, version, hash), the exact parameters, the generated
+  artifacts, and the report that cites them. A stranger with the repo
+  can rebuild every figure or say precisely where it broke.
+- **The judgment artifact.** A science failure list seeded from the
+  failures that actually corrupt analysis: unit mistakes, leakage,
+  unsupported interpretation, missing provenance, irreproducible
+  transforms. Like the [work wing](/work/), entries harden from
+  observed incidents, not invention.
+- **The worked example.** One complete run, start to finish, executed
+  in the user's own environment, shipped alongside the first skill.
+- **The tool repo.** To be named in the spike; the candidate is a
+  small public repo holding the stage implementations the skill
+  orchestrates.
 
-- **Charts with provenance.** Every figure regenerable from a script
-  in the repo; no orphan images. A chart you can't rebuild is a claim
-  you can't check.
-- **Basic ML, honestly framed.** Train a small model on the dataset,
-  report what it does and does not show, with the baseline stated
-  before the model (the null result kept publishable).
-- **Research notes that carry their sources.** Claims linked to
-  papers and data the way the office wing's
-  [verify-info pass](/office/) demands: not-verified recorded as a
-  value, disagreements recorded instead of averaged.
+## Not covered, on purpose
 
-The likely dataset is from astronomy: public, large, well-documented,
-and nobody's trade secret. The working sketch is pipe-shaped analysis
-tools in the mold of the audio wing's toolkit (content-addressed
-reads, composable stages, machine-readable reports), pointed at survey
-data instead of samples.
-
-## You've met this before
-
-The lab notebook. Everything here is the notebook discipline made
-mechanical: what was done, in what order, from what inputs, so someone
-else (including a future agent) can re-run it and disagree with
-specifics rather than with vibes.
+No per-science survey. No general model-training platform. No hosted
+compute, datasets, or knowledge-graph product. One question, one
+dataset, one reproducible path, done honestly.
 
 ## What would make this real
 
-The wing graduates from scoping when the demonstration exists: the
-dataset chosen, the pipeline public, at least one figure and one model
-reproducible by a stranger from the repo alone. Until then this page
-stays what it is: a plan you can hold us to.
+The wing graduates from scoping when the demonstration exists: dataset
+pinned, pipeline public, at least one figure and one fit reproducible
+by a stranger from the repo alone. Until then this page stays what it
+is: a plan you can hold us to.

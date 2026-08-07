@@ -1,7 +1,6 @@
 ---
 title: "Lemon Agent for Audio"
 wing: audio
-citrus: yuzu
 status: v0
 updated: 2026-08-07
 description: "Lemon-agent principles applied to sound: file-backed sessions, deterministic gates before ears, analysis with receipts, and the start of an audio failure list from measured studio practice."

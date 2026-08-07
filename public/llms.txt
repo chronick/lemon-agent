@@ -98,20 +98,25 @@ one; each is also standalone at /examples/<id>/ with raw JSON at
   grounded in measured work. Entries marked ⚙ can be checked partly by a
   script.
 
-## The wings
+## The wings (incubating, unlisted)
 
 Domain applications of the same method, indexed at /wings/ (raw markdown
-at /wings/<slug>.md). Statuses are honest: v0 = something on the page is
-usable today; scoping = the published plan, stated before the work.
+at /wings/<slug>.md). Wings incubate outside primary navigation until
+they earn it (installable instrument + judgment artifact + worked path +
+external use). Statuses are honest: v0 = something on the page is usable
+today; scoping = the published plan, stated before the work.
 
-- [Lemon Agent for Writers](/wings/writers.md): a subtraction pass built
-  on the Prose Failure List, plus an interview-conductor prompt. v0.
-- [Lemon Agent for Office Work](/wings/office.md): research-brief and
-  verify-info prompts; Office Failure List draft (OF-01…OF-08). v0.
+- [Lemon Agent for Writing](/wings/writing.md): the Interview Conductor
+  (installable `writing-interview` skill; instrument page at
+  /writing/interview-conductor/, raw at /wings/interview-conductor.md)
+  plus the PF subtraction pass. v0.
+- [Lemon Agent for Knowledge Work](/wings/work.md): the verify-info
+  pass producing a user-owned claim ledger; the installable skill is
+  scoped on the page. v0.
 - [Lemon Agent for Audio](/wings/audio.md): verification loops for
   sound; Audio Failure List draft (AuF-01…AuF-08); the toolkit is not
   yet installable and the page says so. v0.
-- [Lemon Agent for Science](/wings/science.md): the demonstration plan,
+- [Lemon Agent for Science](/wings/science.md): the scoping note,
   published before the work. scoping.
 
 ## Install as skills
@@ -125,6 +130,9 @@ The repository contains:
 - `skills/prose-failure-list`: subtraction pass over a draft
 - `skills/agent-workflow-failure-list`: verification pass over a
   session, PR, or report
+- `skills/writing-interview`: the Interview Conductor, a
+  one-question-at-a-time interview that ends in structured notes and a
+  writing brief (never drafts for the user)
 
 Run the lists as advisory passes: they report, they never gate.
 

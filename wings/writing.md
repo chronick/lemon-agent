@@ -1,10 +1,9 @@
 ---
-title: "Lemon Agent for Writers"
-wing: writers
-citrus: finger-lime
+title: "Lemon Agent for Writing"
+wing: writing
 status: v0
 updated: 2026-08-07
-description: "Agents for writing that leave the writing to you: a subtraction pass built on the Prose Failure List, and an interview conductor that pulls a draft out of you one question at a time."
+description: "Agents for writing that leave the writing to you: the Interview Conductor skill that pulls a draft out of you one question at a time, and a subtraction pass built on the Prose Failure List."
 ---
 
 An agent will happily write your essay. That is the problem. The result
@@ -28,7 +27,8 @@ numbered entry, so you can dispute any call it makes.
 Review the draft I paste next as a subtraction pass against the Prose
 Failure List at https://lemon-agent.dev/lists/prose-failure-list.md
 (entries PF-01 to PF-24). If you cannot fetch that URL, say so and ask
-me to paste the list; do not work from memory. Do not rewrite anything. Produce a numbered report:
+me to paste the list; do not work from memory. Do not rewrite
+anything. Produce a numbered report:
 each finding cites its PF id, quotes the exact phrase, and says what
 the cut or repair would be and why. Where a finding is a judgment
 call, say so. End with the three highest-value cuts. My voice wins
@@ -42,34 +42,35 @@ npx skills add chronick/lemon-agent --global \
   --agent codex claude-code --skill prose-failure-list --yes
 ```
 
-## The interview conductor
+## The Interview Conductor
 
 The hardest part of a draft is getting the material out of your head.
 Interviews beat blank pages: answering a sharp question is easier than
-composing an opening paragraph. This prompt turns the agent into the
-interviewer, with the rule that matters stated up front: your sentences
-are the raw material, and they survive verbatim.
+composing an opening paragraph. The wing's first instrument is the
+[**Interview Conductor**](/writing/interview-conductor/): an
+installable skill that runs a focused interview about what you want to
+write (one question at a time, a parking lot for tangents, your words
+kept verbatim and marked as yours) and ends with structured interview
+notes plus a writing brief. By contract it never invents experience or
+evidence for you, and it stops before drafting: the draft is yours.
 
-```text
-Act as an interviewer helping me develop a piece of writing. Ask ONE
-question at a time and wait for my answer. Start by asking what I'm
-trying to write and who it's for, then follow my energy: go deeper
-where my answers get specific or excited, change angles where I stall.
-Push back once when an answer is vague. Every few exchanges, reflect
-my thinking back in sharper form and ask if that's what I meant.
-Keep a verbatim record: when we finish (or when I say "wrap"),
-produce (1) my usable sentences quoted word for word, marked as
-quotes, (2) an outline built from them, (3) the open questions I
-dodged. Do not draft prose for me unless I explicitly ask.
+```sh
+npx skills add chronick/lemon-agent --global \
+  --agent codex claude-code --skill writing-interview --yes
 ```
+
+The [instrument page](/writing/interview-conductor/) has the full
+workflow and a paste-ready fallback for agent surfaces without skill
+installs.
 
 ## Check the facts
 
 A draft full of confident claims needs the same treatment as a report:
 claims inventoried, sources attached, confidence stated. That
 instrument lives one wing over, and it works on essays as well as
-memos: run the [verify-info pass](/office/#the-verify-info-pass) from
-the office wing over your draft before you publish.
+memos: run the
+[verify-info pass](/work/#the-verify-info-pass-usable-today) from the
+knowledge-work wing over your draft before you publish.
 
 ## Not yet (and we'd rather say so)
 

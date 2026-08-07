@@ -285,34 +285,39 @@
       }
     },
     {
-      "id": "writers-wing",
-      "name": "Lemon Agent for Writers",
+      "id": "writing-wing",
+      "name": "Lemon Agent for Writing",
       "tier": "free-artifact",
       "kind": "wing",
-      "citrus": "finger-lime",
       "status": "v0",
-      "html": "/writers/",
-      "raw": "/wings/writers.md",
-      "how_to_use": "Paste-ready subtraction pass (runs the Prose Failure List as a review) and an interview-conductor prompt. The agent interrogates and cuts; the human writes."
+      "listed": false,
+      "html": "/writing/",
+      "raw": "/wings/writing.md",
+      "how_to_use": "The Interview Conductor (installable skill, instrument page at /writing/interview-conductor/) pulls a draft out of the writer one question at a time; the subtraction pass runs the Prose Failure List as a review. The agent interrogates and cuts; the human writes.",
+      "install": {
+        "kind": "skills-cli",
+        "command": "npx skills add chronick/lemon-agent --global --agent codex claude-code --skill writing-interview --yes",
+        "path": "skills/writing-interview"
+      }
     },
     {
-      "id": "office-wing",
-      "name": "Lemon Agent for Office Work",
+      "id": "work-wing",
+      "name": "Lemon Agent for Knowledge Work",
       "tier": "free-artifact",
       "kind": "wing",
-      "citrus": "kumquat",
       "status": "v0",
-      "html": "/office/",
-      "raw": "/wings/office.md",
-      "how_to_use": "Paste-ready research-brief and verify-info prompts for no-code agent work; Office Failure List draft (OF-01..OF-08)."
+      "listed": false,
+      "html": "/work/",
+      "raw": "/wings/work.md",
+      "how_to_use": "Paste-ready verify-info pass producing a user-owned claim ledger (claim, support level, source, confidence, uncertainty, follow-up). The installable work-verify-info skill is scoped on the page and ships next."
     },
     {
       "id": "audio-wing",
       "name": "Lemon Agent for Audio",
       "tier": "free-artifact",
       "kind": "wing",
-      "citrus": "yuzu",
       "status": "v0",
+      "listed": false,
       "html": "/audio/",
       "raw": "/wings/audio.md",
       "how_to_use": "The verification-loop pattern applied to sound, adoptable with any tools today; Audio Failure List draft (AuF-01..AuF-08). The smpl toolkit itself is not yet installable and the page says so."
@@ -322,11 +327,11 @@
       "name": "Lemon Agent for Science",
       "tier": "free-artifact",
       "kind": "wing",
-      "citrus": "bergamot",
       "status": "scoping",
+      "listed": false,
       "html": "/science/",
       "raw": "/wings/science.md",
-      "how_to_use": "The demonstration plan, published before the work: one public dataset end to end with provenance. Nothing runnable yet; the page is the plan."
+      "how_to_use": "The scoping note, published before the work: one pinned public dataset through a reproducible analysis. Nothing runnable yet; the page is the plan."
     },
     {
       "id": "pathgrip",

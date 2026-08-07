@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import CourseClient from '../components/CourseClient.astro';
 import { GUIDES } from '../lib/guides.mjs';
-import { WINGS } from '../lib/wings.mjs';
 import { START_LESSONS } from '../lib/start.mjs';
 
 const lists = (await getCollection('lists')).sort((a, b) => a.data.number - b.data.number);
@@ -113,25 +112,6 @@ const totalMinutes = START_LESSONS.reduce((sum, lesson) => sum + lesson.minutes,
     </div>
   </section>
 
-  <section class="manual" aria-labelledby="wings-title">
-    <div class="section-heading manual-heading">
-      <div>
-        <p class="eyebrow">Same method, your field</p>
-        <h2 id="wings-title">The wings</h2>
-      </div>
-      <p>The loop, flavored per domain: writing, office work, audio, science. Each wing says plainly what's usable today.</p>
-    </div>
-    <div class="wing-grid">
-      {WINGS.map((w) => (
-        <a class={`wing-card citrus-${w.citrus}`} href={`/${w.slug}/`}>
-          <p><span class="citrus-chip">{w.citrus.replace('-', ' ')}</span> <span class={`badge ${w.status}`}>{w.status}</span></p>
-          <h3>{w.short}</h3>
-          <span class="tag">{w.tagline}</span>
-        </a>
-      ))}
-    </div>
-  </section>
-
   <section class="reference-bar">
     <div>
       <p class="eyebrow">Check your work</p>
@@ -203,12 +183,6 @@ const totalMinutes = START_LESSONS.reduce((sum, lesson) => sum + lesson.minutes,
   .guide-card p { margin: 0; color: var(--muted); font-family: ui-monospace, Menlo, Monaco, Consolas, monospace; font-size: 0.7rem; text-transform: uppercase; }
   .guide-card h3 { margin: 0.8rem 0 0.45rem; color: var(--accent-ink); }
   .guide-card span { color: var(--muted); font-size: 0.85rem; }
-  .wing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.85rem; margin-top: 2rem; }
-  .wing-card { padding: 1.05rem; border: 1px solid var(--border); border-top: 3px solid var(--accent); border-radius: 0.65rem; background: var(--card); color: inherit; text-decoration: none; }
-  .wing-card:hover { border-color: var(--accent-hover); border-top-color: var(--accent); background: var(--accent-soft); box-shadow: var(--glow); }
-  .wing-card > p { margin: 0; display: flex; gap: 0.5em; align-items: center; }
-  .wing-card h3 { margin: 0.7rem 0 0.3rem; color: var(--accent-ink); }
-  .wing-card .tag { color: var(--muted); font-size: 0.85rem; display: block; }
   .reference-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin: 2rem 0 5rem; padding: 2rem; border-radius: 0.8rem; background: var(--note-bg); }
   .reference-links { display: grid; gap: 0.75rem; }
   .reference-links a { display: block; padding: 0.8rem; border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0.45rem; background: var(--card); color: inherit; text-decoration: none; }
@@ -221,7 +195,6 @@ const totalMinutes = START_LESSONS.reduce((sum, lesson) => sum + lesson.minutes,
     .hero { min-height: 0; padding-top: 0; }
     .session-card { max-width: 34rem; }
     .outcome-grid, .guide-grid { grid-template-columns: 1fr; }
-    .wing-grid { grid-template-columns: 1fr 1fr; }
     .start-intro { position: static; }
     .manual-heading, .reference-bar { grid-template-columns: 1fr; }
     .manual-heading { align-items: start; flex-direction: column; }

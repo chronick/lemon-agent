@@ -8,7 +8,9 @@ export async function getStaticPaths() {
   const wings = await getCollection('wings');
   return [
     ...lists.map((entry) => ({ params: { id: entry.id }, props: { entry, kind: 'list' } })),
-    ...wings.map((entry) => ({ params: { id: entry.id }, props: { entry, kind: 'wing' } })),
+    ...wings
+      .filter((entry) => entry.data.kind !== 'instrument')
+      .map((entry) => ({ params: { id: entry.id }, props: { entry, kind: 'wing' } })),
   ];
 }
 
@@ -16,7 +18,6 @@ const { entry, kind } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
 const wing = kind === 'wing' ? wingBySlug(entry.id) : null;
-const citrusLabel = kind === 'wing' ? d.citrus.replace('-', ' ') : 'blood orange';
 ---
 {kind === 'list' ? (
   <Base title={d.title} description={d.description} citrus="blood-orange">
@@ -31,9 +32,8 @@ const citrusLabel = kind === 'wing' ? d.citrus.replace('-', ' ') : 'blood orange
     <p class="backlink"><a href="/">← Lemon Agent</a> · <a href={`/lists/${entry.id}.md`}>raw markdown</a></p>
   </Base>
 ) : (
-  <Base title={d.title} description={d.description} citrus={d.citrus}>
+  <Base title={d.title} description={d.description}>
     <p class="kicker">
-      <span class="citrus-chip">{citrusLabel}</span>
       <a class="kicker-link" href="/wings/">Wing</a> · {wing.short}
       <span class={`badge ${d.status}`}>{d.status}</span>
     </p>

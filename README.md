@@ -82,10 +82,14 @@ src/          Astro site (static), LEMON AUDIO visual language in light renditio
 public/       catalog.json · llms.txt · favicon: the agent-facing surfaces
 ```
 
-The wings (at `/wings/`, pages at `/{writers,office,audio,science}/`)
-apply the same method per domain, each wearing its own citrus variety
-(DESIGN.md). Statuses are honest: `v0` means something on the page is
-usable today; `scoping` means the page is the published plan.
+The wings (indexed at `/wings/`, pages at
+`/{writing,work,audio,science}/`) apply the same method per domain and
+**incubate unlisted**: they stay out of primary navigation until they
+earn it with an installable instrument, a judgment artifact, a worked
+path, and external use (DESIGN.md has the architecture). Statuses are
+honest: `v0` means something on the page is usable today; `scoping`
+means the page is the published plan. First instrument shipped: the
+`writing-interview` skill (the Interview Conductor).
 
 The site is fully static: markdown in git, HTML at build time. No
 server, no database. Raw markdown is served at `/guides/<guide>/*.md`,

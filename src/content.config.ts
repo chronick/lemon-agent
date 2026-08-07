@@ -42,7 +42,7 @@ const wings = defineCollection({
   schema: z.object({
     title: z.string(),
     wing: z.string(),
-    citrus: z.string(),
+    kind: z.enum(['wing', 'instrument']).default('wing'),
     status: z.enum(['scoping', 'v0', 'published']),
     updated: z.coerce.date(),
     description: z.string(),

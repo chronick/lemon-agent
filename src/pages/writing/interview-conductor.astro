@@ -1,0 +1,23 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const entry = await getEntry('wings', 'interview-conductor');
+const { Content } = await render(entry);
+const d = entry.data;
+---
+<Base title={d.title} description={d.description}>
+  <p class="kicker">
+    <a class="kicker-link" href="/writing/">Lemon Agent for Writing</a> · instrument
+    <span class={`badge ${d.status}`}>{d.status}</span>
+  </p>
+  <h1>{d.title}</h1>
+  <article class="list-body">
+    <Content />
+  </article>
+  <p class="backlink"><a href="/writing/">← The writing wing</a> · <a href="/wings/interview-conductor.md">raw markdown</a></p>
+</Base>
+
+<style>
+  .kicker-link { color: inherit; }
+</style>
