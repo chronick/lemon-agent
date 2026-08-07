@@ -320,7 +320,7 @@
       "listed": false,
       "html": "/audio/",
       "raw": "/wings/audio.md",
-      "how_to_use": "The verification-loop pattern applied to sound, adoptable with any tools today; Audio Failure List draft (AuF-01..AuF-08). The smpl toolkit itself is not yet installable and the page says so."
+      "how_to_use": "A bounce-audit workflow usable today with common tools (FFmpeg, librosa, pyloudnorm): measure a mix against a reference and get bounce-audit.md with export gates, differences worth listening for, and experiments to try in the DAW. The smpl toolkit itself is not yet installable and the page says so."
     },
     {
       "id": "science-wing",
@@ -331,7 +331,7 @@
       "listed": false,
       "html": "/science/",
       "raw": "/wings/science.md",
-      "how_to_use": "The scoping note, published before the work: one pinned public dataset through a reproducible analysis. Nothing runnable yet; the page is the plan."
+      "how_to_use": "A reproducible-project guide usable today (Markdown + SQLite + Python; uv, sqlite-utils, Jupytext, Quarto): pinned sources, executable transformations, figures from code, papers and posters from the same files. The pinned astronomy demonstration is still in development."
     },
     {
       "id": "pathgrip",

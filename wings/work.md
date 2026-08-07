@@ -3,93 +3,105 @@ title: "Lemon Agent for Knowledge Work"
 wing: work
 status: v0
 updated: 2026-08-07
-description: "The scope-plan-watch-verify-review loop with no code in it. First instrument: a verify-info pass that turns any document into a claim ledger. Scoped in the open; the installable skill comes next."
+description: "Turn a memo, report, or draft into a claim ledger with sources, dates, uncertainty, and explicit follow-up."
 ---
 
-Most of what crosses a desk isn't code: research, summaries, decisions,
-and the relay of other people's claims. The loop this site teaches
-(scope it, plan it, watch it, verify it, review it) works unchanged
-there; only the verification target moves: instead of tests and diffs,
-**sources and dates**.
+Most work that crosses a desk is a relay of other people's claims. A
+summary becomes a recommendation; a recommendation becomes a decision.
+An agent can move that material faster, but speed is useful only when the
+sources and uncertainty travel with it.
 
-This wing is incubating, and this page is its scope, published the way
-the [science wing](/science/) publishes its plan: stated before the
-work, so you can hold us to it.
+Start with verification, not a general “research assistant.” The bounded
+job is easier to inspect: **give the agent one document; get back a claim
+ledger you can review.**
 
-## Who this is for, and what ships first
+## Start with one document
 
-The target user handles documents whose claims travel: analysts,
-managers, students, anyone whose summary becomes someone else's
-decision. The first instrument is **verify-info**, chosen over a
-general research assistant because it has a concrete output and
-demonstrates verification rather than generic help. (A research skill
-may come later, as its own distinct instrument; it is out of this
-wing's first slice.)
+Use a memo, report, draft, thread, or collection of notes. The agent's job
+is to inventory the factual claims, trace their support, and say plainly
+what it could not verify.
 
-The core is vendor-neutral: it runs as a pasted prompt in any capable
-assistant today, and ships later as the installable `work-verify-info`
-skill. Platform-specific instructions (a Claude project, a ChatGPT
-workspace) are adapters around the same workflow, kept separate so
-they can drift without touching the core.
-
-## The verify-info pass, usable today
-
-**Input contract**: a memo, report, draft, thread, or bare collection
-of claims. **Output contract**: a claim ledger the user keeps, one row
-per claim: the claim, its source or evidence, verification status,
-uncertainty, and required follow-up. Nothing is stored anywhere but
-your own environment.
+Paste the material after this prompt:
 
 ```text
-Verify-info pass on the material I paste next. (1) Inventory every
-factual claim (numbers, dates, names, "studies show", quotes). (2)
-For each, classify its support: primary source in hand, secondary
-report, or unsourced. (3) For unsourced or secondary claims, find the
-primary if you can; say plainly when you can't; never invent a
-source. (4) Flag anything where the claim's date matters and no as-of
-date is attached; record the retrieval date on anything you fetch.
-(5) Output the claim ledger as a table: claim, support level, source,
-confidence (high, medium, or low, from the support level and the
-source's independence), uncertainty or caveats, and required
-follow-up. Do not soften: "not verified" is a value, not a failure.
-If you cannot search the web or fetch sources, say so and grade from
-the material alone rather than answering from memory. End with the
-single claim most likely to embarrass the sender if wrong.
+Run a verify-info pass on the material I paste next.
+
+1. Inventory every factual claim: numbers, dates, names, quotations,
+   comparisons, and phrases such as "studies show."
+2. Classify the support for each claim as primary source in hand,
+   secondary report, or unsourced.
+3. For secondary or unsourced claims, find the primary source if you can.
+   Never invent a source. Record the retrieval date for anything fetched.
+4. Flag time-sensitive claims without an as-of date.
+5. Produce a claim ledger with columns for claim, status, support level,
+   source, confidence, uncertainty or caveats, and required follow-up.
+
+If you cannot search or fetch sources, say so and grade only from the
+material in hand. Use "not verified" when a check did not happen. End
+with the single claim most likely to embarrass the sender if it is wrong.
 ```
 
-That last discipline (absence of a check recorded as *not measured*
-rather than passed) is the same rule the
-[diff review](/guides/git/review-the-diff/) enforces for code (what you
-did not verify, stated plainly), and it is where office work goes wrong
-most quietly.
+The output stays in your environment. Save it beside the source as
+`claim-ledger.md`; for recurring or larger work, use a local SQLite file.
 
-## The worked example, defined
+## What a useful result looks like
 
-The wing's first worked example will run the pass over one short memo
-seeded with all four claim types: a claim that is **verified** (primary
-in hand), one **contradicted** (the primary says otherwise), one
-**uncertain** (sources disagree; the disagreement recorded, not
-averaged), and one **unsupported** (no source found; graded
-not-verified). The example ships with the skill so the output shape is
-demonstrated, not described.
+Each row should be actionable, not merely cautious:
 
-## The judgment artifact, derived rather than invented
+```text
+claim | status | source | as-of date | uncertainty | next action
+```
 
-The site's failure lists ([PF](/prose-failure-list/),
-[AF](/agent-workflow-failure-list/)) earned their entries from measured
-incidents. This wing will do the same rather than inventing a long
-list upfront: verification failures observed through real use of the
-pass (the forwarded number that lost its source, the summary stronger
-than what it summarizes) get recorded as they occur, and the office
-failure list hardens from those receipts.
+A good ledger distinguishes at least four states:
+
+- **Verified:** a primary source supports the claim.
+- **Contradicted:** the source says something materially different.
+- **Uncertain:** credible sources disagree or the evidence is incomplete.
+- **Not verified:** no adequate check happened.
+
+You review the ledger, resolve the important gaps, and decide whether the
+document is ready to send. Sending and sharing remain human actions.
+
+## A five-step work loop
+
+1. **Scope** the decision this document is meant to support.
+2. **Convert** the source into readable local text when needed.
+3. **Verify** its claims and save the ledger.
+4. **Revise** only the claims whose evidence or wording failed review.
+5. **Read the final document**, not the agent's summary of its changes.
+
+## Starter tools
+
+### MarkItDown
+
+[MarkItDown](https://github.com/microsoft/markitdown) converts PDFs,
+Office documents, web pages, and other inputs into Markdown an agent can
+inspect consistently.
+
+```sh
+python -m pip install 'markitdown[all]'
+```
+
+### sqlite-utils
+
+[sqlite-utils](https://github.com/simonw/sqlite-utils) turns a growing
+claim ledger into a small local database you can query and export.
+
+```sh
+brew install sqlite-utils
+```
+
+Neither tool sends a message or hosts your work. They prepare and retain
+artifacts in your own files. The verify-info workflow is a prompt today;
+an installable `work-verify-info` skill is the next packaging step.
 
 ## Watch out
 
-- **An agent inherits your inbox's authority.** Anything it drafts in
-  your name (mail, minutes, summaries) needs the same
-  review-the-diff-not-the-summary discipline as
-  [code](/guides/git/review-the-diff/): read what it wrote, not its
-  account of what it wrote, before it ships under your byline.
-- **Sending stays human.** The irreversible actions in office work are
-  send, share, and schedule; keep them behind your own click, the same
-  rule the git guide applies to merge and push.
+- **A summary stronger than its source.** Preserve qualifications and
+  disagreements instead of averaging them into confidence.
+- **Authority inherited from the inbox.** A forwarded number is still
+  unsourced when it reaches you.
+- **Reviewing the agent's account of its work.** Read the document and the
+  ledger themselves before either goes out under your name.
+- **Sending by automation.** Keep send, share, and schedule behind your
+  own click.

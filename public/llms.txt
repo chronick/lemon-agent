@@ -113,11 +113,14 @@ today; scoping = the published plan, stated before the work.
 - [Lemon Agent for Knowledge Work](/wings/work.md): the verify-info
   pass producing a user-owned claim ledger; the installable skill is
   scoped on the page. v0.
-- [Lemon Agent for Audio](/wings/audio.md): verification loops for
-  sound; Audio Failure List draft (AuF-01…AuF-08); the toolkit is not
-  yet installable and the page says so. v0.
-- [Lemon Agent for Science](/wings/science.md): the scoping note,
-  published before the work. scoping.
+- [Lemon Agent for Audio](/wings/audio.md): audit a bounce against a
+  reference with common tools (FFmpeg, librosa, pyloudnorm) and get a
+  measurement-backed bounce-audit.md; the smpl toolkit is not yet
+  installable and the page says so. v0.
+- [Lemon Agent for Science](/wings/science.md): a reproducible-project
+  guide (Markdown + SQLite + Python; uv, sqlite-utils, Jupytext,
+  Quarto) usable today; the pinned astronomy demonstration is in
+  development. scoping.
 
 ## Install as skills
 

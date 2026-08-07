@@ -48,8 +48,8 @@ const ogImage = new URL('/og.jpg', Astro.url);
       <slot />
       <footer>
         <p>
-          <span class="chip">LEMON AGENT</span> practical guides for
-          working with coding agents.
+          <span class="chip">LEMON AGENT</span> practical guides and
+          skills for working with agents.
         </p>
         <p>
           House rule: nothing ships without a working answer to
@@ -362,6 +362,9 @@ const ogImage = new URL('/og.jpg', Astro.url);
   .badge.live, .badge.published { color: var(--live-ink); background: var(--live-bg); }
   .badge.v0 { color: var(--chip-ink); background: var(--accent); }
   .badge.scoping { color: var(--muted); border: 1px solid var(--border); background: transparent; }
+  .badge.available { color: var(--live-ink); background: var(--live-bg); }
+  .badge.prompt, .badge.guide { color: var(--chip-ink); background: var(--accent); }
+  .badge.in-development { color: var(--muted); border: 1px solid var(--border); background: transparent; }
 
   /* Rendered list body */
   .list-body blockquote {

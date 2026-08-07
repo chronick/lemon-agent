@@ -3,93 +3,104 @@ title: "Lemon Agent for Audio"
 wing: audio
 status: v0
 updated: 2026-08-07
-description: "Lemon-agent principles applied to sound: file-backed sessions, deterministic gates before ears, analysis with receipts, and the start of an audio failure list from measured studio practice."
+description: "Use an agent to measure, organize, and critique audio bounces while you keep the mix decisions in Ableton Live."
 ---
 
-Audio work with agents fails the same ways code work does, at higher
-volume: unverified claims ("this bounce is fine"), lost provenance
-(which take was that?), and judgment drowned in generation. This wing
-applies the site's principles to sound. It is the disciplined twin of
-[lemon.audio](https://lemon.audio), where the same substrate gets
-weirder: toys, drops, and a command-line DAW. Overlapping, deliberately
-distinct; this side keeps the field-guide register.
+You already know how to work in Ableton Live. The useful role for an
+agent is not “make this warmer.” It is to inspect an exported file,
+compare it with a reference, and give you measurements and listening
+questions you can act on in the DAW.
 
-## The pattern
+The agent handles repeatable checks. **Your ears and taste make the mix.**
 
-Four moves, each an old friend from the guides, pointed at sound:
+## Audit your next bounce
 
-- **File-backed sessions.** Every take, loop, and render is a file with
-  its metadata beside it; the session is a directory an agent can read,
-  not state trapped in a project file. The
-  [plain-files rule](/guides/vault/plain-files/), applied to a studio.
-- **Checks before ears.** A render passes deterministic gates
-  (clipping, loudness targets, silence, duration) before a human ever
-  listens. Ears are the expensive verifier; spend them on judgment,
-  not on catching a clipped export. The
-  [verification loop](/guides/coding-agents/verification-loop/), with
-  loudness meters for tests.
-- **Analysis with receipts.** When the agent says "the low end is
-  crowded," that claim should carry a measurement (band energy, a
-  spectral snapshot) the same way a research claim carries a source.
-  Descriptions without measurements are vibes.
-- **Views on demand.** Session dashboards (what's recorded, what
-  passed the gates, what's unreviewed) as generated HTML, rebuilt on
-  read: [views, not apps](/guides/coding-agents/jit-ui/).
+Export a WAV from Ableton, choose one reference track, and put both in a
+small review folder. Keep the previous bounce instead of overwriting it.
 
-## The instruments: not yet installable
+```text
+bounce-review/
+  mix-v03.wav
+  reference.wav
+  brief.md
+```
 
-The pattern above runs daily in the operator's studio on **smpl**, a
-pipe-based audio toolkit (content-addressed reads, composable analysis
-and edit stages, machine-readable reports). It is not yet packaged for
-anyone else, and this page won't pretend otherwise: there is no install
-command to give you today. Two honest options meanwhile: adopt the
-pattern with the tools you have (any DAW plus any loudness meter can
-run the gates by hand), and watch this page; the toolkit ships here and
-at lemon.audio when it's ready for hands other than ours.
+In `brief.md`, state the destination, what you changed, and what you are
+unsure about. Then give the folder to a file-capable agent with this job:
 
-## The Audio Failure List (v0 draft)
+```text
+Audit mix-v03.wav against reference.wav. Do not edit or overwrite either
+audio file. Use available deterministic tools before making listening
+claims. Measure file format, channels, sample rate, duration, integrated
+loudness, loudness range, true peak, silence, and broad spectral balance.
+If a check cannot be run, mark it "not measured" rather than guessing.
 
-Numbered like [PF](/prose-failure-list/) and
-[AF](/agent-workflow-failure-list/), drafted from measured studio
-incidents, flagged v0 until each entry carries its documentation.
-Usable the same way meanwhile: paste the eight entries into a session
-reviewing your next bounce and ask for matches with evidence.
+Write bounce-audit.md with: (1) a measurement table for both files,
+(2) any failed export gates, (3) no more than three differences worth
+listening for, each tied to a measurement, and (4) no more than three
+specific experiments to try in Ableton. Separate facts from judgment.
+Do not claim a mix problem from a number alone.
+```
 
-1. **AuF-01: The unproven meter.** A new analysis probe's first
-   verdict is trusted without a positive control. The measured
-   incident: a probe flagged a defect that did not exist; the fix was
-   feeding it a known-good file first. Tell: a verdict from an
-   instrument that has never confirmed a known truth.
-2. **AuF-02: The ungated bounce.** Renders exported and shared with no
-   clip/loudness/silence check. Tell: "sounds fine on my headphones"
-   as the only verification record.
-3. **AuF-03: Loop fatigue.** A bank of good loops mistaken for a
-   track; nothing changes often enough to hold attention. Tell: no
-   event-frequency plan across the arrangement.
-4. **AuF-04: Overtone soup.** Effects stacked on layered harmony until
-   the parts smear; dense walls need clean layers. Tell: every layer
-   carries its own character effect.
-5. **AuF-05: Selection by memory.** Picking a sound from recall
-   instead of auditioning candidates against the reference. Tell: no
-   A/B happened before the commit.
-6. **AuF-06: The unlabeled take.** Files named final2-new-3.wav; the
-   session's history unreadable to the next session (or the next
-   agent). Tell: filenames that need the person who wrote them.
-7. **AuF-07: Destructive edits without provenance.** The processed
-   file replaces the raw one; no path back. Tell: one file where
-   there should be a chain.
-8. **AuF-08: Intelligibility as a target.** Polishing a vocal's
-   clarity score instead of holding it inside the range the track
-   wants; a window, not a maximum. Tell: optimizing a metric with no
-   stated range.
+The artifact is `bounce-audit.md`: a receipt you can compare with the
+next export. Return to Ableton, make the changes you agree with, export
+`mix-v04.wav`, and A/B the two versions. That is the loop.
+
+## Starter tools
+
+These are building blocks, not a required stack. Install only what your
+agent can use in your own environment.
+
+### FFmpeg
+
+[FFmpeg](https://github.com/FFmpeg/FFmpeg) inspects formats, channels,
+duration, peaks, silence, and loudness without opening a DAW.
+
+```sh
+brew install ffmpeg
+```
+
+### librosa and pyloudnorm
+
+[librosa](https://github.com/librosa/librosa) provides time- and
+frequency-domain analysis in Python.
+[pyloudnorm](https://github.com/csteinmetz1/pyloudnorm) provides
+BS.1770 loudness measurement.
+
+```sh
+python -m pip install librosa pyloudnorm
+```
+
+## The operating pattern
+
+- **Files first.** Takes, renders, notes, and measurements live together
+  where an agent can inspect them. The Ableton project remains the source
+  for your creative decisions.
+- **Checks before ears.** Catch clipping, silence, wrong duration, and
+  wrong export format before spending attention on the mix.
+- **Claims carry receipts.** “The low end is crowded” needs a measurement
+  and a listening test. Descriptions without either are vibes.
+- **New exports, never destructive edits.** Keep the path from raw take to
+  current bounce visible.
+
+This is the field-guide side of
+[lemon.audio](https://lemon.audio), where the same file-backed ideas lead
+toward toys, performance tools, and a command-line studio.
+
+## What ships next
+
+The studio version of this pattern runs on **smpl**, a pipe-based audio
+toolkit with composable analysis and machine-readable reports. It is not
+packaged for outside use yet, so there is no Lemon install command on this
+page. The workflow above uses public tools and works now; a domain skill
+will make it repeatable later.
 
 ## Watch out
 
-- **Generation drowning judgment.** Cheap sample generation makes the
-  library grow faster than taste can audit it; gates and selection
-  discipline are what keep the collection honest
-  ([AF-08](/agent-workflow-failure-list/)'s missing size limit, in
-  sample form).
-- **The agent mixing by description.** "Make it warmer" round-trips
-  through language and loses the measurement; prefer receipts
-  (numbers, snapshots) on both sides of every change.
+- **The unproven meter.** Test a new probe on a known file before trusting
+  its first surprising result.
+- **The ungated bounce.** “Sounds fine here” is not an export check.
+- **Selection by memory.** A/B candidates against the reference before
+  committing.
+- **Optimizing a metric.** Loudness, clarity, and spectral balance are
+  constraints and clues, not goals by themselves.

@@ -3,95 +3,91 @@ title: "Lemon Agent for Writing"
 wing: writing
 status: v0
 updated: 2026-08-07
-description: "Agents for writing that leave the writing to you: the Interview Conductor skill that pulls a draft out of you one question at a time, and a subtraction pass built on the Prose Failure List."
+description: "Use an agent as interviewer, organizer, fact-checker, and critic without asking it to write in your place."
 ---
 
 An agent will happily write your essay. That is the problem. The result
-reads fine, says little, and sounds like everyone. This wing takes the
-opposite stance: **the agent interrogates, organizes, verifies, and
-cuts. You write.** Every instrument here is built to protect your voice,
-not replace it.
+often reads smoothly, says little, and sounds like everyone.
 
-You've met this division of labor before: a good editor. Editors ask
-what you meant, mark what isn't working, and cut what repeats. They do
-not rewrite your book.
+Use the agent more like a good editor: let it ask what you mean,
+organize your material, find unsupported claims, and mark what is not
+working. **You still write the sentences.**
 
-## The subtraction pass
+## Start with the Interview Conductor
 
-The [Prose Failure List](/prose-failure-list/) is 24 numbered failures
-of AI-assisted prose (PF-01…PF-24). Run as a review, it is a working
-instrument today: the agent hunts excess and names each cut against a
-numbered entry, so you can dispute any call it makes.
+Begin here when you have a topic, a fragment, or a half-formed claim but
+not yet a draft. The
+[Interview Conductor](/writing/interview-conductor/) asks one question at
+a time, follows the useful threads, and stops before ghostwriting.
 
-```text
-Review the draft I paste next as a subtraction pass against the Prose
-Failure List at https://lemon-agent.dev/lists/prose-failure-list.md
-(entries PF-01 to PF-24). If you cannot fetch that URL, say so and ask
-me to paste the list; do not work from memory. Do not rewrite
-anything. Produce a numbered report:
-each finding cites its PF id, quotes the exact phrase, and says what
-the cut or repair would be and why. Where a finding is a judgment
-call, say so. End with the three highest-value cuts. My voice wins
-every dispute: flag, never fix.
-```
+You bring your experience and point of view. The agent returns two local
+artifacts:
 
-Or install it as a managed skill shared across your agents:
+1. **Structured interview notes** that keep your words separate from the
+   agent's synthesis.
+2. **A writing brief** with an audience, working thesis, outline,
+   tensions, evidence gaps, and unresolved questions.
 
-```sh
-npx skills add chronick/lemon-agent --global \
-  --agent codex claude-code --skill prose-failure-list --yes
-```
-
-## The Interview Conductor
-
-The hardest part of a draft is getting the material out of your head.
-Interviews beat blank pages: answering a sharp question is easier than
-composing an opening paragraph. The wing's first instrument is the
-[**Interview Conductor**](/writing/interview-conductor/): an
-installable skill that runs a focused interview about what you want to
-write (one question at a time, a parking lot for tangents, your words
-kept verbatim and marked as yours) and ends with structured interview
-notes plus a writing brief. By contract it never invents experience or
-evidence for you, and it stops before drafting: the draft is yours.
+Install the skill for both Codex and Claude Code:
 
 ```sh
 npx skills add chronick/lemon-agent --global \
   --agent codex claude-code --skill writing-interview --yes
 ```
 
-The [instrument page](/writing/interview-conductor/) has the full
-workflow and a paste-ready fallback for agent surfaces without skill
-installs.
+Or open the [instrument page](/writing/interview-conductor/) for the full
+workflow and a paste-ready prompt.
 
-## Check the facts
+## A writing loop that keeps your voice
 
-A draft full of confident claims needs the same treatment as a report:
-claims inventoried, sources attached, confidence stated. That
-instrument lives one wing over, and it works on essays as well as
-memos: run the
-[verify-info pass](/work/#the-verify-info-pass-usable-today) from the
-knowledge-work wing over your draft before you publish.
+1. **Talk before drafting.** Use the interview to get the real material
+   out of your head.
+2. **Write from the brief.** The outline is a starting point, not prose
+   to approve. Draft in your own words.
+3. **Subtract.** Ask the agent to flag weak patterns against the Prose
+   Failure List. It reports; you decide what changes.
+4. **Verify.** Run factual claims through the
+   [verify-info pass](/work/#start-with-one-document) before publishing.
 
-## Not yet (and we'd rather say so)
+The useful division is simple: the agent creates questions, structure,
+and findings. You create the argument, language, and final judgment.
 
-- **Stats and themes.** Corpus statistics over your own writing:
-  repeated constructions, sentence-length distribution, the themes you
-  circle. Needs tooling we haven't shipped; nothing to paste today.
-- **Worldbuilding structures.** Generative narrative scaffolds
-  (consistent places, casts, timelines) with the same
-  agent-organizes-you-write division. The deep end of this wing;
-  designed after the shallow end proves out.
+## Tools you can use today
+
+### Interview Conductor
+
+Develop an essay, post, talk, or chapter through a focused conversation.
+It ends with notes and a brief, never a draft.
+
+- [Source on GitHub](https://github.com/chronick/lemon-agent/tree/main/skills/writing-interview)
+- [Read the workflow and fallback prompt](/writing/interview-conductor/)
+
+### Prose Failure List
+
+Review a finished draft against 24 common failures of AI-assisted prose.
+Every finding cites a numbered pattern and the exact phrase that triggered
+it, so you can disagree with the review.
+
+```sh
+npx skills add chronick/lemon-agent --global \
+  --agent codex claude-code --skill prose-failure-list --yes
+```
+
+- [Source on GitHub](https://github.com/chronick/lemon-agent/tree/main/skills/prose-failure-list)
+- [Read the Prose Failure List](/prose-failure-list/)
+
+## What comes later
+
+Corpus tools could show repeated constructions, sentence-length patterns,
+and themes across writing you choose to share. Worldbuilding tools could
+track places, casts, and timelines without generating the story. Neither
+is packaged yet; the interview-and-review loop is the useful path today.
 
 ## Watch out
 
-- **The agent's draft wearing your byline** is this wing's version of
-  losing the diff: once its sentences replace yours, no pass gets your
-  voice back. Keep generation and judgment separate, the same
-  separation the [review chapter](/guides/coding-agents/adversarial-review/)
-  enforces for code.
-- **A subtraction pass that rewrites.** If the report comes back as a
-  revised draft, the instrument failed; re-run it with "flag, never
-  fix" restated.
-- **Interview transcripts as finished thinking**: the interview
-  produces material, not prose. The outline is where writing starts,
-  not where it ends.
+- **The agent's draft wearing your byline.** Once its sentences replace
+  yours, no editing pass can restore the thinking you skipped.
+- **A review that silently rewrites.** Ask for findings, not a revised
+  draft: flag, never fix.
+- **Interview notes mistaken for finished thinking.** The notes are raw
+  material. Writing begins after the interview.
