@@ -26,8 +26,10 @@ const html = hastToHtml(exampleToHast(ex, { heading: false, voice: isCourse ? 'c
 <Base
   title={`${ex.title} · interactive example`}
   description={`Interactive example: ${ex.title}. Pick the agent's next move and see where it leads.`}
+  citrus={isCourse ? undefined : guideMeta.citrus}
 >
   <p class="kicker">
+    {!isCourse && <span class="citrus-chip">{guideMeta.citrus}</span>}
     Interactive example · from <a class="kicker-link" href={backHref}>{homeTitle}</a>
   </p>
   <h1>{ex.title}</h1>

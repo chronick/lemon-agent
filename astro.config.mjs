@@ -41,7 +41,7 @@ function rehypeExamples() {
 }
 
 export default defineConfig({
-  site: 'https://lemon-agent.pages.dev',
+  site: 'https://lemon-agent.dev',
   markdown: {
     rehypePlugins: [rehypeExamples],
   },

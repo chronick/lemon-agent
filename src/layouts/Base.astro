@@ -3,8 +3,11 @@ interface Props {
   title: string;
   description: string;
   wide?: boolean;
+  /** Citrus variety for domain theming (lime, tangerine, grapefruit,
+   *  blood-orange). Omit for house pages: the base is lemon. */
+  citrus?: string;
 }
-const { title, description, wide = false } = Astro.props;
+const { title, description, wide = false, citrus } = Astro.props;
 const isStart = Astro.url.pathname.startsWith('/start');
 const isGuides = Astro.url.pathname.startsWith('/guides');
 const isReference = Astro.url.pathname.includes('failure-list');
@@ -29,7 +32,7 @@ const ogImage = new URL('/og.jpg', Astro.url);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{Astro.url.pathname === '/' ? title : `${title} · Lemon Agent`}</title>
   </head>
-  <body>
+  <body class={citrus ? `citrus-${citrus}` : undefined}>
     <main class:list={{ wide }}>
       <header class="site-header">
         <a class="site-brand" href="/" aria-label="Lemon Agent home">
@@ -143,7 +146,19 @@ const ogImage = new URL('/og.jpg', Astro.url);
     --live-ink: #3e7046;
     --live-bg: rgba(62, 112, 70, 0.12);
     --glow: none;
+    /* Domain accent trio — lemon by default; citrus classes override.
+       House chrome (brand chips, selection, terminals) stays on
+       --chartreuse regardless of domain. */
+    --accent: #c7d86f;
+    --accent-ink: #5e7024;
+    --accent-soft: rgba(199, 216, 111, 0.15);
+    --accent-hover: #8b9d43;
   }
+  /* The citrus family: every wing is a variety of the same fruit. */
+  .citrus-lime { --accent: #a4ce54; --accent-ink: #47761b; --accent-soft: rgba(164, 206, 84, 0.16); --accent-hover: #7ba03c; }
+  .citrus-tangerine { --accent: #f2ab52; --accent-ink: #8f5312; --accent-soft: rgba(242, 171, 82, 0.16); --accent-hover: #c98836; }
+  .citrus-grapefruit { --accent: #f293a2; --accent-ink: #a63a52; --accent-soft: rgba(242, 147, 162, 0.16); --accent-hover: #cd6f80; }
+  .citrus-blood-orange { --accent: #ef7c50; --accent-ink: #a23c1a; --accent-soft: rgba(239, 124, 80, 0.15); --accent-hover: #c96438; }
   @media (prefers-color-scheme: dark) {
     :root {
       --chartreuse: #b8c970;
@@ -163,7 +178,15 @@ const ogImage = new URL('/og.jpg', Astro.url);
       --live-ink: #86b88a;
       --live-bg: rgba(82, 124, 87, 0.18);
       --glow: 0 4px 18px rgba(0, 0, 0, 0.16);
+      --accent: #b8c970;
+      --accent-ink: #bdcf78;
+      --accent-soft: rgba(189, 207, 120, 0.10);
+      --accent-hover: #87964f;
     }
+    .citrus-lime { --accent: #a6cd62; --accent-ink: #accf7f; --accent-soft: rgba(166, 205, 98, 0.11); --accent-hover: #84a34e; }
+    .citrus-tangerine { --accent: #eab066; --accent-ink: #e9b788; --accent-soft: rgba(234, 176, 102, 0.11); --accent-hover: #b98a4d; }
+    .citrus-grapefruit { --accent: #ea97a6; --accent-ink: #eda6b2; --accent-soft: rgba(234, 151, 166, 0.11); --accent-hover: #b97684; }
+    .citrus-blood-orange { --accent: #e98a64; --accent-ink: #eda184; --accent-soft: rgba(233, 138, 100, 0.11); --accent-hover: #b96e4d; }
   }
 
   * { box-sizing: border-box; }
@@ -175,6 +198,13 @@ const ogImage = new URL('/og.jpg', Astro.url);
     line-height: 1.68;
     color: var(--ink);
     -webkit-text-size-adjust: 100%;
+  }
+  /* Per-domain signature: a thin accent bar across the top of the page. */
+  body::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), transparent 85%);
   }
   ::selection { background: var(--chartreuse); color: var(--chip-ink); }
   main { max-width: 46rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
@@ -254,6 +284,20 @@ const ogImage = new URL('/og.jpg', Astro.url);
     padding: 0.05em 0.45em;
   }
 
+  /* Citrus chip: names the domain's variety wherever a page declares one. */
+  .citrus-chip {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--chip-ink);
+    font-family: ui-monospace, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 0.18em 0.55em;
+    border-radius: 999px;
+  }
+
   .site-header {
     display: flex;
     align-items: center;
@@ -314,8 +358,8 @@ const ogImage = new URL('/og.jpg', Astro.url);
   .list-body blockquote {
     margin: 1.4rem 0;
     padding: 0.75rem 1.1rem;
-    border-left: 2px solid var(--chartreuse);
-    background: var(--note-bg);
+    border-left: 2px solid var(--accent);
+    background: var(--accent-soft);
     font-size: 0.9rem;
   }
   .list-body blockquote p { margin: 0.4rem 0; }
@@ -352,7 +396,7 @@ const ogImage = new URL('/og.jpg', Astro.url);
     padding: 0.45rem 0.7rem;
     background: var(--bg);
   }
-  .xmpl-turn-agent .xmpl-text { border-left: 2px solid var(--chartreuse); }
+  .xmpl-turn-agent .xmpl-text { border-left: 2px solid var(--accent); }
   .xmpl-text p { margin: 0.3rem 0; }
   .xmpl-q { margin: 1.1rem 0 0.6rem; font-weight: 700; }
   .xmpl-q::before { content: '// '; color: var(--accent-ink); }
@@ -367,16 +411,16 @@ const ogImage = new URL('/og.jpg', Astro.url);
     margin: 0.45rem 0;
     cursor: pointer;
   }
-  .xmpl-opt:hover { border-color: var(--border-hover); }
-  .xmpl-radio:focus-visible + .xmpl-opt { outline: 2px solid var(--chartreuse); }
+  .xmpl-opt:hover { border-color: var(--accent-hover); }
+  .xmpl-radio:focus-visible + .xmpl-opt { outline: 2px solid var(--accent); }
   .xmpl-radio:checked + .xmpl-opt {
-    border-color: var(--border-hover);
-    background: var(--card-hover);
+    border-color: var(--accent-hover);
+    background: var(--accent-soft);
   }
   .xmpl-key {
     flex: 0 0 auto;
     color: var(--chip-ink);
-    background: var(--chartreuse);
+    background: var(--accent);
     font-size: 0.72rem;
     font-weight: 700;
     padding: 0.05em 0.45em;
@@ -398,8 +442,8 @@ const ogImage = new URL('/og.jpg', Astro.url);
     text-transform: uppercase;
     padding: 0.08em 0.5em;
   }
-  .xmpl-verdict-correct { border-left-color: var(--chartreuse); }
-  .xmpl-verdict-correct .xmpl-verdict-chip { background: var(--chartreuse); color: var(--chip-ink); }
+  .xmpl-verdict-correct { border-left-color: var(--accent); }
+  .xmpl-verdict-correct .xmpl-verdict-chip { background: var(--accent); color: var(--chip-ink); }
   .xmpl-verdict-baseline { border-left-color: var(--muted); }
   .xmpl-verdict-baseline .xmpl-verdict-chip { background: var(--muted); color: var(--bg); }
   .xmpl-verdict-plausible { border-left-color: var(--live-ink); }

@@ -20,8 +20,8 @@ const count = (slug) => chapters.filter((c) => c.id.startsWith(`${slug}/`)).leng
   </p>
   <div class="cards">
     {GUIDES.map((g) => (
-      <a class="card" href={`/guides/${g.slug}/`}>
-        <p class="card-kicker">{count(g.slug)} patterns</p>
+      <a class={`card citrus-${g.citrus}`} href={`/guides/${g.slug}/`}>
+        <p class="card-kicker">{count(g.slug)} patterns · <span class="citrus-chip">{g.citrus}</span></p>
         <p class="card-title">{g.title}</p>
         <p class="card-blurb">{g.blurb}</p>
       </a>
@@ -41,11 +41,12 @@ const count = (slug) => chapters.filter((c) => c.id.startsWith(`${slug}/`)).leng
     padding: 1rem 1.2rem;
     background: var(--card);
     border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
     text-decoration: none;
     color: inherit;
     transition: border-color 120ms ease, background 120ms ease, box-shadow 120ms ease;
   }
-  .card:hover { border-color: var(--border-hover); background: var(--card-hover); box-shadow: var(--glow); }
+  .card:hover { border-color: var(--accent-hover); border-left-color: var(--accent); background: var(--accent-soft); box-shadow: var(--glow); }
   .card-kicker { margin: 0; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
   .card-title { margin: 0.3rem 0 0.25rem; font-weight: 700; font-size: 1.05rem; color: var(--accent-ink); }
   .card-blurb { margin: 0; font-size: 0.85rem; color: var(--muted); }

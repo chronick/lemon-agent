@@ -1,12 +1,15 @@
 // Guide registry: order, titles, and per-guide intro copy.
 // A chapter's collection id is "<guide-slug>/<chapter-slug>".
 
+// Each domain wears a citrus variety over the shared lemon base: the
+// house stays lemon; a wing gets its own accent (see DESIGN.md).
 export const GUIDES = [
   {
     slug: 'coding-agents',
     number: 3,
     title: 'Working with Coding Agents',
     short: 'Coding agents',
+    citrus: 'lime',
     blurb:
       'The core field guide: verification loops, design interviews, ' +
       'adversarial reviews, tool surfaces, small tools, and generated UIs. ' +
@@ -22,6 +25,7 @@ export const GUIDES = [
     number: 4,
     title: 'Shipping Software with Git + Coding Agents',
     short: 'Git + agents',
+    citrus: 'tangerine',
     blurb:
       'How git and an agent compose: checkpoint commits, branches as ' +
       'blast radius, history the next session can read, diff-not-summary ' +
@@ -37,6 +41,7 @@ export const GUIDES = [
     number: 5,
     title: 'Keeping a Vault',
     short: 'The vault',
+    citrus: 'grapefruit',
     blurb:
       'A personal knowledge base an agent can actually work: plain files ' +
       'in a repo, directories as state, an inbox habit, a daily log, and ' +

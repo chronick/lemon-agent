@@ -11,7 +11,7 @@ can call ride alongside.
 
 > **Status: live, early days.** Curated and launched 2026-08-05; expect
 > sharp edges and honest "not yet" cards. Live at
-> <https://lemon-agent.pages.dev> (real domain pending).
+> <https://lemon-agent.dev> (mirrored at lemon-agent.pages.dev).
 
 ## House rules
 

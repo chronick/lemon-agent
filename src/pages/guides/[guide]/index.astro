@@ -13,8 +13,9 @@ const chapters = (await getCollection('guides'))
   .filter((c) => c.id.startsWith(`${guide}/`))
   .sort((a, b) => a.data.step - b.data.step);
 ---
-<Base title={meta.title} description={meta.blurb}>
+<Base title={meta.title} description={meta.blurb} citrus={meta.citrus}>
   <p class="kicker">
+    <span class="citrus-chip">{meta.citrus}</span>
     <a class="kicker-link" href="/guides/">The field manual</a> · {chapters.length} patterns
   </p>
   <h1>{meta.title}</h1>
@@ -69,8 +70,8 @@ const chapters = (await getCollection('guides'))
   .prov {
     margin: 1.4rem 0;
     padding: 0.75rem 1.1rem;
-    border-left: 2px solid var(--chartreuse);
-    background: var(--note-bg);
+    border-left: 2px solid var(--accent);
+    background: var(--accent-soft);
     font-size: 0.9rem;
   }
   .section-note { color: var(--muted); font-size: 0.85rem; margin-top: 0; }
@@ -79,7 +80,7 @@ const chapters = (await getCollection('guides'))
   .toc a:hover .toc-title { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
   .toc-step {
     color: var(--chip-ink);
-    background: var(--chartreuse);
+    background: var(--accent);
     font-size: 0.72rem;
     font-weight: 700;
     padding: 0.05em 0.4em;
