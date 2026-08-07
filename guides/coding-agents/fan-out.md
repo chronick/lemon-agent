@@ -1,7 +1,7 @@
 ---
 title: "Step 5: Fan out, then funnel"
 step: 5
-status: draft
+status: published
 updated: 2026-08-05
 description: "Split large work across agents only when each part writes durable results and a final pass verifies and combines them."
 ---
@@ -14,6 +14,9 @@ The split only helps if the parts come back together. Each worker must save its
 findings, and a final pass must compare, verify, and combine them. That is the
 “funnel” in this chapter's title. Without it, parallel work produces several
 temporary conversations instead of one usable result.
+
+The shape is map-reduce with judgment at the reduce: mappers write durable
+partial results, and the reducer combines and verifies them.
 
 > The measured failure: fan-out findings held only in agents' context
 > windows. One filtered or failed agent, and its share of the work
@@ -72,6 +75,6 @@ and what's missing; don't paper over gaps.
 - **Queue tasks without acceptance criteria**: an autonomous agent
   with a vague task invents its own definition of done, and you find
   out at review time.
-- **Merging background work unreviewed**: the harvest pass IS a
+- **Merging background work unreviewed**: the collection pass IS a
   review ([step 4](/guides/coding-agents/adversarial-review/)); autonomy moves the
   work, never the judgment.

@@ -1,7 +1,7 @@
 ---
 title: "Step 0: The one-paste vault"
 step: 0
-status: draft
+status: published
 updated: 2026-08-04
 description: "Optional full-package setup: a plain-file vault with lifecycle directories, an inbox, a daily log, and project instructions that teach the agent the shape."
 ---

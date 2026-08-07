@@ -1,7 +1,7 @@
 ---
 title: "Step 1: Plain files in a repo"
 step: 1
-status: draft
+status: published
 updated: 2026-08-05
 description: "Markdown files in a Git repository give people and agents the same searchable, versioned, portable source of truth."
 ---

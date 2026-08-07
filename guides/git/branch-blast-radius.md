@@ -1,7 +1,7 @@
 ---
 title: "Step 2: Branches bound the blast radius"
 step: 2
-status: draft
+status: published
 updated: 2026-08-04
 description: "A branch per task keeps main deployable; worktrees give parallel agents isolated copies that can't collide."
 ---
@@ -12,7 +12,7 @@ The rule costs one command and removes the scariest failure mode:
 half-finished agent work tangled into the branch you ship from.
 
 **You've met this before.** Feature branches and trunk-based
-development have argued for a decade; agents settle the argument
+development have argued for years; agents settle the argument
 locally. The branch isn't for long-lived divergence. It's a
 containment vessel, merged the same day, or closed without mercy.
 

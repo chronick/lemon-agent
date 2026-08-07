@@ -1,7 +1,7 @@
 ---
 title: "Step 3: Write history for the next reader"
 step: 3
-status: draft
+status: published
 updated: 2026-08-04
 description: "Commit messages that say why, and agents that read log and blame before editing: history as the context channel between sessions."
 ---
@@ -29,7 +29,7 @@ a fresh session starts with.
   filter history by author kind.
 - **Read before editing.** An agent about to work in unfamiliar code
   should read `git log --oneline` for the touched files and `git
-  blame` around the target function first. Half of "why is this weird
+  blame` around the target function first. Much of "why is this weird
   code here" is answered by the commit that introduced it.
 - **History is append-only where it's shared.** Rewriting pushed
   history breaks every clone and confuses every future session's

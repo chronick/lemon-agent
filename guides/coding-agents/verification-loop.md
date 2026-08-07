@@ -1,7 +1,7 @@
 ---
 title: "Step 2: Prove it before and after"
 step: 2
-status: draft
+status: published
 updated: 2026-08-05
 description: "Show the failure before the fix, run a cheap focused check before an expensive one, and deliver the artifact instead of a claim."
 ---

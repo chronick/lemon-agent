@@ -1,7 +1,7 @@
 ---
 title: "Step 6: Choose the right tool surface"
 step: 6
-status: draft
+status: published
 updated: 2026-08-05
 description: "Use a CLI for local work, an API for direct service access, and MCP when a standard agent connection adds real value."
 ---
@@ -20,7 +20,8 @@ server. The names sound more complicated than the underlying choice.
 
 These are not maturity levels. MCP is not automatically better than a CLI,
 and a CLI is not a crude version of an API. They are interfaces for different
-jobs.
+jobs, and the decision is an old one: ship a library, expose a service, or
+adopt the shared protocol. The new part is that the caller is an agent.
 
 ## Start with the interface that already works
 

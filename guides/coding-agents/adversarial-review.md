@@ -1,7 +1,7 @@
 ---
 title: "Step 4: Reviews that try to kill the work"
 step: 4
-status: draft
+status: published
 updated: 2026-08-05
 description: "Ask independent reviewers to find specific ways the work could fail, then verify each finding before changing the code."
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Step 3: Capture now, sort later"
 step: 3
-status: draft
+status: published
 updated: 2026-08-04
 description: "An inbox with zero-friction capture and agent-assisted triage: getting a thought out of your head must cost nothing at the moment it happens."
 ---
@@ -56,7 +56,7 @@ propose exactly one disposition (file to a location, promote to
 active/<slug>/, park in later/, or delete) with one line of
 reasoning. I decide, you execute, and dispositions happen as a
 reviewed list, not silently. Add both behaviors to the vault's
-the supported project instruction file (`AGENTS.md`, `CLAUDE.md`, or its
+supported project instruction file (`AGENTS.md`, `CLAUDE.md`, or its
 documented equivalent). Show me the diff first.
 ```
 

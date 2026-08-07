@@ -1,7 +1,7 @@
 ---
 title: "Step 7: Build lots of small tools"
 step: 7
-status: draft
+status: published
 updated: 2026-08-05
 description: "Turn repeated mechanical work into small deterministic tools, so the agent can spend its effort on decisions, orchestration, and glue."
 ---

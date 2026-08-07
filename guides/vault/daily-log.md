@@ -1,7 +1,7 @@
 ---
 title: "Step 4: The daily log"
 step: 4
-status: draft
+status: published
 updated: 2026-08-05
 description: "Append-only day notes at log/YYYY/MM/. The agent writes session summaries, and months later the log answers 'what did I decide and why.'"
 ---

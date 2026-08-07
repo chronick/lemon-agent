@@ -1,7 +1,7 @@
 ---
 title: "Step 3: Make the agent interview you"
 step: 3
-status: draft
+status: published
 updated: 2026-08-05
 description: "Use a short design conversation to expose open decisions and approve the approach before the first edit."
 ---

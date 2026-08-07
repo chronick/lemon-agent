@@ -1,7 +1,7 @@
 ---
 title: "Step 6: Run a doctor"
 step: 6
-status: draft
+status: published
 updated: 2026-08-05
 description: "Use a small advisory script to find broken links, naming drift, and stale active work, then verify the checker on known bad input."
 ---
@@ -60,10 +60,10 @@ always. Findings are advisory, not failures. Include --scope <dir>
 to limit a run to what a session touched. Before we trust it: plant
 a deliberately broken link and a badly named file, run the doctor,
 and show me it catches both; then remove the plants, run it clean,
-and fix anything real it found. Add to the supported project instruction file:
-after any session
-that moves or renames files, run the doctor scoped to what changed
-and fix findings that session introduced.
+and fix anything real it found. Add to the supported project
+instruction file: after any session that moves or renames files, run
+the doctor scoped to what changed and fix findings that session
+introduced.
 ```
 
 ## Watch out

@@ -1,7 +1,7 @@
 ---
 title: "Step 4: Review the diff, not the summary"
 step: 4
-status: draft
+status: published
 updated: 2026-08-04
 description: "The diff is the unit of trust: merge on what the code says, never on the agent's account of it."
 ---
@@ -28,8 +28,8 @@ reason it's non-negotiable got stronger.
 - **The agent states what it didn't do.** Skipped cases, stubbed
   paths, TODO'd edges. Undisclosed caps read as completeness.
 - **Merge and push stay human.** The agent prepares; you pull the
-  trigger. This is the kill-switch rule applied to the one gate that
-  matters most.
+  trigger. Irreversible actions stay with you, and this is the gate
+  where that matters most.
 
 For the adversarial version of this review (independent reviewers
 trying to refute the work), see the coding-agents guide's
@@ -55,9 +55,9 @@ exact commands you ran and what they showed), (3) what you did NOT
 verify or deliberately skipped, stated plainly. Never merge, push, or
 mark a task done without my explicit ok. If the diff exceeds a couple
 hundred lines, propose how to split it into reviewable commits
-instead of asking me to review it whole. Add this to the supported project
-instruction file under
-"git agreements". Show me the diff first.
+instead of asking me to review it whole. Add this to the supported
+project instruction file under "git agreements". Show me the diff
+first.
 ```
 
 ## Watch out

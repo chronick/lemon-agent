@@ -1,7 +1,7 @@
 ---
 title: "Step 5: Teach the agent the shape"
 step: 5
-status: draft
+status: published
 updated: 2026-08-04
 description: "A supported project-instructions file at the vault root teaches every future agent session the structure, conventions, and working agreements."
 ---

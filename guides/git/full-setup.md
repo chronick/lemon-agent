@@ -1,7 +1,7 @@
 ---
 title: "Step 0: The one-paste repo baseline"
 step: 0
-status: draft
+status: published
 updated: 2026-08-04
 description: "Optional full-package setup: a clean repo, durable agent instructions, checkpoint commits, and review habits, in one confirmation-gated paste."
 ---

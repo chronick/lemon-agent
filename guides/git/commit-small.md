@@ -1,7 +1,7 @@
 ---
 title: "Step 1: Checkpoint commits"
 step: 1
-status: draft
+status: published
 updated: 2026-08-04
 description: "Small, frequent, single-purpose commits: the save points that make agent speed safe."
 ---

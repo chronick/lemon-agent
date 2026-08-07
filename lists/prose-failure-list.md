@@ -5,7 +5,7 @@ surface: "prose"
 arm: taste
 entries: 24
 prefix: "PF"
-status: draft
+status: published
 updated: 2026-08-05
 description: "24 recurring problems in AI-assisted prose. Use the list to cut, clarify, and recover a human voice without flattening the ideas."
 ---

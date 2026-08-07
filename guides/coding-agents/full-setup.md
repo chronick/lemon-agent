@@ -1,7 +1,7 @@
 ---
 title: "Step 0: The one-paste baseline"
 step: 0
-status: draft
+status: published
 updated: 2026-08-05
 description: "Optional baseline: durable project instructions, verification gates, and reusable review skills, set up one confirmed change at a time."
 ---

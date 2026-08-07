@@ -1,7 +1,7 @@
 ---
 title: "Step 1: Make each correction stick"
 step: 1
-status: draft
+status: published
 updated: 2026-08-05
 description: "Turn corrections from one conversation into short project instructions and reusable skills that future agent sessions can follow."
 ---
@@ -14,6 +14,9 @@ project-specific guidance in the file your coding agent reads when it starts:
 `AGENTS.md` for Codex, `CLAUDE.md` for Claude Code, or the equivalent file for
 your tool. Keep the filename your agent actually supports; the principle is
 the same.
+
+You've met this file before: it's the team style guide, agreed once and
+referenced forever. The teammate reading it is now an agent.
 
 ## Write down behavior, not wishes
 

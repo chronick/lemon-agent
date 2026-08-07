@@ -1,7 +1,7 @@
 ---
 title: "Step 2: Location is state"
 step: 2
-status: draft
+status: published
 updated: 2026-08-04
 description: "Four lifecycle directories (inbox, active, later, archived) where moving a file IS the workflow, and the agent can read project status off the filesystem."
 ---

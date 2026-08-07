@@ -1,7 +1,7 @@
 ---
 title: "Step 5: Recovery is cheap. Use it."
 step: 5
-status: draft
+status: published
 updated: 2026-08-04
 description: "Revert-first culture, reflog as the safety net, and the irreversible commands that stay human. Git makes agent mistakes cheap if you let it."
 ---
@@ -24,13 +24,14 @@ instantly, and the broken attempt stays in history to learn from.
   becomes three. The revert buys calm; the redo happens on a branch
   ([step 2](/guides/git/branch-blast-radius/)).
 - **Reflog is the deep safety net.** Commits survive resets, deleted
-  branches, botched rebases; `git reflog` finds them for ~90 days.
+  branches, botched rebases; `git reflog` finds them for weeks (30 to
+  90 days by default).
   Knowing this changes your risk posture: with checkpoints
   ([step 1](/guides/git/commit-small/)), almost nothing is truly lost.
 - **The irreversible three stay human.** Force-pushes, history
   rewrites on shared branches, and deletions (branches, files,
   stashes) are the only git operations that destroy. The agent
-  proposes; a human runs them. The kill-switch rule, verbatim.
+  proposes; a human runs them.
 - **Practice one recovery.** Deliberately revert something trivial
   once, and reflog-restore a deleted branch once. Recovery you've
   never rehearsed isn't a capability, it's a hope.
@@ -56,9 +57,9 @@ first. (2) You never run force-pushes, history rewrites on shared
 branches, or deletions of branches/files/stashes. For those, state
 the exact command, what it destroys, and wait for me to run it or
 approve it. (3) If work seems lost, check git reflog and report what
-you find before declaring anything gone. Add these to the supported project
-instruction file under
-"git agreements". Show me the diff first.
+you find before declaring anything gone. Add these to the supported
+project instruction file under "git agreements". Show me the diff
+first.
 ```
 
 ## Watch out

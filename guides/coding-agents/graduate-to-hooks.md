@@ -1,7 +1,7 @@
 ---
 title: "Step 9: Turn checkable rules into checks"
 step: 9
-status: draft
+status: published
 updated: 2026-08-05
 description: "Keep judgment in prose, but turn mechanical rules into advisory hooks and scripts that run when they matter."
 ---

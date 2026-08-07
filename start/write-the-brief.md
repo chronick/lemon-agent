@@ -34,4 +34,5 @@ Compare these:
 The second brief does not tell the agent how to solve the problem. It tells the
 agent what problem it is actually allowed to solve.
 
-Use the builder below to make a brief for your own first task.
+Use the brief builder on this lesson's page to assemble one for your
+first task, or write the four parts by hand in your next prompt.

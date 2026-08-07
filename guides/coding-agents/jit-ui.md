@@ -1,7 +1,7 @@
 ---
 title: "Step 8: Views on demand, not apps"
 step: 8
-status: draft
+status: published
 updated: 2026-08-05
 description: "Keep the data in structured files and generate a self-contained HTML view when a person needs to inspect it."
 ---
@@ -16,7 +16,7 @@ generators and `make report` scripts. An agent makes the renderer cheap to
 create and adapt without turning the result into another service to maintain.
 
 > Where this comes from: "can we render this status better as a web
-> page? make it reusable" produced a ~small render script that reads
+> page? make it reusable" produced a small render script that reads
 > the project's structured files and writes one static HTML dashboard.
 > Every later session regenerates it in seconds: no server, no
 > framework, no maintenance between looks. The same pattern runs a

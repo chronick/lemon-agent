@@ -5,7 +5,7 @@ surface: "agent-assisted engineering"
 arm: verification
 entries: 20
 prefix: "AF"
-status: draft
+status: published
 updated: 2026-08-05
 description: "20 concrete ways agent-assisted work goes wrong, each with a practical stop-and-fix. Use it on a session, diff, PR, or work report."
 ---

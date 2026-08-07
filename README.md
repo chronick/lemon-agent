@@ -6,13 +6,12 @@ A small house for working with agents, the counterpart to LEMON AUDIO.
 The front door is a **seven-lesson course** for moving from chat to a safe,
 bounded, and verifiable coding-agent workflow. Deeper
 field guides collect concrete patterns from measured use; two numbered
-failure lists are their watch-out reference, and services agents can call
-ride alongside.
+failure lists are their watch-out reference, and services that agents
+can call ride alongside.
 
-> **Status: private, pre-launch.** Guides and lists are v0; the author
-> curation pass hasn't happened yet. The repo goes public when the first
-> member does. Staging deploy (noindex, temp domain until the real one
-> is registered): <https://lemon-agent.pages.dev>
+> **Status: live, early days.** Curated and launched 2026-08-05; expect
+> sharp edges and honest "not yet" cards. Live at
+> <https://lemon-agent.pages.dev> (real domain pending).
 
 ## House rules
 
@@ -29,9 +28,9 @@ ride alongside.
 | № | Member | What it is | Use it today |
 |---|--------|-----------|--------------|
 | · | [Your First Coding-Agent Session](start/) | 7 short lessons: what changes, safe tasks, the four-part brief, planning, stop conditions, verification, and diff review | Read in order; every lesson has a decision exercise and a paste-ready action |
-| 3 | [Working with Coding Agents](guides/coding-agents/) | 10 steps: durable instructions, verification loops, design interviews, reviews, orchestration, tool surfaces, small tools, generated views, hooks | One pattern at a time; every chapter ends with a prompt you can adapt. Step 0 = full baseline in one paste |
-| 4 | [Shipping Software with Git + Coding Agents](guides/git/) | 6 steps: checkpoint commits, branches as blast radius, history for the next reader, diff-not-summary review, cheap recovery | Same shape; step 0 = repo baseline in one paste |
-| 5 | [Keeping a Vault](guides/vault/) | 7 steps: plain files in a repo, location-is-state, inbox capture, daily log, teach-the-agent instructions, doctor script | Same shape; step 0 = the whole vault in one paste |
+| 3 | [Working with Coding Agents](guides/coding-agents/) | Step 0 + 9 patterns: durable instructions, verification loops, design interviews, reviews, orchestration, tool surfaces, small tools, generated views, hooks | One pattern at a time; every chapter ends with a prompt you can adapt. Step 0 = full baseline in one paste |
+| 4 | [Shipping Software with Git + Coding Agents](guides/git/) | Step 0 + 5 patterns: checkpoint commits, branches as blast radius, history for the next reader, diff-not-summary review, cheap recovery | Same shape; step 0 = repo baseline in one paste |
+| 5 | [Keeping a Vault](guides/vault/) | Step 0 + 6 patterns: plain files in a repo, location-is-state, inbox capture, daily log, teach-the-agent instructions, doctor script | Same shape; step 0 = the whole vault in one paste |
 | 1 | [The Prose Failure List](lists/prose-failure-list.md) | 24 numbered failures of AI-assisted prose (PF-01…24), run as a subtraction pass | Paste-ready prompt on the page, or install with `npx skills` |
 | 2 | [The Agent Workflow Failure List](lists/agent-workflow-failure-list.md) | 20 numbered failures of agent-assisted engineering (AF-01…20), each grounded in measured work | Paste-ready prompt on the page, or install with `npx skills` |
 | · | [pathgrip](https://pathgrip.net) | Bookmark + provenance store: content-addressed snapshots, drift detection, per-agent tokens, MCP surface | Not yet: operator instance; public docs + self-serve keys are the next ship |
@@ -40,7 +39,7 @@ ride alongside.
 
 Human-first: read a step, adopt it by hand, or adapt the step's setup
 prompt to your agent and confirm each file it writes. Steps are ordered by
-leverage-per-effort but stand alone, and every chapter names its
+leverage-per-effort but stand alone, and each pattern chapter names its
 traditional-engineering ancestor ("you've met this before": TDD, RFCs,
 code review, map-reduce, the Unix philosophy, GTD, the lab notebook,
 pre-commit hooks).
@@ -83,8 +82,9 @@ public/       catalog.json · llms.txt · favicon: the agent-facing surfaces
 ```
 
 The site is fully static: markdown in git, HTML at build time. No
-server, no database. Raw markdown is served at `/guides/<guide>/*.md`
-and `/lists/*.md`; the machine catalog at `/catalog.json`.
+server, no database. Raw markdown is served at `/guides/<guide>/*.md`,
+`/lists/*.md`, and `/start/*.md`; example data at `/examples/<id>.json`;
+the machine catalog at `/catalog.json`.
 
 ## Add an interactive example
 
@@ -144,24 +144,8 @@ npm run build    # static build to dist/
 npm run deploy   # build + wrangler pages deploy (Cloudflare Pages)
 ```
 
-`npm run sync` (automatic before dev/build) copies `lists/*.md` and
-`guides/**/*.md` to `public/` and refreshes the skills. Edit only the
-canonical `guides/` and `lists/` files.
+`npm run sync` (automatic before dev/build) copies `lists/*.md`,
+`guides/**/*.md`, `start/*.md`, and `examples/*.json` to `public/` and
+refreshes the skills. Edit only the canonical `guides/`, `start/`,
+`lists/`, and `examples/` files.
 
-## Ship checklist (flip to public)
-
-1. **Curation pass**: all three guides, both lists, all examples; cut
-   hard. The curation is the authorship. (Tracked in the vault.)
-2. Flip `status: draft` → `published` in frontmatter and catalog.json;
-   `npm run sync`.
-3. Pick a license (owner call) and add `LICENSE`.
-4. Deploy target is decided and live: Cloudflare Pages, direct upload
-   (`npm run deploy`), staging at lemon-agent.pages.dev. Remaining at
-   launch: register the real domain and swap `site` in
-   `astro.config.mjs`, delete `public/_headers` (the staging noindex),
-   and wire a privacy-respecting analytics beacon.
-5. `gh repo edit --visibility public`, deploy, cross-link from
-   pathgrip.net, log the ship in tradewind (starts the probe clock).
-6. **pathgrip's user-use answer**: ship its public docs page + self-serve
-   keys as the next member. Until then its card stays honest about
-   "not yet."
