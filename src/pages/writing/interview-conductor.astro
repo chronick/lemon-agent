@@ -2,7 +2,7 @@
 import { getEntry, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 
-const entry = await getEntry('wings', 'interview-conductor');
+const entry = await getEntry('craft', 'interview-conductor');
 const { Content } = await render(entry);
 const d = entry.data;
 ---
@@ -15,7 +15,7 @@ const d = entry.data;
   <article class="list-body">
     <Content />
   </article>
-  <p class="backlink"><a href="/writing/">← The writing wing</a> · <a href="/wings/interview-conductor.md">raw markdown</a></p>
+  <p class="backlink"><a href="/writing/">← The writing craft</a> · <a href="/craft/interview-conductor.md">raw markdown</a></p>
 </Base>
 
 <style>

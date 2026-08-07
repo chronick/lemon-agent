@@ -1,6 +1,6 @@
 ---
 title: "Lemon Agent for Knowledge Work"
-wing: work
+craft: work
 status: v0
 updated: 2026-08-07
 description: "Turn a memo, report, or draft into a claim ledger with sources, dates, uncertainty, and explicit follow-up."

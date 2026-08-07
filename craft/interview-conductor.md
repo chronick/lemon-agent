@@ -1,6 +1,6 @@
 ---
 title: "The Interview Conductor"
-wing: writing
+craft: writing
 kind: instrument
 status: v0
 updated: 2026-08-07

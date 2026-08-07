@@ -1,6 +1,6 @@
 ---
 title: "Lemon Agent for Writing"
-wing: writing
+craft: writing
 status: v0
 updated: 2026-08-07
 description: "Use an agent as interviewer, organizer, fact-checker, and critic without asking it to write in your place."

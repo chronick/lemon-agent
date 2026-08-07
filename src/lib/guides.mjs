@@ -2,7 +2,7 @@
 // A chapter's collection id is "<guide-slug>/<chapter-slug>".
 
 // Each domain wears a citrus variety over the shared lemon base: the
-// house stays lemon; a wing gets its own accent (see DESIGN.md).
+// house stays lemon; each guide gets its own accent (see DESIGN.md).
 export const GUIDES = [
   {
     slug: 'coding-agents',

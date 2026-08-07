@@ -1,13 +1,14 @@
-// Wing registry: the domain verticals mounted at lemon-agent.dev/{slug}.
+// Craft registry: the domain crafts mounted at lemon-agent.dev/{slug}.
 // Settled IA (owner decision, 2026-08-07): canonical routes are
-// /writing, /audio, /work, /science; the root route is the Devs wing.
-// Wings use the Lemon visual identity (citrus is editorial wordplay,
-// not a wing palette). A wing page may exist UNLISTED while incubating;
+// /writing, /audio, /work, /science; the root route is the developer craft.
+// Craft pages use the Lemon visual identity (citrus is editorial
+// wordplay, not a craft palette). A craft page may exist UNLISTED while
+// incubating;
 // it earns primary navigation only after it provides a complete useful
 // path (installable instrument + applicable judgment artifact + worked
 // use path) and has been used by someone outside the house.
 
-export const WINGS = [
+export const CRAFTS = [
   {
     slug: 'writing',
     title: 'Lemon Agent for Writing',
@@ -78,4 +79,4 @@ export const WINGS = [
   },
 ];
 
-export const wingBySlug = (slug) => WINGS.find((w) => w.slug === slug);
+export const craftBySlug = (slug) => CRAFTS.find((c) => c.slug === slug);

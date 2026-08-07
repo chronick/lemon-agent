@@ -37,16 +37,16 @@ const start = defineCollection({
   }),
 });
 
-const wings = defineCollection({
-  loader: glob({ pattern: '*.md', base: './wings' }),
+const craft = defineCollection({
+  loader: glob({ pattern: '*.md', base: './craft' }),
   schema: z.object({
     title: z.string(),
-    wing: z.string(),
-    kind: z.enum(['wing', 'instrument']).default('wing'),
+    craft: z.string(),
+    kind: z.enum(['craft', 'instrument']).default('craft'),
     status: z.enum(['scoping', 'v0', 'published']),
     updated: z.coerce.date(),
     description: z.string(),
   }),
 });
 
-export const collections = { lists, guides, start, wings };
+export const collections = { lists, guides, start, craft };

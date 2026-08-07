@@ -98,26 +98,26 @@ one; each is also standalone at /examples/<id>/ with raw JSON at
   grounded in measured work. Entries marked ⚙ can be checked partly by a
   script.
 
-## The wings (incubating, unlisted)
+## Craft (incubating, unlisted)
 
-Domain applications of the same method, indexed at /wings/ (raw markdown
-at /wings/<slug>.md). Wings incubate outside primary navigation until
-they earn it (installable instrument + judgment artifact + worked path +
+Domain applications of the same method, indexed at /craft/ (raw markdown
+at /craft/<slug>.md). Craft pages incubate outside primary navigation
+until they earn it (installable instrument + judgment artifact + worked path +
 external use). Statuses are honest: v0 = something on the page is usable
 today; scoping = the published plan, stated before the work.
 
-- [Lemon Agent for Writing](/wings/writing.md): the Interview Conductor
+- [Lemon Agent for Writing](/craft/writing.md): the Interview Conductor
   (installable `writing-interview` skill; instrument page at
-  /writing/interview-conductor/, raw at /wings/interview-conductor.md)
+  /writing/interview-conductor/, raw at /craft/interview-conductor.md)
   plus the PF subtraction pass. v0.
-- [Lemon Agent for Knowledge Work](/wings/work.md): the verify-info
+- [Lemon Agent for Knowledge Work](/craft/work.md): the verify-info
   pass producing a user-owned claim ledger; the installable skill is
   scoped on the page. v0.
-- [Lemon Agent for Audio](/wings/audio.md): audit a bounce against a
+- [Lemon Agent for Audio](/craft/audio.md): audit a bounce against a
   reference with common tools (FFmpeg, librosa, pyloudnorm) and get a
   measurement-backed bounce-audit.md; the smpl toolkit is not yet
   installable and the page says so. v0.
-- [Lemon Agent for Science](/wings/science.md): a reproducible-project
+- [Lemon Agent for Science](/craft/science.md): a reproducible-project
   guide (Markdown + SQLite + Python; uv, sqlite-utils, Jupytext,
   Quarto) usable today; the pinned astronomy demonstration is in
   development. scoping.

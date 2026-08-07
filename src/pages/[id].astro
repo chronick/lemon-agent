@@ -1,23 +1,23 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import { wingBySlug } from '../lib/wings.mjs';
+import { craftBySlug } from '../lib/craft.mjs';
 
 export async function getStaticPaths() {
   const lists = await getCollection('lists');
-  const wings = await getCollection('wings');
+  const craft = await getCollection('craft');
   return [
     ...lists.map((entry) => ({ params: { id: entry.id }, props: { entry, kind: 'list' } })),
-    ...wings
+    ...craft
       .filter((entry) => entry.data.kind !== 'instrument')
-      .map((entry) => ({ params: { id: entry.id }, props: { entry, kind: 'wing' } })),
+      .map((entry) => ({ params: { id: entry.id }, props: { entry, kind: 'craft' } })),
   ];
 }
 
 const { entry, kind } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
-const wing = kind === 'wing' ? wingBySlug(entry.id) : null;
+const craft = kind === 'craft' ? craftBySlug(entry.id) : null;
 ---
 {kind === 'list' ? (
   <Base title={d.title} description={d.description} citrus="blood-orange">
@@ -34,45 +34,45 @@ const wing = kind === 'wing' ? wingBySlug(entry.id) : null;
 ) : (
   <Base title={d.title} description={d.description}>
     <p class="kicker">
-      <a class="kicker-link" href="/wings/">Wing</a> · {wing.short}
-      <span class={`badge ${wing.availabilityClass}`}>{wing.availability}</span>
+      <a class="kicker-link" href="/craft/">Craft</a> · {craft.short}
+      <span class={`badge ${craft.availabilityClass}`}>{craft.availability}</span>
     </p>
     <h1>{d.title}</h1>
-    <p class="wing-tagline">{wing.tagline}</p>
-    <aside class="wing-start" aria-label="Start here">
-      <p class="wing-story">“{wing.story}”</p>
-      <p class="wing-path">
+    <p class="craft-tagline">{craft.tagline}</p>
+    <aside class="craft-start" aria-label="Start here">
+      <p class="craft-story">“{craft.story}”</p>
+      <p class="craft-path">
         <span>You bring the craft and the final judgment.</span>
         <span>The agent does the bounded work.</span>
         <span>You keep the artifact.</span>
       </p>
-      <a class="wing-cta" href={wing.ctaHref}>{wing.cta} →</a>
+      <a class="craft-cta" href={craft.ctaHref}>{craft.cta} →</a>
     </aside>
     <article class="list-body">
       <Content />
     </article>
-    <p class="backlink"><a href="/wings/">← All wings</a> · <a href={`/wings/${entry.id}.md`}>raw markdown</a></p>
+    <p class="backlink"><a href="/craft/">← All craft</a> · <a href={`/craft/${entry.id}.md`}>raw markdown</a></p>
   </Base>
 )}
 
 <style>
   .kicker-link { color: inherit; }
-  .wing-tagline {
+  .craft-tagline {
     margin: -0.3rem 0 1.6rem;
     color: var(--muted);
     font-size: 1.12rem;
   }
-  .wing-start {
+  .craft-start {
     margin: 1.5rem 0 2rem;
     padding: 1rem 1.1rem;
     border: 1px solid var(--border);
     border-left: 3px solid var(--accent);
     background: var(--card);
   }
-  .wing-story { margin: 0; font-size: 1rem; font-weight: 650; }
-  .wing-path { display: flex; flex-wrap: wrap; gap: 0.35rem 1.1rem; margin: 0.55rem 0 0.8rem; color: var(--muted); font-size: 0.82rem; }
-  .wing-path span::before { content: '✓ '; color: var(--accent-ink); }
-  .wing-cta {
+  .craft-story { margin: 0; font-size: 1rem; font-weight: 650; }
+  .craft-path { display: flex; flex-wrap: wrap; gap: 0.35rem 1.1rem; margin: 0.55rem 0 0.8rem; color: var(--muted); font-size: 0.82rem; }
+  .craft-path span::before { content: '✓ '; color: var(--accent-ink); }
+  .craft-cta {
     display: inline-block;
     padding: 0.48rem 0.75rem;
     background: var(--accent);
@@ -81,5 +81,5 @@ const wing = kind === 'wing' ? wingBySlug(entry.id) : null;
     font-weight: 750;
     text-decoration: none;
   }
-  .wing-cta:hover { background: var(--accent-hover); color: var(--bg); }
+  .craft-cta:hover { background: var(--accent-hover); color: var(--bg); }
 </style>

@@ -1,6 +1,6 @@
 ---
 title: "Lemon Agent for Science"
-wing: science
+craft: science
 status: scoping
 updated: 2026-08-07
 description: "A local Markdown, SQLite, and Python path from a pinned dataset to reproducible figures, papers, posters, and presentations."
@@ -93,7 +93,7 @@ SQLite needs no install: Python's standard library reads and writes it
 (`sqlite3`), and
 [sqlite-utils](https://github.com/simonw/sqlite-utils) adds a friendly
 command line for loading, querying, and exporting (the same tool the
-[work wing](/work/) uses for claim ledgers).
+[knowledge-work craft](/work/) uses for claim ledgers).
 [Jupytext](https://github.com/jupytext/jupytext) pairs notebooks with
 plain-text Python or Markdown when exploratory work needs a notebook
 view.

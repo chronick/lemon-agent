@@ -1,6 +1,6 @@
 ---
 title: "Lemon Agent for Audio"
-wing: audio
+craft: audio
 status: v0
 updated: 2026-08-07
 description: "Use an agent to measure, organize, and critique audio bounces while you keep the mix decisions in Ableton Live."

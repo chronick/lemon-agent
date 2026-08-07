@@ -285,14 +285,14 @@
       }
     },
     {
-      "id": "writing-wing",
+      "id": "writing-craft",
       "name": "Lemon Agent for Writing",
       "tier": "free-artifact",
-      "kind": "wing",
+      "kind": "craft",
       "status": "v0",
       "listed": false,
       "html": "/writing/",
-      "raw": "/wings/writing.md",
+      "raw": "/craft/writing.md",
       "how_to_use": "The Interview Conductor (installable skill, instrument page at /writing/interview-conductor/) pulls a draft out of the writer one question at a time; the subtraction pass runs the Prose Failure List as a review. The agent interrogates and cuts; the human writes.",
       "install": {
         "kind": "skills-cli",
@@ -301,36 +301,36 @@
       }
     },
     {
-      "id": "work-wing",
+      "id": "work-craft",
       "name": "Lemon Agent for Knowledge Work",
       "tier": "free-artifact",
-      "kind": "wing",
+      "kind": "craft",
       "status": "v0",
       "listed": false,
       "html": "/work/",
-      "raw": "/wings/work.md",
+      "raw": "/craft/work.md",
       "how_to_use": "Paste-ready verify-info pass producing a user-owned claim ledger (claim, support level, source, confidence, uncertainty, follow-up). The installable work-verify-info skill is scoped on the page and ships next."
     },
     {
-      "id": "audio-wing",
+      "id": "audio-craft",
       "name": "Lemon Agent for Audio",
       "tier": "free-artifact",
-      "kind": "wing",
+      "kind": "craft",
       "status": "v0",
       "listed": false,
       "html": "/audio/",
-      "raw": "/wings/audio.md",
+      "raw": "/craft/audio.md",
       "how_to_use": "A bounce-audit workflow usable today with common tools (FFmpeg, librosa, pyloudnorm): measure a mix against a reference and get bounce-audit.md with export gates, differences worth listening for, and experiments to try in the DAW. The smpl toolkit itself is not yet installable and the page says so."
     },
     {
-      "id": "science-wing",
+      "id": "science-craft",
       "name": "Lemon Agent for Science",
       "tier": "free-artifact",
-      "kind": "wing",
+      "kind": "craft",
       "status": "scoping",
       "listed": false,
       "html": "/science/",
-      "raw": "/wings/science.md",
+      "raw": "/craft/science.md",
       "how_to_use": "A reproducible-project guide usable today (Markdown + SQLite + Python; uv, sqlite-utils, Jupytext, Quarto): pinned sources, executable transformations, figures from code, papers and posters from the same files. The pinned astronomy demonstration is still in development."
     },
     {

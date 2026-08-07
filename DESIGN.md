@@ -1,9 +1,9 @@
 # Design notes
 
 Two systems live here: the citrus visual language (the house and its
-guides) and the wing architecture (how domains mount, incubate, and
-earn navigation). The wing architecture is the settled owner decision
-of 2026-08-07 and wins wherever the two touch.
+guides) and the craft architecture (how domain pages mount, incubate,
+and earn navigation). The craft architecture is the settled owner
+decision of 2026-08-07 and wins wherever the two touch.
 
 ## The citrus system (house + guides)
 
@@ -28,43 +28,44 @@ index cards carry per-guide accents. House chrome never tints: the
 brand header/footer, `.chip`, selection, and terminal blocks stay
 chartreuse everywhere.
 
-**Wings do not get citrus palettes.** Owner decision, 2026-08-07:
-every wing uses the Lemon visual identity; citrus may appear in wing
-prose as editorial wordplay, never as a wing palette or taxonomy.
-(This supersedes the earlier note reserving yuzu for audio.)
+**Craft pages do not get citrus palettes.** Owner decision,
+2026-08-07: every craft page uses the Lemon visual identity; citrus
+may appear in craft prose as editorial wordplay, never as a palette or
+taxonomy. (This supersedes the earlier note reserving yuzu for audio.)
 
-## The wings: architecture (settled 2026-08-07)
+## Craft: the architecture (settled 2026-08-07, renamed from "wings")
 
-- **Root is the Devs wing.** `/` with the course and field manual is
-  the foundation the other domains build on.
-- **Canonical wing routes**: `/writing`, `/audio`, `/work`,
-  `/science`. Wing content is canonical in `wings/*.md`, served raw at
-  `/wings/*.md`; instrument pages nest under the wing route
+- **Root is the developer craft.** `/` with the course and field
+  manual is the foundation the other domains build on.
+- **Canonical craft routes**: `/writing`, `/audio`, `/work`,
+  `/science`. Craft content is canonical in `craft/*.md`, served raw
+  at `/craft/*.md`; instrument pages nest under the craft route
   (`/writing/interview-conductor`). Existing public URLs are
-  preserved; renames ship a redirect (`public/_redirects`).
-- **Wing lifecycle.** A wing page may exist **unlisted** while
-  incubating: published, linked from `/wings/` and the machine
+  preserved; renames ship a redirect (`public/_redirects` carries both
+  the `/writers`→`/writing` and the `/wings/*`→`/craft/*` moves).
+- **Craft lifecycle.** A craft page may exist **unlisted** while
+  incubating: published, linked from `/craft/` and the machine
   surfaces, absent from primary navigation and the home page.
-  Publication alone never implies a wing earned navigation.
+  Publication alone never implies a craft earned navigation.
 - **The navigation gate**: one complete user journey containing an
   installable instrument, an applicable judgment artifact, a worked
   use path, and external validation (someone outside the house used
   it). Statuses on the pages stay honest meanwhile: `v0` = something
   usable today; `scoping` = the published plan.
-- **Wing page anatomy**: orientation (who it's for, what stance),
+- **Craft page anatomy**: orientation (who it's for, what stance),
   instruments (installable skills and/or paste-ready workflows),
   worked examples, the judgment/check artifact, and honest
   availability for everything not yet real.
 - **Shared resources keep one canonical URL.** A resource that serves
-  several wings (the PF list serves writing; the verify-info pass
+  several crafts (the PF list serves writing; the verify-info pass
   serves work and writing) lives at its canonical URL and is linked,
   never duplicated.
 - **Skills**: authored in this repo under `skills/`, installed via
   `npx skills`; runtime copies are the installer's problem. Naming is
   domain-specific first (`writing-interview`, `work-verify-info`); a
   general name is earned only after a second domain demonstrates the
-  same reusable behavior. A wing-level bundle is advertised only once
-  the wing has at least two distinct installable skills.
+  same reusable behavior. A craft-level bundle is advertised only once
+  the craft has at least two distinct installable skills.
 - **User state stays in the user environment.** No hosted state or
   Lemon service is required by the free guide-and-skill path; any
   future paid service is optional and separate.

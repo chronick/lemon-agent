@@ -1,20 +1,20 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { WINGS } from '../../lib/wings.mjs';
+import { CRAFTS } from '../../lib/craft.mjs';
 ---
 <Base
-  title="The wings"
-  description="Domain wings of Lemon Agent: the same method applied per field. Writing, knowledge work, audio, and science, each honest about what's usable today."
+  title="Craft"
+  description="The craft pages of Lemon Agent: the same method applied per field. Writing, knowledge work, audio, and science, each honest about what's usable today."
 >
   <p class="kicker">Lemon Agent · guides and skills by domain</p>
   <h1>Keep your craft. Give the agent a job.</h1>
   <p class="lede">
-    Start with the work you already know how to do. Each wing shows where
+    Start with the work you already know how to do. Each craft page shows where
     an agent can help, what stays under your judgment, and which artifact
     you should expect back.
   </p>
   <div class="cards">
-    {WINGS.map((w) => (
+    {CRAFTS.map((w) => (
       <a class="card" href={`/${w.slug}/`}>
         <p class="card-kicker">/{w.slug} · <span class={`badge ${w.availabilityClass}`}>{w.availability}</span></p>
         <p class="card-title">{w.title}</p>
@@ -27,20 +27,20 @@ import { WINGS } from '../../lib/wings.mjs';
   <section class="method">
     <h2>One method underneath</h2>
     <p>
-      The root of this site is the Devs wing: the course and field manual
-      are the foundation. Every other wing adapts the same loop (scope,
+      The root of this site is the developer craft: the course and field manual
+      are the foundation. Every other craft adapts the same loop (scope,
       plan, watch, verify, review) to a different kind of work.
     </p>
     <p class="gate-note">
       These pages are published while they grow, but remain outside the
-      primary navigation. A wing earns that place when it offers an
+      primary navigation. A craft earns that place when it offers an
       installable instrument, a judgment aid, a worked path, and evidence
       that someone outside the project found it useful.
     </p>
   </section>
   <p class="backlink">
-    <a href="/">← Lemon Agent</a> · for agents: raw wings at
-    <code>/wings/*.md</code>, catalog at <a href="/catalog.json">/catalog.json</a>
+    <a href="/">← Lemon Agent</a> · for agents: raw craft pages at
+    <code>/craft/*.md</code>, catalog at <a href="/catalog.json">/catalog.json</a>
   </p>
 </Base>
 

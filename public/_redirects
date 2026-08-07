@@ -1,4 +1,5 @@
 /writers/* /writing/:splat 301
 /office/* /work/:splat 301
-/wings/writers.md /wings/writing.md 301
-/wings/office.md /wings/work.md 301
+/wings/writers.md /craft/writing.md 301
+/wings/office.md /craft/work.md 301
+/wings/* /craft/:splat 301
