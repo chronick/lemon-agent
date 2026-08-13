@@ -12,6 +12,7 @@ const isStart = Astro.url.pathname.startsWith('/start');
 const isGuides = Astro.url.pathname.startsWith('/guides');
 const isReference = Astro.url.pathname.includes('failure-list');
 const ogImage = new URL('/og.jpg', Astro.url);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 <html lang="en">
   <head>
@@ -30,6 +31,8 @@ const ogImage = new URL('/og.jpg', Astro.url);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{Astro.url.pathname === '/' ? title : `${title} · Lemon Agent`}</title>
   </head>
   <body class={citrus ? `citrus-${citrus}` : undefined}>
@@ -62,6 +65,8 @@ const ogImage = new URL('/og.jpg', Astro.url);
         </p>
         <p>
           Provenance: mostly AI-generated, human-guided and reviewed.
+          Run by <a href="https://nickdonohue.net" rel="me">Nick Donohue</a> —
+          the counterpart to <a href="https://lemon.audio">LEMON AUDIO</a>.
         </p>
         <p class="agents">
           For agents: <a href="/catalog.json">catalog.json</a> ·

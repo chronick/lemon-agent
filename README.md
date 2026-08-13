@@ -2,7 +2,9 @@
 
 **Free tools · honest measurements · agentic services.**
 
-A small house for working with agents, the counterpart to LEMON AUDIO.
+A small house for working with agents, the counterpart to
+[LEMON AUDIO](https://lemon.audio). Run by
+[Nick Donohue](https://nickdonohue.net).
 The front door is a **seven-lesson course** for moving from chat to a safe,
 bounded, and verifiable coding-agent workflow. Deeper
 field guides collect concrete patterns from measured use; two numbered
