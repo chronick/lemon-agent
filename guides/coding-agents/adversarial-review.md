@@ -36,8 +36,8 @@ answer are not two sources of evidence.
    there.
 4. **Concrete findings saved to disk.** “This breaks” is a claim. “These
    inputs produce this wrong output at this line” is a finding
-   ([AF-17](/agent-workflow-failure-list/),
-   [AF-02](/agent-workflow-failure-list/)).
+   ([AF-17](/agent-workflow-failure-list/#af-17),
+   [AF-02](/agent-workflow-failure-list/#af-02)).
 
 ## Try it
 
@@ -73,7 +73,7 @@ yet: findings first, fixes on my pick.
 
 - **Unverified review output**: reviewers can be wrong. Never batch-apply
   findings before checking them against the code.
-- **Hidden limits** ([AF-18](/agent-workflow-failure-list/)): a
+- **Hidden limits** ([AF-18](/agent-workflow-failure-list/#af-18)): a
   review that sampled three files reads identically to one that read
   the codebase, unless disclosure is demanded. "State what you did not
   cover" is the part that matters.

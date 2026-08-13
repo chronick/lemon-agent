@@ -22,7 +22,7 @@ partial results, and the reducer combines and verifies them.
 > windows. One filtered or failed agent, and its share of the work
 > silently vanished. The rule that came out of it: every worker writes
 > findings to disk incrementally; partial files beat perfect memory
-> ([AF-17](/agent-workflow-failure-list/)).
+> ([AF-17](/agent-workflow-failure-list/#af-17)).
 
 ## Three useful patterns
 
@@ -68,7 +68,7 @@ and what's missing; don't paper over gaps.
 
 ## Watch out
 
-- **Unbounded anything** ([AF-08](/agent-workflow-failure-list/)):
+- **Unbounded anything** ([AF-08](/agent-workflow-failure-list/#af-08)):
   every loop and long-running worker gets a wall-clock timeout, a size
   cap, and a heartbeat. No exceptions survive contact with a 4-hour
   wedge.

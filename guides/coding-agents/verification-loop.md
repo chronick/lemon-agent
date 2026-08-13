@@ -25,7 +25,7 @@ broken until proven otherwise.
 > The incident behind this: a health-check probe with a broken relative
 > path reported "0 orphans" (zero findings, first run) and a fix
 > shipped against that reassuring nothing. Clean-on-first-run is a
-> smell, not a pass ([AF-01](/agent-workflow-failure-list/)).
+> smell, not a pass ([AF-01](/agent-workflow-failure-list/#af-01)).
 
 **2. Small proof before long cycle.** Before committing a full render,
 build, or deploy cycle to a change, run the smallest probe that could
@@ -33,13 +33,13 @@ falsify it: seconds, not minutes.
 
 > The incident: a swapped parameter pair (the kind that compiles and
 > runs) was discovered only *after* a full audio render. A ten-second
-> dry run would have caught it ([AF-07](/agent-workflow-failure-list/),
-> [AF-11](/agent-workflow-failure-list/)).
+> dry run would have caught it ([AF-07](/agent-workflow-failure-list/#af-07),
+> [AF-11](/agent-workflow-failure-list/#af-11)).
 
 **3. Serve, don't describe.** If the deliverable can be a running
 page, a render, a URL, or a passing test you can execute yourself, the
 agent delivers *that*. "It works" prose where an artifact could exist is
-a claim, not a result ([AF-04](/agent-workflow-failure-list/)).
+a claim, not a result ([AF-04](/agent-workflow-failure-list/#af-04)).
 
 ## Try it
 
@@ -51,7 +51,7 @@ You don't need setup. You need two habits at the moment of asking:
 
 - Next bug: *"write the probe that reproduces this first, show me the
   failing output, then fix it, then show the same probe passing."* The
-  before/after pair is the verification ([AF-02](/agent-workflow-failure-list/)).
+  before/after pair is the verification ([AF-02](/agent-workflow-failure-list/#af-02)).
 - Next long cycle: *"what's the smallest dry run that could falsify
   this change? Run that first."*
 - Next "it works": *"serve it"* (the page loaded, the test run, the
@@ -79,9 +79,9 @@ Show me the diff first.
 
 ## Watch out
 
-- **Stale state** ([AF-03](/agent-workflow-failure-list/)): a probe
+- **Stale state** ([AF-03](/agent-workflow-failure-list/#af-03)): a probe
   proving yesterday's build proves nothing. Inputs get hashed or
   timestamped into outputs.
-- **Green against the wrong target** ([AF-05](/agent-workflow-failure-list/)):
+- **Green against the wrong target** ([AF-05](/agent-workflow-failure-list/#af-05)):
   tests passing against a different config than production runs are a
   different kind of clean-on-first-run.

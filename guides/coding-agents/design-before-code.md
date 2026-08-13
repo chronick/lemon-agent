@@ -20,7 +20,7 @@ is cheaper than rebuilding a system.
 > in the human's interventions was consistent: they were surgical
 > corrections *at forks* the agent had driven through without asking.
 > The failure isn't wrong answers; it's unnamed questions
-> ([AF-15](/agent-workflow-failure-list/)). Putting the fork-naming
+> ([AF-15](/agent-workflow-failure-list/#af-15)). Putting the fork-naming
 > *before* the work is the structural fix.
 
 ## What good looks like
@@ -34,7 +34,7 @@ is cheaper than rebuilding a system.
   fork, the plausible readings, and which it would pick and why, then
   waits. Especially for trigger conditions and state transitions, where
   an inferred condition is the classic silent wrong turn
-  ([AF-14](/agent-workflow-failure-list/)).
+  ([AF-14](/agent-workflow-failure-list/#af-14)).
 - **Approve a bounded plan.** A plan for one feature gives the eventual diff a
   clear authority. A roadmap for everything does not.
 

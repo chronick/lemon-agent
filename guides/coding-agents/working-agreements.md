@@ -98,4 +98,4 @@ diff, and do not document conventions that the project does not yet follow.
   disagree, either change the project first or document the project as it is.
 - **Chat-only learning:** “I will remember” is not persistence. Put the lesson
   somewhere the next session will read or run it
-  ([AF-19](/agent-workflow-failure-list/)).
+  ([AF-19](/agent-workflow-failure-list/#af-19)).

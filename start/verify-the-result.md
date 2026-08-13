@@ -43,6 +43,6 @@ lets you decide whether to accept it or add another check.
 > “nothing wrong” on its very first run, and a fix shipped on the strength of
 > that reassuring nothing. The check could not fail, so its pass meant nothing.
 > That is why a brand-new check should fail at least once before you trust it:
-> entry [AF-01](/agent-workflow-failure-list/) on the watch-out list.
+> entry [AF-01](/agent-workflow-failure-list/#af-01) on the watch-out list.
 
 Go deeper with [Prove it before and after](/guides/coding-agents/verification-loop/).

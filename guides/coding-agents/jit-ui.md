@@ -38,7 +38,7 @@ create and adapt without turning the result into another service to maintain.
    data changes.
 4. **Stamp the generated-at time into the page.** A view that could be
    stale and doesn't say so is a trap
-   ([AF-03](/agent-workflow-failure-list/)).
+   ([AF-03](/agent-workflow-failure-list/#af-03)).
 
 ## Where it beats an app
 
@@ -70,7 +70,7 @@ look.
 - **The view becoming the source of truth**: the page is disposable
   output. Edits go to the data files; anyone (including the agent)
   editing the HTML is a smell.
-- **Quiet staleness** ([AF-03](/agent-workflow-failure-list/)): the
+- **Quiet staleness** ([AF-03](/agent-workflow-failure-list/#af-03)): the
   timestamp isn't decoration; it's the contract.
 - **Scope creep toward an app**: one "just add a button" at a time.
   When interaction demands state, stop and decide deliberately.

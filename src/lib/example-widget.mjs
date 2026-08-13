@@ -60,9 +60,10 @@ function citeNodes(cites = []) {
   const links = [];
   cites.forEach((c, i) => {
     if (i > 0) links.push(text(' · '));
+    // AF entries have per-entry anchors (#af-01…); PF entries don't yet.
     const href = c.startsWith('PF')
       ? '/prose-failure-list/'
-      : '/agent-workflow-failure-list/';
+      : `/agent-workflow-failure-list/#${c.toLowerCase()}`;
     links.push(el('a', { href }, [text(c)]));
   });
   return [el('span', { className: ['xmpl-cites'] }, links)];

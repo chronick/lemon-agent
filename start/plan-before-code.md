@@ -38,7 +38,7 @@ the plan that authorized it.
 > It quietly picked the one suggested by nearby code, and it picked wrong; the
 > human had meant the other. The habit that prevents it: say the condition out
 > loud, name the other reading, and wait for the pick. That pattern is entry
-> [AF-14](/agent-workflow-failure-list/) on the watch-out list.
+> [AF-14](/agent-workflow-failure-list/#af-14) on the watch-out list.
 
 When you are ready for a deeper version of this habit, continue to [Make the
 agent interview you](/guides/coding-agents/design-before-code/).

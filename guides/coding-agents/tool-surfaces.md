@@ -96,4 +96,4 @@ with structured output instead of rebuilding the requests in each session.
 - **UI-first automation:** clicking is sometimes necessary, but it should not
   be the default when a documented, inspectable interface already exists.
 - **Hidden authority:** any surface that can publish, send, charge, or delete
-  needs an explicit human gate ([AF-09](/agent-workflow-failure-list/)).
+  needs an explicit human gate ([AF-09](/agent-workflow-failure-list/#af-09)).

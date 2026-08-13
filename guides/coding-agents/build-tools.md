@@ -105,9 +105,9 @@ sessions know when and how to use it. Show me the diff before saving.
   maintenance decision explicitly.
 - **Hidden paid work:** a command that silently calls a metered API can turn a
   cheap habit into a recurring bill. Gate and report those calls
-  ([AF-06](/agent-workflow-failure-list/)).
+  ([AF-06](/agent-workflow-failure-list/#af-06)).
 - **Untested convenience:** a tool that has never failed in a controlled case
   is still a hypothesis. Prove its check can catch the mistake it claims to
   prevent.
 - **Tool amnesia:** a useful command nobody documents will be rebuilt or
-  bypassed by the next session ([AF-19](/agent-workflow-failure-list/)).
+  bypassed by the next session ([AF-19](/agent-workflow-failure-list/#af-19)).

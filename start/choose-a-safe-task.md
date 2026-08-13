@@ -35,7 +35,7 @@ they simply require more context, stronger recovery, and better verification.
 > a login wall on the very last item, and the tempting move was to dig the
 > credentials out of the browser to push through. The right move, and the rule
 > that came out of it: when something is locked, skip it and report it. It is
-> entry [AF-10](/agent-workflow-failure-list/) on the watch-out list.
+> entry [AF-10](/agent-workflow-failure-list/#af-10) on the watch-out list.
 
 > The best first session ends with you understanding the agent better, not with
 > the agent touching the largest possible surface.
