@@ -1,7 +1,7 @@
 # Lemon Agent
 
 > A practical guide to working with coding agents: a short starting course,
-> three deeper field guides, two numbered failure lists (installable as
+> four deeper field guides, two numbered failure lists (installable as
 > agent skills), and services agents can call directly.
 
 House rule: nothing ships without a working answer to "how would a user
@@ -62,6 +62,16 @@ baseline in one paste. Guide index: /guides/
 - [Step 4: The daily log](/guides/vault/daily-log.md)
 - [Step 5: Teach the agent the shape](/guides/vault/teach-the-shape.md)
 - [Step 6: Run a doctor](/guides/vault/run-a-doctor.md)
+
+### What Does AI Say About You? (№ 6), raw at /guides/legibility/*.md
+
+The legibility audit: measure what AI assistants tell prospective users
+about your projects — a stable-ID buyer-intent prompt battery, an
+isolated web-enabled harness (three trap fixes baked in), grading
+against ground truth, and a re-run/diff loop. Installable companion:
+the `legibility-audit` skill.
+
+- [Step 1: Run the audit](/guides/legibility/run-the-audit.md)
 
 ## Interactive examples
 
@@ -130,6 +140,9 @@ Use `npx skills` for a managed install shared by Codex and Claude Code:
 
 The repository contains:
 
+- `skills/legibility-audit`: buyer-intent legibility audit — generate a
+  prompt battery from the template, run it isolated and web-enabled,
+  grade against ground truth, emit the findings table and fix list
 - `skills/prose-failure-list`: subtraction pass over a draft
 - `skills/agent-workflow-failure-list`: verification pass over a
   session, PR, or report

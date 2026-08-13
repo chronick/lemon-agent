@@ -21,13 +21,14 @@ const siblings = (await getCollection('guides'))
   .filter((c) => c.id.startsWith(`${guide}/`))
   .sort((a, b) => a.data.step - b.data.step);
 const idx = siblings.findIndex((e) => e.id === entry.id);
+const maxStep = Math.max(...siblings.map((c) => c.data.step));
 const prev = idx > 0 ? siblings[idx - 1] : null;
 const next = idx < siblings.length - 1 ? siblings[idx + 1] : null;
 ---
 <Base title={d.title} description={d.description} citrus={meta.citrus}>
   <p class="kicker">
     <span class="citrus-chip">{meta.citrus}</span>
-    <a class="kicker-link" href={`/guides/${guide}/`}>{meta.title}</a> · step {d.step} of {siblings.length - 1}
+    <a class="kicker-link" href={`/guides/${guide}/`}>{meta.title}</a> · step {d.step} of {maxStep}
   </p>
   <h1>{shortTitle(d.title)}</h1>
   <article class="list-body">

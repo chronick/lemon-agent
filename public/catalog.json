@@ -2,7 +2,7 @@
   "name": "Lemon Agent",
   "tagline": "Free tools, honest measurements, agentic services.",
   "operator": "chronick",
-  "updated": "2026-08-07",
+  "updated": "2026-08-12",
   "house_rule": "Nothing ships without a working answer to: how would a user actually use this, today?",
   "provenance": "Mostly AI-generated, human-guided and reviewed.",
   "members": [
@@ -243,6 +243,30 @@
           "raw": "/guides/vault/run-a-doctor.md"
         }
       ]
+    },
+    {
+      "id": "legibility-guide",
+      "name": "What Does AI Say About You?",
+      "number": 6,
+      "tier": "free-artifact",
+      "kind": "guide",
+      "status": "published",
+      "html": "/guides/legibility/",
+      "raw_dir": "/guides/legibility/",
+      "how_to_use": "Audit what AI assistants tell prospective users about your projects: a stable-ID buyer-intent prompt battery, an isolated web-enabled harness with three trap fixes, grading against ground truth, and a re-run/diff loop. Paste-ready brief in the chapter; the legibility-audit skill is the installable half.",
+      "chapters": [
+        {
+          "step": 1,
+          "id": "run-the-audit",
+          "title": "Run the audit",
+          "raw": "/guides/legibility/run-the-audit.md"
+        }
+      ],
+      "install": {
+        "kind": "skills-cli",
+        "command": "npx skills add chronick/lemon-agent --global --agent codex claude-code --skill legibility-audit --yes",
+        "path": "skills/legibility-audit"
+      }
     },
     {
       "id": "prose-failure-list",
