@@ -234,12 +234,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     margin: 0.4rem 0 1rem;
   }
   h2 {
-    font-size: 0.8rem;
+    font-size: clamp(1.35rem, 3.2vw, 1.7rem);
     font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin: 2.6rem 0 0.7rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin: 2.8rem 0 0.8rem;
   }
   h2::before { content: '// '; color: var(--accent-ink); }
 
