@@ -3,21 +3,16 @@ title: "Step 1: Run the audit"
 step: 1
 status: published
 updated: 2026-08-12
-description: "Ask a fresh, isolated, web-enabled assistant the questions a prospective user would ask about your projects. Grade the answers against ground truth, fix the gaps, re-run, and diff."
+description: "Evaluate how AI agents see your projects: run a prompt battery past a fresh, isolated, web-enabled assistant, grade against ground truth, fix, re-run, diff."
 ---
 
-Someone considering your project increasingly doesn't start with your
-README. They ask an assistant: *what is this? who is it for? what does it
-cost? would you recommend it?* The assistant fetches whatever public
-surface it can reach — your README, your site, your repo metadata — and
-answers from what it finds there. For that person, the assistant's answer
-*is* your front door. And the rule is blunt: **if your README doesn't say
-it, the assistant doesn't know it.**
+Evaluate how AI agents see your projects — with this audit.
 
-That's a measurable situation, not a vibe. This step is an audit you can
-run in an afternoon: capture what assistants say about your properties
-today, grade it against reality, fix the gaps, then re-run and watch the
-answers move.
+An assistant asked *"what is this? would you recommend it?"* answers
+from whatever public surface it can fetch, and **if your README doesn't
+say it, the assistant doesn't know it.** This step is the measurable
+check: capture what assistants say today, grade it against reality, fix
+the gaps, re-run, and watch the answers move. It runs in an afternoon.
 
 ## The method
 
