@@ -122,7 +122,36 @@ Four findings carried the run:
 
 ## What moved after the fixes
 
-<!-- DELTA-TABLE: filled from the 2026-08-12 v3 re-run -->
+Same battery, same flags, re-run hours after shipping the fixes (README
+signals, licenses, repo metadata, cross-links, a real About page —
+everything except indexing, which had no time to move):
+
+| Property | Before | After |
+|----------|--------|-------|
+| Personal site | 3 of 5 accurate | 3 of 5 — two answers substantively richer; both unprompted-visibility misses unchanged |
+| Course site (this one) | 5 of 6 | 5 of 6 — the recommendation refusal became a qualified yes |
+| Audio-analysis repo | 5 of 5 | 5 of 5 — already at ceiling |
+| Orchestration repo | 1 of 4 | **4 of 4** |
+| Plotter-art repo | 4 of 4 | 4 of 4 — now answered from the README instead of source-diving |
+| **Total** | **18 of 24** | **21 of 24 · zero wrong · 12 answers improved** |
+
+Three deltas carried the re-run:
+
+- **The false-maturity cluster reversed completely.** "No version number,
+  no tests/CI badges, no changelog" became "pre-1.0 (v0.2.1), with
+  active CI" — same assistant, same prompt, one README apart. All four
+  of the baseline's partly-accurate scores traced to that gap; all four
+  flipped to accurate.
+- **The refusal flipped.** "I wouldn't spend time on an unverifiable,
+  ungraded, AI-generated guide from an unindexed site" became "a sound
+  way to introduce the *discipline* of using an agent, not just the
+  mechanics" — bought by a named author byline and cross-links between
+  the properties. The indexing discount itself remains until the slow
+  clock catches up.
+- **Nothing indexing-dependent moved, as predicted.** Unprompted
+  visibility is still zero everywhere. A re-run that improves only where
+  the fixes could plausibly act is also evidence the instrument is
+  measuring something real.
 
 Two clocks run here: fixes to READMEs and repo metadata are visible to
 assistants on their next fetch, immediately; search indexing — the input
