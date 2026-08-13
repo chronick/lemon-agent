@@ -52,6 +52,24 @@ export const GUIDES = [
       'maintain it with you. These steps build one from scratch, one ' +
       'habit at a time.',
   },
+  {
+    slug: 'legibility',
+    number: 6,
+    title: 'What Does AI Say About You?',
+    short: 'Legibility',
+    citrus: 'yuzu',
+    blurb:
+      'Assistants answering buyer-intent questions are a front door to ' +
+      'your work. A stable-ID prompt battery, an isolated web-enabled ' +
+      'harness, and a graded findings table measure what they say today — ' +
+      'and whether your fixes moved it.',
+    intro:
+      'When someone asks an assistant about your project, the answer is ' +
+      'assembled from whatever your public surfaces say — and nothing ' +
+      'else. This guide is an audit you can run in an afternoon: measure ' +
+      'the answers, grade them against reality, fix the gaps, re-run, ' +
+      'and diff.',
+  },
 ];
 
 export const guideBySlug = (slug) => GUIDES.find((g) => g.slug === slug);

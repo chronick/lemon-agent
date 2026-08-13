@@ -8,7 +8,7 @@ const count = (slug) => chapters.filter((c) => c.id.startsWith(`${slug}/`)).leng
 ---
 <Base
   title="The field manual"
-  description="Field guides for working with agents: coding-agent patterns, Git workflows, and keeping a vault. One clear pattern at a time."
+  description="Field guides for working with agents: coding-agent patterns, Git workflows, keeping a vault, and auditing what AI says about you. One clear pattern at a time."
 >
   <p class="kicker">Lemon Agent · {GUIDES.length} deeper guides</p>
   <h1>The field manual</h1>
@@ -21,7 +21,7 @@ const count = (slug) => chapters.filter((c) => c.id.startsWith(`${slug}/`)).leng
   <div class="cards">
     {GUIDES.map((g) => (
       <a class={`card citrus-${g.citrus}`} href={`/guides/${g.slug}/`}>
-        <p class="card-kicker">{count(g.slug)} patterns · <span class="citrus-chip">{g.citrus}</span></p>
+        <p class="card-kicker">{count(g.slug)} {count(g.slug) === 1 ? 'pattern' : 'patterns'} · <span class="citrus-chip">{g.citrus}</span></p>
         <p class="card-title">{g.title}</p>
         <p class="card-blurb">{g.blurb}</p>
       </a>

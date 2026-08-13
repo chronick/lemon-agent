@@ -17,6 +17,7 @@ everything stays one brand:
 | Working with Coding Agents | **lime** | `#a4ce54` | `/guides/coding-agents/*` |
 | Git + Coding Agents | **tangerine** | `#f2ab52` | `/guides/git/*` |
 | Keeping a Vault | **grapefruit** | `#f293a2` | `/guides/vault/*` |
+| What Does AI Say About You? | **yuzu** | `#e8c94e` | `/guides/legibility/*` |
 | Failure lists | **blood orange** | `#ef7c50` | `/prose-failure-list/`, `/agent-workflow-failure-list/` |
 
 Mechanics: `Base.astro` defines an accent trio with lemon defaults
