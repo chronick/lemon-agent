@@ -21,7 +21,7 @@ const count = (slug) => chapters.filter((c) => c.id.startsWith(`${slug}/`)).leng
   <div class="cards">
     {GUIDES.map((g) => (
       <a class={`card citrus-${g.citrus}`} href={`/guides/${g.slug}/`}>
-        <p class="card-kicker">{count(g.slug)} {count(g.slug) === 1 ? 'pattern' : 'patterns'} · <span class="citrus-chip">{g.citrus}</span></p>
+        <p class="card-kicker">{count(g.slug)} {count(g.slug) === 1 ? 'pattern' : 'patterns'}</p>
         <p class="card-title">{g.title}</p>
         <p class="card-blurb">{g.blurb}</p>
       </a>

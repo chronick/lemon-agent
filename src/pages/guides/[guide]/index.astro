@@ -15,7 +15,6 @@ const chapters = (await getCollection('guides'))
 ---
 <Base title={meta.title} description={meta.blurb} citrus={meta.citrus}>
   <p class="kicker">
-    <span class="citrus-chip">{meta.citrus}</span>
     <a class="kicker-link" href="/guides/">The field manual</a> · {chapters.length} {chapters.length === 1 ? 'pattern' : 'patterns'}
   </p>
   <h1>{meta.title}</h1>

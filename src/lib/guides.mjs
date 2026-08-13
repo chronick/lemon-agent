@@ -6,7 +6,6 @@
 export const GUIDES = [
   {
     slug: 'coding-agents',
-    number: 3,
     title: 'Working with Coding Agents',
     short: 'Coding agents',
     citrus: 'lime',
@@ -22,7 +21,6 @@ export const GUIDES = [
   },
   {
     slug: 'git',
-    number: 4,
     title: 'Shipping Software with Git + Coding Agents',
     short: 'Git + agents',
     citrus: 'tangerine',
@@ -38,7 +36,6 @@ export const GUIDES = [
   },
   {
     slug: 'vault',
-    number: 5,
     title: 'Keeping a Vault',
     short: 'The vault',
     citrus: 'grapefruit',
@@ -54,7 +51,6 @@ export const GUIDES = [
   },
   {
     slug: 'legibility',
-    number: 6,
     title: 'What Does AI Say About You?',
     short: 'Legibility',
     citrus: 'yuzu',

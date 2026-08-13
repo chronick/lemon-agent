@@ -104,7 +104,7 @@ const totalMinutes = START_LESSONS.reduce((sum, lesson) => sum + lesson.minutes,
     <div class="guide-grid">
       {GUIDES.map((guide) => (
         <a class={`guide-card citrus-${guide.citrus}`} href={`/guides/${guide.slug}/`}>
-          <p>{count(guide.slug)} {count(guide.slug) === 1 ? 'pattern' : 'patterns'} · <span class="citrus-chip">{guide.citrus}</span></p>
+          <p>{count(guide.slug)} {count(guide.slug) === 1 ? 'pattern' : 'patterns'}</p>
           <h3>{guide.title}</h3>
           <span>{guide.blurb}</span>
         </a>

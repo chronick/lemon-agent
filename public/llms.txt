@@ -31,7 +31,7 @@ Adopt one pattern at a time. Each chapter ends with an optional prompt
 you can adapt to the coding agent you use. Each guide's step 0 is its
 baseline in one paste. Guide index: /guides/
 
-### Working with Coding Agents (№ 3), raw at /guides/coding-agents/*.md
+### Working with Coding Agents, raw at /guides/coding-agents/*.md
 
 - [Step 0: The one-paste baseline](/guides/coding-agents/full-setup.md)
 - [Step 1: Make each correction stick](/guides/coding-agents/working-agreements.md)
@@ -44,7 +44,7 @@ baseline in one paste. Guide index: /guides/
 - [Step 8: Views on demand, not apps](/guides/coding-agents/jit-ui.md)
 - [Step 9: Turn checkable rules into checks](/guides/coding-agents/graduate-to-hooks.md)
 
-### Shipping Software with Git + Coding Agents (№ 4), raw at /guides/git/*.md
+### Shipping Software with Git + Coding Agents, raw at /guides/git/*.md
 
 - [Step 0: The one-paste repo baseline](/guides/git/full-setup.md)
 - [Step 1: Checkpoint commits](/guides/git/commit-small.md)
@@ -53,7 +53,7 @@ baseline in one paste. Guide index: /guides/
 - [Step 4: Review the diff, not the summary](/guides/git/review-the-diff.md)
 - [Step 5: Recovery is cheap. Use it.](/guides/git/cheap-recovery.md)
 
-### Keeping a Vault (№ 5), raw at /guides/vault/*.md
+### Keeping a Vault, raw at /guides/vault/*.md
 
 - [Step 0: The one-paste vault](/guides/vault/full-setup.md)
 - [Step 1: Plain files in a repo](/guides/vault/plain-files.md)
@@ -63,7 +63,7 @@ baseline in one paste. Guide index: /guides/
 - [Step 5: Teach the agent the shape](/guides/vault/teach-the-shape.md)
 - [Step 6: Run a doctor](/guides/vault/run-a-doctor.md)
 
-### What Does AI Say About You? (№ 6), raw at /guides/legibility/*.md
+### What Does AI Say About You?, raw at /guides/legibility/*.md
 
 The legibility audit: measure what AI assistants tell prospective users
 about your projects — a stable-ID buyer-intent prompt battery, an

@@ -70,7 +70,6 @@
     {
       "id": "coding-agents-guide",
       "name": "Working with Coding Agents",
-      "number": 3,
       "tier": "free-artifact",
       "kind": "guide",
       "status": "published",
@@ -143,7 +142,6 @@
     {
       "id": "git-claude-code-guide",
       "name": "Shipping Software with Git + Coding Agents",
-      "number": 4,
       "tier": "free-artifact",
       "kind": "guide",
       "status": "published",
@@ -192,7 +190,6 @@
     {
       "id": "vault-guide",
       "name": "Keeping a Vault",
-      "number": 5,
       "tier": "free-artifact",
       "kind": "guide",
       "status": "published",
@@ -247,7 +244,6 @@
     {
       "id": "legibility-guide",
       "name": "What Does AI Say About You?",
-      "number": 6,
       "tier": "free-artifact",
       "kind": "guide",
       "status": "published",
@@ -271,7 +267,6 @@
     {
       "id": "prose-failure-list",
       "name": "The Prose Failure List",
-      "number": 1,
       "tier": "free-artifact",
       "kind": "failure-list",
       "surface": "prose",
@@ -291,7 +286,6 @@
     {
       "id": "agent-workflow-failure-list",
       "name": "The Agent Workflow Failure List",
-      "number": 2,
       "tier": "free-artifact",
       "kind": "failure-list",
       "surface": "agent-assisted engineering",

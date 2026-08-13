@@ -27,7 +27,6 @@ const next = idx < siblings.length - 1 ? siblings[idx + 1] : null;
 ---
 <Base title={d.title} description={d.description} citrus={meta.citrus}>
   <p class="kicker">
-    <span class="citrus-chip">{meta.citrus}</span>
     <a class="kicker-link" href={`/guides/${guide}/`}>{meta.title}</a> · step {d.step} of {maxStep}
   </p>
   <h1>{shortTitle(d.title)}</h1>

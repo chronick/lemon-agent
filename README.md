@@ -27,16 +27,16 @@ can call ride alongside.
 
 ## Members
 
-| № | Member | What it is | Use it today |
-|---|--------|-----------|--------------|
-| · | [Your First Coding-Agent Session](start/) | 7 short lessons: what changes, safe tasks, the four-part brief, planning, stop conditions, verification, and diff review | Read in order; every lesson has a decision exercise and a paste-ready action |
-| 3 | [Working with Coding Agents](guides/coding-agents/) | Step 0 + 9 patterns: durable instructions, verification loops, design interviews, reviews, orchestration, tool surfaces, small tools, generated views, hooks | One pattern at a time; every chapter ends with a prompt you can adapt. Step 0 = full baseline in one paste |
-| 4 | [Shipping Software with Git + Coding Agents](guides/git/) | Step 0 + 5 patterns: checkpoint commits, branches as blast radius, history for the next reader, diff-not-summary review, cheap recovery | Same shape; step 0 = repo baseline in one paste |
-| 5 | [Keeping a Vault](guides/vault/) | Step 0 + 6 patterns: plain files in a repo, location-is-state, inbox capture, daily log, teach-the-agent instructions, doctor script | Same shape; step 0 = the whole vault in one paste |
-| 6 | [What Does AI Say About You?](guides/legibility/) | The legibility audit: a stable-ID buyer-intent prompt battery run in isolated web-enabled sessions, graded against ground truth, with a worked example from a real baseline | Paste-ready brief on the page, or install the `legibility-audit` skill with `npx skills` |
-| 1 | [The Prose Failure List](lists/prose-failure-list.md) | 24 numbered failures of AI-assisted prose (PF-01…24), run as a subtraction pass | Paste-ready prompt on the page, or install with `npx skills` |
-| 2 | [The Agent Workflow Failure List](lists/agent-workflow-failure-list.md) | 20 numbered failures of agent-assisted engineering (AF-01…20), each grounded in measured work | Paste-ready prompt on the page, or install with `npx skills` |
-| · | [pathgrip](https://pathgrip.net) | Bookmark + provenance store: content-addressed snapshots, drift detection, per-agent tokens, MCP surface | Not yet: operator instance; public docs + self-serve keys are the next ship |
+| Member | What it is | Use it today |
+|--------|-----------|--------------|
+| [Your First Coding-Agent Session](start/) | 7 short lessons: what changes, safe tasks, the four-part brief, planning, stop conditions, verification, and diff review | Read in order; every lesson has a decision exercise and a paste-ready action |
+| [Working with Coding Agents](guides/coding-agents/) | Step 0 + 9 patterns: durable instructions, verification loops, design interviews, reviews, orchestration, tool surfaces, small tools, generated views, hooks | One pattern at a time; every chapter ends with a prompt you can adapt. Step 0 = full baseline in one paste |
+| [Shipping Software with Git + Coding Agents](guides/git/) | Step 0 + 5 patterns: checkpoint commits, branches as blast radius, history for the next reader, diff-not-summary review, cheap recovery | Same shape; step 0 = repo baseline in one paste |
+| [Keeping a Vault](guides/vault/) | Step 0 + 6 patterns: plain files in a repo, location-is-state, inbox capture, daily log, teach-the-agent instructions, doctor script | Same shape; step 0 = the whole vault in one paste |
+| [What Does AI Say About You?](guides/legibility/) | The legibility audit: a stable-ID buyer-intent prompt battery run in isolated web-enabled sessions, graded against ground truth, with a worked example from a real baseline | Paste-ready brief on the page, or install the `legibility-audit` skill with `npx skills` |
+| [The Prose Failure List](lists/prose-failure-list.md) | 24 numbered failures of AI-assisted prose (PF-01…24), run as a subtraction pass | Paste-ready prompt on the page, or install with `npx skills` |
+| [The Agent Workflow Failure List](lists/agent-workflow-failure-list.md) | 20 numbered failures of agent-assisted engineering (AF-01…20), each grounded in measured work | Paste-ready prompt on the page, or install with `npx skills` |
+| [pathgrip](https://pathgrip.net) | Bookmark + provenance store: content-addressed snapshots, drift detection, per-agent tokens, MCP surface | Not yet: operator instance; public docs + self-serve keys are the next ship |
 
 ## The guides, in one breath
 

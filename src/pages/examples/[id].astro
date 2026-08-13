@@ -29,7 +29,6 @@ const html = hastToHtml(exampleToHast(ex, { heading: false, voice: isCourse ? 'c
   citrus={isCourse ? undefined : guideMeta.citrus}
 >
   <p class="kicker">
-    {!isCourse && <span class="citrus-chip">{guideMeta.citrus}</span>}
     Interactive example · from <a class="kicker-link" href={backHref}>{homeTitle}</a>
   </p>
   <h1>{ex.title}</h1>
