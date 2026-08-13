@@ -1,5 +1,6 @@
 // Deployed to Cloudflare Pages (direct upload: `npm run deploy`).
 // Temporary domain until the real one is registered — swap `site` then.
+import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 import { exampleToHast, loadExample } from './src/lib/example-widget.mjs';
 
@@ -42,6 +43,7 @@ function rehypeExamples() {
 
 export default defineConfig({
   site: 'https://lemon-agent.dev',
+  integrations: [sitemap()],
   markdown: {
     rehypePlugins: [rehypeExamples],
   },
