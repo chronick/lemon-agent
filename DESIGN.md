@@ -61,6 +61,15 @@ taxonomy. (This supersedes the earlier note reserving yuzu for audio.)
   several crafts (the PF list serves writing; the verify-info pass
   serves work and writing) lives at its canonical URL and is linked,
   never duplicated.
+- **Tool documentation lives with the tool.** A craft page documents
+  the *practice* — folder discipline, gates, receipts, the loop — and
+  links to the tool's own site or repo for install, flags, and
+  reference. A flag documented twice goes stale in one place. This is
+  what keeps `/audio` distinct from both
+  [smpl](https://github.com/chronick/smpl) (the toolchain, which owns
+  its CLI reference and feature-key registry) and lemon.audio (toys,
+  drops, and the command-line studio, in a weirder register): practice
+  here, tool there, play at lemon.audio.
 - **Skills**: authored in this repo under `skills/`, installed via
   `npx skills`; runtime copies are the installer's problem. Naming is
   domain-specific first (`writing-interview`, `work-verify-info`); a
