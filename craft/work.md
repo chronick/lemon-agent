@@ -2,7 +2,7 @@
 title: "Lemon Agent for Knowledge Work"
 craft: work
 status: v0
-updated: 2026-08-07
+updated: 2026-08-15
 description: "Turn a memo, report, or draft into a claim ledger with sources, dates, uncertainty, and explicit follow-up."
 ---
 
@@ -92,8 +92,26 @@ brew install sqlite-utils
 ```
 
 Neither tool sends a message or hosts your work. They prepare and retain
-artifacts in your own files. The verify-info workflow is a prompt today;
-an installable `work-verify-info` skill is the next packaging step.
+artifacts in your own files.
+
+### The Verify-Info Pass
+
+The workflow above is also an installable skill, for both Codex and
+Claude Code:
+
+```sh
+npx skills add chronick/lemon-agent --global \
+  --agent codex claude-code --skill work-verify-info --yes
+```
+
+- [Read the workflow and the worked example](/work/verify-info/) — a
+  memo and its source packet, and the ledger a real pass produced from
+  them, with all four claim states.
+- [Source on GitHub](https://github.com/chronick/lemon-agent/tree/main/skills/work-verify-info)
+
+The prompt above stays the no-install path; the skill is the same pass
+with the contract, the confidence rules, and the platform notes carried
+along with it.
 
 ## Watch out
 

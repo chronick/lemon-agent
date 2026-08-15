@@ -1,0 +1,58 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const entry = await getEntry('craft', 'verify-info');
+const { Content } = await render(entry);
+const d = entry.data;
+---
+<Base title={d.title} description={d.description}>
+  <p class="kicker">
+    <a class="kicker-link" href="/work/">Lemon Agent for Knowledge Work</a> · instrument
+    <span class="badge available">Skill available</span>
+  </p>
+  <h1>{d.title}</h1>
+  <article class="list-body ledger-body">
+    <Content />
+  </article>
+  <p class="backlink"><a href="/work/">← The knowledge-work craft</a> · <a href="/craft/verify-info.md">raw markdown</a></p>
+</Base>
+
+<style>
+  .kicker-link { color: inherit; }
+</style>
+
+<style is:global>
+  /* The claim ledger is an eight-column table; let it scroll rather
+     than force the page to. */
+  .ledger-body table {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.6rem 0;
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+  .ledger-body table th,
+  .ledger-body table td {
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.55rem;
+    text-align: left;
+    vertical-align: top;
+    min-width: 7rem;
+  }
+  .ledger-body table th {
+    background: var(--card);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .ledger-body table th:first-child,
+  .ledger-body table td:first-child {
+    min-width: 1.6rem;
+    text-align: right;
+    color: var(--muted);
+  }
+</style>
