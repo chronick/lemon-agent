@@ -2,7 +2,7 @@
 title: "Lemon Agent for Audio"
 craft: audio
 status: v0
-updated: 2026-08-07
+updated: 2026-08-15
 description: "Use an agent to measure, organize, and critique audio bounces while you keep the mix decisions in Ableton Live."
 ---
 
@@ -83,17 +83,119 @@ python -m pip install librosa pyloudnorm
 - **New exports, never destructive edits.** Keep the path from raw take to
   current bounce visible.
 
-This is the field-guide side of
-[lemon.audio](https://lemon.audio), where the same file-backed ideas lead
-toward toys, performance tools, and a command-line studio.
-
 ## What ships next
 
-The studio version of this pattern runs on **smpl**, a pipe-based audio
-toolkit with composable analysis and machine-readable reports. It is not
-packaged for outside use yet, so there is no Lemon install command on this
-page. The workflow above uses public tools and works now; a domain skill
-will make it repeatable later.
+Everything above works today with public tools. The packaged version is
+deliberately narrower: one user, one measurement pass, one receipt.
+
+### Who it is for first
+
+A producer who exports a bounce from a DAW and wants to know whether the
+file itself is sound before it leaves the machine — sent to a label,
+uploaded, or dropped into a set. Not mastering engineers, not sample-pack
+QA at scale. One person, one export, one question: **is there anything
+wrong with this file that I would rather not discover later?**
+
+### The one workflow
+
+The studio version runs on [smpl](https://github.com/chronick/smpl), a
+pipe-based audio toolchain that passes NDJSON frames between stages. The
+first packaged pass is a single pipe:
+
+```sh
+smpl read mix-v03.wav | smpl describe-all | smpl view
+```
+
+`describe-all` aggregates the light analysis tier in one pass: loudness,
+spectral shape, technical QC, defect markers, and a mel spectrogram.
+`view` renders those frames as a readable report and keeps the frames on
+stdout for anything downstream. No model download, no account, no hosted
+state.
+
+**In:** the exported bounce (`mix-v03.wav`) and a `brief.md` naming the
+destination and its loudness target.
+
+**Out:** the frame stream — features carrying units, defect markers with
+timestamps, a spectrogram image — and `bounce-audit.md`, the receipt that
+stays beside the bounce so the next export has something to be compared
+against.
+
+### The instrument
+
+**`audio-bounce-audit`**, an installable skill authored in this repo. It
+conducts the practice around that pipe: the versioned review folder, the
+brief, the gates, the receipt, and the return to the DAW. It uses smpl
+when smpl is on the path and falls back to the FFmpeg measurements above
+when it is not, marking anything it could not measure as not measured.
+
+It will not restate smpl's flag surface. The smpl repository already
+ships a `smpl-audit` skill for driving the toolchain itself, and this
+page links to it rather than copying it.
+
+### The judgment artifact
+
+Reused, not invented: **smpl's QC gate set**.
+`qc.clipping.detected` fires on a true peak at or above −0.1 dBTP.
+`qc.dc_offset_dbfs` and `qc.snr_db` report offset and noise in named
+units. `qc.lossy.confidence` scores whether a WAV was once an MP3, using
+a detector that requires a plausible codec cutoff, a steep slope across
+it, and a dead shelf above it before it will claim anything. Every key,
+unit, and namespace is published in smpl's feature-key registry, so a
+number in the report traces back to a definition.
+
+What is still missing is smaller than a failure list: **a one-page bounce
+gate table** mapping six checks — export format and duration, integrated
+loudness against the stated destination, true peak, clipping, DC offset,
+lossy origin — to the exact feature key, unit, threshold, and the reason
+that threshold exists. That table is what this craft owes. There is no
+Audio Failure List planned; these measurements already carry their own
+evidence, and a list invented to match a template would not.
+
+### The worked example
+
+Two files published with smpl's own documentation: `bright.wav`, an airy
+texture, and `lossy.wav`, the same texture after a 64 kbps MP3 round trip
+back to WAV.
+
+```sh
+curl -LO https://chronick.github.io/smpl/assets/bright.wav
+curl -LO https://chronick.github.io/smpl/assets/lossy.wav
+
+smpl read bright.wav | smpl qc | smpl spectrogram --kind mel | smpl view > /dev/null
+smpl read lossy.wav  | smpl qc | smpl spectrogram --kind mel | smpl view > /dev/null
+```
+
+Expect `bright.wav` to report a cutoff near 22 kHz with
+`qc.lossy.confidence` at 0.0, and `lossy.wav` to report a cutoff near
+16.5 kHz with confidence around 0.86. Same texture, same length, one
+failed gate. You know the ground truth before you run it, which is the
+point: the example shows the check catching something real instead of
+describing a file you cannot verify. The spectrogram shows the encoder
+ceiling before the number does.
+
+### Who owns what
+
+Three sites touch this material, and each owns one layer:
+
+- **lemon-agent.dev/audio** documents the practice: folder discipline,
+  gates, receipts, the loop back into the DAW, and the skill that
+  conducts it.
+- **[smpl](https://github.com/chronick/smpl)** documents the tool:
+  install, subcommands, the wire protocol, the feature-key registry.
+  This page links to that reference and never restates it. A flag
+  documented in two places goes stale in one of them.
+- **[lemon.audio](https://lemon.audio)** documents the play: toys,
+  drops, the flasher, the command-line studio, finished work in a
+  weirder register.
+
+Practice here, tool there, play at lemon.audio. When a page here needs a
+tool detail, it links.
+
+The implementation work — an unlisted instrument page, the skill, the
+gate table, and the worked example — is tracked in the house's task
+queue. This page stays out of primary navigation until someone outside
+the house runs the audit on a bounce of their own and reports what it
+missed.
 
 ## Watch out
 
