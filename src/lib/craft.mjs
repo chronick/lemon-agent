@@ -31,14 +31,14 @@ export const CRAFTS = [
     title: 'Lemon Agent for Knowledge Work',
     short: 'Work',
     status: 'v0',
-    availability: 'Prompt available',
-    availabilityClass: 'prompt',
+    availability: 'Skill available',
+    availabilityClass: 'available',
     listed: false,
     tagline: 'Claims you can check, with a ledger to prove it.',
     story:
       'I need to trust the memo or report that somebody will make a decision from.',
-    cta: 'Run a verify-info pass',
-    ctaHref: '/work/#start-with-one-document',
+    cta: 'Run the Verify-Info Pass',
+    ctaHref: '/work/verify-info/',
     blurb:
       'Give an agent one document. Get back a claim ledger with sources, ' +
       'uncertainty, dates, and the follow-up each claim still needs.',
