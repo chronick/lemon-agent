@@ -3,11 +3,11 @@ title: "The Agent Workflow Failure List"
 number: 2
 surface: "agent-assisted engineering"
 arm: verification
-entries: 20
+entries: 21
 prefix: "AF"
 status: published
-updated: 2026-08-12
-description: "20 concrete ways agent-assisted work goes wrong, each with a practical stop-and-fix. Use it on a session, diff, PR, or work report."
+updated: 2026-08-16
+description: "21 concrete ways agent-assisted work goes wrong, each with a practical stop-and-fix. Use it on a session, diff, PR, or work report."
 ---
 
 <!-- Title pattern (house rule for every entry): actor + artifact + the
@@ -173,6 +173,16 @@ settle.
     small command with explicit inputs, structured output, meaningful
     errors, and a test on real data.** Document it where future sessions
     will find it.
+21. <a id="af-21"></a>**“No PRs to merge” and “1082 issues checked, no
+    discrepancies” — from a session with no `gh` binary.** ⚙ The helper
+    scripts wrapped their calls in `2>/dev/null || true`, so a tool that was
+    never there returned exactly what a genuine all-clear returns. Three
+    outcomes have to stay apart — verified-absent, unknown, and broken
+    transport — and the third must never render as the first. Stop and fix:
+    **check the instrument before trusting the measurement: resolve the
+    binary, probe the API, and fail with a distinct code per cause** —
+    `scripts/gh-preflight.sh` is the reference implementation, exiting 3, 4,
+    and 5 for not-found, unreachable, and repo-invisible.
 
 ---
 
