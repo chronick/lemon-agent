@@ -1,11 +1,11 @@
 ---
 name: agent-workflow-failure-list
-description: Run the Lemon Agent Agent Workflow Failure List (AF-01…AF-20) against a session, PR, or work report. Use when the user asks to run the workflow failure list, audit agent work for verification failures, check a session or PR before merge, or review an agent's report for unsupported claims.
+description: Run the Lemon Agent Agent Workflow Failure List (AF-01…AF-21) against a session, PR, or work report. Use when the user asks to run the workflow failure list, audit agent work for verification failures, check a session or PR before merge, or review an agent's report for unsupported claims.
 ---
 
 # Agent Workflow Failure List: the verification pass
 
-Read `list.md` in this skill's directory: the canonical AF-01…AF-20
+Read `list.md` in this skill's directory: the canonical AF-01…AF-21
 entries. Apply them to the target: a PR diff, a session transcript, or
 a work report.
 

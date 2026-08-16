@@ -291,7 +291,7 @@
       "surface": "agent-assisted engineering",
       "arm": "verification",
       "status": "published",
-      "entries": 20,
+      "entries": 21,
       "id_prefix": "AF",
       "html": "/agent-workflow-failure-list/",
       "raw": "/lists/agent-workflow-failure-list.md",
